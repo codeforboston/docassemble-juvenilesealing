@@ -1,0 +1,73 @@
+---
+comment: |
+  - Name, SSN, etc.
+  - Nothing is validated or formatted at the moment.
+  - Create the applicant object in the interview that imports this
+  - Only ask for this after other info has been determined
+  - TODO: Add definition for maiden name
+  - Personal info code can look like https://github.com/GBLS/docassemble-gbls/blob/master/docassemble/gbls/data/questions/basic-questions-gbls.yml
+---
+modules:
+  - docassemble.base.util
+  - docassemble.gbls.legal_server
+#  - docassemble.ssa.ssa
+---
+#features:
+#  javascript: docassemble.ssa:ssa.js
+---
+#objects:
+#  - applicant: Individual
+#  - advocate: Individual
+#  - adverse_parties: DAList.using(object_type=Person,auto_gather=False,gathered=True)
+---
+comment: |
+  If this is not a separate objects block, it will create an error condition.
+#objects:
+#  - ls_fields: LegalServerFields.using(url_args=url_args,client=client,advocate=advocate,adverse_parties=adverse_parties)
+---
+mandatory: True
+code: |
+  #applicant.name.first
+  #applicant.mothers_maiden_name
+  #applicant.ssn
+---
+generic object: Individual
+question: |
+  Name and Address
+fields:
+  - note: "**Name**"
+  - First name: x.name.first
+  - Middle name: x.name.middle
+    required: False
+  - Last name: x.name.last
+  - Date of birth: x.birthdate
+
+  - note: "**Address**"
+  - Street address: x.address
+  - City: x.city
+  - State: x.state
+  - Zipcode: x.zip
+---
+generic object: Individual
+question: |
+  Your Family
+comment: |
+  - TODO: P. - Better definition of mother and father names?
+fields:
+  - Mother's maiden name (last name before she was married): x.mothers_maiden_name
+  - Father's full name (before he was married?): x.fathers_maiden_name
+  - "Husband/Wife's name": x.spouses_name
+---
+generic object: Individual
+question: |
+  Other Information
+fields:
+  - Where you were born: x.place_of_birth
+  - Your alias, maiden name, or previous name or names: x.alias
+    required: False
+  - Occupation: x.occupation
+  - Social Security Number (SSN): x.ssn
+#  - note: Social Security Number (SSN)
+#  - no label: x.ssn
+#    datatype: ssn
+#    validate: is_valid_ssn

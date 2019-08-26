@@ -1,0 +1,438 @@
+---
+comment: |
+  TODO: ask further questions
+---
+comment: |
+  - Immigration asked in previous separate form.
+  - Don't ask personal info until we know they want to print the form.
+  - Personal info code can look like https://github.com/GBLS/docassemble-gbls/blob/master/docassemble/gbls/data/questions/basic-questions-gbls.yml
+---
+metadata:
+  title: |
+    Juvenile Sealing
+  short title: |
+    Juvenile Sealing
+  subtitle: |
+    Version 1
+  authors:
+    - name: Team
+      organization: Citizens for Juvenile Justice and Code for Boston
+---
+features:
+  question back button: True
+---
+modules:
+  - .juvenile_sealing_check_continue
+---
+comment: |
+  Do objects always need to be in their own file?
+  If I do `objects from file`, will that also pull
+  in the logic below or do I have to import that separately?
+comment: |
+  Should `applicant` be `user` instead, even though the
+  questions are about the applicant?
+objects:
+  - applicant: Individual
+  - user: DAObject
+  - ineligibility_reasons: DAObject
+  - ineligibility_reasons.has_NON_probation_open_cases: DAObject
+  - ineligibility_reasons.has_probation: DAObject
+  - ineligibility_reasons.convicted_in_past_3_years: DAObject
+  - ineligibility_reasons.incarcerated_in_past_3_years: DAObject
+  - ineligibility_reasons.juvenile_dismissal_in_past_3_yrs: DAObject
+---
+code: |
+  # ### Creating reasons ####
+  # ? Better place to put this?
+  ineligibility_reasons.has_NON_probation_open_cases.sure = "you've had an open case in the past three years"
+  ineligibility_reasons.has_NON_probation_open_cases.unsure = "you might have had an open case in the past three years"
+  ineligibility_reasons.has_probation.sure = "you've been on probation in the past three years"
+  ineligibility_reasons.has_probation.unsure = "you might have been on probation in the past three years"
+  ineligibility_reasons.convicted_in_past_3_years.sure = "you've had a conviction or adjudication in the last three years"
+  ineligibility_reasons.convicted_in_past_3_years.unsure = "you might have had a conviction or adjudication in the last three years"
+  ineligibility_reasons.incarcerated_in_past_3_years.sure = "you've been incarcerated or in juvenile custody in the past three years"
+  ineligibility_reasons.incarcerated_in_past_3_years.unsure = "you might have been incarcerated or in juvenile custody in the past three years"
+  ineligibility_reasons.juvenile_dismissal_in_past_3_yrs.sure = "you've had a juvenile case dismissed in the past three years"
+  ineligibility_reasons.juvenile_dismissal_in_past_3_yrs.unsure = "you might have had a juvenile case dismissed in the past three years"
+  
+  checkin = UserCheckin(user, ineligibility_reasons)
+---
+code: |
+
+  # ### Base logic for all juvenile sealing
+
+  def isEligible():
+
+    can_seal_juvenile_records = False
+
+    # .Handle motor vehicle offense or not?
+    # ? user.incarcerated_in_past_3_years? Where does that fit?
+
+    # .Logic required to fill out form
+    if (
+           not user.has_open_case
+           and not user.adult_convicted_in_past_3_years
+           and not user.juvenile_adjudicated_in_past_3_years
+           and not user.incarcerated_in_past_3_years
+           #and not user.juvenile_dismissal_in_past_3_yrs
+       ):
+        can_seal_juvenile_records = True
+
+    return can_seal_juvenile_records
+
+  # ### Brainstorming for future user-facing form
+  # .Should we ask if they even have a juvenile record? Probably not.
+  # .from warning at beginning (or anywhere?). Goes in `if` statements.
+  # wants_to_not_finish_form
+  # any_open_cases
+  # on_probation
+  # .Not sure whether to handle motor vehicle offense or not
+  # any_closed_case_is_not_excludable  # motor vehicle <$50
+  # most_recent_adult_or_juvenile_conviction_date
+  # most_recent_juvenile_dismissed_date
+  # .Should we ask individually about federal, state, and
+  # .out-of-state cases separately?
+
+---
+mandatory: True
+id: flow
+code: |
+
+  #remaining_gbls_questions
+
+  if (not wants_to_start):
+    sorry
+
+  # ### Check for open cases ####
+
+  # What we want to find out:
+  user.has_NON_probation_open_cases = False
+  user.has_probation = False
+  user.has_open_case = False
+
+  if (
+         user.has_NON_probation_open_cases_ma == 'True'
+         or user.has_NON_probation_open_cases_other_state == 'True'
+         or user.has_NON_probation_open_cases_federal == 'True'
+     ):
+      user.has_NON_probation_open_cases = True
+  check_if_user_wants_to_continue('has_NON_probation_open_cases')
+  
+  if (
+         user.has_probation_ma == 'True'
+         or user.has_probation_other_state == 'True'
+         or user.has_probation_federal == 'True'
+     ):
+       user.has_probation = True
+  check_if_user_wants_to_continue('has_probation')
+
+  if (user.has_probation or user.has_NON_probation_open_cases):
+    user.has_open_case = True
+  else:
+    user.has_open_case = False
+
+
+  # ### Check convictions, adjudications, incarcerations, juvenile custody ####
+
+  # What we want to find out:
+  user.convicted_in_past_3_years = False
+  user.adult_convicted_in_past_3_years = False
+  user.juvenile_adjudicated_in_past_3_years = False
+
+  if (
+         user.convicted_in_past_3_years_ma == 'True'
+         or user.convicted_in_past_3_years_other_state == 'True'
+         or user.convicted_in_past_3_years_federal == 'True'
+     ):
+       user.convicted_in_past_3_years = True
+       user.adult_convicted_in_past_3_years = True
+       user.juvenile_adjudicated_in_past_3_years = True
+  check_if_user_wants_to_continue('convicted_in_past_3_years')
+
+
+  # Has to look different for Reasons. Dangit.
+  # Can't pre-define user.incarcerated_in_past_3_years
+  # otherwise it won't run the question. Can't
+  # solve it other ways. In other questions,
+  # 'final' values were derived from other user
+  # values, they were just put on the user, which
+  # can't be the same here.
+  if (incarcerated_in_past_3_years == 'True'):
+    user.incarcerated_in_past_3_years = True
+  else:
+    user.incarcerated_in_past_3_years = incarcerated_in_past_3_years
+  check_if_user_wants_to_continue('incarcerated_in_past_3_years')
+
+
+  # ### Check for dismissed juvenile cases ####
+
+  # What we want to find out:
+  user.juvenile_dismissal_in_past_3_yrs = False
+
+  if (
+         user.juvenile_dismissal_in_past_3_yrs_ma == 'True'
+         or user.juvenile_dismissal_in_past_3_yrs_other_state == 'True'
+         or user.juvenile_dismissal_in_past_3_yrs_federal == 'True'
+     ):
+       user.juvenile_dismissal_in_past_3_yrs = True
+  check_if_user_wants_to_continue('juvenile_dismissal_in_past_3_yrs')
+
+  #is_eligible = isEligible()
+  
+  #download
+  exit
+
+---
+id: questions_for_gbls
+field: remaining_gbls_questions
+question: This will not be shown to users
+subquestion: |
+  We still have some questions:
+
+  * A conviction or dissmisal means you
+  had an open case, but an open case can be other things like
+  probation. If a juvenile case has been open (like probation)
+  in the last three years the person can't seal. If an adult
+  was on probation in the last three years, can they seal?
+  * Does the language about 'convictions from the district court,
+  superior court, Boston Municipal Court, federal court, or
+  any out-of-state court' tell us about whether this was a criminal
+  case? If it was an out-of-state court, could it have been a
+  non-criminal case?
+  * Would the petitioners generally know the kind of court it
+  happened in? Specifically something like the district court vs.
+  superior court?
+---
+id: intro
+field: wants_to_start
+question: Can You Seal Your Juvenile Record?
+subquestion: |
+  You might be able to seal your juvenile record. This is what we'll do:
+  
+  1. We'll ask questions about your open cases and old cases.
+  1. We'll tell you if you have a good chance of getting your record sealed.
+  1. We'll ask if you want us to fill out your form (petition).
+  1. If you say yes, we'll ask you questions about yourself like your name and social security number.
+  1. We'll make a form (petition) for you to download, print, and sign.
+  1. We'll tell you where to mail the petition to.
+
+  To you want to keep going?
+buttons:
+  - Yes: True
+  - No: False
+---
+id: NON_probation_open_cases
+question: |
+  Open Cases
+fields: 
+  - note: Have you had any open cases in Massachusetts on or after ${ today().minus(years=3) }?
+  - no label: user.has_NON_probation_open_cases_ma
+    input type: radio
+    choices:
+      - Yes: True
+      - No: False
+      - I don't know: 'unsure'
+  - note: Have you had any open cases in another state on or after ${ today().minus(years=3) }?
+  - no label: user.has_NON_probation_open_cases_other_state
+    input type: radio
+    choices:
+      - Yes: True
+      - No: False
+      - I don't know: 'unsure'
+  - note: Have you had any open federal cases on or after ${ today().minus(years=3) }?
+  - no label: user.has_NON_probation_open_cases_federal
+    input type: radio
+    choices:
+      - Yes: True
+      - No: False
+      - I don't know: 'unsure'
+---
+id: probation
+question: |
+  Probation
+subquestion: |
+  If you're on probation it means your case is open.
+fields: 
+  - note: Have you been on probation in Massachusetts on or after ${ today().minus(years=3) }?
+  - no label: user.has_probation_ma
+    input type: radio
+    choices:
+      - Yes: True
+      - No: False
+      - I don't know: 'unsure'
+  - note: Have you been on probation in another state on or after ${ today().minus(years=3) }?
+  - no label: user.has_probation_other_state
+    input type: radio
+    choices:
+      - Yes: True
+      - No: False
+      - I don't know: 'unsure'
+  - note: Have you been on probation for any federal crimes on or after ${ today().minus(years=3) }?
+  - no label: user.has_probation_federal
+    input type: radio
+    choices:
+      - Yes: True
+      - No: False
+      - I don't know: 'unsure'
+---
+id: old_convictions
+question: Old Convictions
+subquestion: |
+  Note: An adjudication counts as a conviction here. It's a conviction for juveniles.
+fields: 
+  - note: Have you had any adult or juvenile convictions in Massachusetts on or after ${ today().minus(years=3) }?
+  - no label: user.convicted_in_past_3_years_ma
+    input type: radio
+    choices:
+      - Yes: True
+      - No: False
+      - I don't know: 'unsure'
+  - note: Have you had any adult or juvenile convictions in another state on or after ${ today().minus(years=3) }?
+  - no label: user.convicted_in_past_3_years_other_state
+    input type: radio
+    choices:
+      - Yes: True
+      - No: False
+      - I don't know: 'unsure'
+  - note: Have you had any adult or juvenile convictions for any federal crimes on or after ${ today().minus(years=3) }?
+  - no label: user.convicted_in_past_3_years_federal
+    input type: radio
+    choices:
+      - Yes: True
+      - No: False
+      - I don't know: 'unsure'
+---
+id: incarceration
+question: Incarceration or Juvenile Custody
+fields: 
+  - note: Have  you been incarcerated or in juvenile custody anywhere in the USA any time on or after ${ today().minus(years=3) }?
+  - no label: incarcerated_in_past_3_years
+    input type: radio
+    choices:
+      - Yes: True
+      - No: False
+      - I don't know: 'unsure'
+---
+id: dismissal
+question: Dismissed Juvenile Cases
+fields: 
+  - note: Have you had any juvenile cases dismissed in Massachusetts on or after ${ today().minus(years=3) }?
+  - no label: user.juvenile_dismissal_in_past_3_yrs_ma
+    input type: radio
+    choices:
+      - Yes: True
+      - No: False
+      - I don't know: 'unsure'
+  - note: Have you had any juvenile cases dismissed in another state on or after ${ today().minus(years=3) }?
+  - no label: user.juvenile_dismissal_in_past_3_yrs_other_state
+    input type: radio
+    choices:
+      - Yes: True
+      - No: False
+      - I don't know: 'unsure'
+  - note: Have you had any juvenile cases dismissed for any federal crimes on or after ${ today().minus(years=3) }?
+  - no label: user.juvenile_dismissal_in_past_3_yrs_federal
+    input type: radio
+    choices:
+      - Yes: True
+      - No: False
+      - I don't know: 'unsure'
+---
+id: placeholder_end
+mandatory: True
+question: PDF creation coming soon!
+buttons:
+  - Exit: exit
+  - Restart: restart
+---
+id: petition
+question: Your Petition
+event: download
+comment: |
+  Replace file name with customized file name?
+attachment:
+  - name: juvenile-criminal-sealing-petition
+    filename: juvenile-criminal-sealing-petition
+    pdf template file: juvenile-criminal-sealing-petition.pdf
+    fields:
+      - "juvenile_cases": No
+      - "misdemeanors": No
+      - "felonies": No
+      - "decriminalized": No
+      - "dob": something
+      - "last_name": something
+      - "middle_name": something
+      - "first_name": something
+      - "aliases": something
+      - "street_address": something
+      - "city": something
+      - "state": something
+      - "zipcode": something
+      - "occupation": something
+      - "ssn": something
+      - "place_of_birth": something
+      - "father_maiden_name": something
+      - "mother_maiden_name": something
+      - "mother_maiden_name_2": something
+      - "spouse_maiden_name": something
+      - "upper_signature": something
+      - "signature_checkbox_1": No
+      - "lower_signature_1": something
+      - "signature_checkbox_2": No
+      - "signature_checkbox_3": No
+      - "lower_signature_2": something
+buttons:
+  - Exit: fake #exit
+  - Restart: fake2 #restart
+---
+comment:  has_open_case ${has_open_case}
+---
+id: not_helped
+event: sorry
+question: |
+  Thank you and sorry we couldn't help.
+subquestion: |
+  %if (checkin.needs_to_wait_3_years):
+  After three years has passed since
+  ${checkin.reason_for_ineligibility}, please try again.
+  % endif
+comment: |
+  TODO: Add more resources they can go to.
+buttons:
+  - Exit: exit
+  - Restart: restart
+
+---
+comment: |
+  Abstractions for stopping.
+
+---
+id: wants_to_continue_despite_uncertainty
+field: wants_to_continue_despite_uncertainty
+question: Might Not Be Eligible
+subquestion: |
+  Because **${checkin.reason_for_ineligibility}** we think you **might not** be able to seal your juvenile record.
+  
+  Do you want to try anyway?
+buttons:
+  - Yes: True
+  - No: False
+
+---
+id: wants_to_continue_despite_ineligibility
+field: wants_to_continue_despite_ineligibility
+question: Probably Not Eligible
+subquestion: |
+  Sorry, but because **${checkin.reason_for_ineligibility}** we think you **probably won't** be able to seal your juvenile record.
+  
+  Do you want to try anyway?
+buttons:
+  - Yes: True
+  - No: False
+
+---
+code: |
+
+  # .Just less noise for SME
+  def check_if_user_wants_to_continue(attr_name):
+    checkin.check_if_user_wants_to_continue(attr_name)
