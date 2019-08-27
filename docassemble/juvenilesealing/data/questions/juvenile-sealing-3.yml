@@ -83,12 +83,18 @@ code: |
     reason = ineligibility_reasons.wants_to_continue
     if (not wants_to_start): sorry
 
-  if (should_show_extra_info):
-    reason = ineligibility_reasons.wants_to_continue
-    if (wants_to_get_dockets_first):
-        # TODO: Link to dockets instead
-        thank_you_did_not_finish
-  '''
+
+  #origin_of_interviewee = ''
+  #if 'from' in url_args:
+  #  origin_of_interviewee = url_args['from']
+  #if (should_show_extra_info):
+  #  reason = ineligibility_reasons.wants_to_continue
+  #  if (origin_of_interviewee == 'dockets'):
+  #    if (wants_to_get_dockets_first):
+  #      # TODO: Link to dockets instead? Include
+  #      # warning somehow?
+  #        thank_you_did_not_finish
+
   reason = ineligibility_reasons.open_case
   if (has_NON_probation_open_cases == 'True'): sorry
   elif (has_NON_probation_open_cases == 'unsure'): get_records
@@ -121,7 +127,7 @@ code: |
   reason = ineligibility_reasons.incarcerated
   if (incarcerated_in_past_3_years == 'True'): sorry
   elif (incarcerated_in_past_3_years == 'unsure'): get_records
-  '''
+
   # Otherwise they're eligible!
   
   # Make sure they get a chance to order their dockets.
@@ -129,13 +135,14 @@ code: |
     if (eligible_but_wants_dockets):
       # TODO: Link to dockets instead
       thank_you_did_not_finish
-
+  '''
   # Get their personal details
   applicant.name.first
   applicant.mothers_maiden_name
   applicant.ssn
+  '''
 
-  download
+  #download
 
 ---
 id: wants_to_see_extra_info
@@ -156,8 +163,6 @@ question: Can You Seal Your Juvenile Record?
 subquestion: |
   You might be able to seal your juvenile record. This is what
   we need to do:
-  
-  1. Give you some more information.
   1. Ask questions about your old and open cases.
   1. Tell you if you might be eligible for sealing.
   1. Ask for personal details like your social security number.
@@ -166,54 +171,15 @@ subquestion: |
   print, and sign. We'll tell you where to mail it.
 
   To you want to keep going?
+comment: |
+  If we add more info pages, add this as the first item: 
+  1. Give you some more information.
 buttons:
   - Yes: True
   - No: False
 ---
-id: get_copy_of_dockets_suggestion
-comment: |
-  - Q: Is this relevant to juvenile records?
-    A: Yes. Some people can see you have sealed juvi records.
-  - Q: Are 'dockets' the same thing as your criminal record?
-  - Q: What do sealed records look like to the employer?
-  - TODO: Should we show this before or after we see if they're
-    eligible or not? Having them go through the whole thing
-    just to have to come back in the future would be a pain.
-    On the other hand, having them go through the trouble
-    of getting a certified copy and then not be eligible is
-    also not great.
-  - Possibly include in explanation:
-  If you get a **certified copy of your juvenile dockets** you'll
-  be able to show them exactly what your crime was and they might
-  still be able to hire you. The problem is that when your records
-  are sealed you can't get your dockets. You'll have to
-  unseal them to be able to show your employer. That can take a
-  while.
-field: wants_to_get_dockets_first
-question: You might want a certified copy of your criminal dockets before you seal your juvenile records
-subquestion: |
-  This site will tell you how to get a certified copy of your
-  **juvenile criminal dockets** (dockets are
-  different than your criminal record.):
-  
-  TODO: LINK TO INSTRUCTIONS
-
-  Most of the time **when you apply for a job** your employer won't
-  be able to see that you have any sealed records at all. For
-  some jobs, though, like jobs where you need **high security
-  clearance**, employers won't be able to see your actual records,
-  but will be able to see you have sealed juvenile records.
-
-  We recomment getting a **certified copy** of your juvenile
-  dockets **before** you seal your records.
-  
-  Do you want to get your dockets now or do you want to
-  find out if you're eligible first?
-comment: |
-  - TODO: Button should lead to instructions
-buttons:
-  - Get dockets first: True
-  - Keep going: False
+#include:
+#  - certified-copy-of-dockets.yml
 ---
 id: open_cases
 question: |
@@ -317,13 +283,6 @@ fields:
 include:
   - personal-details.yml
 ---
-id: placeholder_end
-#mandatory: True
-question: PDF creation coming soon!
-buttons:
-  - Exit: exit
-  - Restart: restart
----
 id: eligible
 field: eligible_but_wants_dockets
 question: You Might Be Eligible!
@@ -334,8 +293,15 @@ subquestion: |
   You can also still see how to get a **certified copy of your
   dockets**. What do you want to do?
 buttons:
-  - Get dockets first: True
   - Keep going: False
+  - Get dockets first: True
+---
+id: placeholder_end
+mandatory: True
+question: PDF creation coming soon!
+buttons:
+  - Exit: exit
+  - Restart: restart
 ---
 id: download
 question: Your Petition
@@ -351,9 +317,9 @@ attachment:
       - "misdemeanors": No
       - "felonies": No
       - "decriminalized": No
-      - "dob": applicant.birthdate
-      - "last_name": applicant.name.last
-      - "middle_name": applicant.name.middle
+      - "dob": ${applicant.birthdate}
+      - "last_name": ${applicant.name.last}
+      - "middle_name": ${applicant.name.middle}
       - "first_name": applicant.name.first
       - "aliases": applicant.alias
       - "street_address": applicant.address
