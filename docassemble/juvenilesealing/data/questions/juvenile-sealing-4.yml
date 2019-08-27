@@ -13,7 +13,7 @@ metadata:
   short title: |
     Juvenile Sealing
   subtitle: |
-    Version 3
+    Version 4
   authors:
     - name: Team
       organization: Citizens for Juvenile Justice and Code for Boston
@@ -62,10 +62,6 @@ code: |
     log(url_args['from'], 'console')
     if (url_args['from'] == 'dockets'):
       should_show_extra_info = True
-
-  if (should_show_extra_info):
-    reason = ineligibility_reasons.wants_to_continue
-    if (not wants_to_start_after_instructions): sorry
 
   reason = ineligibility_reasons.open_case
   if (has_NON_probation_open_cases == 'True'): sorry
@@ -117,30 +113,6 @@ code: |
 
   download
   '''
----
-id: intro
-field: wants_to_start_after_instructions
-question: Can You Seal Your Juvenile Record?
-subquestion: |
-  To find out, this is what we need to do:
-
-  1. Ask questions about your old and open cases.
-  1. Tell you if you might be eligible for sealing.
-  1. Ask for personal details like your social security number.
-  
-  After that we can give you a form (petition) to download,
-  print, and sign. We'll tell you where to mail it.
-  
-  **Note:** Whenever we say USA that includes United States
-  possessions (like Guam).
-
-  To you want to keep going?
-comment: |
-  If we add more info pages, add this as the first item: 
-  1. Give you some more information.
-buttons:
-  - Yes: True
-  - No: False
 ---
 #include:
 #  - certified-copy-of-dockets.yml
