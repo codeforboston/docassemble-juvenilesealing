@@ -1,0 +1,108 @@
+comment: |
+  Currently, the way for legal professionals/volunteers
+  to avoid answering extra questions. Also, to avoid some
+  personal questions being stored with the rest of the data.
+---
+comment: |
+  - Q: Is this relevant to juvenile records?
+    A: Yes. Some people can see you have sealed juvi records.
+  - Q: Are 'dockets' the same thing as your criminal record?
+  - A: No
+  - Q: What do sealed records look like to the employer?
+---
+metadata:
+  title: |
+    Juvenile Sealing
+  short title: |
+    Juvenile Dockets
+  subtitle: |
+    Version 2
+  authors:
+    - name: Team
+      organization: Citizens for Juvenile Justice and Code for Boston
+---
+mandatory: True
+code: |
+  if (not have_docket_copies_already):
+    if (immigration_disclaimer):
+      do_not_seal
+    elif (wants_fed_job is True or wants_fed_job is None):
+      fed_job_disclaimer
+
+  command('leave', url='https://interviews-dev.gbls.org/interview?from=dockets&i=docassemble.playground42%3Ajuvenile-sealing-3.yml')
+
+comment: |
+  TODO: allow other interviews to use this and then go
+  back to their own content. How?
+---
+id: have_already
+comment: |
+  - TODO: Add link to expungement info
+  - TODO: Should we show this before or after we see if they're
+    eligible or not? Having them go through the whole thing
+    just to have to come back in the future would be a pain.
+    On the other hand, having them go through the trouble
+    of getting a certified copy and then not be eligible is
+    also not great.
+question: Before trying to seal your records we have an important question
+subquestion: |
+  **Do you already have a certified copy of your dockets?**
+  (A docket is different than a criminal record - CORI)
+  
+  **Important!** Expunging is different than sealing.
+
+yesno: have_docket_copies_already
+---
+id: immigration_disclaimer
+question: Are you an immigrant?
+yesno: immigration_disclaimer
+---
+id: wants_fed_job
+question: Will you ever want to do any of these things?
+subquestion: |
+  * Work with children under 18
+  * Work for a bank
+  * Work for the military
+  * Work for an employer who participates in the Work
+     Opportunity Tax Credit (WOTC) program
+  * Work with an employer that has federal funding
+  * Work for a political office
+  * Run for political office
+yesnomaybe: wants_fed_job
+---
+id: do_not_seal
+event: do_not_seal
+question: Sealing can be dangerous for immigrants
+subquestion: |
+  **If you have a certified copy of your dockets you can
+  prove what your record really is.** If you seal your
+  records without getting a **certified copy
+  of your dockets first** and ICE requires a hearing, you may
+  not have time to unseal those records before the hearing.
+  
+  Please get a **certified copy of your dockets before trying
+  to seal your records**. Follow this link for a site with
+  instructions:
+buttons:
+  - "Getting your certified dockets (TODO)": leave
+    url: https://duckduckgo.com
+---
+id: fed_job_disclaimer
+event: fed_job_disclaimer
+question: You may need your dockets to get a job
+subquestion: |
+  Only some crimes will stop you from getting those jobs.
+  **If you have a certified copy of your dockets you can
+  prove what your record really is** and maybe still get
+  the job. You can always unseal your records, but it will
+  take more time.
+  
+  We recommend you get a **certified copy of your dockets
+  before trying to seal your records**. We can link you to a
+  site with instructions.
+buttons:
+  - "Get dockets first (TODO)": leave
+    url: https://duckduckgo.com
+  - Find out about sealing: leave
+    url: https://interviews-dev.gbls.org/interview?from=dockets&i=docassemble.playground42%3Ajuvenile-sealing-3.yml
+---
