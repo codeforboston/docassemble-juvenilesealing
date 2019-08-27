@@ -13,7 +13,7 @@ metadata:
   short title: |
     Juvenile Sealing
   subtitle: |
-    Version 3
+    Version 4
   authors:
     - name: Team
       organization: Citizens for Juvenile Justice and Code for Boston
@@ -54,24 +54,18 @@ id: flow
 code: |
 
   reason = ''
-  should_show_extra_info = wants_to_see_extra_info
   dockets_link = 'TODO'
+
+  # How to make sure a pro se user sees the warnings?
+  should_show_extra_info = False
+  if ('from' in url_args):
+    log(url_args['from'], 'console')
+    if (url_args['from'] == 'dockets'):
+      should_show_extra_info = True
 
   if (should_show_extra_info):
     reason = ineligibility_reasons.wants_to_continue
-    if (not wants_to_start): sorry
-
-
-  #origin_of_interviewee = ''
-  #if 'from' in url_args:
-  #  origin_of_interviewee = url_args['from']
-  #if (should_show_extra_info):
-  #  reason = ineligibility_reasons.wants_to_continue
-  #  if (origin_of_interviewee == 'dockets'):
-  #    if (wants_to_get_dockets_first):
-  #      # TODO: Link to dockets instead? Include
-  #      # warning somehow?
-  #        thank_you_did_not_finish
+    if (not wants_to_start_after_instructions): sorry
 
   reason = ineligibility_reasons.open_case
   if (has_NON_probation_open_cases == 'True'): sorry
@@ -115,31 +109,20 @@ code: |
       thank_you_did_not_finish
   '''
   # Get their personal details
-  applicant.name.first
+  first_name = applicant.name.first
+  #last_name = applicant.name.last
+  #filename = first_name + '-' + last_name + '-juvenile-sealing-petition'
   applicant.mothers_maiden_name
   applicant.ssn
 
   download
   '''
 ---
-id: wants_to_see_extra_info
-field: wants_to_see_extra_info
-question: |
-  Do you want to see instructions and warnings about sealing
-  your juvenile records?
-subquestion: |
-  Note: Whenever we say USA that includes United States
-  possessions (like Guam).
-buttons:
-  Yes: True
-  No: False
----
 id: intro
-field: wants_to_start
+field: wants_to_start_after_instructions
 question: Can You Seal Your Juvenile Record?
 subquestion: |
-  You might be able to seal your juvenile record. This is what
-  we need to do:
+  To find out, this is what we need to do:
 
   1. Ask questions about your old and open cases.
   1. Tell you if you might be eligible for sealing.
@@ -147,6 +130,9 @@ subquestion: |
   
   After that we can give you a form (petition) to download,
   print, and sign. We'll tell you where to mail it.
+  
+  **Note:** Whenever we say USA that includes United States
+  possessions (like Guam).
 
   To you want to keep going?
 comment: |
@@ -327,7 +313,10 @@ question: |
   Getting Your Criminal Records
 subquestion: |
   It looks like you don't know enough about your records.
-  This page should tell you how to get your records: ADD LINK HERE.
+  This page should tell you how to get your records:
+  
+  ADD LINK HERE.
+
   Once you have them you'll be able to answer these questions
   and we can help you fill out your form.
   
