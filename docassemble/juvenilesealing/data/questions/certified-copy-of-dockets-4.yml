@@ -60,9 +60,9 @@ subquestion: |
   print, and sign. We'll tell you where to mail it.
 
   
-  #### <span style="background: yellow">More about this form</span>
+  #### More about this form
   
-  <span style="background: yellow">The questions can take up to
+  The questions can take up to
   20 minutes (check this!) to get through.
   They will be easier to
   answer right if you have your CORI with you. Click
@@ -71,18 +71,17 @@ subquestion: |
   and create an account for requesting your CORI.
   You also might have to
   stop this form and come back later if you need to
-  get a certified copy of your docket sheets.</span>
+  get a certified copy of your docket sheets.
   
-  <span style="background: yellow">If we need to store any personally
-  identifying information we will ask you first.</span>
+  If we need to store any personally
+  identifying information we will ask you first.
 
   **Note:** Whenever we say USA that includes United States
   possessions (like Guam).
 under: |
-  <span style="background: yellow">To read about what sealing is, go to this website:
-  **(Need link to simplified page of important facts only
-  about sealing.
-  Build page on CfJJ?)**</span>
+  To read about what sealing is, go to this website:
+  <span style="background: yellow">**(Need link to simplified page of important facts only
+  about sealing.)**</span>
 ---
 id: have_already
 comment: |
@@ -104,8 +103,8 @@ subquestion: |
   what happened in your case.
 yesno: have_docket_copies_already
 under: |
-  <span style="background: yellow">Go to this website to find out about certified
-  docket sheets. **(Need website)**</span>
+  Go to this website to find out about certified
+  docket sheets. <span style="background: yellow">**(Need website)**</span>
 ---
 id: immigration_disclaimer
 question: Are you an immigrant?
@@ -122,8 +121,8 @@ subquestion: |
   * Work with an employer that has federal funding
   * Work for a political office
   * Run for political office
-  * <span style="background: yellow">Work for any other job that needs a federal background
-  check</span>
+  * Work for any other job that needs a federal background
+  check
 yesnomaybe: wants_fed_job
 ---
 id: do_not_seal
@@ -135,8 +134,8 @@ subquestion: |
   for all of your cases first and
   ICE requires a hearing,
   you might not have time to unseal those records before
-  the hearing. <span style="background: yellow">ICE could decide
-  to treat it like a very serious crime.</span>
+  the hearing. ICE could decide
+  to treat it like a very serious crime.
   **If you have a certified copy of the docket sheets
   for all of your cases you can
   prove what your record really is.**

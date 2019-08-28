@@ -133,8 +133,7 @@ fields:
       - Yes: True
       - No: False
       - I don't know: 'unsure'
-  - note: "**Old version:** Are you on probation in the USA or in a federal court right now?"
-  - note: "<span style='background: yellow'>**New version:** Are you on probation in the USA or for a federal crime right now?</span>"
+  - note: "Are you now on probation for any criminal or juvenile case in the USA, including  any federal court case?"
   - no label: is_on_probation
     input type: radio
     choices:
@@ -145,7 +144,7 @@ fields:
 id: juvenile_cases
 question: Juvenile Cases
 subquestion: |
-  **Note: <span style="background: yellow">For all questions,</span> motor vehicle offenses where the fine was not over $50 don't count.**
+  **Note: For all questions, motor vehicle offenses where the fine was not over $50 don't count.**
 fields: 
   - note: Have you had any juvenile cases in Massachusetts on or after ${ today().minus(years=3) }?
   - no label: juvenile_cases_in_past_3_years_ma
@@ -198,7 +197,7 @@ fields:
 id: adult_cases
 question: Adult Cases
 subquestion: |
-  **Note: <span style="background: yellow">For all questions,</span> motor vehicle offenses where the fine was not over $50 don't count.**
+  **Note: For all questions, motor vehicle offenses where the fine was not over $50 don't count.**
 fields:
   - note: Have you had any convictions on or after ${ today().minus(years=3) } in any adult court in the USA?
   - no label: convicted_in_past_3_years_states
@@ -232,27 +231,27 @@ subquestion: |
   We think you're probably eligible to seal your juvenile records.
 
   % if (needs_dockets):
-  <span style="background: yellow">**You can also still see how to get a certified copy of the
+  **You can also still see how to get a certified copy of the
   docket sheets for all of your cases**.
   It can take a while, but
   please get them before finishing your form.
-  Go to this website:</span>
+  Go to this website:
   
   <span style="background: yellow">**(Need link for website)**</span>
   % endif
   
-  <span style="background: yellow">We've created a form that has marks in the
+  We've created a form that has marks in the
   right places.
   Now the form needs some of your
-  personal information. You can do it two ways:</span>
+  personal information. You can do it two ways:
   
-  1. <span style="background: yellow">Print the form and finish filling it out by hand</span>
-  2. <span style="background: yellow">Keep using our online form to answer the
-  questions.</span>
+  1. Print the form and finish filling it out by hand
+  2. Keep using our online form to answer the
+  questions.
   
-  <span style="background: yellow">If you use our form, your personal information
+  If you use our form, your personal information
   will be stored
-  securely online and only you can ever see it.</span>
+  securely online and only you can ever see it.
 buttons:
   - Finish by hand: True
   - Keep using this form: False
