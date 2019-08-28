@@ -58,10 +58,12 @@ code: |
 
   # How to make sure a pro se user sees the warnings?
   should_show_extra_info = False
-  if ('from' in url_args):
-    log(url_args['from'], 'console')
-    if (url_args['from'] == 'dockets'):
-      should_show_extra_info = True
+  needs_dockets = False
+  if ('dockets' in url_args):
+    should_show_extra_info = True
+    log(url_args['dockets'], 'console')
+    if (url_args['dockets'] == 'needed'):
+      needs_dockets = True
 
   reason = ineligibility_reasons.open_case
   if (has_NON_probation_open_cases == 'True'): sorry
@@ -100,9 +102,10 @@ code: |
   
   # Make sure they get a chance to order their docket sheets.
   if (should_show_extra_info):
-    if (eligible_but_wants_dockets):
+    if (will_write_personal_info):
       # TODO: Link to docket sheets instead
-      thank_you_did_not_finish
+      partial_petition
+      
   '''
   # Get their personal details
   first_name = applicant.name.first
@@ -111,8 +114,10 @@ code: |
   applicant.mothers_maiden_name
   applicant.ssn
 
-  download
+  full_petition
   '''
+  
+  placeholder_end
 ---
 #include:
 #  - certified-copy-of-dockets.yml
@@ -128,7 +133,8 @@ fields:
       - Yes: True
       - No: False
       - I don't know: 'unsure'
-  - note: Are you on probation in the USA or in a federal court right now?
+  - note: "**Old version:** Are you on probation in the USA or in a federal court right now?"
+  - note: "<span style='background: yellow'>**New version:** Are you on probation in the USA or for a federal crime right now?</span>"
   - no label: is_on_probation
     input type: radio
     choices:
@@ -139,7 +145,7 @@ fields:
 id: juvenile_cases
 question: Juvenile Cases
 subquestion: |
-  **Note: Motor vehicle offenses where the fine was not over $50 don't count.**
+  **Note: <span style="background: yellow">For all questions,</span> motor vehicle offenses where the fine was not over $50 don't count.**
 fields: 
   - note: Have you had any juvenile cases in Massachusetts on or after ${ today().minus(years=3) }?
   - no label: juvenile_cases_in_past_3_years_ma
@@ -192,7 +198,7 @@ fields:
 id: adult_cases
 question: Adult Cases
 subquestion: |
-  **Note: Motor vehicle offenses where the fine was not over $50 don't count.**
+  **Note: <span style="background: yellow">For all questions,</span> motor vehicle offenses where the fine was not over $50 don't count.**
 fields:
   - note: Have you had any convictions on or after ${ today().minus(years=3) } in any adult court in the USA?
   - no label: convicted_in_past_3_years_states
@@ -220,29 +226,86 @@ include:
   - personal-details.yml
 ---
 id: eligible
-field: eligible_but_wants_dockets
+field: will_write_personal_info
 question: You Might Be Eligible!
 subquestion: |
   We think you're probably eligible to seal your juvenile records.
+
+  % if (needs_dockets):
+  <span style="background: yellow">**You can also still see how to get a certified copy of the
+  docket sheets for all of your cases**.
+  It can take a while, but
+  please get them before finishing your form.
+  Go to this website:</span>
   
-  To finish the form we need some of your personal information.
-  You can also still see how to get a **certified copy of the
-  docket sheets for all of your cases**. What do you
-  want to do?
+  <span style="background: yellow">**(Need link for website)**</span>
+  % endif
+  
+  <span style="background: yellow">We've created a form that has marks in the
+  right places.
+  Now the form needs some of your
+  personal information. You can do it two ways:</span>
+  
+  1. <span style="background: yellow">Print the form and finish filling it out by hand</span>
+  2. <span style="background: yellow">Keep using our online form to answer the
+  questions.</span>
+  
+  <span style="background: yellow">If you use our form, your personal information
+  will be stored
+  securely online and only you can ever see it.</span>
 buttons:
-  - Keep going: False
-  - "Get docket sheets first (TODO)": True
+  - Finish by hand: True
+  - Keep using this form: False
 ---
 id: placeholder_end
-mandatory: True
+event: placeholder_end
 question: PDF creation coming soon!
 buttons:
   - Exit: exit
   - Restart: restart
 ---
-id: download
+id: partial_petition
 question: Your Petition
-event: download
+subquestion: It only needed a couple of marks.
+event: partial_petition
+comment: |
+  Replace file name with customized file name?
+attachment:
+  - name: juvenile-criminal-sealing-petition
+    filename: juvenile-criminal-sealing-petition
+    pdf template file: juvenile-criminal-sealing-petition.pdf
+    fields:
+      - "juvenile_cases": Yes
+      - "misdemeanors": No
+      - "felonies": No
+      - "decriminalized": No
+      - "dob": ''
+      - "last_name": ''
+      - "middle_name": ''
+      - "first_name": ''
+      - "aliases": ''
+      - "street_address": ''
+      - "city": ''
+      - "state": ''
+      - "zipcode": ''
+      - "occupation": ''
+      - "ssn": ''
+      - "place_of_birth": ''
+      - "father_maiden_name": ''
+      - "mother_maiden_name": ''
+      - "mother_maiden_name_2": ''
+      - "spouse_maiden_name": ''
+      - "upper_signature": ''
+      - "signature_checkbox_1": Yes
+      - "lower_signature_1": ''
+      - "signature_checkbox_2": ''
+      - "signature_checkbox_3": ''
+      - "lower_signature_2": ''
+---
+id: full_petition
+question: Your Petition
+subquestion: It only needed a couple of marks.
+event: full_petition
 comment: |
   Replace file name with customized file name?
 attachment:
@@ -257,19 +320,19 @@ attachment:
       - "dob": ${applicant.birthdate}
       - "last_name": ${applicant.name.last}
       - "middle_name": ${applicant.name.middle}
-      - "first_name": applicant.name.first
-      - "aliases": applicant.alias
-      - "street_address": applicant.address
-      - "city": applicant.city
-      - "state": applicant.state
-      - "zipcode": applicant.zip
-      - "occupation": applicant.occupation
-      - "ssn": applicant.ssn
-      - "place_of_birth": applicant.place_of_birth
-      - "father_maiden_name": applicant.mothers_maiden_name
+      - "first_name": ${applicant.name.first}
+      - "aliases": ${applicant.alias}
+      - "street_address": ${applicant.address}
+      - "city": ${applicant.city}
+      - "state": ${applicant.state}
+      - "zipcode": ${applicant.zip}
+      - "occupation": ${applicant.occupation}
+      - "ssn": ${applicant.ssn}
+      - "place_of_birth": ${applicant.place_of_birth}
+      - "father_maiden_name": ${applicant.mothers_maiden_name}
       - "mother_maiden_name": ''
-      - "mother_maiden_name_2": applicant.fathers_maiden_name
-      - "spouse_maiden_name": applicant.spouses_name
+      - "mother_maiden_name_2": ${applicant.fathers_maiden_name}
+      - "spouse_maiden_name": ${applicant.spouses_name}
       - "upper_signature": ''
       - "signature_checkbox_1": Yes
       - "lower_signature_1": ''
@@ -283,17 +346,18 @@ buttons:
 id: need_records
 event: get_records
 question: |
-  Getting Your Criminal Records
+  Sorry, we can't help until you have more information
 subquestion: |
   It looks like you don't know enough about your records.
-  This page should tell you how to get your records:
+  Click here to go to **(Need website name)**
+  to find out how to get your CORI
+  which will help you answer the questions:
   
   ADD LINK HERE.
 
-  Once you have them you'll be able to answer these questions
-  and we can help you fill out your form.
-  
-  Sorry we couldn't help you right now.
+  **Get your records and come
+  back soon so we can
+  help seal your records!**
 buttons:
   - Exit: exit
   - Restart: restart
