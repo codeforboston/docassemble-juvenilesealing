@@ -46,8 +46,11 @@ comment: |
     also not great.
 question: Before trying to seal your records we have an important question
 subquestion: |
-  **Do you already have a certified copy of your dockets?**
-  (A docket is different than a criminal record - CORI)
+  **Do you already have a certified copy of the docket sheets for
+  all of your cases?** (A docket sheet is different than a
+  criminal record report called a CORI. Docket sheets are
+  papers in your court case at the courthouse that say
+  what happened in your case.)
   
   **Important!** Expunging is different than sealing.
 
@@ -74,34 +77,38 @@ id: do_not_seal
 event: do_not_seal
 question: Sealing can be dangerous for immigrants
 subquestion: |
-  **If you have a certified copy of your dockets you can
+  **If you have a certified copy of the docket sheets
+  for all of your cases you can
   prove what your record really is.** If you seal your
   records without getting a **certified copy
-  of your dockets first** and ICE requires a hearing, you may
+  of your docket sheets first** and ICE requires a hearing,
+  you might
   not have time to unseal those records before the hearing.
   
-  Please get a **certified copy of your dockets before trying
+  Please get a **certified copy of the docket sheets before
+  trying
   to seal your records**. Follow this link for a site with
   instructions:
 buttons:
-  - "Getting your certified dockets (TODO)": leave
+  - "Getting your certified docket sheets (TODO)": leave
     url: https://duckduckgo.com
 ---
 id: fed_job_disclaimer
 event: fed_job_disclaimer
-question: You may need your dockets to get a job
+question: You may need your docket sheets to get a job
 subquestion: |
   Only some crimes will stop you from getting those jobs.
-  **If you have a certified copy of your dockets you can
+  **If you have a certified copy of the docket sheets for
+  all of your cases you can
   prove what your record really is** and maybe still get
   the job. You can always unseal your records, but it will
   take more time.
   
-  We recommend you get a **certified copy of your dockets
+  We recommend you get a **certified copy of the docket sheets
   before trying to seal your records**. We can link you to a
   site with instructions.
 buttons:
-  - "Get dockets first (TODO)": leave
+  - "Get docket sheets first (TODO)": leave
     url: https://duckduckgo.com
   - Find out about sealing: leave
     url: https://interviews-dev.gbls.org/interview?from=dockets&i=docassemble.playground42%3Ajuvenile-sealing-3.yml

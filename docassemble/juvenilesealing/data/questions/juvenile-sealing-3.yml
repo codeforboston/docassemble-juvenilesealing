@@ -105,7 +105,7 @@ code: |
   # Make sure they get a chance to order their dockets.
   if (should_show_extra_info):
     if (eligible_but_wants_dockets):
-      # TODO: Link to dockets instead
+      # TODO: Link to docket sheets instead
       thank_you_did_not_finish
   '''
   # Get their personal details
@@ -254,11 +254,11 @@ subquestion: |
   We think you're probably eligible to seal your juvenile records.
   
   To finish the form we need some of your personal information.
-  You can also still see how to get a **certified copy of your
-  dockets**. What do you want to do?
+  You can also still see how to get a **certified copy of the
+  docket sheets for all of your cases**. What do you want to do?
 buttons:
   - Keep going: False
-  - "Get dockets first (TODO)": True
+  - "Get docket sheets first (TODO)": True
 ---
 id: placeholder_end
 mandatory: True
