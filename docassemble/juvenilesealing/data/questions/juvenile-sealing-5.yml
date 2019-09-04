@@ -62,7 +62,6 @@ code: |
   needs_dockets = False
   if ('dockets' in url_args):
     should_show_extra_info = True
-    log(url_args['dockets'], 'console')
     if (url_args['dockets'] == 'needed'):
       needs_dockets = True
 

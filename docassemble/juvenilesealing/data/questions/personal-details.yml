@@ -40,7 +40,6 @@ fields:
   - Middle name: x.name.middle
     required: False
   - Last name: x.name.last
-  - Date of birth: x.birthdate
 
   - note: "**Address**"
   - Street address: x.address
@@ -64,6 +63,7 @@ generic object: Individual
 question: |
   Other Information
 fields:
+  - Date of birth: x.birthdate
   - Place of Birth: x.place_of_birth
   - Alias/maiden name/previous name: x.alias
     required: False
