@@ -3,14 +3,6 @@ comment: |
   to avoid answering extra questions. Also, to avoid some
   personal questions being stored with the rest of the data.
 ---
-comment: |
-  - Q: Is this relevant to juvenile records?
-    A: Yes. Some people can see you have sealed juvi records.
-  - Q: Are 'dockets' the same thing as your criminal record?
-  - A: No
-  - Q: What do sealed records look like to different kinds of
-  employers?
----
 metadata:
   title: |
     Juvenile Sealing
@@ -22,6 +14,10 @@ metadata:
     - name: Team
       organization: Citizens for Juvenile Justice and Code for Boston
 ---
+features:
+#  question back button: True # weird looking with the styles...
+  css: gbls-1.css
+---
 mandatory: True
 code: |
   sealing_url = 'https://interviews-dev.gbls.org/interview?dockets=notneeded&i=docassemble.playground42%3Ajuvenile-sealing-4.yml'
@@ -29,7 +25,7 @@ code: |
 
   intro
 
-  if (not have_docket_copies_already):
+  if (not have_docket_copies_already is True):
     if (immigration_disclaimer):
       do_not_seal
     elif (wants_fed_job is True or wants_fed_job is None):
@@ -51,7 +47,7 @@ question: Can You Seal Your Juvenile Record?
 subquestion: |
   To find out, this is what we need to do: 
 
-  1. Make sure it's ok to seal your records.
+  1. _Make sure it's ok to seal your records._
   1. Ask questions about your old and open cases.
   1. Tell you if you might be eligible for sealing.
   1. Ask for personal details like your social security number.
@@ -59,11 +55,11 @@ subquestion: |
   After that we can give you a form (petition) to download,
   print, and sign. We'll tell you where to mail it.
 
-  
   #### More about this form
   
   The questions can take up to
-  20 minutes (check this!) to get through.
+  20 minutes <span style="background: aqua">(TODO: check this!)</span>
+  to get through.
   They will be easier to
   answer right if you have your CORI with you. Click
   [here](https://icori.chs.state.ma.us/icori/ext/global/landing.action?page=1&bod=1566991096995&m=presentLanding)
@@ -80,7 +76,8 @@ subquestion: |
   possessions (like Guam).
 under: |
   To read about what sealing is, go to this website:
-  <span style="background: yellow">**(Need link to simplified page of important facts only
+  <span style="background: aqua">**(TODO: Need link
+  to simplified page of important facts only
   about sealing.)**</span>
 ---
 id: have_already
@@ -101,24 +98,24 @@ subquestion: |
   criminal record report called a CORI. Docket sheets are
   papers in your court case at the courthouse that say
   what happened in your case.
-yesno: have_docket_copies_already
+yesnomaybe: have_docket_copies_already
 under: |
   Go to this website to find out about certified
-  docket sheets. <span style="background: yellow">**(Need website)**</span>
+  docket sheets. <span style="background: aqua">**(TODO: Need website)**</span>
 ---
 id: immigration_disclaimer
 question: Are you an immigrant?
 yesno: immigration_disclaimer
 ---
 id: wants_fed_job
-question: Will you ever want to do any of these things?
+question: Will you ever want to do any of these?
 subquestion: |
   * Work with children under 18
   * Work for a bank
   * Work for the military
   * Work for an employer who participates in the Work
      Opportunity Tax Credit (WOTC) program
-  * Work with an employer that has federal funding
+  * Work for an employer that has federal funding
   * Work for a political office
   * Run for political office
   * Work for any other job that needs a federal background
@@ -143,9 +140,10 @@ subquestion: |
   **Please get a certified copy of
   the docket sheets for
   all of your cases before trying
-  to seal your records**. Click
+  to seal your records**. It may take some
+  time, but it's more safe. Click
   here to go to a different
-  website **(Need name of website)**
+  website **(TODO: Need name of website)**
   with instructions:
 buttons:
   - "Getting your certified docket sheets (TODO)": leave
@@ -153,7 +151,7 @@ buttons:
 ---
 id: fed_job_disclaimer
 field: wants_docket_sheets
-question: You may need your docket sheets to get a job
+question: You may need your docket sheets to get some jobs
 subquestion: |
   Only some crimes will stop you from getting those jobs.
   **If you have a certified copy of the docket sheets for
@@ -165,7 +163,8 @@ subquestion: |
   **It can take a while, but we recommend you get
   a certified copy of your docket sheets
   before trying to seal your records**. We can link you to a
-  different website **(Need name of website)** with instructions.
+  different website
+  **(TODO: Need name of website)** with instructions.
 buttons:
   - "Get docket sheets first (TODO)": True
   - Try sealing: False

@@ -57,13 +57,15 @@ fields:
   - Mother's maiden name (last name before she was married): x.mothers_maiden_name
   - Father's full name (before he was married?): x.fathers_maiden_name
   - "Husband/Wife's name": x.spouses_name
+    required: False
+  
 ---
 generic object: Individual
 question: |
   Other Information
 fields:
-  - Where you were born: x.place_of_birth
-  - Your alias, maiden name, or previous name or names: x.alias
+  - Place of Birth: x.place_of_birth
+  - Alias/maiden name/previous name: x.alias
     required: False
   - Occupation: x.occupation
   - Social Security Number (SSN): x.ssn
