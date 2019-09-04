@@ -20,7 +20,7 @@ metadata:
 ---
 features:
   question back button: True
-  css: gbls-1.css
+#  css: gbls-1.css
 ---
 comment: |
   Do objects always need to be in their own file?
