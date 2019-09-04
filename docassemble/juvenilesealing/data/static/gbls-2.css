@@ -1,7 +1,13 @@
-/* Notes about site styles:
+/* Notes about actual gbls site styles:
 * - Buttons and links don't do a good job showing
 * that a user is interacting with them
 * - Visited links blend into the rest of the text
+*/
+/*
+* TODO: .show > .n.dropdown-toggle states may become
+* problematic
+* TODO: Non-radio and text inputs are not taken care of
+* or tested. (09/04/19)
 */
 
 span, div, p {
@@ -40,239 +46,140 @@ a:hover, .dabackicon:hover, button.daquestionbackbutton.btn-link:hover {
 
 
 /* ======== START BUTTONS ======== */
+/*
+  dark gray: rgba(64, 64, 64, 1);
+  medium gray: rgba( 99, 99, 99, 1 );
+  light gray: rgba( 220, 220, 220, 1 );
+  yellow (warning): rgba(236, 163, 0, 1);
+  red (danger): rgba( 190, 64, 77, 1 );
+*/
 
 
-/* All buttons, all states */
-/* button.btn,     button.btn:hover,     button.btn:active,     button.btn:focus,
-.btn-primary,   .btn-primary:hover,   .btn-primary:active,   .btn-primary:focus,
-.btn-secondary, .btn-secondary:hover, .btn-secondary:active, .btn-secondary:focus,
-.btn-warning,   .btn-warning:hover,   .btn-warning:active,   .btn-warning:focus,
-.btn-danger,    .btn-danger:hover,    .btn-danger:active,    .btn-danger:focus,
-.btn-light,     .btn-light:hover,     .btn-light:active,     .btn-light:focus,
-label.btn-primary, label.btn-primary:hover, label.btn-primary:active, label.btn-primary:focus,
-.show > .btn-light.dropdown-toggle, .show > .btn-primary.dropdown-toggle {
+/* Every button/input-looking thing. All states. Not links. */
+.btn,
+.btn:hover,
+.btn:active,
+.btn:focus,
+.da-field-radio label,
+.da-field-radio label:hover,
+.da-field-radio label:active,
+.da-field-radio label:focus {
   border-radius: 4px;
   border-width: 2px;
   border-style: solid;
-}*/
+}
 
-/* button.btn span,     button.btn:hover span,     button.btn:active span,     button.btn:focus span,
-.btn-primary span,   .btn-primary:hover span,   .btn-primary:active span,   .btn-primary:focus span,
-.btn-secondary span, .btn-secondary:hover span, .btn-secondary:active span, .btn-secondary:focus span,
-.btn-warning span,   .btn-warning:hover span,   .btn-warning:active span,   .btn-warning:focus span,
-.btn-danger span,    .btn-danger:hover span,    .btn-danger:active span,    .btn-danger:focus span,
-.btn-light span,     .btn-light:hover span,     .btn-light:active span,     .btn-light:focus span,
-label.btn-primary span, label.btn-primary:hover span, label.btn-primary:active span, label.btn-primary:focus span,
-.show > .btn-light.dropdown-toggle span, .show > .btn-primary.dropdown-toggle span {
-  font-weight: bold;
-}*/
-
-/* Main buttons at bottom of screen and... regular buttons? All states */
-/* button.btn,     button.btn:hover,     button.btn:active,     button.btn:focus,
-.btn-primary,   .btn-primary:hover,   .btn-primary:active,   .btn-primary:focus {
-  border-color: rgba( 64, 64, 64, 1 );
-  background-color: white;
+/* Button individual styles. All states. */
+.btn {
   padding: 1em;
 }
+.btn span {
+  font-weight: bold;
+  color: rgba(64, 64, 64, 1);
+}
 
- button.btn span,     button.btn:hover span,     button.btn:active span,     button.btn:focus span,
-.btn-primary span,   .btn-primary:hover span,   .btn-primary:active span,   .btn-primary:focus span {
-  color: rgba( 64, 64, 64, 1 );
-}*/
-
-/* All labels, all states (may have to adjust toggles. Not sure.) */
-/* label.btn-primary, label.btn-primary:hover, label.btn-primary:active, label.btn-primary:focus,
-.btn-light,        .btn-light:hover,        .btn-light:active,        .btn-light:focus,
-.show > .btn-light.dropdown-toggle,
-.show > .btn-primary.dropdown-toggle {
-  padding: 10px;
-}*/
-
-/* All inputs, active state */
-/*.btn-light:active,
-.btn-light:not(:disabled):not(.disabled).active,
-.btn-light:not(:disabled):not(.disabled):active,
-.show > .btn-light.dropdown-toggle:active,
-label.btn-primary:active,
-label.btn-primary:not(:disabled):not(.disabled):active,
-label.btn-primary:not(:disabled):not(.disabled).active,
-.show > .btn-primary.dropdown-toggle:active {
-  background-color: rgba( 64, 64, 64, 1 );
-  border-color: rgba( 64, 64, 64, 1 );
-}*/
-
-/*.btn-light:active span, .btn-light:active svg,
-.btn-light:not(:disabled):not(.disabled).active span, .btn-light:not(:disabled):not(.disabled).active svg,
-.btn-light:not(:disabled):not(.disabled):active span, .btn-light:not(:disabled):not(.disabled):active svg,
-.show > .btn-light.dropdown-toggle: active span, .show > .btn-light.dropdown-toggle: active svg,
-label.btn-primary:active span, label.btn-primary:active svg,
-label.btn-primary:not(:disabled):not(.disabled):active span, label.btn-primary:not(:disabled):not(.disabled):active svg,
-label.btn-primary:not(:disabled):not(.disabled).active span, label.btn-primary:not(:disabled):not(.disabled).active svg,
-.show > .btn-primary.dropdown-toggle:active span, .show > .btn-primary.dropdown-toggle:active svg {
-  color: white;
-}*/
-
-/* Unselected inputs, rest, focus, and hover state */
-/*.btn-light, .btn-light:hover, .btn-light:focus,
-.show > .btn-light.dropdown-toggle,
-.show > .btn-light.dropdown-toggle:hover,
-.show > .btn-light.dropdown-toggle:focus {
-  border-color: rgba( 99, 99, 99, 1 );
-}*/
-
-/*.btn-light span, .btn-light:hover span, .btn-light:focus span,
-.btn-light svg, .btn-light:hover svg, .btn-light:focus svg,
-.show > .btn-light.dropdown-toggle span,
-.show > .btn-light.dropdown-toggle svg,
-.show > .btn-light.dropdown-toggle:hover span,
-.show > .btn-light.dropdown-toggle:hover svg,
-.show > .btn-light.dropdown-toggle:focus span,
-.show > .btn-light.dropdown-toggle:focus svg {
-  color: rgba( 99, 99, 99, 1 );
-}*/
-
-/* Unselected inputs, rest and focus state */
-/*.btn-light, .btn-light:focus,
-.show > .btn-light.dropdown-toggle {
+.btn-primary,
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:not(:disabled):not(.disabled).active,
+.btn-primary:not(:disabled):not(.disabled):active,
+.show>.btn-primary.dropdown-toggle {
+  border-color: rgba(64, 64, 64, 1);
   background-color: white;
-}*/
-
-/* Unselected inputs, hover state */
-/*.btn-light:hover,
-.show > .btn-light.dropdown-toggle:hover {
-  background-color: rgba( 220, 220, 220, 1 );
-}*/
-
-/* Unselected inputs, active state */
-/*.btn-light:active,
-.show > .btn-light.dropdown-toggle {
-  background-color: rgba( 64, 64, 64, 1 );
-  border-color: rgba( 64, 64, 64, 1 );
-}*/
-
-/* Selected inputs, normal state */
-/*label.btn-primary,
-.show > .btn-primary.dropdown-toggle {
-  background-color: rgba( 99, 99, 99, 1 );
 }
 
-label.btn-primary span, label.btn-primary svg {
-  color: white;
+/* A black button is kind of alarming... */
+button.btn-secondary,
+button.btn-secondary:hover,
+button.btn-secondary:focus,
+.btn-secondary:not(:disabled):not(.disabled).active,
+.btn-secondary:not(:disabled):not(.disabled):active,
+.show>.btn-secondary.dropdown-toggle {
+  /*background: rgba( 99, 99, 99, 1 );
+  border-color: rgba( 99, 99, 99, 1 );*/
+  border-color: rgba(64, 64, 64, 1);
+  background-color: white;
 }
-
-label.btn-primary span, label.btn-primary svg {
-  color: white;
-}*/
-
-/* Selected inputs, hover/active */
-/*label.btn-primary {
-  background-color: rgba( 99, 99, 99, 1 );
-}
-
-label.btn-primary span, label.btn-primary svg {
-  color: white;
-}*/
-
-/* Active unselected inputs */
-/*
-.btn-light:hover,
-.show > .btn-light.dropdown-toggle {
-  background-color: rgba( 99, 99, 99, 1 );
-}
-
-.btn-light:hover span, .btn-light:hover svg,
-.show > .btn-light.dropdown-toggle span, .show > .btn-light.dropdown-toggle svg {
-  color: white;
-}*/
-/*
-label.btn-primary:hover, label.btn-primary:active,
-label.btn-primary:not(:disabled):not(.disabled):active,
-label.btn-primary:not(:disabled):not(.disabled).active,
-.btn-light:not(:disabled):not(.disabled).active,
-.btn-light:not(:disabled):not(.disabled):active,
-.show>.btn-light.dropdown-toggle:active,
-.show > .btn-primary.dropdown-toggle:active {
-  background-color: rgba( 64, 64, 64, 1 );
-  border-color: rgba( 64, 64, 64, 1 );
-}
-
-
-button.btn, button.btn:hover, button.btn:active, button.btn:focus {
-  background: white;
-}
-
-.btn-primary, .btn-primary:hover, .btn-primary:focus {
-}
-
-.dabackicon span, button.daquestionbackbutton.btn-link span {
-  font-style: italic;
-}
-
-.dabackicon:hover span, button.daquestionbackbutton.btn-link:hover span {
-  color: rgba( 99, 99, 99, 1 ) !important;
-}
-
-.btn-light {
-  background-color: rgb(255, 255, 255);
-  border-color: rgba( 99, 99, 99, 1 )!important;
-  border-width: 2px;
-  border-style: solid;
-}
-
-.btn-light:hover {
-  background-color: rgba( 220, 220, 220, 1 );
-}
-
-.btn-link, .btn-link:hover, .btn-link:active, .btn-link:focus {
-  text-decoration: none;
-}
-
-button.btn-secondary {
-  background: rgba( 99, 99, 99, 1 );
-  border-color: rgba( 99, 99, 99, 1 );
-}
-
 button.btn-secondary span {
-  color: white;
+  /* color: white; */
 }
 
-button.btn-warning,
-button.btn-warning:hover,
-button.btn-warning:not(:disabled):not(.disabled):active{
+.btn-warning,
+.btn-warning:hover,
+.btn-warning:focus,
+.btn-warning:not(:disabled):not(.disabled).active,
+.btn-warning:not(:disabled):not(.disabled):active,
+.show>.btn-warning.dropdown-toggle,
+/* Buttons to other sites that can't be labeled that way...? */
+.question-fed-job-disclaimer button,
+.question-fed-job-disclaimer button:hover,
+.question-fed-job-disclaimer button:focus,
+.question-fed-job-disclaimer button:not(:disabled):not(.disabled).active,
+.question-fed-job-disclaimer button:not(:disabled):not(.disabled):active {
   border-color: rgba(236, 163, 0, 1);
   background-color: white;
 }
-*/
 
-/* link to docket sheets */
-/*
-.question-fed-job-disclaimer button:first-child {
-  border-color: rgba(236, 163, 0, 1);
-}
-
-button.btn-danger,
-button.btn-danger:hover,
-button.btn-danger:not(:disabled):not(.disabled):active {
+.btn-danger,
+.btn-danger:hover,
+.btn-danger:focus,
+.btn-danger:not(:disabled):not(.disabled).active,
+.btn-danger:not(:disabled):not(.disabled):active,
+.show>.btn-danger.dropdown-toggle {
   border-color: rgba( 190, 64, 77, 1 );
   background-color: white;
 }
-*/
-/*
-button.btn span, button.btn:hover span, button.btn:active span, button.btn:focus span,
-.btn-secondary span, .btn-secondary:hover span, .btn-secondary:active span, .btn-secondary:focus span,
-{
+
+/* Unselected inputs. Resting state. */
+.btn-light {
+  border-color: rgba( 99, 99, 99, 1 );
+  background-color: white;
+}
+.btn-light svg
+.btn-light span {
   color: rgba( 99, 99, 99, 1 );
 }
- button.btn span,     button.btn:hover span,     button.btn:active span,     button.btn:focus span,
-.btn-primary span,   .btn-primary:hover span,   .btn-primary:active span,   .btn-primary:focus span, {
-  color: rgba( 64, 64, 64, 1 );
+
+/* Unselected inputs. Other states. */
+.btn-light:hover {
+  border-color: rgba( 99, 99, 99, 1 );
+  background-color: rgba( 220, 220, 220, 1 );
 }
-.btn-secondary span,    .btn-secondary:hover span,    .btn-secondary:active span,    .btn-secondary:focus span,
-label.btn-primary span, label.btn-primary:hover span, label.btn-primary:active span, label.btn-primary:focus span,
-label.btn-primary svg,  label.btn-primary span {
+
+/* svgs inherit `color` */
+.btn-light:not(:disabled):not(.disabled).active,
+.btn-light:not(:disabled):not(.disabled):active,
+.show>.btn-light.dropdown-toggle {
+  border-color: rgba(64, 64, 64, 1);
+  background-color: rgba(64, 64, 64, 1);
   color: white;
 }
-*/
+.btn-light:not(:disabled):not(.disabled).active span,
+.btn-light:not(:disabled):not(.disabled):active span,
+.show>.btn-light.dropdown-toggle span {
+  color: white !important;
+}
+
+/* Selcted inputs. Resting, hover, and focus state. */
+label[aria-checked="true"],
+label[aria-checked="true"]:hover,
+label[aria-checked="true"]:focus {
+  border-color: rgba( 99, 99, 99, 1 );
+  background-color: rgba( 99, 99, 99, 1 );
+  color: white !important;
+}
+label[aria-checked="true"] span {
+  color: inherit;
+}
+
+/* Selcted inputs. Other states. */
+.btn-primary:focus, .btn-primary:not(:disabled):not(.disabled).active,
+.btn-primary:not(:disabled):not(.disabled):active,
+.show > .btn-primary.dropdown-toggle {
+  border-color: rgba(64, 64, 64, 1);
+  background-color: rgba(64, 64, 64, 1);
+}
+
 
 /* ======== END BUTTONS ======== */
 
@@ -338,7 +245,7 @@ h4:before {
 }
 
 ol, ul {
-  padding-inline-start: 40px;
+  padding-left: 40px;
 }
 
 strong {

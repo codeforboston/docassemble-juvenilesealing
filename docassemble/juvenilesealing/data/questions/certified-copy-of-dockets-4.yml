@@ -14,9 +14,9 @@ metadata:
     - name: Team
       organization: Citizens for Juvenile Justice and Code for Boston
 ---
-features:
+#features:
 #  question back button: True # weird looking with the styles...
-  css: gbls-1.css
+#  css: gbls-1.css
 ---
 mandatory: True
 code: |
