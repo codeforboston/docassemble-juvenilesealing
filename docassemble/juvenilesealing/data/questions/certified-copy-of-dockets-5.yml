@@ -20,7 +20,8 @@ features:
 ---
 mandatory: True
 code: |
-  sealing_url = 'https://interviews-dev.gbls.org/interview?dockets=notneeded&i=docassemble.playground42%3Ajuvenile-sealing-4.yml'
+  sealing_url = 'https://interviews-dev.gbls.org/interview?dockets=notneeded&i=docassemble.playground42%3Ajuvenile-sealing-5.yml'
+  needs_dockets_url = 'https://interviews-dev.gbls.org/interview?dockets=needed&i=docassemble.playground42%3Ajuvenile-sealing-5.yml'
   get_docket_url = 'https://duckduckgo.com'
 
   intro
@@ -29,7 +30,7 @@ code: |
     if (immigration_disclaimer):
       do_not_seal
     elif (wants_fed_job is True or wants_fed_job is None):
-      sealing_url = 'https://interviews-dev.gbls.org/interview?dockets=needed&i=docassemble.playground42%3Ajuvenile-sealing-4.yml'
+      sealing_url = needs_dockets_url
       if (wants_docket_sheets):
         command('leave', url=get_docket_url)
       else:
