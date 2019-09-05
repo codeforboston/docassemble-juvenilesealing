@@ -13,14 +13,18 @@ metadata:
   short title: |
     Juvenile Sealing
   subtitle: |
-    Version 4
+    Version 5
   authors:
     - name: Team
       organization: Citizens for Juvenile Justice and Code for Boston
 ---
 features:
   question back button: True
-#  css: gbls-1.css
+  css: gbls-2.css
+---
+default screen parts:
+  right: |
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 ---
 comment: |
   Do objects always need to be in their own file?
@@ -62,7 +66,6 @@ code: |
   needs_dockets = False
   if ('dockets' in url_args):
     should_show_extra_info = True
-    log(url_args['dockets'], 'console')
     if (url_args['dockets'] == 'needed'):
       needs_dockets = True
 
