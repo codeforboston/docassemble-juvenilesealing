@@ -14,7 +14,7 @@ span, div, p {
   color: rgba( 99, 99, 99, 1 );
   font-family: "Roboto",sans-serif;
   font-size: 16px;
-  line-height: 1.2em;
+  line-height: 1em;
 }
 
 div.container {
@@ -32,6 +32,10 @@ div.row.tab-content > section {
   margin: 0 auto;
   padding: 0;
   max-width: 675px;
+}
+
+button {
+  margin-top: 1em;
 }
 
 a, .dabackicon span, button.daquestionbackbutton.btn-link span {
@@ -173,8 +177,9 @@ label[aria-checked="true"] span {
 }
 
 /* Selcted inputs. Other states. */
-.btn-primary:focus, .btn-primary:not(:disabled):not(.disabled).active,
-.btn-primary:not(:disabled):not(.disabled):active,
+label.btn-primary:focus,
+label.btn-primary:not(:disabled):not(.disabled).active,
+label.btn-primary:not(:disabled):not(.disabled):active,
 .show > .btn-primary.dropdown-toggle {
   border-color: rgba(64, 64, 64, 1);
   background-color: rgba(64, 64, 64, 1);
@@ -230,11 +235,11 @@ h4:before {
   content: "_________________________________________________________________\A\A";
 }
 
-.daundertext:before {
+/*.daundertext:before {
   font-size: 16px;
   white-space: pre;
   content: "_________________________________________________________________\A";
-}
+}*/
 
 .daundertext > p:first-child {
   margin-top: 1em;
@@ -249,7 +254,8 @@ ol, ul {
 }
 
 strong {
-  font-weight: 700;
+  font-weight: 900;
+  color: black;
 }
 
 

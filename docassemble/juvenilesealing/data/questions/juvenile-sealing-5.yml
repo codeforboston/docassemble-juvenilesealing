@@ -22,6 +22,10 @@ features:
   question back button: True
   css: gbls-2.css
 ---
+default screen parts:
+  right: |
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+---
 comment: |
   Do objects always need to be in their own file?
   If I do `objects from file`, will that also pull
