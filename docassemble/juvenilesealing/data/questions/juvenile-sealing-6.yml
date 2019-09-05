@@ -1,0 +1,391 @@
+---
+comment: |
+  TODO: Ask further questions
+---
+comment: |
+  - Immigration asked in previous separate form.
+  - Don't ask personal info until we know they want to print the form.
+  - Personal info code can look like https://github.com/GBLS/docassemble-gbls/blob/master/docassemble/gbls/data/questions/basic-questions-gbls.yml
+---
+metadata:
+  title: |
+    Juvenile Sealing
+  short title: |
+    Juvenile Sealing
+  subtitle: |
+    Version 6
+  authors:
+    - name: Team
+      organization: Citizens for Juvenile Justice and Code for Boston
+---
+features:
+  question back button: True
+  css: gbls-6.css
+---
+default screen parts:
+  right: |
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+---
+comment: |
+  Do objects always need to be in their own file?
+  If I do `objects from file`, will that also pull
+  in the logic below or do I have to import that separately?
+comment: |
+  Should `applicant` be `user` instead, even though the
+  questions are about the applicant?
+objects:
+  - applicant: Individual
+  - ineligibility_reasons: DAObject
+---
+code: |
+  # ### Creating reasons ####
+  start = "Sorry, but because you "
+  years = " in the past three years**"
+  end = " you're not eligible to get your juvenile record sealed."
+
+  ineligibility_reasons.wants_to_continue = ""
+  ineligibility_reasons.open_case = start + "**have an open case**" + end
+  ineligibility_reasons.probation = start + "**are on probation**" + end
+  ineligibility_reasons.juvenile_case_ma = start + "**had a juvenile case in Massachusetts" + years + end
+  ineligibility_reasons.juvenile_custody_usa = start + "**have been in juvenile custody in Massachusetts" + years + end
+  ineligibility_reasons.juvenile_other_state = start + "**found to be delinquent in another state" + years + end
+  ineligibility_reasons.convicted_states = start + "**were convicted" + years + end
+  ineligibility_reasons.convicted_federal = start + "**were convicted" + years + end
+  ineligibility_reasons.incarcerated = start + "**were incarcerated" + years + end
+
+---
+mandatory: True
+id: flow
+code: |
+
+  reason = ''
+  dockets_link = 'TODO'
+
+  # How to make sure a pro se user sees the warnings?
+  should_show_extra_info = False
+  needs_dockets = False
+  if ('dockets' in url_args):
+    should_show_extra_info = True
+    if (url_args['dockets'] == 'needed'):
+      needs_dockets = True
+
+  reason = ineligibility_reasons.open_case
+  if (has_NON_probation_open_cases == 'True'): sorry
+  elif (has_NON_probation_open_cases == 'unsure'): get_records
+
+  reason = ineligibility_reasons.probation
+  if (is_on_probation == 'True'): sorry
+  elif (is_on_probation == 'unsure'): get_records
+
+  reason = ineligibility_reasons.juvenile_case_ma
+  if (juvenile_cases_in_past_3_years_ma == 'True'): sorry
+  elif (juvenile_cases_in_past_3_years_ma == 'unsure'): get_records
+  
+  reason = ineligibility_reasons.juvenile_custody_usa
+  if (juvenile_custody_in_past_3_years_usa == 'True'): sorry
+  elif (juvenile_custody_in_past_3_years_usa == 'unsure'): get_records
+
+  reason = ineligibility_reasons.juvenile_other_state
+  if (juvenile_cases_in_past_3_years_other_state == 'True'):
+    if (juvenile_delinquency_in_other_state_in_past_3_years == 'True'): sorry
+    elif (juvenile_delinquency_in_other_state_in_past_3_years == 'unsure'): get_records
+
+  reason = ineligibility_reasons.convicted_states
+  if (convicted_in_past_3_years_states == 'True'): sorry
+  elif (convicted_in_past_3_years_states == 'unsure'): get_records
+
+  reason = ineligibility_reasons.convicted_federal
+  if (convicted_in_past_3_years_federal == 'True'): sorry
+  elif (convicted_in_past_3_years_federal == 'unsure'): get_records
+
+  reason = ineligibility_reasons.incarcerated
+  if (incarcerated_in_past_3_years == 'True'): sorry
+  elif (incarcerated_in_past_3_years == 'unsure'): get_records
+
+  # Otherwise they're eligible!
+  
+  # Make sure they get a chance to order their docket sheets.
+  if (should_show_extra_info):
+    if (will_write_personal_info):
+      # TODO: Link to docket sheets instead
+      partial_petition
+
+  # Get their personal details
+  first_name = applicant.name.first
+  #last_name = applicant.name.last
+  #filename = first_name + '-' + last_name + '-juvenile-sealing-petition'
+  applicant.mothers_maiden_name
+  applicant.ssn
+
+  full_petition
+  
+  placeholder_end
+---
+#include:
+#  - certified-copy-of-dockets.yml
+---
+id: open_cases
+question: |
+  Open Cases
+fields: 
+  - note: Do you have any open criminal or juvenile cases right now anywhere in the USA?
+  - no label: has_NON_probation_open_cases
+    input type: radio
+    choices:
+      - Yes: True
+      - No: False
+      - I don't know: 'unsure'
+  - note: "Are you now on probation for any criminal or juvenile case in the USA, including any federal court case?"
+  - no label: is_on_probation
+    input type: radio
+    choices:
+      - Yes: True
+      - No: False
+      - I don't know: 'unsure'
+---
+id: juvenile_cases
+question: Juvenile Cases
+subquestion: |
+  **Note: For all questions, motor vehicle offenses where the fine was not over $50 don't count.**
+fields: 
+  - note: Have you had any juvenile cases in Massachusetts on or after ${ today().minus(years=3) }?
+  - no label: juvenile_cases_in_past_3_years_ma
+    input type: radio
+    choices:
+      - Yes: True
+      - No: False
+      - I don't know: 'unsure'
+  - note: Have you had any juvenile cases in another state on or after ${ today().minus(years=3) }?
+  - no label: juvenile_cases_in_past_3_years_other_state
+    input type: radio
+    choices:
+      - Yes: True
+      - No: False
+      - I don't know: 'unsure'
+  - note: Were you found to be delinquent or were you committed as a delinquent?
+    show if:
+      variable: juvenile_cases_in_past_3_years_other_state 
+      is: 'True'
+  - no label: juvenile_delinquency_in_other_state_in_past_3_years
+    show if:
+      variable: juvenile_cases_in_past_3_years_other_state 
+      is: 'True'
+    input type: radio
+    choices:
+      - Yes: True
+      - No: False
+      - I don't know: 'unsure'
+  - note: Were you found to be delinquent or were you committed as a delinquent?
+    show if:
+      variable: juvenile_cases_in_past_3_years_other_state 
+      is: 'unsure'
+  - no label: juvenile_delinquency_in_other_state_in_past_3_years
+    show if:
+      variable: juvenile_cases_in_past_3_years_other_state 
+      is: 'unsure'
+    input type: radio
+    choices:
+      - Yes: True
+      - No: False
+      - I don't know: 'unsure'
+  - note: Have you been in juvenile custody anywhere in the USA on or after ${ today().minus(years=3) }?
+  - no label: juvenile_custody_in_past_3_years_usa
+    input type: radio
+    choices:
+      - Yes: True
+      - No: False
+      - I don't know: 'unsure'
+---
+id: adult_cases
+question: Adult Cases
+subquestion: |
+  **Note: For all questions, motor vehicle offenses where the fine was not over $50 don't count.**
+fields:
+  - note: Have you had any convictions on or after ${ today().minus(years=3) } in any adult court in the USA?
+  - no label: convicted_in_past_3_years_states
+    input type: radio
+    choices:
+      - Yes: True
+      - No: False
+      - I don't know: 'unsure'
+  - note: Have you had any convictions on or after ${ today().minus(years=3) } in any federal court?
+  - no label: convicted_in_past_3_years_federal
+    input type: radio
+    choices:
+      - Yes: True
+      - No: False
+      - I don't know: 'unsure'
+  - note: Were you incarcerated in the USA on or after ${ today().minus(years=3) }?
+  - no label: incarcerated_in_past_3_years
+    input type: radio
+    choices:
+      - Yes: True
+      - No: False
+      - I don't know: 'unsure'
+---
+id: eligible
+field: will_write_personal_info
+question: You Might Be Eligible!
+subquestion: |
+  We think you're probably eligible to seal your juvenile records.
+
+  % if (needs_dockets):
+  **You can also still see how to get a certified copy of the
+  docket sheets for all of your cases**.
+  It can take a while, but
+  please get them before finishing your form.
+  Go to this website:
+  
+  <span style="background: aqua">**(Need link for website)**</span>
+  % endif
+  
+  We've created a form that has marks in the
+  right places.
+  Now the form needs some of your
+  personal information. You can do it two ways:
+  
+  1. Print the form and finish filling it out by hand.
+  2. Keep using our online form to answer the
+  questions.
+  
+  If you use our form, your personal information
+  will be stored
+  securely online and only you can ever see it.
+buttons:
+  - Finish by hand: True
+  - Keep using this form: False
+---
+include:
+  - personal-details.yml
+---
+id: placeholder_end
+event: placeholder_end
+question: PDF creation coming soon!
+buttons:
+  - Exit: exit
+  - Restart: restart
+---
+id: partial_petition
+question: Your Petition
+subquestion: Your form needed two checkmarks.
+event: partial_petition
+comment: |
+  Replace file name with customized file name?
+attachment:
+  - name: juvenile-sealing-petition
+    filename: juvenile-sealing-petition
+    pdf template file: juvenile-sealing-petition.pdf
+    fields:
+      - "applicant.no_delinquency": Yes
+      - "applicant.no_misdemeanor": No
+      - "applicant.no_felony": No
+      - "applicant.decriminalized": No
+      - "applicant.name.last": ''
+      - "applicant.name.first": ''
+      - "applicant.name.middle": ''
+      - "applicant.dob": ''
+      - "applicant.alias": ''
+      - "applicant.address": ''
+      - "applicant.city": ''
+      - "applicant.state": ''
+      - "applicant.zip": ''
+      - "applicant.occupation": ''
+      - "applicant.ssn": ''
+      - "applicant.place_of_birth": ''
+      - "applicant.fathers_name": ''
+      - "applicant.mothers_maiden_name": ''
+      - "applicant.spouses_name": ''
+      - "signature_always": ''
+      - "checkboxes.juvenile": Yes
+      - "signature_juvenile": ''
+      - "checkboxes.misdemeanor": No
+      - "checkboxes.felony": No
+---
+id: full_petition
+question: Your Petition
+subquestion: Your form needed two checkmarks.
+event: full_petition
+comment: |
+  Replace file name with customized file name?
+attachment:
+  - name: juvenile-sealing-petition
+    filename: juvenile-sealing-petition
+    pdf template file: juvenile-sealing-petition.pdf
+    fields:
+      - "applicant.no_delinquency": Yes
+      - "applicant.no_misdemeanor": No
+      - "applicant.no_felony": No
+      - "applicant.decriminalized": No
+      - "applicant.name.last": ${applicant.name.last}
+      - "applicant.name.first": ${applicant.name.first}
+      - "applicant.name.middle": ${applicant.name.middle}
+      - "applicant.dob": ${applicant.birthdate}
+      - "applicant.alias": ${applicant.alias}
+      - "applicant.address": ${applicant.address}
+      - "applicant.city": ${applicant.city}
+      - "applicant.state": ${applicant.state}
+      - "applicant.zip": ${applicant.zip}
+      - "applicant.occupation": ${applicant.occupation}
+      - "applicant.ssn": ${applicant.ssn}
+      - "applicant.place_of_birth": ${applicant.place_of_birth}
+      - "applicant.fathers_name": ${applicant.fathers_maiden_name}
+      - "applicant.mothers_maiden_name": ${applicant.mothers_maiden_name}
+      - "applicant.spouses_name": ${applicant.spouses_name}
+      - "signature_always": ''
+      - "checkboxes.juvenile": Yes
+      - "signature_juvenile": ''
+      - "checkboxes.misdemeanor": No
+      - "checkboxes.felony": No
+buttons:
+  - Exit: exit
+  - Restart: restart
+---
+id: need_records
+event: get_records
+question: |
+  Sorry, we can't help until you have more information
+subquestion: |
+  It looks like you don't know enough about your records.
+  Click [here](https://icori.chs.state.ma.us/icori/ext/global/landing.action?page=1&bod=1566991096995&m=presentLanding)
+  to go to the Massachusetts iCORI site
+  and create an account for requesting your CORI.
+  Your CORI will help you answer the questions.
+
+  **Get your CORI and come
+  back soon so we can
+  help seal your records!**
+buttons:
+  - Exit: exit
+  - Restart: restart
+---
+id: thank_you_did_not_finish
+event: thank_you_did_not_finish
+question: Thank you and hope to see you soon!
+comment: |
+  - TODO: Give more resources
+buttons:
+  - Exit: exit
+  - Restart: restart
+---
+id: not_helped
+event: sorry
+question: |
+  Thank you and sorry we couldn't help
+subquestion: |
+  % if (not reason == ""):
+  ${ reason }
+  % endif
+  
+  % if (not reason == ""):
+  Come back when that has changed so we can help seal your records!
+  % endif
+comment: |
+  TODO: Add more resources they can go to.
+buttons:
+  - Exit: exit
+  - Restart: restart
+---
+code: |
+
+  def log_me(message):
+    log(message, 'console')
