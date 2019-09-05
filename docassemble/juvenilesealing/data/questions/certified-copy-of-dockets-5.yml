@@ -2,6 +2,17 @@ comment: |
   Currently, the way for legal professionals/volunteers
   to avoid answering extra questions. Also, to avoid some
   personal questions being stored with the rest of the data.
+  
+  TODO: For example, if you seal the case, you might not be
+  able to get papers you need from the
+  sealed court file in time for an immigration hearing.
+  TODO: Juvenile delinquency is same as conviction? Can just
+  do one question for MA and other states?
+  TODO: Can I take a stab at a simplified version of the
+  sealing info form?
+  TODO: Some work with children is ok?
+  TODO: 'WHO CAN SEE JUVENILE CASES ON A CORI REPORT?' - before
+  or after sealing?
 ---
 metadata:
   title: |
@@ -24,10 +35,6 @@ default screen parts:
 ---
 mandatory: True
 code: |
-  sealing_url = 'https://interviews-dev.gbls.org/interview?dockets=notneeded&i=docassemble.playground42%3Ajuvenile-sealing-5.yml'
-  needs_dockets_url = 'https://interviews-dev.gbls.org/interview?dockets=needed&i=docassemble.playground42%3Ajuvenile-sealing-5.yml'
-  get_docket_url = 'https://duckduckgo.com'
-
   intro
 
   if (not have_docket_copies_already is True):
@@ -41,10 +48,14 @@ code: |
         command('leave', url=sealing_url)
 
   command('leave', url=sealing_url)
-
-comment: |
-  TODO: allow other interviews to use this and then go
-  back to their own content. How?
+---
+code: |
+  # Strings that get reused
+  sealing_url = 'https://interviews-dev.gbls.org/interview?dockets=notneeded&i=docassemble.playground42%3Ajuvenile-sealing-5.yml'
+  needs_dockets_url = 'https://interviews-dev.gbls.org/interview?dockets=needed&i=docassemble.playground42%3Ajuvenile-sealing-5.yml'
+  get_docket_url = 'https://duckduckgo.com'
+  
+  sealing_booklet_text = '<span style="color: green">Go [here](https://www.gbls.org/sites/default/files/2019-08/juvenile_booklet_august_2019F.pdf) to read more about sealing juvenile records.</span>'
 ---
 id: intro
 field: intro
@@ -63,27 +74,27 @@ subquestion: |
   #### More about this form
   
   The questions can take up to
-  20 minutes <span style="background: aqua">(TODO: check this!)</span>
+  20 minutes <span style="color: red">(TODO: check this!)</span>
   to get through.
   They will be easier to
-  answer right if you have your CORI with you. Click
+  answer right if you have your CORI report with you. Click
   [here](https://icori.chs.state.ma.us/icori/ext/global/landing.action?page=1&bod=1566991096995&m=presentLanding)
   to go to the Massachusetts iCORI site
-  and create an account for requesting your CORI.
+  and create an account for requesting your CORI report.
+
   You also might have to
   stop this form and come back later if you need to
   get a certified copy of your docket sheets.
   
   If we need to store any personally
-  identifying information we will ask you first.
+  identifying information, <span style="color: green !important">
+  like your name and social
+  security number</span>, we will ask you first.
 
   **Note:** Whenever we say USA that includes United States
   possessions (like Guam).
 under: |
-  To read about what sealing is, go to this website:
-  <span style="background: aqua">**(TODO: Need link
-  to simplified page of important facts only
-  about sealing.)**</span>
+  ${sealing_booklet_text}
 ---
 id: have_already
 comment: |
@@ -102,11 +113,11 @@ subquestion: |
   Note: A docket sheet is different than a
   criminal record report called a CORI. Docket sheets are
   papers in your court case at the courthouse that say
-  what happened in your case.
+  what happened in <span style="color: green">each of your cases</span>.
 yesnomaybe: have_docket_copies_already
 under: |
   Go to this website to find out about certified
-  docket sheets. <span style="background: aqua">**(TODO: Need website)**</span>
+  docket sheets. <span style="color: red">(TODO: Need website)</span>
 ---
 id: immigration_disclaimer
 question: Are you an immigrant?
@@ -148,11 +159,13 @@ subquestion: |
   to seal your records**. It may take some
   time, but it's more safe. Click
   here to go to a different
-  website **(TODO: Need name of website)**
+  website <span style="color: red">(TODO: Need name of website)</span>
   with instructions:
 buttons:
-  - "Getting your certified docket sheets (TODO)": leave
+  - '<span style="color: red">Getting your certified docket sheets (TODO)</span>': leave
     url: ${ get_docket_url }
+under: |
+  ${sealing_booklet_text}
 ---
 id: fed_job_disclaimer
 field: wants_docket_sheets
