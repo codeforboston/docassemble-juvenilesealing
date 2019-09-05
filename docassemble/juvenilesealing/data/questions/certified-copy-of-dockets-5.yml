@@ -18,6 +18,10 @@ features:
 #  question back button: True # weird looking with the styles...
   css: gbls-2.css
 ---
+default screen parts:
+  right: |
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+---
 mandatory: True
 code: |
   sealing_url = 'https://interviews-dev.gbls.org/interview?dockets=notneeded&i=docassemble.playground42%3Ajuvenile-sealing-5.yml'
@@ -48,7 +52,7 @@ question: Can You Seal Your Juvenile Record?
 subquestion: |
   To find out, this is what we need to do: 
 
-  1. _Make sure it's ok to seal your records._
+  1. Find out if there's a reason you **shouldn't** seal your records.
   1. Ask questions about your old and open cases.
   1. Tell you if you might be eligible for sealing.
   1. Ask for personal details like your social security number.
