@@ -38,7 +38,7 @@ code: |
   intro
 
   if (not have_docket_copies_already is True):
-    if (immigration_disclaimer):
+    if (not read_immigration_disclaimer):
       do_not_seal
     elif (wants_fed_job is True or wants_fed_job is None):
       sealing_url = needs_dockets_url
@@ -119,9 +119,9 @@ under: |
   Go to this website to find out about certified
   docket sheets. <span style="color: red">(TODO: Need website)</span>
 ---
-id: immigration_disclaimer
-question: Are you an immigrant?
-yesno: immigration_disclaimer
+id: read_immigration_disclaimer
+question: Are you a US citizen?
+yesno: read_immigration_disclaimer
 ---
 id: wants_fed_job
 question: Will you ever want to do any of these?
