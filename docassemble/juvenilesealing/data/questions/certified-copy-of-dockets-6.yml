@@ -2,17 +2,13 @@ comment: |
   Currently, the way for legal professionals/volunteers
   to avoid answering extra questions. Also, to avoid some
   personal questions being stored with the rest of the data.
-  
-  TODO: For example, if you seal the case, you might not be
-  able to get papers you need from the
-  sealed court file in time for an immigration hearing.
+
   TODO: Juvenile delinquency is same as conviction? Can just
   do one question for MA and other states?
-  TODO: Can I take a stab at a simplified version of the
-  sealing info form?
   TODO: Some work with children is ok?
   TODO: 'WHO CAN SEE JUVENILE CASES ON A CORI REPORT?' - before
   or after sealing?
+  TODO: What if there is no legal help in their area?
 ---
 metadata:
   title: |
@@ -56,6 +52,35 @@ code: |
   get_docket_url = 'https://duckduckgo.com'
   
   sealing_booklet_text = '<span style="color: green">Go [here](https://www.gbls.org/sites/default/files/2019-08/juvenile_booklet_august_2019F.pdf) to read more about sealing juvenile records.</span>'
+  
+  
+  legal_aid_start = """
+    <p style="color:green">You might need to talk
+    to a lawyer.
+    Not all legal aid groups can help with this,
+    but some can. Go to
+    [Mass Legal Help's webiste](https://www.masslegalservices.org/findlegalaid)
+    to look for legal aid groups near you
+    so you can ask them if they can help.</p>
+  """
+
+  legal_aid_end_immigration = """
+    <p style="color:green">Do this:</p>
+    <ol style="color:green">
+      <li>Answer the first line of questions.</li>
+      <li>Click on "**Immigration**".</li>
+      <li>Click on "**I am having a problem with
+        immigration not listed here.**".</li>
+      <li>Click on "**Search**".</li>
+      <li>If the site finds one or more organizations
+        in your area,
+        call and ask them if they can help you find
+        out <span style="color:red">SOMETHING.</span></li>
+    </ol>
+  """
+  legal_aid_immigration = "{start} {end}".format(start=legal_aid_start, end=legal_aid_end_immigration)
+  
+  # TODO: Something for federal jobs?
 ---
 id: intro
 field: intro
@@ -94,7 +119,7 @@ subquestion: |
   **Note:** Whenever we say USA that includes United States
   possessions (like Guam).
 under: |
-  ${sealing_booklet_text}
+  ${ sealing_booklet_text }
 ---
 id: have_already
 comment: |
@@ -113,7 +138,8 @@ subquestion: |
   Note: A docket sheet is different than a
   criminal record report called a CORI. Docket sheets are
   papers in your court case at the courthouse that say
-  what happened in <span style="color: green">each of your cases</span>.
+  what happened in <span style="color: green">each of
+  your cases</span>.
 yesnomaybe: have_docket_copies_already
 under: |
   Go to this website to find out about certified
@@ -153,19 +179,30 @@ subquestion: |
   for all of your cases you can
   prove what your record really is.**
   
+  ${ legal_aid_immigration }
+  
+  <p  style="color:red">OR</p>
+  
+  <p  style="color:green">Go to any courthouse and say,
+  "I'd like a certified copy of all my docket sheets".
+  It can cost about <span style="color:red">an amount</span>
+  per page. Go **here** to find a courthouse near you.
+  You can also order them by mail from any courthouse.
+  You have to send a check, though, so you have to call
+  first and ask how much it will cost.</p>
+  
   **Please get a certified copy of
   the docket sheets for
   all of your cases before trying
   to seal your records**. It may take some
-  time, but it's more safe. Click
-  here to go to a different
-  website <span style="color: red">(TODO: Need name of website)</span>
-  with instructions:
+  time, but it's more safe.
+  <span style="color:red">SOMEONE can tell you more about
+  that.</span>
 buttons:
   - '<span style="color: red">Getting your certified docket sheets (TODO)</span>': leave
     url: ${ get_docket_url }
 under: |
-  ${sealing_booklet_text}
+  ${ sealing_booklet_text }
 ---
 id: fed_job_disclaimer
 field: wants_docket_sheets
@@ -180,9 +217,9 @@ subquestion: |
   
   **It can take a while, but we recommend you get
   a certified copy of your docket sheets
-  before trying to seal your records**. We can link you to a
-  different website
-  **(TODO: Need name of website)** with instructions.
+  before trying to seal your records**.
+  <span style="color:red">SOMEONE can tell you more about
+  that.</span>
 buttons:
   - "Get docket sheets first (TODO)": True
   - Try sealing: False
