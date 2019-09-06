@@ -1,11 +1,12 @@
 ---
 comment: |
-  TODO: Ask further questions
+  TODO: PQ: Will answers about other states be their CORI?
+  TODO: PQ: Link to info on CORI FAQ - CORI wrong, what it is etc.?
+  TODO: What if there is no legal help in their area?
 ---
 comment: |
   - Immigration asked in previous separate form.
-  - Don't ask personal info until we know they want to print the form.
-  - Personal info code can look like https://github.com/GBLS/docassemble-gbls/blob/master/docassemble/gbls/data/questions/basic-questions-gbls.yml
+  - Personal info code copies style of https://github.com/GBLS/docassemble-gbls/blob/master/docassemble/gbls/data/questions/basic-questions-gbls.yml
 ---
 metadata:
   title: |
@@ -19,6 +20,7 @@ metadata:
       organization: Citizens for Juvenile Justice and Code for Boston
 ---
 features:
+  progress bar: True
   question back button: True
   css: gbls-6.css
 ---
@@ -58,8 +60,17 @@ mandatory: True
 id: flow
 code: |
 
+  # Testing
+
   reason = ''
   dockets_link = 'TODO'
+
+  get_records_other_state_end
+  sorry_end
+  get_records_end
+
+  num_pages, step_value, step_num = get_progress_bar_starting_vals(9, 3, 'applicant.name.first')
+  set_progress(step_value * step_num)
 
   # How to make sure a pro se user sees the warnings?
   should_show_extra_info = False
@@ -70,56 +81,171 @@ code: |
       needs_dockets = True
 
   reason = ineligibility_reasons.open_case
-  if (has_NON_probation_open_cases == 'True'): sorry
-  elif (has_NON_probation_open_cases == 'unsure'): get_records
+  if (has_NON_probation_open_cases is True): sorry_end
+  elif (has_NON_probation_open_cases is None): get_records_end
+
+  step_num += 1
+  set_progress(step_value * step_num)
 
   reason = ineligibility_reasons.probation
-  if (is_on_probation == 'True'): sorry
-  elif (is_on_probation == 'unsure'): get_records
+  if (is_on_probation is True): sorry_end
+  elif (is_on_probation is None): get_records_end
+
+  step_num += 1
+  set_progress(step_value * step_num)
 
   reason = ineligibility_reasons.juvenile_case_ma
-  if (juvenile_cases_in_past_3_years_ma == 'True'): sorry
-  elif (juvenile_cases_in_past_3_years_ma == 'unsure'): get_records
+  if (juvenile_cases_in_past_3_years_ma is True): sorry_end
+  elif (juvenile_cases_in_past_3_years_ma is None): get_records_end
+
+  step_num += 1
+  set_progress(step_value * step_num)
   
   reason = ineligibility_reasons.juvenile_custody_usa
-  if (juvenile_custody_in_past_3_years_usa == 'True'): sorry
-  elif (juvenile_custody_in_past_3_years_usa == 'unsure'): get_records
+  if (juvenile_custody_in_past_3_years_usa is True): sorry_end
+  elif (juvenile_custody_in_past_3_years_usa is None): get_records_end
+
+  step_num += 1
+  set_progress(step_value * step_num)
 
   reason = ineligibility_reasons.juvenile_other_state
-  if (juvenile_cases_in_past_3_years_other_state == 'True'):
-    if (juvenile_delinquency_in_other_state_in_past_3_years == 'True'): sorry
-    elif (juvenile_delinquency_in_other_state_in_past_3_years == 'unsure'): get_records
+  if (juvenile_cases_in_past_3_years_other_state is True):
+    step_num += 1
+    set_progress(step_value * step_num)
+    if (juvenile_delinquency_in_other_state_in_past_3_years is True): sorry_end
+    elif (juvenile_delinquency_in_other_state_in_past_3_years is None): get_records_end
+  elif (juvenile_cases_in_past_3_years_other_state is None): get_records_end
+  else:
+    step_num += 1
+    set_progress(step_value * step_num)
+
+  step_num += 1
+  set_progress(step_value * step_num)
 
   reason = ineligibility_reasons.convicted_states
-  if (convicted_in_past_3_years_states == 'True'): sorry
-  elif (convicted_in_past_3_years_states == 'unsure'): get_records
+  if (convicted_in_past_3_years_states is True): sorry_end
+  elif (convicted_in_past_3_years_states is None): get_records_end
+
+  step_num += 1
+  set_progress(step_value * step_num)
 
   reason = ineligibility_reasons.convicted_federal
-  if (convicted_in_past_3_years_federal == 'True'): sorry
-  elif (convicted_in_past_3_years_federal == 'unsure'): get_records
+  if (convicted_in_past_3_years_federal is True): sorry_end
+  elif (convicted_in_past_3_years_federal is None): get_records_end
+
+  step_num += 1
+  set_progress(step_value * step_num)
 
   reason = ineligibility_reasons.incarcerated
-  if (incarcerated_in_past_3_years == 'True'): sorry
-  elif (incarcerated_in_past_3_years == 'unsure'): get_records
+  if (incarcerated_in_past_3_years is True): sorry_end
+  elif (incarcerated_in_past_3_years is None): get_records_end
+
+  step_num += 1
+  set_progress(step_value * step_num)
 
   # Otherwise they're eligible!
   
-  # Make sure they get a chance to order their docket sheets.
+  # Make sure they get a chance to order their docket sheets
+  # and offer choice about saving personal info.
   if (should_show_extra_info):
     if (will_write_personal_info):
-      # TODO: Link to docket sheets instead
       partial_petition
 
-  # Get their personal details
+  # Get their personal details (3 pages of questions)
   first_name = applicant.name.first
+  step_num += 1
+  set_progress(step_value * step_num)
+
   #last_name = applicant.name.last
   #filename = first_name + '-' + last_name + '-juvenile-sealing-petition'
   applicant.mothers_maiden_name
+  step_num += 1
+  set_progress(step_value * step_num)
+
   applicant.ssn
+  step_num += 1
+  set_progress(step_value * step_num)
 
   full_petition
   
   placeholder_end
+---
+comment: Progress bar shinanigans
+code: |
+
+  def get_progress_bar_starting_vals(num_pages_always_undefined, num_pages_maybe_pre_defined, var_name_to_check_for_defined):
+    num_pages = num_pages_always_undefined
+    if (not defined(var_name_to_check_for_defined)):
+      num_pages += num_pages_maybe_pre_defined
+    num_pages += 1  # for having a progress val for first question
+
+    step_value = 100/num_pages
+
+    step_num = 0
+    if (defined('applicant.name.first')):
+      step_num -= 3
+    step_num += 1
+
+    return [
+      num_pages,
+      step_value,
+      step_num
+    ]
+  # Ends get_progress_bar_starting_vals()
+---
+comment: Strings that are used multiple times or are awkward
+code: |
+  legal_aid_start = """
+    <p style="color:green">You might want to talk
+    to a lawyer.
+    Not all legal aid groups can help with this,
+    but some can. Go to
+    [Mass Legal Help's webiste](https://www.masslegalservices.org/findlegalaid)
+    to look for legal aid near you
+    so you can ask them if they can help.</p>
+
+    <p style="color:green">Do this:</p>
+    <ol style="color:green">
+      <li>Answer the first line of questions.</li>
+  """
+
+  legal_aid_end_CORI = """<li>Click on "**CORI & Criminal Law**".</li>
+    <li>Click on "**I want to request a
+      copy of my own criminal record history**".</li>
+    <li>Click on "**Search**".</li>
+    <li>If the site finds  one or more organizations
+      in your area,
+      call and ask them if they can help you get
+      a copy of your criminal records.</li>
+  </ol>
+  """
+  legal_aid_CORI = legal_aid_start + legal_aid_end_CORI
+
+  legal_aid_end_sealing = """<li>Click on "**CORI & Criminal Law**".</li>
+    <li>Click on "**I need to seal my court records**".</li>
+    <li>Click on "**Search**".</li>
+    <li>If the site finds  one or more organizations
+      in your area,
+      call and ask them if they can help you get
+      a copy of your criminal records.</li>
+  </ol>
+  """
+  legal_aid_sealing = legal_aid_start + legal_aid_end_sealing
+
+  legal_aid_end_other_state = """<li>Click on "**CORI & Criminal Law**".</li>
+    <li>Click on "**I have another CORI related
+      problem not listed here**".</li>
+    <li>Click on "**Search**".</li>
+    <li>If the site finds  one or more organizations
+      in your area,
+      call and ask them if they can help you get
+      a copy of your criminal records.</li>
+  </ol>
+  """
+  legal_aid_other_state = legal_aid_start + legal_aid_end_other_state
+  
+  
+
 ---
 #include:
 #  - certified-copy-of-dockets.yml
@@ -127,101 +253,73 @@ code: |
 id: open_cases
 question: |
   Open Cases
-fields: 
-  - note: Do you have any open criminal or juvenile cases right now anywhere in the USA?
-  - no label: has_NON_probation_open_cases
-    input type: radio
-    choices:
-      - Yes: True
-      - No: False
-      - I don't know: 'unsure'
-  - note: "Are you now on probation for any criminal or juvenile case in the USA, including any federal court case?"
-  - no label: is_on_probation
-    input type: radio
-    choices:
-      - Yes: True
-      - No: False
-      - I don't know: 'unsure'
----
-id: juvenile_cases
-question: Juvenile Cases
 subquestion: |
-  **Note: For all questions, motor vehicle offenses where the fine was not over $50 don't count.**
-fields: 
-  - note: Have you had any juvenile cases in Massachusetts on or after ${ today().minus(years=3) }?
-  - no label: juvenile_cases_in_past_3_years_ma
-    input type: radio
-    choices:
-      - Yes: True
-      - No: False
-      - I don't know: 'unsure'
-  - note: Have you had any juvenile cases in another state on or after ${ today().minus(years=3) }?
-  - no label: juvenile_cases_in_past_3_years_other_state
-    input type: radio
-    choices:
-      - Yes: True
-      - No: False
-      - I don't know: 'unsure'
-  - note: Were you found to be delinquent or were you committed as a delinquent?
-    show if:
-      variable: juvenile_cases_in_past_3_years_other_state 
-      is: 'True'
-  - no label: juvenile_delinquency_in_other_state_in_past_3_years
-    show if:
-      variable: juvenile_cases_in_past_3_years_other_state 
-      is: 'True'
-    input type: radio
-    choices:
-      - Yes: True
-      - No: False
-      - I don't know: 'unsure'
-  - note: Were you found to be delinquent or were you committed as a delinquent?
-    show if:
-      variable: juvenile_cases_in_past_3_years_other_state 
-      is: 'unsure'
-  - no label: juvenile_delinquency_in_other_state_in_past_3_years
-    show if:
-      variable: juvenile_cases_in_past_3_years_other_state 
-      is: 'unsure'
-    input type: radio
-    choices:
-      - Yes: True
-      - No: False
-      - I don't know: 'unsure'
-  - note: Have you been in juvenile custody anywhere in the USA on or after ${ today().minus(years=3) }?
-  - no label: juvenile_custody_in_past_3_years_usa
-    input type: radio
-    choices:
-      - Yes: True
-      - No: False
-      - I don't know: 'unsure'
+  Do you have any open criminal or juvenile cases right
+  now anywhere in the USA?
+yesnomaybe: has_NON_probation_open_cases
 ---
-id: adult_cases
-question: Adult Cases
+id: probation
+question: |
+  Probation
 subquestion: |
-  **Note: For all questions, motor vehicle offenses where the fine was not over $50 don't count.**
-fields:
-  - note: Have you had any convictions on or after ${ today().minus(years=3) } in any adult court in the USA?
-  - no label: convicted_in_past_3_years_states
-    input type: radio
-    choices:
-      - Yes: True
-      - No: False
-      - I don't know: 'unsure'
-  - note: Have you had any convictions on or after ${ today().minus(years=3) } in any federal court?
-  - no label: convicted_in_past_3_years_federal
-    input type: radio
-    choices:
-      - Yes: True
-      - No: False
-      - I don't know: 'unsure'
-  - note: Were you incarcerated in the USA on or after ${ today().minus(years=3) }?
-  - no label: incarcerated_in_past_3_years
-    input type: radio
-    choices:
-      - Yes: True
-      - No: False
-      - I don't know: 'unsure'
+  Are you now on probation for any criminal or juvenile
+  case in the USA, including any federal court case?
+yesnomaybe: is_on_probation
+---
+id: juvenile_cases_ma
+question: Juvenile Cases - MA
+subquestion: |
+  Have you had any juvenile cases in Massachusetts on or after ${ today().minus(years=3) }?
+
+  **Note:** Motor vehicle offenses where the fine was not over $50 don't count.
+yesnomaybe: juvenile_cases_in_past_3_years_ma
+---
+id: juvenile_cases_states
+question: Juvenile Cases - Other States
+subquestion: |
+  Have you had any juvenile cases in another state on or after ${ today().minus(years=3) }?
+
+  **Note:** Motor vehicle offenses where the fine was not over $50 don't count.
+yesnomaybe: juvenile_cases_in_past_3_years_other_state
+---
+id: juvenile_cases_delinquency
+question: Juvenile Cases - Other States
+subquestion: |
+  In that other state or states, were you found to be delinquent or were you committed as a delinquent?
+yesnomaybe: juvenile_delinquency_in_other_state_in_past_3_years
+---
+id: juvenile_cases_custody
+question: Juvenile Cases - Custody
+subquestion: |
+  Have you been in juvenile custody anywhere in the USA on or after ${ today().minus(years=3) }?
+  
+  Juvenile custody is incarceration for people under the age of <span style="color:red">___</span>
+yesnomaybe: juvenile_custody_in_past_3_years_usa
+
+
+---
+id: adult_cases_states
+question: Adult Cases - US State Convictions
+subquestion: |
+  Have you had any convictions on or after ${ today().minus(years=3) } in any adult court in the USA?
+  
+  **Note:** Motor vehicle offenses where the fine was not over $50 don't count.
+yesnomaybe: convicted_in_past_3_years_states
+---
+id: adult_cases_federal
+question: Adult Cases - Federal Convictions
+subquestion: |
+  Have you had any convictions on or after ${ today().minus(years=3) } in any federal court?
+  
+  **Note:** Motor vehicle offenses where the fine was not over $50 don't count.
+yesnomaybe: convicted_in_past_3_years_federal
+---
+id: adult_incarceration
+question: Adult Cases - Incarceration
+subquestion: |
+  Were you incarcerated in the USA on or after ${ today().minus(years=3) }?
+yesnomaybe: incarcerated_in_past_3_years
+
 ---
 id: eligible
 field: will_write_personal_info
@@ -236,7 +334,7 @@ subquestion: |
   please get them before finishing your form.
   Go to this website:
   
-  <span style="background: aqua">**(Need link for website)**</span>
+  <span style="color:green">**(Need link for website)**</span>
   % endif
   
   We've created a form that has marks in the
@@ -266,9 +364,10 @@ buttons:
   - Restart: restart
 ---
 id: partial_petition
+event: partial_petition
+progress: 100
 question: Your Petition
 subquestion: Your form needed two checkmarks.
-event: partial_petition
 comment: |
   Replace file name with customized file name?
 attachment:
@@ -302,9 +401,10 @@ attachment:
       - "checkboxes.felony": No
 ---
 id: full_petition
+event: full_petition
+progress: 100
 question: Your Petition
 subquestion: Your form needed two checkmarks.
-event: full_petition
 comment: |
   Replace file name with customized file name?
 attachment:
@@ -341,18 +441,19 @@ buttons:
   - Restart: restart
 ---
 id: need_records
-event: get_records
+event: get_records_end
+progress: 100
 question: |
   Sorry, we can't help until you have more information
 subquestion: |
-  It looks like you don't know enough about your records.
+  Your CORI records can help you answer the questions.
   Click [here](https://icori.chs.state.ma.us/icori/ext/global/landing.action?page=1&bod=1566991096995&m=presentLanding)
   to go to the Massachusetts iCORI site
-  and create an account for requesting your CORI.
-  Your CORI will help you answer the questions.
+  and create an account for requesting your CORI records.
+  
+  ${legal_aid_CORI}
 
-  **Get your CORI and come
-  back soon so we can
+  **Come back as soon as you're ready so we can
   help seal your records!**
 buttons:
   - Exit: exit
@@ -360,25 +461,60 @@ buttons:
 ---
 id: thank_you_did_not_finish
 event: thank_you_did_not_finish
-question: Thank you and hope to see you soon!
+progress: 100
+question: Thank you for coming and hope to see you soon!
 comment: |
   - TODO: Give more resources
 buttons:
   - Exit: exit
   - Restart: restart
 ---
+id: need_records_other_state
+event: get_records_other_state_end
+progress: 100
+question: |
+  Sorry, we can't help until you have more information
+subquestion: |
+  <p style="color:green">
+  Your criminal records from each state
+  can help
+  you answer the questions. We're sorry
+  that this sealing tool can't help with
+  that. Each state has a
+  different way to order criminal records.
+  If you want to search for those instructions,
+  try putting the name of the state in the search bar along
+  with this text:
+  </p>
+
+  `
+  how do I order my criminal record?
+  `
+
+  ${ legal_aid_other_state }
+
+  <p style="color:green">
+  **Sorry we couldn't help more. Come back as soon
+  as you're ready so we can
+  help seal your records!**
+  </p>
+buttons:
+  - Exit: exit
+  - Restart: restart
+---
 id: not_helped
-event: sorry
+event: sorry_end
+progress: 100
 question: |
   Thank you and sorry we couldn't help
 subquestion: |
   % if (not reason == ""):
   ${ reason }
-  % endif
   
-  % if (not reason == ""):
   Come back when that has changed so we can help seal your records!
   % endif
+
+  ${legal_aid_sealing}
 comment: |
   TODO: Add more resources they can go to.
 buttons:
