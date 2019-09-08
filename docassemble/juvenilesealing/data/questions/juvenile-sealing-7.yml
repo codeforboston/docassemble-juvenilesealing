@@ -372,7 +372,7 @@ buttons:
 ---
 include:
   - personal-details.yml
-  - attachement.yml
+  - attachment.yml
 ---
 id: placeholder_end
 event: placeholder_end
