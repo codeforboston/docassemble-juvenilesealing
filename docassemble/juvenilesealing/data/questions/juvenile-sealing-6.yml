@@ -450,20 +450,30 @@ script: |
       }, function (obj_or_html, result_as_text, response) {
         if (response.status === 200) {
           flash("The email got sent to " + obj_or_html.email_address + "!", "success", true);
+          
         } else {
           flash("Sorry about this, but the email didn't get sent. Try giving it some time and then try again.", "danger", true)
           console.log(response);
+          url_action_call('log_to_docassemble', {
+            message: responseText
+          })
         }
       });  // ends url_action_call and callback
     });
   </script>
 ---
+id: log_to_docassemble
+event: log_to_docassemble
+code: |
+   message = action_argument('message')
+   log(message)
+---
 id: send_pdf_email
 event: send_pdf_email
 code: |
+  #raise Exception("error triggered on purpose")
   address = action_argument('address')
-  was_successful = True
-  #was_successful = send_email(to=address, template=email_text, attachments=partial_petition_pdf)
+  was_successful = send_email(to=address, template=email_text, attachments=partial_petition_pdf)
   json_response(dict(was_successful=was_successful, email_address=address))
 ---
 attachment:
