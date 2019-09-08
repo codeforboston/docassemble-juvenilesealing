@@ -27,11 +27,11 @@ default screen parts:
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 ---
 comment: |
-  Do objects always need to be in their own file?
-  If I do `objects from file`, will that also pull
+  - Do objects always need to be in their own file?
+  - If I do `objects from file`, will that also pull
   in the logic below or do I have to import that separately?
-comment: |
-  Should `applicant` be `user` instead, even though the
+
+  - Should `applicant` be `user` instead, even though the
   questions are about the applicant?
 objects:
   - applicant: Individual
