@@ -1,0 +1,88 @@
+comment: |
+  Alternative formatting for an attachement page.
+  Unfortunately it also turns it into a question, so
+  there's that to deal with.
+  
+  Not sure how to accomodate mutliple attachements.
+  Something to do with `x`?
+  
+  TODO: Add default values
+---
+comment: |
+  Variables needed:
+  - atch_progress
+  - atch_question
+  - atch_subquestion
+  - atch_default_email_address
+
+  - atch_email_contents
+  
+  - atch_name
+  - atch_file_extension
+  - atch_do_new_window_download
+  - atch_download_label
+  - atch_do_new_window_email
+  - atch_link
+---
+id: download_attachement
+question: ${atch_question}
+subquestion: |
+  ${ atch_subquestion }
+fields:
+  - html: |
+      <div class="alert alert-success" role="alert">
+        <strong>${atch_name}.${atch_file_extension}</strong>
+        has been created for you.
+      </div>
+  - E-mail this to: atch_email_address
+    datatype: email
+    required: False
+    default: ${atch_default_email_address}
+  - note: ${ action_button_html("#", id_tag="sendAttachementEmail", classname="atch-button", new_window=atch_do_new_window_email, icon="envelope", label="Send", color="primary", size="md") }
+  - note: ${ action_button_html("#", id_tag="downloadAttachement", classname="atch-button", new_window=atch_do_new_window_download, icon="download", label=atch_download_label, color="primary", size="md") }
+script: |
+  <script>
+
+    $("#downloadAttachement").click(function(){
+      url_action_call('open_atch', '', function(){});
+    });
+
+    $("#sendAttachementEmail").click(function(){
+      url_action_call('send_atch_email', '', function(arg1, arg2){
+        console.log('arg2', arg2)
+      });
+    });
+
+  </script>
+---
+mandatory: True
+id: set_atch_progress
+code: |
+  set_progress(atch_progress)
+
+  log(atch_email_address, 'console')
+  log(atch_email_template, 'console')
+  log(atch_doc, 'console')
+---
+
+template: email_text
+subject: Sealing Petition
+content: |
+  ${atch_email_contents}
+---
+
+id: send_atch_email
+event: send_atch_email
+code: |
+  atch_doc = atch_name + "." + atch_file_extension
+  log(atch_email_address, 'console')
+  log(atch_email_template, 'console')
+  log(atch_doc, 'console')
+  send_email(to=atch_email_address, template=atch_email_template, attachments=atch_doc)
+---
+comment: |
+  id: open_atch
+  event: open_atch
+  code: |
+    command('leave', url=atch_link)
+---

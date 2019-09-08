@@ -153,7 +153,8 @@ code: |
   # and offer choice about saving personal info.
   if (should_show_extra_info):
     if (will_write_personal_info):
-      partial_petition
+      #partial_petition
+      email_address
 
   # Get their personal details (3 pages of questions)
   first_name = applicant.name.first
@@ -438,10 +439,22 @@ fields:
 #  - note: ${partial_petition_pdf}
 script: |
   <script>
-    $("#sendEmail").click(function(){
+    $("#sendEmail").click(function (evnt) {
+
+      let addr = val('email_address');
+      let message = "We will try to send the email to " + addr + ".";
+      flash(message, "secondary");
+
       url_action_call('send_pdf_email', {
         address: val('email_address')
-      }, function(){});
+      }, function (obj_or_html, result_as_text, response) {
+        if (response.status === 200) {
+          flash("The email got sent to " + obj_or_html.email_address + "!", "success", true);
+        } else {
+          flash("Sorry about this, but the email didn't get sent. Try giving it some time and then try again.", "danger", true)
+          console.log(response);
+        }
+      });  // ends url_action_call and callback
     });
   </script>
 ---
@@ -449,7 +462,9 @@ id: send_pdf_email
 event: send_pdf_email
 code: |
   address = action_argument('address')
-  send_email(to=address, template=email_text, attachments=pdf_link)
+  was_successful = True
+  #was_successful = send_email(to=address, template=email_text, attachments=partial_petition_pdf)
+  json_response(dict(was_successful=was_successful, email_address=address))
 ---
 attachment:
   - name: ${pdf_name}
