@@ -48,6 +48,14 @@ a:hover, .dabackicon:hover, button.daquestionbackbutton.btn-link:hover {
   text-decoration: none;
 }
 
+.form-group.darequired .dawidecol:before {
+  position: absolute;
+  content: 'You must answer this question';
+  color: #dc3545;
+  top: -1rem;
+  left: 1rem;
+}
+
 
 /* ======== START BUTTONS ======== */
 /*
@@ -56,6 +64,7 @@ a:hover, .dabackicon:hover, button.daquestionbackbutton.btn-link:hover {
   light gray: rgba( 220, 220, 220, 1 );
   yellow (warning): rgba(236, 163, 0, 1);
   red (danger): rgba( 190, 64, 77, 1 );
+  .text-danger color #dc3545;
 */
 
 
