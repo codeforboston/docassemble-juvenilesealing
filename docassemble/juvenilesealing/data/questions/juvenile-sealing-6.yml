@@ -510,7 +510,7 @@ attachment:
 id: full_petition
 event: full_petition
 progress: 100
-question: Your Petition
+question: Your Petition is Ready!
 subquestion: Your form needed two checkmarks.
 comment: |
   Replace file name with customized file name?
