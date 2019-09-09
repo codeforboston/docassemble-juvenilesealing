@@ -273,9 +273,9 @@ buttons:
   - Restart: restart
 ---
 id: partial_petition
-question: Your Petition
-subquestion: Your form needed two checkmarks.
 event: partial_petition
+question: Your Petition is Ready!
+#subquestion: Your form needed two checkmarks.
 comment: |
   Replace file name with customized file name?
 attachment:
@@ -309,9 +309,9 @@ attachment:
       - "checkboxes.felony": No
 ---
 id: full_petition
-question: Your Petition
-subquestion: Your form needed two checkmarks.
 event: full_petition
+question: Your Petition is Ready!
+#subquestion: Your form needed two checkmarks.
 comment: |
   Replace file name with customized file name?
 attachment:
