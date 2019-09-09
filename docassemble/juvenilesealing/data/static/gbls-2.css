@@ -108,19 +108,26 @@ button.btn-secondary span {
   /* color: white; */
 }
 
+/* UX experts agree - same color for all answer buttons! */
 .btn-warning,
 .btn-warning:hover,
 .btn-warning:focus,
 .btn-warning:not(:disabled):not(.disabled).active,
 .btn-warning:not(:disabled):not(.disabled):active,
-.show>.btn-warning.dropdown-toggle,
-/* Buttons to other sites that can't be labeled that way...? */
+.show>.btn-warning.dropdown-toggle {
+  border-color: rgba(64, 64, 64, 1);
+  background-color: white;
+}
+
+/* Buttons to other sites that can't be labeled that way should still be yellow...? */
+/* UX experts? */
 .question-fed-job-disclaimer button,
 .question-fed-job-disclaimer button:hover,
 .question-fed-job-disclaimer button:focus,
 .question-fed-job-disclaimer button:not(:disabled):not(.disabled).active,
 .question-fed-job-disclaimer button:not(:disabled):not(.disabled):active {
-  border-color: rgba(236, 163, 0, 1);
+  /* border-color: rgba(236, 163, 0, 1); */
+  border-color: rgba(64, 64, 64, 1);
   background-color: white;
 }
 
