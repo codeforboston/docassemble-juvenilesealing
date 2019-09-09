@@ -70,7 +70,7 @@ code: |
   dockets_link = 'TODO'
 
   pdf_link = partial_petition_pdf.pdf.url_for()
-  email_address
+  #email_address
   #partial_petition_old
 
   num_pages, step_value, step_num = get_progress_bar_starting_vals(9, 3, 'applicant.name.first')
