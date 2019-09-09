@@ -16,6 +16,7 @@ comment: |
   - atch_default_email_address
 
   - atch_email_contents
+  - atch_email_subject
   
   - atch_name
   - atch_file_extension
@@ -23,6 +24,18 @@ comment: |
   - atch_download_label
   - atch_do_new_window_email
   - atch_link
+  - atch_itself
+---
+mandatory: True
+id: set_atch_progress
+event: set_atch_progress
+code: |
+  # Why aren't these logging?
+  log(atch_email_address, 'console')
+  log(atch_email_template, 'console')
+  log(atch_doc, 'console')
+
+  set_progress(atch_progress)
 ---
 id: download_attachement
 question: ${atch_question}
@@ -34,12 +47,17 @@ fields:
         <strong>${atch_name}.${atch_file_extension}</strong>
         has been created for you.
       </div>
-  - E-mail this to: atch_email_address
+  - E-mail: atch_email_address
     datatype: email
     required: False
     default: ${atch_default_email_address}
   - note: ${ action_button_html("#", id_tag="sendAttachementEmail", classname="atch-button", new_window=atch_do_new_window_email, icon="envelope", label="Send", color="primary", size="md") }
-  - note: ${ action_button_html("#", id_tag="downloadAttachement", classname="atch-button", new_window=atch_do_new_window_download, icon="download", label=atch_download_label, color="primary", size="md") }
+  - html: |
+      <a id="downloadAttachement" class="download-link atch-button" href=${atch_link}>
+        <i class="fas fa-download"></i> Download PDF for printing
+        <span>(you can open it in your browser)</span>
+      </a>
+#  - note: ${ action_button_html("#", id_tag="downloadAttachement", classname="atch-button", new_window=atch_do_new_window_download, icon="download", label=atch_download_label, color="primary", size="md") }
 script: |
   <script>
 
@@ -48,41 +66,47 @@ script: |
     });
 
     $("#sendAttachementEmail").click(function(){
-      url_action_call('send_atch_email', '', function(arg1, arg2){
-        console.log('arg2', arg2)
-      });
+
+      let message = "We are trying to send the email to " + val('atch_email_address') + ".";
+      flash(message, "secondary");
+
+      url_action_call('send_atch_email',
+       { address: val('atch_email_address') },
+       function (obj_or_html, result_as_text, response) {
+        if (response.status === 200) {
+          flash("The email got sent to " + obj_or_html.email_address + "!", "success", true);
+        } else {
+          flash("Sorry about this, but the email didn't get sent. Try giving it some time and then try again.", "danger", true)
+          url_action_call('log_to_docassemble', {
+            message: '\n\n' + responseText + '\n\n'
+          })
+        }
+      });  // ends url_action_call and callback
     });
 
   </script>
 ---
-mandatory: True
-id: set_atch_progress
-code: |
-  set_progress(atch_progress)
-
-  log(atch_email_address, 'console')
-  log(atch_email_template, 'console')
-  log(atch_doc, 'console')
----
-
 template: email_text
-subject: Sealing Petition
-content: |
-  ${atch_email_contents}
+subject: ${atch_email_subject}
+content: ${atch_email_contents}
 ---
-
 id: send_atch_email
 event: send_atch_email
 code: |
-  atch_doc = atch_name + "." + atch_file_extension
-  log(atch_email_address, 'console')
-  log(atch_email_template, 'console')
-  log(atch_doc, 'console')
-  send_email(to=atch_email_address, template=atch_email_template, attachments=atch_doc)
+  #raise Exception("error triggered on purpose because we must")
+  address = action_argument('address')
+  was_successful = send_email(to=address, template=email_text, attachments=atch_itself)
+  json_response(dict(was_successful=was_successful, email_address=address))
 ---
 comment: |
-  id: open_atch
-  event: open_atch
-  code: |
-    command('leave', url=atch_link)
+id: open_atch
+event: open_atch
+code: |
+  command('leave', url=atch_link)
+---
+id: log_to_docassemble
+event: log_to_docassemble
+code: |
+   message = action_argument('message')
+   log(message)
 ---
