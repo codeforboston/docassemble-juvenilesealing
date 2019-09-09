@@ -123,14 +123,19 @@ code: |
   
   placeholder_end
 ---
-#include:
-#  - certified-copy-of-dockets.yml
+code: |
+  # Repeated text
+  must_answer = '<span style="color:red">(You must answer)</span>'
+---
+default validation messages:
+  multiple choice required: You have to pick one.
 ---
 id: open_cases
 question: |
   Open Cases
 fields: 
-  - note: Do you have any open criminal or juvenile cases right now anywhere in the USA?
+  - note: |
+      Do you have any open criminal or juvenile cases right now anywhere in the USA?
   - no label: has_NON_probation_open_cases
     input type: radio
     choices:
