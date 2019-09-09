@@ -69,10 +69,12 @@ code: |
 
   reason = ''
   dockets_link = 'TODO'
-
   pdf_link = partial_petition_pdf.pdf.url_for()
+
+  atch_progress
+  set_atch_progress
   atch_email_address
-  #email_address
+  #email_address_2
   #partial_petition_old
 
   num_pages, step_value, step_num = get_progress_bar_starting_vals(9, 3, 'applicant.name.first')
@@ -202,7 +204,8 @@ code: |
 comment: Strings that are used multiple times or are awkward
 code: |
   pdf_name = 'juvenile-sealing-petition'
-  petition_instructions = """
+  
+  petition_instructions_todo = """
     We think you're probably eligible to seal your
     juvenile records! Your petition is done and ready to
     print. Next you need to:
@@ -211,6 +214,21 @@ code: |
     2. Print it
     3. Sign it in two places (where the arrows are)
     4. Mail it to <span style="color:red">TODO: Where to mail this to?</span>
+  """
+  
+  petition_instructions_after = """
+    Once you mail it, the Commissioner of Probation
+    will look at it. They will also look at your criminal
+    records. They'll see if they agree that you can seal
+    your juvenile records. They will send you a letter
+    telling you what they decided and why they decided that.
+    
+    Because they have a lot of petitions to look at, it can
+    take up to 3 months.
+    
+    If you get the letter back and don't agree with what they
+    said, you can <span style="color:red">TOOD: call them or
+    get help from a lawyer</span>.
   """
 
   legal_aid_start = """
@@ -263,9 +281,6 @@ code: |
   """
   legal_aid_other_state = legal_aid_start + legal_aid_end_other_state
 
----
-#include:
-#  - certified-copy-of-dockets.yml
 ---
 id: open_cases
 question: |
@@ -381,41 +396,22 @@ buttons:
   - Exit: exit
   - Restart: restart
 ---
-comment: |
-  Variables needed:
-  - atch_progress = 100
-  - atch_question = 'Your Petition'
-  - atch_subquestion = atch_subquestion
-  - atch_default_email_address = user_info().email
-
-  - atch_email_template: petition_instructions
-  
-  - atch_name = pdf_name
-  - atch_file_extension = 'pdf'
-  - atch_do_new_window_download = True
-  - atch_download_label = 'Download PDF for printing (you can open it in your browser)'
-  - atch_do_new_window_email = False
-  - atch_link = partial_petition_pdf.pdf.url_for()
----
-#template: email_text
-#subject: Sealing Petition
-#content: |
-#  ${petition_instructions}
----
 code: |
-  # attachement stuff
-  atch_progress = 100
-  atch_question = 'Your Petition'
-  atch_subquestion_start = """
-
-    You can download it and you can email it to
-    yourself or someone else.
-
-    <div>&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;</div>
-  """
-  
-  atch_subquestion = petition_instructions + atch_subquestion_start
+  # attachement stuff  
   atch_default_email_address = user_info().email
+  atch_email_subject= 'Petition to Seal Records'
+  atch_email_contents = petition_instructions_todo + "\n\n" + petition_instructions_after
+
+  atch_progress = 100
+  atch_question = 'Your Petition is Ready!'
+  subq_middle = """
+    You can download it and you can email it to
+    yourself or someone else. The email subject line
+    will be <strong>
+  """ + atch_email_subject + "</strong>.\n"
+  subq_end ="<div>&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;</div>"
+
+  atch_subquestion = petition_instructions_todo + subq_middle + petition_instructions_after + subq_end
   
   atch_name = pdf_name
   atch_file_extension = 'pdf'
@@ -423,90 +419,7 @@ code: |
   atch_download_label = 'Download PDF for printing (you can open it in your browser)'
   atch_do_new_window_email = False
   atch_link = partial_petition_pdf.pdf.url_for()
----
-id: partial_petition_2
-progress: 100
-question: Your Petition
-subquestion: |
-  ${ petition_instructions }
-  
-  You can download it and you can email it to
-  yourself or someone else.
-
-  <div style="width: 100%">_________________________________________________________________</div>
-
-  <br>
-fields:
-  - html: |
-      <div class="alert alert-success" role="alert">
-        <strong>${pdf_name}.pdf</strong> has been created
-        for you with two checkmarks.
-      </div>
-
-      <a id="openPDF" class="download-link faux-button">
-        <i class="fas fa-download"></i> Download PDF for printing
-        <span>(you can open it in your browser)</span>
-      </a>
-
-  - E-mail this to: email_address_2
-    datatype: email
-    required: False
-    default: ${user_info().email}
-  - note: ${ action_button_html("#", id_tag="sendEmail", new_window=False, icon="envelope", label="Send", color="primary", size="md") }
-script: |
-  <script>
-
-    $("#openPDF").click(function(){
-      url_action_call('open_pdf', '', function(){});
-    });
-
-    $("#sendEmail").click(function(){
-      url_action_call('send_pdf_email', '', function(){});
-    });
-    
-    //  href=${pdf_link}
-  </script>
----
-id: partial_petition_1
-progress: 100
-question: Your Petition
-subquestion: |
-  <div class="alert alert-success" role="alert">
-    <strong><a class="download-link" href=${pdf_link}>${pdf_name}.pdf</a></strong> has been created
-    for you with two checkmarks.
-  </div>
-  
-  ${ petition_instructions }
-  
-  You can <a class="download-link" href=${pdf_link}>download it here</a> and you can email it to
-  yourself or someone else.
-  <br><br><br>
-fields:
-  - E-mail this to: email_address_1
-    datatype: email
-    required: False
-    default: ${user_info().email}
-#  - note: ${ action_button_html(url_action('send_pdf_email'), "#", id_tag="sendEmail", new_window="False", label="Send", color="primary", block="True", size="md") }
-#  - note: ${partial_petition_pdf}
-script: |
-  <script>
-    //$("#sendEmail").click(function(){
-    //  url_action_call('send_pdf_email', '', function(){});
-    //});
-  </script>
-comment: |
-  Replace file name with customized file name?
----
-id: send_pdf_email
-event: send_pdf_email
-code: |
-  doc = pdf_name + ".pdf"
-  send_email(to=email_address, template=email_text, attachments=doc)
----
-id: open_pdf
-event: open_pdf
-code: |
-  command('leave', url=pdf_link)
+  atch_itself = partial_petition_pdf
 ---
 attachment:
   - name: ${pdf_name}
@@ -542,7 +455,7 @@ attachment:
 id: partial_petition_old
 event: partial_petition_old
 progress: 100
-question: Your Petition
+question: 2 Your Petition
 subquestion: |
   Your form needed two checkmarks.
 
@@ -582,7 +495,7 @@ attachment:
 id: full_petition
 event: full_petition
 progress: 100
-question: Your Petition
+question: 3 Your Petition
 subquestion: Your form needed two checkmarks.
 comment: |
   Replace file name with customized file name?

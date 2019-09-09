@@ -44,7 +44,10 @@ a, .dabackicon span, button.daquestionbackbutton.btn-link span {
   font-weight: bold;
 }
 
-a:hover, .dabackicon:hover, button.daquestionbackbutton.btn-link:hover {
+a:hover,
+.dabackicon:hover,
+button.daquestionbackbutton.btn-link:hover,
+button.daquestionbackbutton.btn-link:focus {
   color: rgba( 99, 99, 99, 1 );
   text-decoration: none;
 }
@@ -93,7 +96,8 @@ a:hover, .dabackicon:hover, button.daquestionbackbutton.btn-link:hover {
 .btn-primary:not(:disabled):not(.disabled).active,
 .btn-primary:not(:disabled):not(.disabled):active,
 .show>.btn-primary.dropdown-toggle,
-.faux-button {
+.faux-button,
+#downloadAttachement {
   border-color: rgba(64, 64, 64, 1);
   background-color: white;
 }
@@ -114,19 +118,26 @@ button.btn-secondary span {
   /* color: white; */
 }
 
+/* UX experts agree - same color for all answer buttons! */
 .btn-warning,
 .btn-warning:hover,
 .btn-warning:focus,
 .btn-warning:not(:disabled):not(.disabled).active,
 .btn-warning:not(:disabled):not(.disabled):active,
-.show>.btn-warning.dropdown-toggle,
-/* Buttons to other sites that can't be labeled that way...? */
+.show>.btn-warning.dropdown-toggle {
+  border-color: rgba(64, 64, 64, 1);
+  background-color: white;
+}
+
+/* Buttons to other sites that can't be labeled that way should still be yellow...? */
+/* UX experts? */
 .question-fed-job-disclaimer button,
 .question-fed-job-disclaimer button:hover,
 .question-fed-job-disclaimer button:focus,
 .question-fed-job-disclaimer button:not(:disabled):not(.disabled).active,
 .question-fed-job-disclaimer button:not(:disabled):not(.disabled):active {
-  border-color: rgba(236, 163, 0, 1);
+  /* border-color: rgba(236, 163, 0, 1); */
+  border-color: rgba(64, 64, 64, 1);
   background-color: white;
 }
 
@@ -287,6 +298,40 @@ strong {
   color: black;
 }
 
+
+
+/* Just for email sending one-line display. Fragile. */
+.da-field-container-datatype-email {
+  display: inline;
+}
+
+.da-field-container-datatype-email .da-form-label {
+  display: inline-block;
+  min-width: fit-content;
+  max-width: fit-content;
+}
+
+.da-field-container-datatype-email .dafieldpart {
+  display: inline-block;
+  width: 18em;
+}
+
+.da-field-container-datatype-email .dafieldpart .text-danger {
+  position: absolute;
+}
+
+.da-field-container-datatype-email + .da-field-container-note {
+  display: inline-block;
+  margin: 0;
+  margin-bottom: 1em;
+}
+
+#sendEmail {
+  padding-top: 0.4em;
+  padding-bottom: .4em;
+  margin: 0;
+}
+
 /* Changing alignment of certain fields */
 .da-field-container-datatype-email label {
   text-align: left !important;
@@ -295,6 +340,8 @@ strong {
   flex: 0 0 16.666667%;
   max-width: 16.666667%;
 }
+
+/* Ends email sender one-line */
 
 
 /* This may be too big a task. We might work on embedding. */
