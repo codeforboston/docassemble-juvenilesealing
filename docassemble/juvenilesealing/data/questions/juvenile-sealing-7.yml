@@ -397,8 +397,11 @@ buttons:
   - Restart: restart
 ---
 code: |
-  # attachement stuff  
-  atch_default_email_address = user_info().email
+  # attachement stuff
+  if (user_logged_in()):
+    atch_default_email_address = user_info().email
+  else:
+    atch_default_email_address = ''
   atch_email_subject= 'Petition to Seal Records'
   atch_email_contents = petition_instructions_todo + "\n\n" + petition_instructions_after
 
