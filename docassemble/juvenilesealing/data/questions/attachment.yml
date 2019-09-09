@@ -35,9 +35,10 @@ code: |
   log(atch_email_template, 'console')
   log(atch_doc, 'console')
 
-  set_progress(atch_progress)
+  #set_progress(atch_progress)
 ---
 id: download_attachement
+progress: atch_progress
 question: ${atch_question}
 subquestion: |
   ${ atch_subquestion }
