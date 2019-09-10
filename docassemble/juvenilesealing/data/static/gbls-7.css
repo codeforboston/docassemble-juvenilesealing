@@ -215,13 +215,6 @@ label.btn-primary:not(:disabled):not(.disabled):active,
   background-color: rgba(64, 64, 64, 1);
 }
 
-#sendEmail {
-  padding-top: .5em;
-  padding-bottom: .5em;
-  color: green !important;
-  border-color: green;
-}
-
 .faux-button,
 .atch-button {
   width: 100%;
@@ -229,16 +222,6 @@ label.btn-primary:not(:disabled):not(.disabled):active,
   text-align: center;
 }
 
-#downloadAttachement {
-  
-}
-
-#sendAttachementEmail {
-  border-color: green;
-  color: green !important;
-  padding: .5em;
-  margin: 0;
-}
 
 /* ======== END BUTTONS ======== */
 
@@ -339,10 +322,17 @@ strong {
   margin-bottom: 1em;
 }
 
-#sendEmail {
+.da-field-container-datatype-email + .da-field-container-note p {
+  margin: 0;
+}
+
+#sendEmail,
+#sendAttachmentEmail {
   padding-top: 0.4em;
   padding-bottom: .4em;
   margin: 0;
+  color: green !important;
+  border-color: green;
 }
 
 /* Changing alignment of certain fields */
@@ -352,6 +342,11 @@ strong {
   /* Width of two columns instead of 4. This is fragile */
   flex: 0 0 16.666667%;
   max-width: 16.666667%;
+}
+
+/* Spacing with alert */
+.question-get-attachment .da-field-container-note .alert-success {
+  margin: 0;
 }
 
 /* Ends email sender one-line */
