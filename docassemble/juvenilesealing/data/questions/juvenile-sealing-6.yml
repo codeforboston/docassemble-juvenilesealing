@@ -1,0 +1,634 @@
+---
+comment: |
+  TODO: PQ: Will answers about other states be their CORI?
+  TODO: PQ: Link to info on CORI FAQ - CORI wrong, what it is etc.?
+  TODO: What if there is no legal help in their area?
+  TODO: Equivalent of 
+    url: |
+      ${ referring_url() }
+  but don't send back to preliminary questions.
+  TODO: PQ: Say what will happen if their data gets out
+---
+comment: |
+  - Immigration asked in previous separate form.
+  - Personal info code copies style of https://github.com/GBLS/docassemble-gbls/blob/master/docassemble/gbls/data/questions/basic-questions-gbls.yml
+---
+metadata:
+  title: |
+    Juvenile Sealing
+  short title: |
+    Juvenile Sealing
+  subtitle: |
+    Version 6
+  authors:
+    - name: Team
+      organization: Citizens for Juvenile Justice and Code for Boston
+---
+features:
+  progress bar: True
+  question back button: True
+  css: gbls-6.css
+---
+default screen parts:
+  right: |
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+---
+comment: |
+  - Do objects always need to be in their own file?
+  - If I do `objects from file`, will that also pull
+  in the logic below or do I have to import that separately?
+  - Should `applicant` be `user` instead, even though the
+  questions are about the applicant?
+objects:
+  - applicant: Individual
+  - ineligibility_reasons: DAObject
+---
+code: |
+  # ### Creating reasons ####
+  start = "Sorry, but because you "
+  years = " in the past three years**"
+  end = " you're not eligible to get your juvenile record sealed."
+
+  ineligibility_reasons.wants_to_continue = ""
+  ineligibility_reasons.open_case = start + "**have an open case**" + end
+  ineligibility_reasons.probation = start + "**are on probation**" + end
+  ineligibility_reasons.juvenile_case_ma = start + "**had a juvenile case in Massachusetts" + years + end
+  ineligibility_reasons.juvenile_custody_usa = start + "**have been in juvenile custody in Massachusetts" + years + end
+  ineligibility_reasons.juvenile_other_state = start + "**found to be delinquent in another state" + years + end
+  ineligibility_reasons.convicted_states = start + "**were convicted" + years + end
+  ineligibility_reasons.convicted_federal = start + "**were convicted" + years + end
+  ineligibility_reasons.incarcerated = start + "**were incarcerated" + years + end
+
+---
+mandatory: True
+id: flow
+code: |
+
+  # Testing
+
+  reason = ''
+  dockets_link = 'TODO'
+
+  pdf_link = partial_petition_pdf.pdf.url_for()
+  #email_address
+  #partial_petition_old
+
+  num_pages, step_value, step_num = get_progress_bar_starting_vals(9, 3, 'applicant.name.first')
+  set_progress(step_value * step_num)
+
+  # How to make sure a pro se user sees the warnings?
+  should_show_extra_info = False
+  needs_dockets = False
+  if ('dockets' in url_args):
+    should_show_extra_info = True
+    if (url_args['dockets'] == 'needed'):
+      needs_dockets = True
+
+  reason = ineligibility_reasons.open_case
+  if (has_NON_probation_open_cases is True): sorry_end
+  elif (has_NON_probation_open_cases is None): get_records_end
+
+  step_num += 1
+  set_progress(step_value * step_num)
+
+  reason = ineligibility_reasons.probation
+  if (is_on_probation is True): sorry_end
+  elif (is_on_probation is None): get_records_end
+
+  step_num += 1
+  set_progress(step_value * step_num)
+
+  reason = ineligibility_reasons.juvenile_case_ma
+  if (juvenile_cases_in_past_3_years_ma is True): sorry_end
+  elif (juvenile_cases_in_past_3_years_ma is None): get_records_end
+
+  step_num += 1
+  set_progress(step_value * step_num)
+  
+  reason = ineligibility_reasons.juvenile_custody_usa
+  if (juvenile_custody_in_past_3_years_usa is True): sorry_end
+  elif (juvenile_custody_in_past_3_years_usa is None): get_records_end
+
+  step_num += 1
+  set_progress(step_value * step_num)
+
+  reason = ineligibility_reasons.juvenile_other_state
+  if (juvenile_cases_in_past_3_years_other_state is True):
+    step_num += 1
+    set_progress(step_value * step_num)
+    if (juvenile_delinquency_in_other_state_in_past_3_years is True): sorry_end
+    elif (juvenile_delinquency_in_other_state_in_past_3_years is None): get_records_end
+  elif (juvenile_cases_in_past_3_years_other_state is None): get_records_end
+  else:
+    step_num += 1
+    set_progress(step_value * step_num)
+
+  step_num += 1
+  set_progress(step_value * step_num)
+
+  reason = ineligibility_reasons.convicted_states
+  if (convicted_in_past_3_years_states is True): sorry_end
+  elif (convicted_in_past_3_years_states is None): get_records_end
+
+  step_num += 1
+  set_progress(step_value * step_num)
+
+  reason = ineligibility_reasons.convicted_federal
+  if (convicted_in_past_3_years_federal is True): sorry_end
+  elif (convicted_in_past_3_years_federal is None): get_records_end
+
+  step_num += 1
+  set_progress(step_value * step_num)
+
+  reason = ineligibility_reasons.incarcerated
+  if (incarcerated_in_past_3_years is True): sorry_end
+  elif (incarcerated_in_past_3_years is None): get_records_end
+
+  step_num += 1
+  set_progress(step_value * step_num)
+
+  # Otherwise they're eligible!
+  
+  # Make sure they get a chance to order their docket sheets
+  # and offer choice about saving personal info.
+  if (should_show_extra_info):
+    if (will_write_personal_info):
+      #partial_petition
+      email_address
+
+  # Get their personal details (3 pages of questions)
+  first_name = applicant.name.first
+  step_num += 1
+  set_progress(step_value * step_num)
+
+  #last_name = applicant.name.last
+  #filename = first_name + '-' + last_name + '-juvenile-sealing-petition'
+  applicant.mothers_maiden_name
+  step_num += 1
+  set_progress(step_value * step_num)
+
+  applicant.ssn
+  step_num += 1
+  set_progress(step_value * step_num)
+
+  full_petition
+  
+  placeholder_end
+---
+comment: Progress bar shinanigans
+code: |
+
+  def get_progress_bar_starting_vals(num_pages_always_undefined, num_pages_maybe_pre_defined, var_name_to_check_for_defined):
+    num_pages = num_pages_always_undefined
+    if (not defined(var_name_to_check_for_defined)):
+      num_pages += num_pages_maybe_pre_defined
+    num_pages += 1  # for having a progress val for first question
+
+    step_value = 100/num_pages
+
+    step_num = 0
+    if (defined('applicant.name.first')):
+      step_num -= 3
+    step_num += 1
+
+    return [
+      num_pages,
+      step_value,
+      step_num
+    ]
+  # Ends get_progress_bar_starting_vals()
+---
+comment: Strings that are used multiple times or are awkward
+code: |
+  pdf_name = 'juvenile-sealing-petition'
+  petition_instructions_todo = """
+    We think you're probably eligible to seal your
+    juvenile records! Your petition is done and ready to
+    print. Next you need to:
+  
+    1. Download it
+    2. Print it
+    3. Sign it in two places (where the arrows are)
+    4. Mail it to <span style="color:red">TODO: Where to mail this to?</span>
+  """
+  
+  petition_instructions_after = """
+    Once you mail it, the Commissioner of Probation
+    will look at it. They will also look at your criminal
+    records. They'll see if they agree that you can seal
+    your juvenile records. They will send you a letter
+    telling you what they decided and why they decided that.
+    
+    Because they have a lot of petitions to look at, it can
+    take up to 3 months for them to do that.
+    
+    If you get the letter back and don't agree with what they
+    said, you can <span style="color:red">TOOD: call them or
+    get help from a lawyer</span>.
+  """
+
+  legal_aid_start = """
+    <p style="color:green">If you want to find a lawyer
+    to talk to, go to
+    [Mass Legal Help's webiste](https://www.masslegalservices.org/findlegalaid)
+    to look for legal aid near you
+    so you can ask them if they can help.
+    Not all legal aid groups can help with this,
+    but some can.</p>
+
+    <p style="color:green">Do this:</p>
+    <ol style="color:green">
+      <li>Answer the first line of questions.</li>
+  """
+
+  legal_aid_end_CORI = """<li>Click on "**CORI & Criminal Law**".</li>
+    <li>Click on "**I want to request a
+      copy of my own criminal record history**".</li>
+    <li>Click on "**Search**".</li>
+    <li>If the site finds  one or more organizations
+      in your area,
+      call and ask them if they can help you get
+      a copy of your CORI.</li>
+  </ol>
+  """
+  legal_aid_CORI = legal_aid_start + legal_aid_end_CORI
+
+  legal_aid_end_sealing = """<li>Click on "**CORI & Criminal Law**".</li>
+    <li>Click on "**I need to seal my court records**".</li>
+    <li>Click on "**Search**".</li>
+    <li>If the site finds  one or more organizations
+      in your area,
+      call and ask them if they can help you
+      seal your criminal records or help you find out
+      more about sealing.</li>
+  </ol>
+  """
+  legal_aid_sealing = legal_aid_start + legal_aid_end_sealing
+
+  legal_aid_end_other_state = """<li>Click on "**CORI & Criminal Law**".</li>
+    <li>Click on "**I have another CORI related
+      problem not listed here**".</li>
+    <li>Click on "**Search**".</li>
+    <li>If the site finds  one or more organizations
+      in your area,
+      call and ask them if they can help you get
+      a copy of your criminal records from another state.</li>
+  </ol>
+  """
+  legal_aid_other_state = legal_aid_start + legal_aid_end_other_state
+
+---
+#include:
+#  - certified-copy-of-dockets.yml
+---
+id: open_cases
+question: |
+  Open Cases
+subquestion: |
+  Do you have any open criminal or juvenile cases right
+  now anywhere in the USA?
+yesnomaybe: has_NON_probation_open_cases
+---
+id: probation
+question: |
+  Probation
+subquestion: |
+  Are you now on probation for any criminal or juvenile
+  case in the USA, including any federal court case?
+yesnomaybe: is_on_probation
+---
+id: juvenile_cases_ma
+question: Juvenile Cases - MA
+subquestion: |
+  Have you had any juvenile cases in Massachusetts on or after ${ today().minus(years=3) }?
+
+  **Note:** Motor vehicle offenses where the fine was not over $50 don't count.
+yesnomaybe: juvenile_cases_in_past_3_years_ma
+---
+id: juvenile_cases_states
+question: Juvenile Cases - Other States
+subquestion: |
+  Have you had any juvenile cases in another state on or after ${ today().minus(years=3) }?
+
+  **Note:** Motor vehicle offenses where the fine was not over $50 don't count.
+yesnomaybe: juvenile_cases_in_past_3_years_other_state
+---
+id: juvenile_cases_delinquency
+question: Juvenile Cases - Other States
+subquestion: |
+  In that other state or states, were you found to be delinquent or were you committed as a delinquent?
+yesnomaybe: juvenile_delinquency_in_other_state_in_past_3_years
+---
+id: juvenile_cases_custody
+question: Juvenile Cases - Custody
+subquestion: |
+  Have you been in juvenile custody anywhere in the USA on or after ${ today().minus(years=3) }?
+  
+  Juvenile custody is incarceration for people under the age of <span style="color:red">___</span>
+yesnomaybe: juvenile_custody_in_past_3_years_usa
+
+
+---
+id: adult_cases_states
+question: Adult Cases - US State Convictions
+subquestion: |
+  Have you had any convictions on or after ${ today().minus(years=3) } in any adult court in the USA?
+  
+  **Note:** Motor vehicle offenses where the fine was not over $50 don't count.
+yesnomaybe: convicted_in_past_3_years_states
+---
+id: adult_cases_federal
+question: Adult Cases - Federal Convictions
+subquestion: |
+  Have you had any convictions on or after ${ today().minus(years=3) } in any federal court?
+  
+  **Note:** Motor vehicle offenses where the fine was not over $50 don't count.
+yesnomaybe: convicted_in_past_3_years_federal
+---
+id: adult_incarceration
+question: Adult Cases - Incarceration
+subquestion: |
+  Were you incarcerated in the USA on or after ${ today().minus(years=3) }?
+yesnomaybe: incarcerated_in_past_3_years
+
+---
+id: eligible
+field: will_write_personal_info
+question: You Might Be Eligible!
+subquestion: |
+  We think you're probably eligible to seal your juvenile records.
+
+  % if (needs_dockets):
+  **You can also still see how to get a certified copy of the
+  docket sheets for all of your cases**.
+  It can take a while, but
+  please get them before finishing your form.
+  Go to this website:
+  
+  <span style="color:green">**(Need link for website)**</span>
+  % endif
+  
+  We've created a form that has marks in the
+  right places.
+  Now the form needs some of your
+  personal information. You can do it two ways:
+  
+  1. Print the form and finish filling it out by hand.
+  2. Keep using our online form to answer the
+  questions.
+  
+  If you use our form, your personal information
+  will be stored
+  securely online and only you can ever see it.
+buttons:
+  - Finish by hand: True
+  - Keep using this form: False
+---
+include:
+  - personal-details.yml
+---
+id: placeholder_end
+event: placeholder_end
+question: PDF creation coming soon!
+buttons:
+  - Exit: exit
+  - Restart: restart
+---
+mandatory: True
+code: |
+  email_subject_line = 'Petition to Seal Records'
+---
+template: email_text
+subject: ${email_subject_line}
+content: |
+  ${petition_instructions_todo}
+  
+  ${ petition_instructions_after }
+---
+id: partial_petition
+progress: 100
+question: Your Petition is Ready!
+subquestion: |
+  ${ petition_instructions_todo }
+  
+  You can download it and you can email it to
+  yourself or someone else. The email subject line
+  will be "${email_subject_line}".
+  
+  ${ petition_instructions_after }
+
+  <div style="width: 100%">_________________________________________________________________</div>
+  
+  <br>
+  
+  <div class="alert alert-success" role="alert">
+    <strong><a class="download-link" href=${pdf_link}>${pdf_name}.pdf</a></strong> has been created
+    for you.
+  </div>
+
+  <a class="download-link" href=${pdf_link}>
+    :download: Download PDF for printing
+  </a> (to open it you need something like Adobe Reader)
+
+fields:
+  - E-mail: email_address
+    datatype: email
+    required: False
+    default: ${user_info().email}
+  - note: ${ action_button_html("#", id_tag="sendEmail", new_window=False, icon="envelope", label="Send", color="primary", size="md") }
+#  - note: ${partial_petition_pdf}
+script: |
+  <script>
+    $("#sendEmail").click(function (evnt) {
+
+      let addr = val('email_address');
+      let message = "We will try to send the email to " + addr + ".";
+      flash(message, "secondary");
+
+      url_action_call('send_pdf_email', {
+        address: val('email_address')
+      }, function (obj_or_html, result_as_text, response) {
+        if (response.status === 200) {
+          flash("The email got sent to " + obj_or_html.email_address + "!", "success", true);
+          
+        } else {
+          flash("Sorry about this, but the email didn't get sent. Try giving it some time and then try again.", "danger", true)
+          console.log(response);
+          url_action_call('log_to_docassemble', {
+            message: responseText
+          })
+        }
+      });  // ends url_action_call and callback
+    });
+  </script>
+---
+id: log_to_docassemble
+event: log_to_docassemble
+code: |
+   message = action_argument('message')
+   log(message)
+---
+id: send_pdf_email
+event: send_pdf_email
+code: |
+  #raise Exception("error triggered on purpose")
+  address = action_argument('address')
+  was_successful = send_email(to=address, template=email_text, attachments=partial_petition_pdf)
+  json_response(dict(was_successful=was_successful, email_address=address))
+---
+attachment:
+  - name: ${pdf_name}
+    variable name: partial_petition_pdf
+    filename: ${pdf_name}
+    pdf template file: juvenile-sealing-petition.pdf
+    fields:
+      - "applicant.no_delinquency": Yes
+      - "applicant.no_misdemeanor": No
+      - "applicant.no_felony": No
+      - "applicant.decriminalized": No
+      - "applicant.name.last": ''
+      - "applicant.name.first": ''
+      - "applicant.name.middle": ''
+      - "applicant.dob": ''
+      - "applicant.alias": ''
+      - "applicant.address": ''
+      - "applicant.city": ''
+      - "applicant.state": ''
+      - "applicant.zip": ''
+      - "applicant.occupation": ''
+      - "applicant.ssn": ''
+      - "applicant.place_of_birth": ''
+      - "applicant.fathers_name": ''
+      - "applicant.mothers_maiden_name": ''
+      - "applicant.spouses_name": ''
+      - "signature_always": ''
+      - "checkboxes.juvenile": Yes
+      - "signature_juvenile": ''
+      - "checkboxes.misdemeanor": No
+      - "checkboxes.felony": No
+---
+id: full_petition
+event: full_petition
+progress: 100
+question: Your Petition is Ready!
+subquestion: Your form needed two checkmarks.
+comment: |
+  Replace file name with customized file name?
+attachment:
+  - name: juvenile-sealing-petition
+    filename: juvenile-sealing-petition
+    pdf template file: juvenile-sealing-petition.pdf
+    fields:
+      - "applicant.no_delinquency": Yes
+      - "applicant.no_misdemeanor": No
+      - "applicant.no_felony": No
+      - "applicant.decriminalized": No
+      - "applicant.name.last": ${applicant.name.last}
+      - "applicant.name.first": ${applicant.name.first}
+      - "applicant.name.middle": ${applicant.name.middle}
+      - "applicant.dob": ${applicant.birthdate}
+      - "applicant.alias": ${applicant.alias}
+      - "applicant.address": ${applicant.address}
+      - "applicant.city": ${applicant.city}
+      - "applicant.state": ${applicant.state}
+      - "applicant.zip": ${applicant.zip}
+      - "applicant.occupation": ${applicant.occupation}
+      - "applicant.ssn": ${applicant.ssn}
+      - "applicant.place_of_birth": ${applicant.place_of_birth}
+      - "applicant.fathers_name": ${applicant.fathers_maiden_name}
+      - "applicant.mothers_maiden_name": ${applicant.mothers_maiden_name}
+      - "applicant.spouses_name": ${applicant.spouses_name}
+      - "signature_always": ''
+      - "checkboxes.juvenile": Yes
+      - "signature_juvenile": ''
+      - "checkboxes.misdemeanor": No
+      - "checkboxes.felony": No
+buttons:
+  - Exit: exit
+  - Restart: restart
+---
+id: need_records
+event: get_records_end
+progress: 100
+question: |
+  Sorry, we can't help until you have more information
+subquestion: |
+  Your CORI records can help you answer the questions.
+  Click [here](https://icori.chs.state.ma.us/icori/ext/global/landing.action?page=1&bod=1566991096995&m=presentLanding)
+  to go to the Massachusetts iCORI site
+  and create an account to ask for your CORI records.
+  
+  ${legal_aid_CORI}
+
+  **Come back as soon as you're ready so we can
+  help seal your records!**
+buttons:
+  - Exit: exit
+  - Restart: restart
+---
+id: thank_you_did_not_finish
+event: thank_you_did_not_finish
+progress: 100
+question: Thank you for coming and hope to see you soon!
+comment: |
+  - TODO: Give more resources
+buttons:
+  - Exit: exit
+  - Restart: restart
+---
+id: need_records_other_state
+event: get_records_other_state_end
+progress: 100
+question: |
+  Sorry, we can't help until you have more information
+subquestion: |
+  <p style="color:green">
+  Your criminal records from each state
+  can help
+  you answer the questions. We're sorry
+  that this sealing tool can't help with
+  that. Each state has a
+  different way to order criminal records.
+  If you want to search for those instructions,
+  try putting the name of the state in the search bar along
+  with this text:
+  </p>
+
+  `
+  how do I order my criminal record?
+  `
+
+  ${ legal_aid_other_state }
+
+  <p style="color:green">
+  **Sorry we couldn't help more. Come back as soon
+  as you're ready so we can
+  help seal your records!**
+  </p>
+buttons:
+  - Exit: exit
+  - Restart: restart
+---
+id: not_helped
+event: sorry_end
+progress: 100
+question: |
+  Thank you and sorry we couldn't help
+subquestion: |
+  % if (not reason == ""):
+  ${ reason }
+  
+  **Come back when that has changed so we can help seal your records!**
+  % endif
+
+  ${legal_aid_sealing}
+comment: |
+  TODO: Add more resources they can go to.
+buttons:
+  - Exit: exit
+  - Restart: restart
+---
+code: |
+
+  def log_me(message):
+    log(message, 'console')

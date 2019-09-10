@@ -8,6 +8,7 @@
 * problematic
 * TODO: Non-radio and text inputs are not taken care of
 * or tested. (09/04/19)
+* TODO: underline of link when focused
 */
 
 span, div, p {
@@ -83,14 +84,18 @@ button.daquestionbackbutton.btn-link:focus {
 .da-field-radio label,
 .da-field-radio label:hover,
 .da-field-radio label:active,
-.da-field-radio label:focus {
+.da-field-radio label:focus,
+.faux-button,
+.atch-button {
   border-radius: 4px;
   border-width: 2px;
   border-style: solid;
 }
 
 /* Button individual styles. All states. */
-.btn {
+.btn,
+.faux-button,
+.atch-button {
   padding: 1em;
 }
 .btn span {
@@ -103,7 +108,9 @@ button.daquestionbackbutton.btn-link:focus {
 .btn-primary:focus,
 .btn-primary:not(:disabled):not(.disabled).active,
 .btn-primary:not(:disabled):not(.disabled):active,
-.show>.btn-primary.dropdown-toggle {
+.show>.btn-primary.dropdown-toggle,
+.faux-button,
+#downloadAttachement {
   border-color: rgba(64, 64, 64, 1);
   background-color: white;
 }
@@ -208,9 +215,15 @@ label.btn-primary:not(:disabled):not(.disabled):active,
   background-color: rgba(64, 64, 64, 1);
 }
 
+.faux-button,
+.atch-button {
+  width: 100%;
+  display: block;
+  text-align: center;
+}
+
 
 /* ======== END BUTTONS ======== */
-
 
 .h1, .h2, .h3, .h4, .h5, .h6 {
   position: relative;
@@ -280,6 +293,63 @@ strong {
   font-weight: 900;
   color: black;
 }
+
+
+
+/* Just for email sending one-line display. Fragile. */
+.da-field-container-datatype-email {
+  display: inline;
+}
+
+.da-field-container-datatype-email .da-form-label {
+  display: inline-block;
+  min-width: fit-content;
+  max-width: fit-content;
+}
+
+.da-field-container-datatype-email .dafieldpart {
+  display: inline-block;
+  width: 18em;
+}
+
+.da-field-container-datatype-email .dafieldpart .text-danger {
+  position: absolute;
+}
+
+.da-field-container-datatype-email + .da-field-container-note {
+  display: inline-block;
+  margin: 0;
+  margin-bottom: 1em;
+}
+
+.da-field-container-datatype-email + .da-field-container-note p {
+  margin: 0;
+}
+
+#sendEmail,
+#sendAttachmentEmail {
+  padding-top: 0.4em;
+  padding-bottom: .4em;
+  margin: 0;
+  color: green !important;
+  border-color: green;
+}
+
+/* Changing alignment of certain fields */
+.da-field-container-datatype-email label {
+  text-align: left !important;
+  padding-right: 0;
+  /* Width of two columns instead of 4. This is fragile */
+  flex: 0 0 16.666667%;
+  max-width: 16.666667%;
+}
+
+/* Spacing with alert */
+.question-get-attachment .da-field-container-note .alert-success {
+  margin: 0;
+}
+
+/* Ends email sender one-line */
 
 
 /* This may be too big a task. We might work on embedding. */
