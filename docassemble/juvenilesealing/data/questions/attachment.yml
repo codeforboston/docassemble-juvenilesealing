@@ -27,6 +27,7 @@ comment: |
   - atch_itself
 ---
 mandatory: True
+scan for variables: False
 id: prepare_attachment_page
 event: prepare_attachment_page
 code: |
