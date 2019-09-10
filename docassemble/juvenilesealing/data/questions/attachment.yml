@@ -33,9 +33,34 @@ id: trigger_attachment_page
 event: trigger_attachment_page
 code: |
 
-  set_progress(atch_progress)
+  defaults = {
+    #'atch_itself': None,  # Must be included from interview page
+    #'atch_name': 'your-pre-filled-document',  # Must be included from interview page
+    #'atch_file_extension': 'pdf',  # Must be included from interview page
+
+    'atch_progress': 100,
+    'atch_question': 'Your Document is Ready!',
+    'atch_subquestion': 'You can download it or email it to whoever you want.',
+    'atch_lower_contents': '',
+
+    'atch_default_email_address': '',
+    'atch_email_subject': 'Your Pre-filled Document',
+    'atch_email_contents': 'Your pre-filled document should be attached to this email. Thank you for working with us.',
+
+    'atch_do_new_window_download': False,
+    'atch_download_label': 'Download the document',
+    'atch_do_new_window_email': False,
+    'atch_email_label': 'Send'
+  }
+
   atch_link = atch_itself.pdf.url_for()
   atch_email_label = 'Send'
+  
+  for attr in defaults:
+    if (not defined(attr)):
+      define(attr, defaults[attr])
+
+  set_progress(atch_progress)
 
   # If I don't have this here, I get errors about circular logic
   atch_email_address
