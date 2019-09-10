@@ -47,6 +47,7 @@ fields:
   - City: x.city
   - State: x.state
   - Zipcode: x.zip
+    datatype: integer
 ---
 generic object: Individual
 question: |
