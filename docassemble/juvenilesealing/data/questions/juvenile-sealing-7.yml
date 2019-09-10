@@ -62,6 +62,7 @@ code: |
 
 ---
 mandatory: True
+scan for variables: False
 id: flow
 code: |
 
