@@ -28,20 +28,18 @@ comment: |
   - atch_do_new_window_email
   - atch_email_label
 ---
-mandatory: True
 scan for variables: False
-id: prepare_attachment_page
-event: prepare_attachment_page
+id: trigger_attachment_page
+event: trigger_attachment_page
 code: |
 
   set_progress(atch_progress)
   atch_link = atch_itself.pdf.url_for()
   atch_email_label = 'Send'
 
-  # Why aren't these logging?
-  log(atch_email_address, 'console')
-  log(atch_email_template, 'console')
-  log(atch_doc, 'console')
+  # If I don't have this here, I get errors about circular logic
+  atch_email_address
+
 ---
 id: get_attachment
 question: ${atch_question}
