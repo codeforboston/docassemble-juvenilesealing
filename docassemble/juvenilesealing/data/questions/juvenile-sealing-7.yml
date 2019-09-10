@@ -420,13 +420,13 @@ code: |
   subq_end ="<div>&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;</div>"
 
   atch_subquestion = petition_instructions_todo + subq_middle + petition_instructions_after + subq_end
+  atch_after_buttons = ''
   
   atch_name = pdf_name
   atch_file_extension = 'pdf'
   atch_do_new_window_download = True
   atch_download_label = 'Download PDF for printing (you can open it in your browser)'
   atch_do_new_window_email = False
-  atch_link = partial_petition_pdf.pdf.url_for()
   atch_itself = partial_petition_pdf
 ---
 attachment:
