@@ -34,6 +34,7 @@ default screen parts:
   right: |
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 ---
+id: interview_objects
 comment: |
   - Do objects always need to be in the file in which they are used?
     [No]
@@ -45,6 +46,7 @@ objects:
   - applicant: Individual
   - ineligibility_reasons: DAObject
 ---
+id: reasons
 code: |
   # ### Creating reasons ####
   start = "Sorry, but because you "
@@ -60,22 +62,20 @@ code: |
   ineligibility_reasons.convicted_states = start + "**were convicted" + years + end
   ineligibility_reasons.convicted_federal = start + "**were convicted" + years + end
   ineligibility_reasons.incarcerated = start + "**were incarcerated" + years + end
-
+---
+modules:
+  - .ProgressTracker
 ---
 mandatory: True
 scan for variables: False
 id: flow
 code: |
 
-  # Testing
-
   reason = ''
   dockets_link = 'TODO'
 
-  trigger_attachment_page
-
-  num_pages, step_value, step_num = get_progress_bar_starting_vals(9, 3, 'applicant.name.first')
-  set_progress(step_value * step_num)
+  progressor = ProgressTracker(12)
+  progressor.start()
 
   # How to make sure a pro se user sees the warnings?
   should_show_extra_info = False
@@ -88,65 +88,49 @@ code: |
   reason = ineligibility_reasons.open_case
   if (has_NON_probation_open_cases is True): sorry_end
   elif (has_NON_probation_open_cases is None): get_records_end
-
-  step_num += 1
-  set_progress(step_value * step_num)
+  progressor.increment()
 
   reason = ineligibility_reasons.probation
   if (is_on_probation is True): sorry_end
   elif (is_on_probation is None): get_records_end
-
-  step_num += 1
-  set_progress(step_value * step_num)
+  progressor.increment()
+  
+  # Test
+  trigger_attachment_page
 
   reason = ineligibility_reasons.juvenile_case_ma
   if (juvenile_cases_in_past_3_years_ma is True): sorry_end
   elif (juvenile_cases_in_past_3_years_ma is None): get_records_end
-
-  step_num += 1
-  set_progress(step_value * step_num)
+  progressor.increment()
   
   reason = ineligibility_reasons.juvenile_custody_usa
   if (juvenile_custody_in_past_3_years_usa is True): sorry_end
   elif (juvenile_custody_in_past_3_years_usa is None): get_records_end
-
-  step_num += 1
-  set_progress(step_value * step_num)
+  progressor.increment()
 
   reason = ineligibility_reasons.juvenile_other_state
   if (juvenile_cases_in_past_3_years_other_state is True):
-    step_num += 1
-    set_progress(step_value * step_num)
+    progressor.increment()
     if (juvenile_delinquency_in_other_state_in_past_3_years is True): sorry_end
     elif (juvenile_delinquency_in_other_state_in_past_3_years is None): get_records_end
   elif (juvenile_cases_in_past_3_years_other_state is None): get_records_end
-  else:
-    step_num += 1
-    set_progress(step_value * step_num)
-
-  step_num += 1
-  set_progress(step_value * step_num)
+  else: progressor.increment()
+  progressor.increment()
 
   reason = ineligibility_reasons.convicted_states
   if (convicted_in_past_3_years_states is True): sorry_end
   elif (convicted_in_past_3_years_states is None): get_records_end
-
-  step_num += 1
-  set_progress(step_value * step_num)
+  progressor.increment()
 
   reason = ineligibility_reasons.convicted_federal
   if (convicted_in_past_3_years_federal is True): sorry_end
   elif (convicted_in_past_3_years_federal is None): get_records_end
-
-  step_num += 1
-  set_progress(step_value * step_num)
+  progressor.increment()
 
   reason = ineligibility_reasons.incarcerated
   if (incarcerated_in_past_3_years is True): sorry_end
   elif (incarcerated_in_past_3_years is None): get_records_end
-
-  step_num += 1
-  set_progress(step_value * step_num)
+  progressor.increment()
 
   # Otherwise they're eligible!
   
@@ -154,53 +138,22 @@ code: |
   # and offer choice about saving personal info.
   if (should_show_extra_info):
     if (will_write_personal_info):
-      partial_petition
+      # Add partial_petition vars here
+      trigger_attachment_page
 
-  # This is dealing with situations where some of the user's data
-  # is already on the `user` object, like `.first_name`.
-  # Get their personal details (3 pages of questions)
   first_name = applicant.name.first
-  step_num += 1
-  set_progress(step_value * step_num)
-
-  #last_name = applicant.name.last
+  progressor.increment()
   #filename = first_name + '-' + last_name + '-juvenile-sealing-petition'
+
   applicant.mothers_maiden_name
-  step_num += 1
-  set_progress(step_value * step_num)
+  progressor.increment()
 
   applicant.ssn
-  step_num += 1
-  set_progress(step_value * step_num)
+  progressor.increment()
 
   full_petition
   
   placeholder_end
----
-comment: Progress bar shinanigans
-code: |
-
-  def get_progress_bar_starting_vals(num_pages_always_undefined, num_pages_maybe_pre_defined, var_name_to_check_for_defined):
-    num_pages = num_pages_always_undefined
-    if (not defined(var_name_to_check_for_defined)):
-      num_pages += num_pages_maybe_pre_defined
-    num_pages += 1  # for having a progress val for first question
-
-    step_value = 100/num_pages
-
-    # This is dealing with situations where some of the user's data
-    # is already on the `user` object, like `.first_name`.
-    step_num = 0
-    if (defined('applicant.name.first')):
-      step_num -= 3
-    step_num += 1
-
-    return [
-      num_pages,
-      step_value,
-      step_num
-    ]
-  # Ends get_progress_bar_starting_vals()
 ---
 comment: Strings that are used multiple times or are awkward
 code: |

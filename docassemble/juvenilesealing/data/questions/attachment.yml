@@ -35,8 +35,9 @@ code: |
 
   defaults = {
     #'atch_itself': None,  # Must be included from interview page
-    #'atch_name': 'your-pre-filled-document',  # Must be included from interview page
-    #'atch_file_extension': 'pdf',  # Must be included from interview page
+    #'atch_name': None,  # Must be included from interview page
+
+    'atch_file_extension': 'pdf',
 
     'atch_progress': 100,
     'atch_question': 'Your Document is Ready!',
@@ -54,7 +55,6 @@ code: |
   }
 
   atch_link = atch_itself.pdf.url_for()
-  atch_email_label = 'Send'
   
   for attr in defaults:
     if (not defined(attr)):
@@ -86,7 +86,7 @@ fields:
     default: ${atch_default_email_address}
   - note: ${ action_button_html("#", id_tag="sendAttachmentEmail", classname="atch-button", new_window=atch_do_new_window_email, icon="envelope", label=atch_email_label, color="primary", size="md") }
 #  - note: ${ action_button_html("#", id_tag="downloadAttachment", classname="atch-button", new_window=atch_do_new_window_download, icon="download", label=atch_download_label, color="primary", size="md") }
-  - html: ${atch_after_buttons}
+  - html: ${atch_lower_contents}
 script: |
   <script>
 
