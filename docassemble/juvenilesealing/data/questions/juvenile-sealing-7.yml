@@ -8,6 +8,7 @@ comment: |
       ${ referring_url() }
   but don't send back to preliminary questions.
   TODO: PQ: Say what will happen if their data gets out
+  TODO: Different instructions for filling it out by hand
 ---
 comment: |
   - Immigration asked in previous separate form.
