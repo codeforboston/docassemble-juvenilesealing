@@ -27,11 +27,11 @@ default screen parts:
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 ---
 comment: |
-  Do objects always need to be in their own file?
-  If I do `objects from file`, will that also pull
+  - Do objects always need to be in their own file?
+  - If I do `objects from file`, will that also pull
   in the logic below or do I have to import that separately?
-comment: |
-  Should `applicant` be `user` instead, even though the
+
+  - Should `applicant` be `user` instead, even though the
   questions are about the applicant?
 objects:
   - applicant: Individual
@@ -60,6 +60,8 @@ code: |
 
   reason = ''
   dockets_link = 'TODO'
+  
+  #partial_petition
 
   # How to make sure a pro se user sees the warnings?
   should_show_extra_info = False
@@ -121,14 +123,15 @@ code: |
   
   placeholder_end
 ---
-#include:
-#  - certified-copy-of-dockets.yml
+default validation messages:
+  multiple choice required: You have to pick one.
 ---
 id: open_cases
 question: |
   Open Cases
 fields: 
-  - note: Do you have any open criminal or juvenile cases right now anywhere in the USA?
+  - note: |
+      Do you have any open criminal or juvenile cases right now anywhere in the USA?
   - no label: has_NON_probation_open_cases
     input type: radio
     choices:
@@ -266,9 +269,9 @@ buttons:
   - Restart: restart
 ---
 id: partial_petition
-question: Your Petition
-subquestion: Your form needed two checkmarks.
 event: partial_petition
+question: Your Petition is Ready!
+#subquestion: Your form needed two checkmarks.
 comment: |
   Replace file name with customized file name?
 attachment:
@@ -302,9 +305,9 @@ attachment:
       - "checkboxes.felony": No
 ---
 id: full_petition
-question: Your Petition
-subquestion: Your form needed two checkmarks.
 event: full_petition
+question: Your Petition is Ready!
+#subquestion: Your form needed two checkmarks.
 comment: |
   Replace file name with customized file name?
 attachment:
