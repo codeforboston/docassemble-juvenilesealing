@@ -30,15 +30,15 @@ mandatory: True
 id: prepare_attachment_page
 event: prepare_attachment_page
 code: |
+
+  set_progress(atch_progress)
+
   # Why aren't these logging?
   log(atch_email_address, 'console')
   log(atch_email_template, 'console')
   log(atch_doc, 'console')
-
-  #set_progress(atch_progress)
 ---
-id: download_attachment
-progress: atch_progress
+id: get_attachment
 question: ${atch_question}
 subquestion: |
   ${ atch_subquestion }
