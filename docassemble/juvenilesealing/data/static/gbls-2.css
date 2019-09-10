@@ -55,12 +55,25 @@ button.daquestionbackbutton.btn-link:focus {
   text-decoration-color: rgba( 190, 64, 77, 1 );
 }
 
+
+/* Required answers */
 .form-group.darequired .dawidecol:before {
   position: absolute;
   content: 'You must answer this question';
   color: #dc3545;
   top: -1rem;
   left: 1rem;
+}
+
+.darequired .dafieldpart:before {
+  position: absolute;
+  content: 'You must answer this question';
+  color: #dc3545;
+  top: -0.9rem;
+}
+
+.form-group.darequired .da-form-label:after {
+  content: '';
 }
 
 
