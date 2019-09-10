@@ -71,8 +71,8 @@ code: |
   dockets_link = 'TODO'
   pdf_link = partial_petition_pdf.pdf.url_for()
 
-  atch_progress
-  set_atch_progress
+  #atch_progress
+  prepare_attachment_page
   atch_email_address
   #email_address_2
   #partial_petition_old
@@ -397,7 +397,7 @@ buttons:
   - Restart: restart
 ---
 code: |
-  # attachement stuff
+  # attachment stuff
   if (user_logged_in()):
     atch_default_email_address = user_info().email
   else:

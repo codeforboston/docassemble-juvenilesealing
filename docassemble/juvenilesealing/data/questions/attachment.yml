@@ -1,9 +1,9 @@
 comment: |
-  Alternative formatting for an attachement page.
+  Alternative formatting for an attachment page.
   Unfortunately it also turns it into a question, so
   there's that to deal with.
   
-  Not sure how to accomodate mutliple attachements.
+  Not sure how to accomodate mutliple attachments.
   Something to do with `x`?
   
   TODO: Add default values
@@ -27,8 +27,8 @@ comment: |
   - atch_itself
 ---
 mandatory: True
-id: set_atch_progress
-event: set_atch_progress
+id: prepare_attachment_page
+event: prepare_attachment_page
 code: |
   # Why aren't these logging?
   log(atch_email_address, 'console')
@@ -37,7 +37,7 @@ code: |
 
   #set_progress(atch_progress)
 ---
-id: download_attachement
+id: download_attachment
 progress: atch_progress
 question: ${atch_question}
 subquestion: |
@@ -52,21 +52,21 @@ fields:
     datatype: email
     required: False
     default: ${atch_default_email_address}
-  - note: ${ action_button_html("#", id_tag="sendAttachementEmail", classname="atch-button", new_window=atch_do_new_window_email, icon="envelope", label="Send", color="primary", size="md") }
+  - note: ${ action_button_html("#", id_tag="sendAttachmentEmail", classname="atch-button", new_window=atch_do_new_window_email, icon="envelope", label="Send", color="primary", size="md") }
   - html: |
-      <a id="downloadAttachement" class="download-link atch-button" href=${atch_link}>
+      <a id="downloadAttachment" class="download-link atch-button" href=${atch_link}>
         <i class="fas fa-download"></i> Download PDF for printing
         <span>(you can open it in your browser)</span>
       </a>
-#  - note: ${ action_button_html("#", id_tag="downloadAttachement", classname="atch-button", new_window=atch_do_new_window_download, icon="download", label=atch_download_label, color="primary", size="md") }
+#  - note: ${ action_button_html("#", id_tag="downloadAttachment", classname="atch-button", new_window=atch_do_new_window_download, icon="download", label=atch_download_label, color="primary", size="md") }
 script: |
   <script>
 
-    $("#downloadAttachement").click(function(){
+    $("#downloadAttachment").click(function(){
       url_action_call('open_atch', '', function(){});
     });
 
-    $("#sendAttachementEmail").click(function(){
+    $("#sendAttachmentEmail").click(function(){
 
       let message = "We are trying to send the email to " + val('atch_email_address') + ".";
       flash(message, "secondary");
