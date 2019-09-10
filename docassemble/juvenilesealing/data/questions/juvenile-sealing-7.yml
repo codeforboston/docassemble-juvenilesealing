@@ -160,6 +160,8 @@ code: |
     if (will_write_personal_info):
       partial_petition
 
+  # This is dealing with situations where some of the user's data
+  # is already on the `user` object, like `.first_name`.
   # Get their personal details (3 pages of questions)
   first_name = applicant.name.first
   step_num += 1
@@ -190,6 +192,8 @@ code: |
 
     step_value = 100/num_pages
 
+    # This is dealing with situations where some of the user's data
+    # is already on the `user` object, like `.first_name`.
     step_num = 0
     if (defined('applicant.name.first')):
       step_num -= 3
