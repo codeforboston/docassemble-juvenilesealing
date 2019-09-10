@@ -74,7 +74,7 @@ code: |
   reason = ''
   dockets_link = 'TODO'
 
-  progressor = ProgressTracker(12)
+  progressor = ProgressTracker(12) # Manually assigns 12 pages
   progressor.start()
 
   # How to make sure a pro se user sees the warnings?
@@ -96,7 +96,9 @@ code: |
   progressor.increment()
   
   # Test
-  trigger_attachment_page
+  #atch_itself = partial_petition_pdf
+  #atch_itself = full_petition_pdf
+  #trigger_attachment_page
 
   reason = ineligibility_reasons.juvenile_case_ma
   if (juvenile_cases_in_past_3_years_ma is True): sorry_end
@@ -138,9 +140,11 @@ code: |
   # and offer choice about saving personal info.
   if (should_show_extra_info):
     if (will_write_personal_info):
-      # Add partial_petition vars here
+      atch_itself = partial_petition_pdf
       trigger_attachment_page
 
+  # Somehow triggering the full petition triggers these too
+  # , but... without progress?
   first_name = applicant.name.first
   progressor.increment()
   #filename = first_name + '-' + last_name + '-juvenile-sealing-petition'
@@ -151,14 +155,13 @@ code: |
   applicant.ssn
   progressor.increment()
 
-  full_petition
+  atch_itself = full_petition_pdf
+  trigger_attachment_page
   
   placeholder_end
 ---
 comment: Strings that are used multiple times or are awkward
 code: |
-  pdf_name = 'juvenile-sealing-petition'
-  
   petition_instructions_todo = """
     We think you're probably eligible to seal your
     juvenile records! Your petition is done and ready to
@@ -345,7 +348,10 @@ include:
 ---
 id: placeholder_end
 event: placeholder_end
-question: PDF creation coming soon!
+question: Thank you for visiting!
+subquestion: |
+  We hope we've helped a little. If you're looking for more help,
+  please see the other pages of our website.
 buttons:
   - Exit: exit
   - Restart: restart
@@ -371,17 +377,17 @@ code: |
   atch_subquestion = petition_instructions_todo + subq_middle + petition_instructions_after + subq_end
   atch_after_buttons = ''
   
-  atch_name = pdf_name
+  atch_name = 'juvenile-sealing-petition'
   atch_file_extension = 'pdf'
   atch_do_new_window_download = True
   atch_download_label = 'Download PDF for printing (you can open it in your browser)'
   atch_do_new_window_email = False
-  atch_itself = partial_petition_pdf
 ---
+id: partial_petition
 attachment:
-  - name: ${pdf_name}
+  - name: ${atch_name}
     variable name: partial_petition_pdf
-    filename: ${pdf_name}
+    filename: ${atch_name}
     pdf template file: juvenile-sealing-petition.pdf
     fields:
       - "applicant.no_delinquency": Yes
@@ -410,15 +416,12 @@ attachment:
       - "checkboxes.felony": No
 ---
 id: full_petition
-event: full_petition
-progress: 100
-question: 3 Your Petition
-subquestion: Your form needed two checkmarks.
 comment: |
   Replace file name with customized file name?
 attachment:
-  - name: juvenile-sealing-petition
-    filename: juvenile-sealing-petition
+  - name: ${atch_name}
+    variable name: full_petition_pdf
+    filename: ${atch_name}
     pdf template file: juvenile-sealing-petition.pdf
     fields:
       - "applicant.no_delinquency": Yes
@@ -445,9 +448,6 @@ attachment:
       - "signature_juvenile": ''
       - "checkboxes.misdemeanor": No
       - "checkboxes.felony": No
-buttons:
-  - Exit: exit
-  - Restart: restart
 ---
 id: need_records
 event: get_records_end
