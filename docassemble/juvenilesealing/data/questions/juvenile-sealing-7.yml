@@ -72,11 +72,7 @@ code: |
   dockets_link = 'TODO'
   pdf_link = partial_petition_pdf.pdf.url_for()
 
-  #atch_progress
-  prepare_attachment_page
-  atch_email_address
-  #email_address_2
-  #partial_petition_old
+  trigger_attachment_page
 
   num_pages, step_value, step_num = get_progress_bar_starting_vals(9, 3, 'applicant.name.first')
   set_progress(step_value * step_num)
