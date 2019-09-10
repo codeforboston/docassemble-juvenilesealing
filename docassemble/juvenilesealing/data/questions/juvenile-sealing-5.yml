@@ -123,10 +123,6 @@ code: |
   
   placeholder_end
 ---
-code: |
-  # Repeated text
-  must_answer = '<span style="color:red">(You must answer)</span>'
----
 default validation messages:
   multiple choice required: You have to pick one.
 ---
