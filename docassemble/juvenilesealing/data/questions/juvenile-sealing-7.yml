@@ -70,7 +70,6 @@ code: |
 
   reason = ''
   dockets_link = 'TODO'
-  pdf_link = partial_petition_pdf.pdf.url_for()
 
   trigger_attachment_page
 
