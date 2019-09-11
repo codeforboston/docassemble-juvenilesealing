@@ -9,9 +9,11 @@ comment: |
   TODO: Add default values
 ---
 comment: |
-  Variables needed:
+  Variables required:
   - atch_itself
+  - atch_name
 
+  Variables that have defaults:
   - atch_progress
   - atch_question
   - atch_subquestion
@@ -21,7 +23,6 @@ comment: |
   - atch_email_contents
   - atch_email_subject
   
-  - atch_name
   - atch_file_extension
   - atch_do_new_window_download
   - atch_download_label

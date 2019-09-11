@@ -25,7 +25,6 @@ comment: |
 #objects:
 #  - ls_fields: LegalServerFields.using(url_args=url_args,client=client,advocate=advocate,adverse_parties=adverse_parties)
 ---
-mandatory: True
 code: |
   #applicant.name.first
   #applicant.mothers_maiden_name

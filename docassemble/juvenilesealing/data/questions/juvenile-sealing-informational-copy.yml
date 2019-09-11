@@ -1,0 +1,22 @@
+---
+comment: |
+  Pro se informational copy that shared between versions.
+---
+id: getting_cori_and_juvi_records
+code: |
+  getting_cori = """To ask for your <span style="color: green">online</span>
+  adult CORI report, create an account at
+  [Massachusetts iCORI site](https://icori.chs.state.ma.us/icori/ext/global/landing.action?page=1&bod=1566991096995&m=presentLanding).
+  It costs $25, but if you are low income you might be be able
+  to ask for waiver of the fee."""
+
+  getting_juvenile_records = """To ask for a free copy of your MASSACHUSETTS
+    juvenile record, <span style="color: green">mail in</span> a
+    [Juvenile Record Request form](https://www.mass.gov/files/documents/2016/09/pt/juv-rec-req.pdf).
+    <span style="color: red">I can't see it, even when I download it.
+    Where does it need to get mailed to?</span>"""
+---
+id: learn_more
+code: |
+  learn_more_about_juvenile_sealing = ""
+---
