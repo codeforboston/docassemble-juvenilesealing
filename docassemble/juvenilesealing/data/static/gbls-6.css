@@ -69,7 +69,7 @@ button.daquestionbackbutton.btn-link:focus {
   position: absolute;
   content: 'You must answer this question';
   color: #dc3545;
-  top: -0.9rem;
+  top: -0.85rem;
 }
 
 .form-group.darequired .da-form-label:after {

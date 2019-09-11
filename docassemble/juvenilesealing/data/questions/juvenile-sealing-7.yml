@@ -343,9 +343,14 @@ buttons:
   - Finish by hand: True
   - Keep using this form: False
 ---
+comment: Using questions from other interviews
 include:
   - personal-details.yml
   - attachment.yml
+---
+comment: Using text strings that are shared between versions
+include:
+  - juvenile-sealing-informational-copy.yml
 ---
 id: placeholder_end
 event: placeholder_end
