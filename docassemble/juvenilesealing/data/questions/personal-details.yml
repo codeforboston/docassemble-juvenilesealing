@@ -12,9 +12,8 @@ modules:
   - docassemble.gbls.legal_server
 #  - docassemble.ssa.ssa
 ---
-features:
+#features:
 #  javascript: docassemble.ssa:ssa.js
-  progress bar: True
 ---
 #objects:
 #  - applicant: Individual
