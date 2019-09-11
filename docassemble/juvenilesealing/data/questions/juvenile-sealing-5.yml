@@ -266,7 +266,7 @@ include:
 ---
 comment: Using text strings that are shared between versions
 include:
-  - juvenile-sealing-informational-copy.yml
+  - juvenile-sealing-informational-text.yml
 ---
 id: placeholder_end
 event: placeholder_end
