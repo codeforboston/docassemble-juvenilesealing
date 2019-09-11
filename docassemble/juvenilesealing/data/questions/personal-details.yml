@@ -55,8 +55,8 @@ question: |
 comment: |
   - TODO: P. - Better definition of mother and father names?
 fields:
-  - Mother's maiden name (last name before she was married): x.mothers_maiden_name
-  - Father's full name (before he was married?): x.fathers_maiden_name
+  - Mother's maiden name: x.mothers_maiden_name
+  - "Father's full name <span style='color: red'>(before he was married?)</span>": x.fathers_maiden_name
   - "Husband/Wife's name": x.spouses_name
     required: False
   
