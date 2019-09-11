@@ -37,14 +37,14 @@ default screen parts:
 ---
 comment: Using text strings that are shared between versions
 include:
-  - juvenile-sealing-informational-copy.yml
+  - juvenile-sealing-informational-text.yml
 ---
 mandatory: True
 code: |
   intro
 
   if (not have_docket_copies_already is True):
-    if (not read_immigration_disclaimer):
+    if (not read_citizen_disclaimer):
       do_not_seal  # end
     elif (wants_fed_job is True or wants_fed_job is None):
       wants_docket_sheets  # end
@@ -55,54 +55,30 @@ code: |
   # Strings that get reused
   sealing_url = 'https://interviews-dev.gbls.org/interview?dockets=notneeded&i=docassemble.playground42%3Ajuvenile-sealing-7.yml'
   needs_dockets_url = 'https://interviews-dev.gbls.org/interview?dockets=needed&i=docassemble.playground42%3Ajuvenile-sealing-7.yml'
-  get_docket_url = 'https://duckduckgo.com'
-  
-  sealing_booklet_text = 'Read more about sealing juvenile records from the [GBLS 2019 booklet](https://www.gbls.org/sites/default/files/2019-08/juvenile_booklet_august_2019F.pdf)'
+  #get_docket_url = 'https://duckduckgo.com'  # don't have one right now
 ---
 id: intro
 field: intro
 question: Can You Seal Your Juvenile Record?
 subquestion: |
-  To find out, this is what we need to do: 
+  ${form_steps}
 
-  1. Find out if there's a reason you **shouldn't** seal your records.
-  1. Ask questions about your old and open cases.
-  1. Tell you if you might be eligible for sealing.
-  1. Ask for personal details like your social security number.
-  
-  After that, we can give you a form (petition) to download,
-  print, and sign. We'll tell you where to mail it.
-
-  #### More about this form
-  
-  <span style="color: green">If you have the information you need,</span>
-  these questions
-  can take about to **15 minutes** to answer.
-  It will be easier to give the right answers if you
-  have a copy of your juvenile record report,
-  and also your CORI report if you had cases in an adult court.
-  These reports will give a summary of all your criminal charges
-  and tell you how each case ended.
+  ${more_form_info}
 
   ${getting_juvenile_records} ${getting_cori}
 
-  You also might have to
-  stop and come back later if you need to
-  get a certified copy of your docket sheets.
+  ${may_pause_for_dockets}
   
-  If we need to store any personally
-  identifying information,
-  like your name and social
-  security number, we will ask you first.
+  ${will_ask_permission_to_store}
 
-  **Note:** Whenever we say USA that includes United States
-  possessions (like Guam).
+  ${usa_possessions}
 under: |
   ${sealing_booklet_text}
 ---
 id: have_already
 comment: |
   - TODO: Add link to expungement info
+  - TODO: More detailed description page along with instructions?
   - TODO: Should we show this before or after we see if they're
     eligible or not? Having them go through the whole thing
     just to have to come back in the future would be a pain.
@@ -112,35 +88,20 @@ comment: |
     [Answer: Before]
 question: Certified Copies of Docket Sheets
 subquestion: |
-  **Do you already have a certified copy of docket sheets for
-  all of your cases?**
-
-  Note: A docket sheet is different than a
-  criminal record or juvenile report called a CORI. Docket sheets are
-  papers in your court case at the courthouse that say
-  what happened in each of your cases every time you went to court.
+  ${have_certified_copy}
 yesnomaybe: have_docket_copies_already
 #under: |
 #  Go to this website to find out about certified
 #  docket sheets. <span style="color: red">(TODO: Need website)</span>
 ---
-id: read_immigration_disclaimer
+id: read_citizen_disclaimer
 question: Are you a US citizen?
-yesno: read_immigration_disclaimer
+yesno: read_citizen_disclaimer
 ---
 id: wants_fed_job
 question: Will you ever want to do any of these?
 subquestion: |
-  * Work with children under 18
-  * Work for a bank
-  * Join the military
-  * Work for an employer who participates in the Work
-     Opportunity Tax Credit (WOTC) program
-  * Work for an employer that has federal funding
-  * Work for a political office
-  * Run for political office
-  * Work for any other job that needs a federal background
-  check
+  ${jobs_list}
 yesnomaybe: wants_fed_job
 ---
 id: how_to_get_copies
