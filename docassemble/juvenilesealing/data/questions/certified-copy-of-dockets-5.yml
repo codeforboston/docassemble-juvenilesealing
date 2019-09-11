@@ -40,6 +40,10 @@ default screen parts:
   right: |
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 ---
+comment: Using text strings that are shared between versions
+include:
+  - juvenile-sealing-informational-copy.yml
+---
 mandatory: True
 code: |
   intro
@@ -85,15 +89,7 @@ subquestion: |
   These reports will give a summary of all your criminal charges
   and tell you how each case ended.
 
-  To ask for a free copy of your MASSACHUSETTS
-  juvenile record, <span style="color: green">mail in</span> a
-  [Juvenile Record Request form](https://www.mass.gov/files/documents/2016/09/pt/juv-rec-req.pdf).
-  <span style="color: red">I can't see it, even when I download it.</span>
-  To ask for your <span style="color: green">online</span>
-  adult CORI report, create an account at
-  [Massachusetts iCORI site](https://icori.chs.state.ma.us/icori/ext/global/landing.action?page=1&bod=1566991096995&m=presentLanding).
-  It costs $25, but if you are low income you might be be able
-  to ask for waiver of the fee.
+  ${getting_juvenile_records} ${getting_cori}
 
   You also might have to
   stop and come back later if you need to
