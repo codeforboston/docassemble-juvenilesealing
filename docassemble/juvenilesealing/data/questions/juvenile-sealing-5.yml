@@ -1,6 +1,8 @@
 ---
 comment: |
-  TODO: Ask further questions
+  TODO: ADDRESS TO MAIL IT TO
+  TODO: Deal with progress
+  TODO: Add text about getting juvenile records
 ---
 comment: |
   - Immigration asked in previous separate form.
@@ -37,6 +39,7 @@ objects:
   - applicant: Individual
   - ineligibility_reasons: DAObject
 ---
+id: reasons
 code: |
   # ### Creating reasons ####
   start = "Sorry, but because you "
@@ -280,9 +283,6 @@ attachment:
     pdf template file: juvenile-sealing-petition.pdf
     fields:
       - "applicant.no_delinquency": Yes
-      - "applicant.no_misdemeanor": No
-      - "applicant.no_felony": No
-      - "applicant.decriminalized": No
       - "applicant.name.last": ''
       - "applicant.name.first": ''
       - "applicant.name.middle": ''
@@ -301,8 +301,6 @@ attachment:
       - "signature_always": ''
       - "checkboxes.juvenile": Yes
       - "signature_juvenile": ''
-      - "checkboxes.misdemeanor": No
-      - "checkboxes.felony": No
 ---
 id: full_petition
 event: full_petition
@@ -316,9 +314,6 @@ attachment:
     pdf template file: juvenile-sealing-petition.pdf
     fields:
       - "applicant.no_delinquency": Yes
-      - "applicant.no_misdemeanor": No
-      - "applicant.no_felony": No
-      - "applicant.decriminalized": No
       - "applicant.name.last": ${applicant.name.last}
       - "applicant.name.first": ${applicant.name.first}
       - "applicant.name.middle": ${applicant.name.middle}
@@ -337,8 +332,6 @@ attachment:
       - "signature_always": ''
       - "checkboxes.juvenile": Yes
       - "signature_juvenile": ''
-      - "checkboxes.misdemeanor": No
-      - "checkboxes.felony": No
 buttons:
   - Exit: exit
   - Restart: restart
@@ -349,10 +342,17 @@ question: |
   Sorry, we can't help until you have more information
 subquestion: |
   It looks like you don't know enough about your records.
-  Click [here](https://icori.chs.state.ma.us/icori/ext/global/landing.action?page=1&bod=1566991096995&m=presentLanding)
-  to go to the Massachusetts iCORI site
-  and create an account for requesting your CORI.
-  Your CORI will help you answer the questions.
+
+  To ask for a free copy of your MASSACHUSETTS
+  juvenile record, <span style="color: green">mail in</span> a
+  [Juvenile Record Request form](https://www.mass.gov/files/documents/2016/09/pt/juv-rec-req.pdf).
+  <span style="color: red">I can't see it, even when I download it.</span>
+  To ask for your <span style="color: green">online</span>
+  adult CORI report, create an account at
+  [Massachusetts iCORI site](https://icori.chs.state.ma.us/icori/ext/global/landing.action?page=1&bod=1566991096995&m=presentLanding).
+  It costs $25, but if you are low income you might be be able
+  to ask for waiver of the fee.
+  Those will help you answer the questions.
 
   **Get your CORI and come
   back soon so we can
