@@ -53,7 +53,7 @@ code: |
 id: jobs
 comment: Work for the military too?
 code: |
-  job_list = """
+  jobs_list = """
     * Work with children under 18
     * Work for a bank
     * Join the military
