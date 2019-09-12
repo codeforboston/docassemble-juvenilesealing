@@ -54,8 +54,14 @@ code: |
   what happened in each of your cases every time
   you went to court."""
 ---
+id: citizen_text
+code: |
+  citizen_disclaimer = "Are you a US citizen?"
+---
 id: jobs_text
 code: |
+  jobs_title = "Will you ever want to do any of these?"
+
   jobs_list = """
     * Work with young children
     * Work for a bank in certain positions
