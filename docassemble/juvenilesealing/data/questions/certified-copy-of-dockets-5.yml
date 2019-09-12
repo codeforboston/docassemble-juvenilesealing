@@ -3,23 +3,50 @@ comment: |
   to avoid answering extra questions. Also, to avoid some
   personal questions being stored with the rest of the data.
 
-  TODO: For example, if you seal the case, you might not be
-  able to get papers you need from the
-  sealed court file in time for an immigration hearing.
-  TODO: Juvenile delinquency is same as conviction? Can just
-  do one question for MA and other states?
-  TODO: Can I take a stab at a simplified version of the
-  sealing info form?
-  TODO: Some work with children is ok?
-  TODO: 'WHO CAN SEE JUVENILE CASES ON A CORI REPORT?' - before
-  or after sealing?
+  # Questions
+  0. Is juv. delinquency vs. youthful offencer cases.
+  todo: Reduce it to one question
+  1. How get records of other states
+    todo: "A MA CORI or juvenile record report won't have
+      information about cases from other states."
+  1b. Can't help them get those records?
+  answer: clean slate clearing house. For info for getting records
+    from other states.
+    todo: Will be sent link.
+  2. Work for the military, too (contractors)?
+  todo: "Join or work for the military."
+  todo: "Certain jobs at a bank." (teller is sometimes
+    ok) (mortgage broker a problem)
+  3. All children?
+  answer: Not high school students. Under 6 or so.
+    todo: "young children"
+  4. Separate page for docket instructions?
+  answer: Maybe
+    Info: best in person. Mail sometimes falls between the cracks.
+    Often people don't get dockets on their own. Maybe not so
+    important with sealing. Expungement is different.
+  5. Some things on CORI don't say 'convicted'. More detailed instructions?
+    answer: cori makes it easy. each says if it's a
+      conviction. juvi records hard to read.
+        5a1. Picture of what to look for?
+        5a2. Picture of where to look?
+        answer: Back off a bit about records. Most people know
+        answers well enough and they'll get feedback if
+        they're missing info.
+          todo: Don't block.
+  6. Post-release handling.
+  answer/todo: We're all happy to keep iterating.
+  7. TODO: Add link to expungement info?
+  answer: maybe. only if we find a good place
+  Notes:
+  - Don't use CARI. It's a little different and would be confusing.
+
+  # TODOs
   TODO: 'may' to 'can'? Really go over language with a fine-toothed
   comb
-  TODO: Add info about how to get dockets plus costs
-  TODO: Say need juvenile records in later interview too
-  TODO: Say... something. Don't remember.
-  TODO: Fix 'url' instead of 'Try Sealing'
-  TODO: How about records from other states?
+  TODO: Link to Mass Legal juvenile record request interview in future
+  TODO (booklet): 'WHO CAN SEE JUVENILE CASES ON A CORI REPORT?'
+  - before or after sealing?
 ---
 metadata:
   title: |
@@ -34,6 +61,8 @@ metadata:
 ---
 features:
 #  question back button: True # weird looking with the styles...
+#  Also maybe not needed for this first part and good to distinguish
+#  the two?
   css: gbls-2.css
 ---
 default screen parts:
@@ -61,8 +90,6 @@ code: |
   sealing_url = 'https://interviews-dev.gbls.org/interview?dockets=notneeded&i=docassemble.playground42%3Ajuvenile-sealing-5.yml'
   needs_dockets_url = 'https://interviews-dev.gbls.org/interview?dockets=needed&i=docassemble.playground42%3Ajuvenile-sealing-5.yml'
   get_docket_url = 'https://duckduckgo.com'
-  
-  sealing_booklet_text = 'Read more about sealing juvenile records from the [GBLS 2019 booklet](https://www.gbls.org/sites/default/files/2019-08/juvenile_booklet_august_2019F.pdf)'
 ---
 id: intro
 field: intro
@@ -84,8 +111,6 @@ under: |
 ---
 id: have_already
 comment: |
-  - TODO: Add link to expungement info
-  - TODO: More detailed description page along with instructions?
   - TODO: Should we show this before or after we see if they're
     eligible or not? Having them go through the whole thing
     just to have to come back in the future would be a pain.
@@ -195,5 +220,4 @@ buttons:
   - Exit and order sheets: exit
   - Try sealing: leave
     url: ${needs_dockets_url}
----
 ---
