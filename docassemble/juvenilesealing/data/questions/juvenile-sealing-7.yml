@@ -56,9 +56,8 @@ code: |
   ineligibility_reasons.wants_to_continue = ""
   ineligibility_reasons.open_case = start + "**have an open case**" + end
   ineligibility_reasons.probation = start + "**are on probation**" + end
-  ineligibility_reasons.juvenile_case_ma = start + "**had a juvenile case in Massachusetts" + years + end
-  ineligibility_reasons.juvenile_custody_usa = start + "**have been in juvenile custody in Massachusetts" + years + end
-  ineligibility_reasons.juvenile_other_state = start + "**found to be delinquent in another state" + years + end
+  ineligibility_reasons.juvenile_case = start + "**had a juvenile case in a US state" + years + end
+  ineligibility_reasons.juvenile_custody = start + "**have been in juvenile custody in a US state" + years + end
   ineligibility_reasons.convicted_states = start + "**were convicted" + years + end
   ineligibility_reasons.convicted_federal = start + "**were convicted" + years + end
   ineligibility_reasons.incarcerated = start + "**were incarcerated" + years + end
@@ -74,7 +73,7 @@ code: |
   reason = ''
   dockets_link = 'TODO'
 
-  progressor = ProgressTracker(12) # Manually assigns 12 pages
+  progressor = ProgressTracker(10) # Manually assigns 10 pages
   progressor.start()
 
   # How to make sure a pro se user sees the warnings?
@@ -100,23 +99,14 @@ code: |
   #atch_itself = full_petition_pdf
   #trigger_attachment_page
 
-  reason = ineligibility_reasons.juvenile_case_ma
-  if (juvenile_cases_in_past_3_years_ma is True): sorry_end
-  elif (juvenile_cases_in_past_3_years_ma is None): get_records_end
+  reason = ineligibility_reasons.juvenile_case
+  if (juvenile_cases_in_past_3_years is True): sorry_end
+  elif (juvenile_cases_in_past_3_years is None): get_records_end
   progressor.increment()
   
-  reason = ineligibility_reasons.juvenile_custody_usa
-  if (juvenile_custody_in_past_3_years_usa is True): sorry_end
-  elif (juvenile_custody_in_past_3_years_usa is None): get_records_end
-  progressor.increment()
-
-  reason = ineligibility_reasons.juvenile_other_state
-  if (juvenile_cases_in_past_3_years_other_state is True):
-    progressor.increment()
-    if (juvenile_delinquency_in_other_state_in_past_3_years is True): sorry_end
-    elif (juvenile_delinquency_in_other_state_in_past_3_years is None): get_records_end
-  elif (juvenile_cases_in_past_3_years_other_state is None): get_records_end
-  else: progressor.increment()
+  reason = ineligibility_reasons.juvenile_custody
+  if (juvenile_custody_in_past_3_years is True): sorry_end
+  elif (juvenile_custody_in_past_3_years is None): get_records_end
   progressor.increment()
 
   reason = ineligibility_reasons.convicted_states
@@ -143,8 +133,8 @@ code: |
       atch_itself = partial_petition_pdf
       trigger_attachment_page
 
-  # Somehow triggering the full petition triggers these too
-  # , but... without progress?
+  # Somehow triggering the full petition triggers these
+  # too, but... without progress. So don't do that.
   first_name = applicant.name.first
   progressor.increment()
   #filename = first_name + '-' + last_name + '-juvenile-sealing-petition'
@@ -255,35 +245,21 @@ subquestion: |
   case in the USA, including any federal court case?
 yesnomaybe: is_on_probation
 ---
-id: juvenile_cases_ma
-question: Juvenile Cases - MA
+id: juvenile_cases
+question: Juvenile Cases
 subquestion: |
   Have you had any juvenile cases in Massachusetts on or after ${ today().minus(years=3) }?
 
   **Note:** Motor vehicle offenses where the fine was not over $50 don't count.
-yesnomaybe: juvenile_cases_in_past_3_years_ma
----
-id: juvenile_cases_states
-question: Juvenile Cases - Other States
-subquestion: |
-  Have you had any juvenile cases in another state on or after ${ today().minus(years=3) }?
-
-  **Note:** Motor vehicle offenses where the fine was not over $50 don't count.
-yesnomaybe: juvenile_cases_in_past_3_years_other_state
----
-id: juvenile_cases_delinquency
-question: Juvenile Cases - Other States
-subquestion: |
-  In that other state or states, were you found to be delinquent or were you committed as a delinquent?
-yesnomaybe: juvenile_delinquency_in_other_state_in_past_3_years
+yesnomaybe: juvenile_cases_in_past_3_years
 ---
 id: juvenile_cases_custody
-question: Juvenile Cases - Custody
+question: Juvenile Custody
 subquestion: |
   Have you been in juvenile custody anywhere in the USA on or after ${ today().minus(years=3) }?
   
   Juvenile custody is incarceration for people under the age of <span style="color:red">___</span>
-yesnomaybe: juvenile_custody_in_past_3_years_usa
+yesnomaybe: juvenile_custody_in_past_3_years
 
 
 ---
