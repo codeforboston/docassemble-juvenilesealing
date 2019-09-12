@@ -1,35 +1,10 @@
 ---
 comment: |
-  Questions
-  0. Is juv. delinquency vs. youthful offencer cases.
-  [-done-] todo: Reduce it to one question
-  1. TODO: Timing? Took 20 min. for legal students.
-  [-done-] todo: Say 30 min.?
-  1b. They have a form for something else that seems to
-    work really well. They'll send it over just for us to get a gander.
-  2. TODO: What if there is no legal help in their area?
-  answer: That's a tough question. There are lots of little
-    things to persue.
-    - Go to courthouse of any court where
-    you have a case and talk to somebody in probation, for example.
-    - Also, if send petition in and rejected, will get reasons why.
-    - Honestly address people who may not be able to get help.
-  3. TODO: Link to info on CORI FAQ - CORI wrong, what it is etc.?
-    answer: mass legal help website about that
-    todo: will send link. Also, though, de-emphasize getting records
-  4. TODO: ADDRESS TO MAIL IT TO
-  answer: at top of form. copy from there
-  5. further resources:
-  answer: Will send
-    - applying for jobs booklet (will be put online)
-    - cori and housing
-    - employment
-    - Big know your cori rights booklet
----
-comment: |
   - Immigration asked in previous separate form.
   - Don't ask personal info until we know they want to print the form.
   - Personal info code can look like https://github.com/GBLS/docassemble-gbls/blob/master/docassemble/gbls/data/questions/basic-questions-gbls.yml
+
+  TODOs: see sealing-todo.yml
 ---
 metadata:
   title: |

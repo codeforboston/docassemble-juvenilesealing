@@ -2,49 +2,8 @@ comment: |
   Currently, the way for legal professionals/volunteers
   to avoid answering extra questions. Also, to avoid some
   personal questions being stored with the rest of the data.
-
-  # Questions
-  1. How get records of other states
-    todo: "A MA CORI or juvenile record report won't have
-      information about cases from other states."
-  1b. Can't help them get those records?
-  answer: clean slate clearing house. For info for getting records
-    from other states.
-    todo: Will be sent link.
-  2. Work for the military, too (contractors)?
-  [-done-] todo: "Join or work for the military."
-  [-done-] todo: "Certain jobs at a bank." (teller is sometimes
-    ok) (mortgage broker a problem)
-  3. All children?
-  answer: Not high school students. Under 6 or so.
-  [-done-]  todo: "young children"
-  4. Separate page for docket instructions?
-  answer: Maybe
-    Info: best in person. Mail sometimes falls between the cracks.
-    Often people don't get dockets on their own. Maybe not so
-    important with sealing. Expungement is different.
-  5. Some things on CORI don't say 'convicted'. More detailed instructions?
-    answer: cori makes it easy. each says if it's a
-      conviction. juvi records hard to read.
-      5a1. Picture of what to look for?
-      5a2. Picture of where to look?
-      answer: Back off a bit about records. Most people know
-        answers well enough and they'll get feedback if
-        they're missing info.
-          todo: Don't block.
-  6. Post-release handling.
-  answer/todo: We're all happy to keep iterating.
-  7. TODO: Add link to expungement info?
-  answer: maybe. only if we find a good place
-  Notes:
-  - Don't use the term 'CARI'. It's a little different and would be confusing.
-
-  # TODOs
-  TODO: 'may' to 'can'? Really go over language with a fine-toothed
-  comb
-  TODO: Link to Mass Legal juvenile record request interview in future
-  TODO (booklet): 'WHO CAN SEE JUVENILE CASES ON A CORI REPORT?'
-  - before or after sealing?
+  
+  TODOs: See sealing-todo.yml
 ---
 metadata:
   title: |
