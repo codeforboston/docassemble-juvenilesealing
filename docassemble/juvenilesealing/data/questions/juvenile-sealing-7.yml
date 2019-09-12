@@ -152,7 +152,10 @@ code: |
     1. Download it
     2. Print it
     3. Sign it in two places (where the arrows are)
-    4. Mail it to <span style="color:red">TODO: Where to mail this to?</span>
+    4. Mail it to:
+    
+      Commissioner of Probation
+      One Ashburton Place, Room 405, Boston, MA 02108
   """
   
   petition_instructions_after = """
@@ -419,16 +422,7 @@ question: |
   Sorry, we can't help until you have more information
 subquestion: |
 
-  To ask for a free copy of your MASSACHUSETTS
-  juvenile record, <span style="color: green">mail in</span> a
-  [Juvenile Record Request form](https://www.mass.gov/files/documents/2016/09/pt/juv-rec-req.pdf).
-  <span style="color: red">I can't see it, even when I download it.</span>
-  To ask for your <span style="color: green">online</span>
-  adult CORI report, create an account at
-  [Massachusetts iCORI site](https://icori.chs.state.ma.us/icori/ext/global/landing.action?page=1&bod=1566991096995&m=presentLanding).
-  It costs $25, but if you are low income you might be be able
-  to ask for waiver of the fee.
-  Those will help you answer the questions.
+  ${getting_juvenile_records} ${getting_cori}
   
   ${legal_aid_CORI}
 
