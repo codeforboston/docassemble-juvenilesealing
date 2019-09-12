@@ -46,7 +46,7 @@ code: |
   ineligibility_reasons.wants_to_continue = ""
   ineligibility_reasons.open_case = start + "**have an open case**" + end
   ineligibility_reasons.probation = start + "**are on probation**" + end
-  ineligibility_reasons.juvenile_case_ma = start + "**had a juvenile case in a US state" + years + end
+  ineligibility_reasons.juvenile_cases_in_past_3_years = start + "**had a juvenile case in a US state" + years + end
   ineligibility_reasons.juvenile_custody_usa = start + "**have been in juvenile custody in a US state" + years + end
   ineligibility_reasons.convicted_states = start + "**were convicted" + years + end
   ineligibility_reasons.convicted_federal = start + "**were convicted" + years + end
@@ -78,7 +78,7 @@ code: |
   if (is_on_probation == 'True'): sorry
   elif (is_on_probation == 'unsure'): get_records
 
-  reason = ineligibility_reasons.juvenile_case_ma
+  reason = ineligibility_reasons.juvenile_cases_in_past_3_years
   if (juvenile_cases_in_past_3_years == 'True'): sorry
   elif (juvenile_cases_in_past_3_years == 'unsure'): get_records
   
