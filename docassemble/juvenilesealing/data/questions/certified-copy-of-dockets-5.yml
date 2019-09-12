@@ -12,12 +12,12 @@ comment: |
     from other states.
     todo: Will be sent link.
   2. Work for the military, too (contractors)?
-  todo: "Join or work for the military."
-  todo: "Certain jobs at a bank." (teller is sometimes
+  [-done-] todo: "Join or work for the military."
+  [-done-] todo: "Certain jobs at a bank." (teller is sometimes
     ok) (mortgage broker a problem)
   3. All children?
   answer: Not high school students. Under 6 or so.
-    todo: "young children"
+  [-done-]  todo: "young children"
   4. Separate page for docket instructions?
   answer: Maybe
     Info: best in person. Mail sometimes falls between the cracks.
