@@ -1,9 +1,6 @@
 ---
 comment: |
   Pro se informational copy that shared between versions.
-  
-  Questions:
-  1. Father's full name? Maiden name?
 ---  
 id: form_prep
 code: |
@@ -21,7 +18,7 @@ code: |
   
     <span style="color: green">If you have the information you need,</span>
     these questions
-    can take about to **30 minutes** to answer.
+    can take about to **15 minutes** to answer.
     It will be easier to give the right answers if you
     have a copy of your juvenile record report,
     and also your CORI report if you had cases in an adult court.
@@ -57,9 +54,9 @@ id: jobs
 comment: Work for the military too?
 code: |
   jobs_list = """
-    * Work with young children
-    * Work for a bank in certain positions
-    * Work for or join the military
+    * Work with children under 18
+    * Work for a bank
+    * Join the military
     * Work for an employer who participates in the Work
        Opportunity Tax Credit (WOTC) program
     * Work for an employer that has federal funding
