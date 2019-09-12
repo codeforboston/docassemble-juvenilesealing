@@ -1,6 +1,8 @@
 ---
 comment: |
   Questions
+  0. Is juv. delinquency vs. youthful offencer cases.
+  [-done-] todo: Reduce it to one question
   1. TODO: Timing? Took 20 min. for legal students. Say 30 min.?
   1b. They have a form for something else that seems to
     work really well. They'll send it over just for us to get a gander.
@@ -68,9 +70,8 @@ code: |
   ineligibility_reasons.wants_to_continue = ""
   ineligibility_reasons.open_case = start + "**have an open case**" + end
   ineligibility_reasons.probation = start + "**are on probation**" + end
-  ineligibility_reasons.juvenile_case_ma = start + "**had a juvenile case in Massachusetts" + years + end
-  ineligibility_reasons.juvenile_custody_usa = start + "**have been in juvenile custody in Massachusetts" + years + end
-  ineligibility_reasons.juvenile_other_state = start + "**found to be delinquent in another state" + years + end
+  ineligibility_reasons.juvenile_case_ma = start + "**had a juvenile case in a US state" + years + end
+  ineligibility_reasons.juvenile_custody_usa = start + "**have been in juvenile custody in a US state" + years + end
   ineligibility_reasons.convicted_states = start + "**were convicted" + years + end
   ineligibility_reasons.convicted_federal = start + "**were convicted" + years + end
   ineligibility_reasons.incarcerated = start + "**were incarcerated" + years + end
@@ -102,17 +103,12 @@ code: |
   elif (is_on_probation == 'unsure'): get_records
 
   reason = ineligibility_reasons.juvenile_case_ma
-  if (juvenile_cases_in_past_3_years_ma == 'True'): sorry
-  elif (juvenile_cases_in_past_3_years_ma == 'unsure'): get_records
+  if (juvenile_cases_in_past_3_years == 'True'): sorry
+  elif (juvenile_cases_in_past_3_years == 'unsure'): get_records
   
   reason = ineligibility_reasons.juvenile_custody_usa
   if (juvenile_custody_in_past_3_years_usa == 'True'): sorry
   elif (juvenile_custody_in_past_3_years_usa == 'unsure'): get_records
-
-  reason = ineligibility_reasons.juvenile_other_state
-  if (juvenile_cases_in_past_3_years_other_state == 'True'):
-    if (juvenile_delinquency_in_other_state_in_past_3_years == 'True'): sorry
-    elif (juvenile_delinquency_in_other_state_in_past_3_years == 'unsure'): get_records
 
   reason = ineligibility_reasons.convicted_states
   if (convicted_in_past_3_years_states == 'True'): sorry
@@ -173,41 +169,8 @@ question: Juvenile Cases
 subquestion: |
   **Note: For all questions, motor vehicle offenses where the fine was not over $50 don't count.**
 fields: 
-  - note: Have you had any juvenile cases in Massachusetts on or after ${ today().minus(years=3) }?
-  - no label: juvenile_cases_in_past_3_years_ma
-    input type: radio
-    choices:
-      - Yes: True
-      - No: False
-      - I don't know: 'unsure'
-  - note: Have you had any juvenile cases in another state on or after ${ today().minus(years=3) }?
-  - no label: juvenile_cases_in_past_3_years_other_state
-    input type: radio
-    choices:
-      - Yes: True
-      - No: False
-      - I don't know: 'unsure'
-  - note: Were you found to be delinquent or were you committed as a delinquent?
-    show if:
-      variable: juvenile_cases_in_past_3_years_other_state 
-      is: 'True'
-  - no label: juvenile_delinquency_in_other_state_in_past_3_years
-    show if:
-      variable: juvenile_cases_in_past_3_years_other_state 
-      is: 'True'
-    input type: radio
-    choices:
-      - Yes: True
-      - No: False
-      - I don't know: 'unsure'
-  - note: Were you found to be delinquent or were you committed as a delinquent?
-    show if:
-      variable: juvenile_cases_in_past_3_years_other_state 
-      is: 'unsure'
-  - no label: juvenile_delinquency_in_other_state_in_past_3_years
-    show if:
-      variable: juvenile_cases_in_past_3_years_other_state 
-      is: 'unsure'
+  - note: Have you had any juvenile cases in any state in the USA on or after ${ today().minus(years=3) }?
+  - no label: juvenile_cases_in_past_3_years
     input type: radio
     choices:
       - Yes: True
