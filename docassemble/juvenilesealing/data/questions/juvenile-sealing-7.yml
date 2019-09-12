@@ -78,12 +78,14 @@ code: |
 
   reason = ineligibility_reasons.open_case
   if (has_NON_probation_open_cases is True): sorry_end
-  elif (has_NON_probation_open_cases is None): get_records_end
+  elif (has_NON_probation_open_cases is None):
+    if (wants_to_get_records): finish_with_more
   progressor.increment()
 
   reason = ineligibility_reasons.probation
   if (is_on_probation is True): sorry_end
-  elif (is_on_probation is None): get_records_end
+  elif (is_on_probation is None):
+    if (wants_to_get_records): finish_with_more
   progressor.increment()
   
   # Test
@@ -93,27 +95,32 @@ code: |
 
   reason = ineligibility_reasons.juvenile_cases_in_past_3_years
   if (juvenile_cases_in_past_3_years is True): sorry_end
-  elif (juvenile_cases_in_past_3_years is None): get_records_end
+  elif (juvenile_cases_in_past_3_years is None):
+    if (wants_to_get_records): finish_with_more
   progressor.increment()
   
   reason = ineligibility_reasons.juvenile_custody
   if (juvenile_custody_in_past_3_years is True): sorry_end
-  elif (juvenile_custody_in_past_3_years is None): get_records_end
+  elif (juvenile_custody_in_past_3_years is None):
+    if (wants_to_get_records): finish_with_more
   progressor.increment()
 
   reason = ineligibility_reasons.convicted_states
   if (convicted_in_past_3_years_states is True): sorry_end
-  elif (convicted_in_past_3_years_states is None): get_records_end
+  elif (convicted_in_past_3_years_states is None):
+    if (wants_to_get_records): finish_with_more
   progressor.increment()
 
   reason = ineligibility_reasons.convicted_federal
   if (convicted_in_past_3_years_federal is True): sorry_end
-  elif (convicted_in_past_3_years_federal is None): get_records_end
+  elif (convicted_in_past_3_years_federal is None):
+    if (wants_to_get_records): finish_with_more
   progressor.increment()
 
   reason = ineligibility_reasons.incarcerated
   if (incarcerated_in_past_3_years is True): sorry_end
-  elif (incarcerated_in_past_3_years is None): get_records_end
+  elif (incarcerated_in_past_3_years is None):
+    if (wants_to_get_records): finish_with_more
   progressor.increment()
 
   # Otherwise they're eligible!
@@ -154,8 +161,8 @@ code: |
     3. Sign it in two places (where the arrows are)
     4. Mail it to:
     
-      Commissioner of Probation
-      One Ashburton Place, Room 405, Boston, MA 02108
+    **Commissioner of Probation**
+    **One Ashburton Place, Room 405, Boston, MA 02108**
   """
   
   petition_instructions_after = """
@@ -187,6 +194,7 @@ code: |
       <li>Answer the first line of questions.</li>
   """
 
+  # TODO
   legal_aid_end_CORI = """<li>Click on "**CORI & Criminal Law**".</li>
     <li>Click on "**I want to request a
       copy of my own criminal record history**".</li>
@@ -415,19 +423,29 @@ attachment:
       - "checkboxes.juvenile": Yes
       - "signature_juvenile": ''
 ---
-id: need_records
-event: get_records_end
-progress: 100
-question: |
-  Sorry, we can't help until you have more information
+id: suggest_get_records
+field: wants_to_get_records
+question: Do you want to get your records?
 subquestion: |
+  ${records_can_help}
 
   ${getting_juvenile_records} ${getting_cori}
-  
-  ${legal_aid_CORI}
 
-  **Come back as soon as you're ready so we can
-  help seal your records!**
+  Do you want to get your records first?
+buttons:
+  - Yes, I'll come back later: True
+  - No, I'll keep going: False
+---
+id: finish_with_more
+event: finish_with_more
+progress: 100
+comment: |
+  TODO: Who gets the feedback? Link back to CFJJ advocacy work somehow?
+question: Thank you for coming today
+subquestion: |
+  We hope we were able to help a little.
+
+  ${more_resources}
 buttons:
   - Exit: exit
   - Restart: restart
@@ -438,39 +456,6 @@ progress: 100
 question: Thank you for coming and hope to see you soon!
 comment: |
   - TODO: Give more resources
-buttons:
-  - Exit: exit
-  - Restart: restart
----
-id: need_records_other_state
-event: get_records_other_state_end
-progress: 100
-question: |
-  Sorry, we can't help until you have more information
-subquestion: |
-  <p style="color:green">
-  Your criminal records from each state
-  can help
-  you answer the questions. We're sorry
-  that this sealing tool can't help with
-  that. Each state has a
-  different way to order criminal records.
-  If you want to search for those instructions,
-  try putting the name of the state in the search bar along
-  with this text:
-  </p>
-
-  `
-  how do I order my criminal record?
-  `
-
-  ${ legal_aid_other_state }
-
-  <p style="color:green">
-  **Sorry we couldn't help more. Come back as soon
-  as you're ready so we can
-  help seal your records!**
-  </p>
 buttons:
   - Exit: exit
   - Restart: restart
