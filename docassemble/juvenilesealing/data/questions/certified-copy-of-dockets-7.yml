@@ -48,7 +48,7 @@ code: |
 ---
 id: intro
 field: intro
-question: Can You Seal Your Juvenile Record?
+question: ${intro_title}
 subquestion: |
   ${form_steps}
 
@@ -64,7 +64,7 @@ subquestion: |
 under: |
   ${sealing_booklet_text}
 ---
-id: have_already
+id: have_sheets_already
 comment: |
   - TODO: Should we show this before or after we see if they're
     eligible or not? Having them go through the whole thing
@@ -73,7 +73,7 @@ comment: |
     of getting a certified copy and then not be eligible is
     also not great.
     [Answer: Before]
-question: Certified Copies of Docket Sheets
+question: ${do_you_have_sheets_title}
 subquestion: |
   ${have_certified_copy}
 yesnomaybe: have_docket_copies_already
@@ -82,11 +82,11 @@ yesnomaybe: have_docket_copies_already
 #  docket sheets. <span style="color: red">(TODO: Need website)</span>
 ---
 id: read_citizen_disclaimer
-question: Are you a US citizen?
+question: ${citizen_disclaimer}
 yesno: read_citizen_disclaimer
 ---
 id: wants_fed_job
-question: Will you ever want to do any of these?
+question: ${jobs_title}
 subquestion: |
   ${jobs_list}
 yesnomaybe: wants_fed_job
@@ -94,7 +94,7 @@ yesnomaybe: wants_fed_job
 id: how_to_get_copies
 code: |
   how_to_get_copies = """
-    For copies of juvenile or adult records,
+    For copies of juvenile or adult docket sheets,
     go to the clerk’s office at the courthouse that
     handled your case. It costs $2.50 per page, but if
     your income is low, you can ask to get the fee waived.
