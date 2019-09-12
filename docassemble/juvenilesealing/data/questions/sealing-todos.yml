@@ -6,6 +6,7 @@ comment: |
   1. How get records of other states
     todo: "A MA CORI or juvenile record report won't have
       information about cases from other states."
+    [-done-] todo: back off of getting records
   1b. Can't help them get those records?
   answer: clean slate clearing house. For info for getting records
     from other states.
@@ -22,15 +23,15 @@ comment: |
     Info: best to request in person. Mail sometimes falls between the cracks.
     Often people don't get dockets on their own. Maybe not so
     important with sealing. Expungement is different.
-  5. Some things on CORI don't say 'convicted'. More detailed instructions?
+  x 5. Some things on CORI don't say 'convicted'. More detailed instructions?
     answer: cori makes it easy. each says if it's a
       conviction. juvi records hard to read.
       5a1. Picture of what to look for?
       5a2. Picture of where to look?
-      answer: Back off a bit about records. Most people know
+      [-done-] answer: Back off a bit about records. Most people know
         answers well enough and they'll get feedback if
         they're missing info.
-          todo: Don't block.
+          [-done-] todo: Don't block.
   6. Post-release handling.
   answer/todo: We're all happy to keep iterating.
   7. TODO: Add link to expungement info?
@@ -58,6 +59,7 @@ comment: |
     todo: will send link. Also, though, de-emphasize getting records
   4. TODO: ADDRESS TO MAIL IT TO
   answer: at top of form. copy from there
+  4b. v5 needs instructions added
   5. further resources:
   answer: Will send
     - applying for jobs booklet (will be put online)
@@ -68,7 +70,7 @@ comment: |
 
   # TODOs
   TODO: 'may' to 'can'? Really go over language with a fine-toothed
-  comb
+  comb. Maybe do user testing with existing language
   TODO: Link to Mass Legal juvenile record request interview in future
   TODO (booklet): 'WHO CAN SEE JUVENILE CASES ON A CORI REPORT?'
     - before or after sealing?
