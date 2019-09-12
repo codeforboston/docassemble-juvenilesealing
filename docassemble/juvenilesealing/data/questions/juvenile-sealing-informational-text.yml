@@ -20,12 +20,7 @@ code: |
   
     <span style="color: green">If you have the information you need,</span>
     these questions
-    can take about to **30 minutes** to answer.
-    It will be easier to give the right answers if you
-    have a copy of your juvenile record report,
-    and also your CORI report if you had cases in an adult court.
-    These reports will give a summary of all your criminal charges
-    and tell you how each case ended."""
+    can take about to **30 minutes** to answer.""" + " " + records_can_help
   
   may_pause_for_dockets = """You also might have to
   stop and come back later if you need to
@@ -39,6 +34,33 @@ code: |
   usa_possessions = """**Note:** Whenever we say USA
   that includes United States
   possessions (like Guam)."""
+---
+id: getting_cori_and_juvi_records_text
+code: |
+  records_can_help = """It will be easier to give the right answers if you
+    have a copy of your juvenile record report,
+    and also your CORI report if you had cases in an adult court.
+    These reports will give a summary of all your criminal charges
+    and tell you how each case ended.
+  """
+
+  getting_cori = """To ask for your <span style="color: green">online</span>
+  adult CORI report, create an account at
+  [Massachusetts iCORI site](https://icori.chs.state.ma.us/icori/ext/global/landing.action?page=1&bod=1566991096995&m=presentLanding).
+  It costs $25, but if you are low income you might be be able
+  to ask for a waiver of the fee."""
+
+  getting_juvenile_records = """To ask for a free copy of your Massachusetts
+    juvenile record, see the
+    [GBLS juvenile record request document](https://www.gbls.org/sites/default/files/juvenile_booklet_onelj.pdf).
+    It will give you a form to print and tell you what to do.</span>"""
+  
+  # TODO: implement
+  out_of_state_records = """We can't help you get
+    records from other states. Do the best you can with those
+    questions. The <span style="color: red">[clean slate clearing house]()</span>
+    might be able to help you find out how to get those
+    records."""
 ---
 id: do_you_have_sheets_text
 code: |
@@ -75,26 +97,6 @@ code: |
     check
   """
 ---
-id: getting_cori_and_juvi_records_text
-code: |
-  getting_cori = """To ask for your <span style="color: green">online</span>
-  adult CORI report, create an account at
-  [Massachusetts iCORI site](https://icori.chs.state.ma.us/icori/ext/global/landing.action?page=1&bod=1566991096995&m=presentLanding).
-  It costs $25, but if you are low income you might be be able
-  to ask for a waiver of the fee."""
-
-  getting_juvenile_records = """To ask for a free copy of your Massachusetts
-    juvenile record, see the
-    [GBLS juvenile record request document](https://www.gbls.org/sites/default/files/juvenile_booklet_onelj.pdf).
-    It will give you a form to print and tell you what to do.</span>"""
-  
-  # TODO: implement
-  out_of_state_records = """We can't help you get
-    records from other states. Do the best you can with those
-    questions. The <span style="color: red">[clean slate clearing house]()</span>
-    might be able to help you find out how to get those
-    records."""
----
 id: learn_more_sealing_text
 code: |
   sealing_booklet_text = """Read more about sealing
@@ -104,8 +106,9 @@ code: |
 id: more_resources_text
 code: |
   # TODO: implement
-  more_resources: """Here are some places with more information:
+  more_resources = """Here are some places with more information:
   
-    * [A page with links to more GBLS information about criminal record problems](https://www.gbls.org/self-help/cori)
+    * [Links to more GBLS information about criminal record problems](https://www.gbls.org/self-help/cori)
     *
   """
+---
