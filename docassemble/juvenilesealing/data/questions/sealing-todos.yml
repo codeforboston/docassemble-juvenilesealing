@@ -1,5 +1,8 @@
 comment: |
-  # Questions A
+  # New Questions C
+  1. Father's full name? Maiden name?
+
+  # Answered Questions B
   1. How get records of other states
     todo: "A MA CORI or juvenile record report won't have
       information about cases from other states."
@@ -35,7 +38,7 @@ comment: |
   Notes:
   - Don't use the term 'CARI'. It's a little different and would be confusing.
   
-  # Questions B
+  # Answered Questions A
   0. Is juv. delinquency vs. youthful offencer cases.
   [-done-] todo: Reduce it to one question
   1. TODO: Timing? Took 20 min. for legal students.
