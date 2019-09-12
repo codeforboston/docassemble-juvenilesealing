@@ -66,8 +66,6 @@ under: |
 ---
 id: have_already
 comment: |
-  - TODO: Add link to expungement info
-  - TODO: More detailed description page along with instructions?
   - TODO: Should we show this before or after we see if they're
     eligible or not? Having them go through the whole thing
     just to have to come back in the future would be a pain.
