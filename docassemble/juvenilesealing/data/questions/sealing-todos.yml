@@ -1,0 +1,76 @@
+comment: |
+  # Questions A
+  1. How get records of other states
+    todo: "A MA CORI or juvenile record report won't have
+      information about cases from other states."
+  1b. Can't help them get those records?
+  answer: clean slate clearing house. For info for getting records
+    from other states.
+    todo: Will be sent link.
+  2. Work for the military, too (contractors)?
+  [-done-] todo: "Join or work for the military."
+  [-done-] todo: "Certain jobs at a bank." (teller is sometimes
+    ok) (mortgage broker a problem)
+  3. All children?
+  answer: Not high school students. Under 6 or so.
+  [-done-]  todo: "young children"
+  4. Separate page for docket instructions?
+  answer: Maybe
+    Info: best in person. Mail sometimes falls between the cracks.
+    Often people don't get dockets on their own. Maybe not so
+    important with sealing. Expungement is different.
+  5. Some things on CORI don't say 'convicted'. More detailed instructions?
+    answer: cori makes it easy. each says if it's a
+      conviction. juvi records hard to read.
+      5a1. Picture of what to look for?
+      5a2. Picture of where to look?
+      answer: Back off a bit about records. Most people know
+        answers well enough and they'll get feedback if
+        they're missing info.
+          todo: Don't block.
+  6. Post-release handling.
+  answer/todo: We're all happy to keep iterating.
+  7. TODO: Add link to expungement info?
+  answer: maybe. only if we find a good place
+  Notes:
+  - Don't use the term 'CARI'. It's a little different and would be confusing.
+  
+  # Questions B
+  0. Is juv. delinquency vs. youthful offencer cases.
+  [-done-] todo: Reduce it to one question
+  1. TODO: Timing? Took 20 min. for legal students.
+  [-done-] todo: Say 30 min.?
+  1b. They have a form for something else that seems to
+    work really well. They'll send it over just for us to get a gander.
+  2. TODO: What if there is no legal help in their area?
+  answer: That's a tough question. There are lots of little
+    things to persue.
+    - Go to courthouse of any court where
+    you have a case and talk to somebody in probation, for example.
+    - Also, if send petition in and rejected, will get reasons why.
+    - Honestly address people who may not be able to get help.
+  3. TODO: Link to info on CORI FAQ - CORI wrong, what it is etc.?
+    answer: mass legal help website about that
+    todo: will send link. Also, though, de-emphasize getting records
+  4. TODO: ADDRESS TO MAIL IT TO
+  answer: at top of form. copy from there
+  5. further resources:
+  answer: Will send
+    - applying for jobs booklet (will be put online)
+    - cori and housing
+    - employment
+    - [-done/not doing-] ~Big know your cori rights booklet~
+    - [-done-] GBLS booklets links page
+
+  # TODOs
+  TODO: 'may' to 'can'? Really go over language with a fine-toothed
+  comb
+  TODO: Link to Mass Legal juvenile record request interview in future
+  TODO (booklet): 'WHO CAN SEE JUVENILE CASES ON A CORI REPORT?'
+    - before or after sealing?
+  TODO: [I've forgotten what this means? Navigating to previous
+  questionnaire?] Equivalent of 
+    url: |
+      ${ referring_url() }
+  but don't send back to preliminary questions. [to accomplish what?]
+---

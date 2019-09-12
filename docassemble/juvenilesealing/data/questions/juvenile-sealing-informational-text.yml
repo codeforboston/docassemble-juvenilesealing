@@ -1,9 +1,11 @@
 ---
 comment: |
   Pro se informational copy that shared between versions.
----  
-id: form_prep
+---
+id: intro_text
 code: |
+  intro_title = "Can You Seal Your Juvenile Record?"
+
   form_steps = """To find out, this is what we need to do: 
 
     1. Find out if there's a reason you **shouldn't** seal your records.
@@ -38,25 +40,27 @@ code: |
   that includes United States
   possessions (like Guam)."""
 ---
-id: docket_sheets
+id: do_you_have_sheets_text
 code: |
+  do_you_have_sheets_title = "Certified Copies of Docket Sheets"
+
   have_certified_copy = """**Do you already have certified
   copies of docket sheets for all of your cases?**
 
   Note: A docket sheet is different than a
-  criminal record called a CORI or juvenile report called a CARI.
+  criminal record called a CORI or juvenile report.
   Docket sheets are
   papers in your court case at the courthouse that say
   what happened in each of your cases every time
   you went to court."""
 ---
-id: jobs
+id: jobs_text
 comment: Work for the military too?
 code: |
   jobs_list = """
-    * Work with children under 18
-    * Work for a bank
-    * Join the military
+    * Work with young children
+    * Work for a bank in certain positions
+    * Work for or join the military
     * Work for an employer who participates in the Work
        Opportunity Tax Credit (WOTC) program
     * Work for an employer that has federal funding
@@ -66,7 +70,7 @@ code: |
     check
   """
 ---
-id: getting_cori_and_juvi_records
+id: getting_cori_and_juvi_records_text
 code: |
   getting_cori = """To ask for your <span style="color: green">online</span>
   adult CORI report, create an account at
@@ -80,7 +84,7 @@ code: |
     <span style="color: red">I can't see it, even when I download it.
     Where does it need to get mailed to/handed in?</span>"""
 ---
-id: learn_more
+id: learn_more_sealing_text
 code: |
   sealing_booklet_text = """Read more about sealing
   juvenile records from the

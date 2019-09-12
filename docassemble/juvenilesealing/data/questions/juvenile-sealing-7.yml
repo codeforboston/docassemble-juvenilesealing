@@ -48,7 +48,7 @@ code: |
   ineligibility_reasons.wants_to_continue = ""
   ineligibility_reasons.open_case = start + "**have an open case**" + end
   ineligibility_reasons.probation = start + "**are on probation**" + end
-  ineligibility_reasons.juvenile_case = start + "**had a juvenile case in a US state" + years + end
+  ineligibility_reasons.juvenile_cases_in_past_3_years = start + "**had a juvenile case in a US state" + years + end
   ineligibility_reasons.juvenile_custody = start + "**have been in juvenile custody in a US state" + years + end
   ineligibility_reasons.convicted_states = start + "**were convicted" + years + end
   ineligibility_reasons.convicted_federal = start + "**were convicted" + years + end
@@ -91,7 +91,7 @@ code: |
   #atch_itself = full_petition_pdf
   #trigger_attachment_page
 
-  reason = ineligibility_reasons.juvenile_case
+  reason = ineligibility_reasons.juvenile_cases_in_past_3_years
   if (juvenile_cases_in_past_3_years is True): sorry_end
   elif (juvenile_cases_in_past_3_years is None): get_records_end
   progressor.increment()
