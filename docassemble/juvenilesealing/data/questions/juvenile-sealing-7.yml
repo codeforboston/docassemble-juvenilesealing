@@ -3,16 +3,8 @@ comment: |
   - Immigration asked in previous separate form.
   - If sent from that form, it's a pro se user, so provide more info
   - Personal info code copies style of https://github.com/GBLS/docassemble-gbls/blob/master/docassemble/gbls/data/questions/basic-questions-gbls.yml
----
-comment: |
-  TODO questions: see v5
   
-  TODOs
-  TODO: [I've forgotten what this means? Navigating to previous
-  questionnaire?] Equivalent of 
-    url: |
-      ${ referring_url() }
-  but don't send back to preliminary questions. [to accomplish what?]
+  TODOs: see sealing-todo.yml
 ---
 metadata:
   title: |
