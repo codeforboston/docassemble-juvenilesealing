@@ -69,14 +69,16 @@ comment: |
     - [-done-] GBLS booklets links page
 
   # TODOs
-  TODO: 'may' to 'can'? Really go over language with a fine-toothed
-  comb. Maybe do user testing with existing language
-  TODO: Link to Mass Legal juvenile record request interview in future
-  TODO (booklet): 'WHO CAN SEE JUVENILE CASES ON A CORI REPORT?'
-    - before or after sealing?
-  TODO: [I've forgotten what this means? Navigating to previous
+  TODO: Different instructions for partially completed form
+  TODO: Troubleshoot link styles
+  TODO: [I've forgotten what this means. Navigating to previous
   questionnaire?] Equivalent of 
     url: |
       ${ referring_url() }
   but don't send back to preliminary questions. [to accomplish what?]
+  [-future-] TODO: Link to Mass Legal juvenile record request interview in future
+  [-future-] TODO: 'may' to 'can'? Really go over language with a fine-toothed
+    comb. Maybe do user testing with existing language
+  [-future-] TODO (booklet): 'WHO CAN SEE JUVENILE CASES ON A CORI REPORT?'
+    - before or after sealing?
 ---
