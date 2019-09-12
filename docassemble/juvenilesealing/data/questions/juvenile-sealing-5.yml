@@ -71,32 +71,39 @@ code: |
       needs_dockets = True
 
   reason = ineligibility_reasons.open_case
-  if (has_NON_probation_open_cases == 'True'): sorry
-  elif (has_NON_probation_open_cases == 'unsure'): get_records
+  if (has_NON_probation_open_cases == 'True'): sorry_end
+  elif (has_NON_probation_open_cases == 'unsure'):
+    if (wants_to_get_records): finish_with_more
 
   reason = ineligibility_reasons.probation
   if (is_on_probation == 'True'): sorry
-  elif (is_on_probation == 'unsure'): get_records
+  elif (is_on_probation == 'unsure'):
+    if (wants_to_get_records): finish_with_more
 
   reason = ineligibility_reasons.juvenile_cases_in_past_3_years
-  if (juvenile_cases_in_past_3_years == 'True'): sorry
-  elif (juvenile_cases_in_past_3_years == 'unsure'): get_records
+  if (juvenile_cases_in_past_3_years == 'True'): sorry_end
+  elif (juvenile_cases_in_past_3_years == 'unsure'):
+    if (wants_to_get_records): finish_with_more
   
   reason = ineligibility_reasons.juvenile_custody_usa
-  if (juvenile_custody_in_past_3_years_usa == 'True'): sorry
-  elif (juvenile_custody_in_past_3_years_usa == 'unsure'): get_records
+  if (juvenile_custody_in_past_3_years_usa == 'True'): sorry_end
+  elif (juvenile_custody_in_past_3_years_usa == 'unsure'):
+    if (wants_to_get_records): finish_with_more
 
   reason = ineligibility_reasons.convicted_states
-  if (convicted_in_past_3_years_states == 'True'): sorry
-  elif (convicted_in_past_3_years_states == 'unsure'): get_records
+  if (convicted_in_past_3_years_states == 'True'): sorry_end
+  elif (convicted_in_past_3_years_states == 'unsure'):
+    if (wants_to_get_records): finish_with_more
 
   reason = ineligibility_reasons.convicted_federal
-  if (convicted_in_past_3_years_federal == 'True'): sorry
-  elif (convicted_in_past_3_years_federal == 'unsure'): get_records
+  if (convicted_in_past_3_years_federal == 'True'): sorry_end
+  elif (convicted_in_past_3_years_federal == 'unsure'):
+    if (wants_to_get_records): finish_with_more
 
   reason = ineligibility_reasons.incarcerated
-  if (incarcerated_in_past_3_years == 'True'): sorry
-  elif (incarcerated_in_past_3_years == 'unsure'): get_records
+  if (incarcerated_in_past_3_years == 'True'): sorry_end
+  elif (incarcerated_in_past_3_years == 'unsure'):
+    if (wants_to_get_records): finish_with_more
 
   # Otherwise they're eligible!
   
@@ -299,18 +306,28 @@ buttons:
   - Exit: exit
   - Restart: restart
 ---
-id: need_records
-event: get_records
-question: |
-  Sorry, we can't help until you have more information
+id: suggest_get_records
+field: wants_to_get_records
+question: Do you want to get your records?
 subquestion: |
-  It looks like you don't know enough about your records.
+  ${records_can_help}
 
   ${getting_juvenile_records} ${getting_cori}
 
-  **Get your CORI and come
-  back soon so we can
-  help seal your records!**
+  Do you want to get your records first?
+buttons:
+  - Yes, I'll come back later: True
+  - No, I'll keep going: False
+---
+id: finish_with_more
+event: finish_with_more
+comment: |
+  TODO: Who gets the feedback? Link back to CFJJ advocacy work somehow?
+question: Thank you for coming today
+subquestion: |
+  We hope we were able to help a little.
+
+  ${more_resources}
 buttons:
   - Exit: exit
   - Restart: restart
@@ -325,7 +342,7 @@ buttons:
   - Restart: restart
 ---
 id: not_helped
-event: sorry
+event: sorry_end
 question: |
   Thank you and sorry we couldn't help
 subquestion: |
