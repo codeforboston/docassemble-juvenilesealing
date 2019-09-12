@@ -77,11 +77,17 @@ code: |
   It costs $25, but if you are low income you might be be able
   to ask for waiver of the fee."""
 
-  getting_juvenile_records = """To ask for a free copy of your MASSACHUSETTS
-    juvenile record, <span style="color: green">mail in</span> a
-    [Juvenile Record Request form](https://www.mass.gov/files/documents/2016/09/pt/juv-rec-req.pdf).
-    <span style="color: red">I can't see it, even when I download it.
-    Where does it need to get mailed to/handed in?</span>"""
+  getting_juvenile_records = """To ask for a free copy of your Massachusetts
+    juvenile record, see the
+    [GBLS juvenile record request document](https://www.gbls.org/sites/default/files/juvenile_booklet_onelj.pdf).
+    It will give you a form to print and tell you what to do.</span>"""
+  
+  # TODO: implement
+  out_of_state_records = """We can't help you get
+    records from other states. Do the best you can with those
+    questions. The <span style="color: red">[clean slate clearing house]()</span>
+    might be able to help you find out how to get those
+    records."""
 ---
 id: learn_more_sealing_text
 code: |
@@ -91,7 +97,7 @@ code: |
 ---
 id: more_resources_text
 code: |
-  # TODO
+  # TODO: implement
   more_resources: """Here are some places with more information:
   
     * [A page with links to more GBLS information about criminal record problems](https://www.gbls.org/self-help/cori)
