@@ -1,19 +1,18 @@
 ---
 comment: |
-  TODO: ADDRESS TO MAIL IT TO
-  TODO: Add text about getting juvenile records
-  TODO: PQ: Will answers about other states be their CORI?
-  TODO: PQ: Link to info on CORI FAQ - CORI wrong, what it is etc.?
-  TODO: What if there is no legal help in their area?
-  TODO: Equivalent of 
-    url: |
-      ${ referring_url() }
-  but don't send back to preliminary questions.
-  TODO: PQ: Say what will happen if their data gets out
+  - Immigration asked in previous separate form.
+  - If sent from that form, it's a pro se user, so provide more info
+  - Personal info code copies style of https://github.com/GBLS/docassemble-gbls/blob/master/docassemble/gbls/data/questions/basic-questions-gbls.yml
 ---
 comment: |
-  - Immigration asked in previous separate form.
-  - Personal info code copies style of https://github.com/GBLS/docassemble-gbls/blob/master/docassemble/gbls/data/questions/basic-questions-gbls.yml
+  TODO questions: see v5
+  
+  TODOs
+  TODO: [I've forgotten what this means? Navigating to previous
+  questionnaire?] Equivalent of 
+    url: |
+      ${ referring_url() }
+  but don't send back to preliminary questions. [to accomplish what?]
 ---
 metadata:
   title: |
