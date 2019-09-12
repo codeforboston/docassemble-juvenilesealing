@@ -38,21 +38,29 @@ button {
   margin-top: 1em;
 }
 
-a, .dabackicon span, button.daquestionbackbutton.btn-link span {
+a,
+.dabackicon span,
+button.daquestionbackbutton.btn-link span {
   color: rgba( 190, 64, 77, 1 ) !important;
   font-weight: bold;
 }
 
+a,
 a:hover,
+button.daquestionbackbutton.btn-link:focus {
+  text-decoration: underline;
+  text-decoration-color: rgba( 190, 64, 77, 1 );
+}
+
+.btn,
+a.nav-link,
+a.nav-link:hover,
+a.navbar-brand,
+.navbar-brand span,
 .dabackicon:hover,
 button.daquestionbackbutton.btn-link:hover {
   color: rgba( 99, 99, 99, 1 );
   text-decoration: none;
-}
-
-button.daquestionbackbutton.btn-link:focus {
-  text-decoration: undlerline;
-  text-decoration-color: rgba( 190, 64, 77, 1 );
 }
 
 
@@ -61,15 +69,15 @@ button.daquestionbackbutton.btn-link:focus {
   position: absolute;
   content: 'You must answer this question';
   color: #dc3545;
-  top: -1rem;
-  left: 1rem;
+  top: -1em;
+  left: 1em;
 }
 
 .darequired .dafieldpart:before {
   position: absolute;
   content: 'You must answer this question';
   color: #dc3545;
-  top: -0.85rem;
+  top: -1em;
 }
 
 .form-group.darequired .da-form-label:after {

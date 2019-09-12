@@ -17,7 +17,7 @@ comment: |
   - atch_progress
   - atch_question
   - atch_subquestion
-  - atch_after_buttons
+  - atch_after_download
 
   - atch_default_email_address
   - atch_email_contents
@@ -43,7 +43,7 @@ code: |
     'atch_progress': 100,
     'atch_question': 'Your Document is Ready!',
     'atch_subquestion': 'You can download it or email it to whoever you want.',
-    'atch_lower_contents': '',
+    'atch_after_download': '',
 
     'atch_default_email_address': '',
     'atch_email_subject': 'Your Pre-filled Document',
@@ -87,7 +87,7 @@ fields:
     default: ${atch_default_email_address}
   - note: ${ action_button_html("#", id_tag="sendAttachmentEmail", classname="atch-button", new_window=atch_do_new_window_email, icon="envelope", label=atch_email_label, color="primary", size="md") }
 #  - note: ${ action_button_html("#", id_tag="downloadAttachment", classname="atch-button", new_window=atch_do_new_window_download, icon="download", label=atch_download_label, color="primary", size="md") }
-  - html: ${atch_lower_contents}
+  - note: ${atch_after_download}
 script: |
   <script>
 
