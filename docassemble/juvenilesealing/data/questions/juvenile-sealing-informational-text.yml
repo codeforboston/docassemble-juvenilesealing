@@ -16,14 +16,14 @@ code: |
   
   more_form_info = """#### More about this form
   
-  <span style="color: green">If you have the information you need,</span>
-  these questions
-  can take about to **15 minutes** to answer.
-  It will be easier to give the right answers if you
-  have a copy of your juvenile record report,
-  and also your CORI report if you had cases in an adult court.
-  These reports will give a summary of all your criminal charges
-  and tell you how each case ended."""
+    <span style="color: green">If you have the information you need,</span>
+    these questions
+    can take about to **15 minutes** to answer.
+    It will be easier to give the right answers if you
+    have a copy of your juvenile record report,
+    and also your CORI report if you had cases in an adult court.
+    These reports will give a summary of all your criminal charges
+    and tell you how each case ended."""
   
   may_pause_for_dockets = """You also might have to
   stop and come back later if you need to
@@ -54,9 +54,9 @@ id: jobs
 comment: Work for the military too?
 code: |
   jobs_list = """
-    * Work with children under 18
-    * Work for a bank
-    * Join the military
+    * Work with young children
+    * Work for a bank in certain positions
+    * Work for or join the military
     * Work for an employer who participates in the Work
        Opportunity Tax Credit (WOTC) program
     * Work for an employer that has federal funding
@@ -67,7 +67,6 @@ code: |
   """
 ---
 id: getting_cori_and_juvi_records
-comment: Sending booklet. Has form to fill out.
 code: |
   getting_cori = """To ask for your <span style="color: green">online</span>
   adult CORI report, create an account at
@@ -77,8 +76,8 @@ code: |
 
   getting_juvenile_records = """To ask for a free copy of your MASSACHUSETTS
     juvenile record, <span style="color: green">mail in</span> a
-    [Juvenile Record Request form].
-    <span style="color: red">todo: Getting link to a visible form.
+    [Juvenile Record Request form](https://www.mass.gov/files/documents/2016/09/pt/juv-rec-req.pdf).
+    <span style="color: red">I can't see it, even when I download it.
     Where does it need to get mailed to/handed in?</span>"""
 ---
 id: learn_more
