@@ -89,3 +89,11 @@ code: |
   juvenile records from the
   [GBLS 2019 booklet](https://www.gbls.org/sites/default/files/2019-08/juvenile_booklet_august_2019F.pdf)."""
 ---
+id: more_resources_text
+code: |
+  # TODO
+  more_resources: """Here are some places with more information:
+  
+    * [A page with links to more GBLS information about criminal record problems](https://www.gbls.org/self-help/cori)
+    *
+  """
