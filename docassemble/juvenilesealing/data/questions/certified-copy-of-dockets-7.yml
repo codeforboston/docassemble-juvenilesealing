@@ -172,7 +172,7 @@ subquestion: |
 #  different website
 #  **(TODO: Need name of website)** with instructions.
 buttons:
-  - Exit and order sheets: exit
+  - Exit: exit
   - Try sealing: leave
     url: ${ needs_dockets_url }
 ---

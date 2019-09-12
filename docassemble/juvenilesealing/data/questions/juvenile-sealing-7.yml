@@ -75,6 +75,13 @@ code: |
     should_show_extra_info = True
     if (url_args['dockets'] == 'needed'):
       needs_dockets = True
+  
+  # Test
+  atch_itself = partial_petition_pdf
+  
+  atch_after_download = pdf_after_download_partial_v7
+  #atch_itself = full_petition_pdf
+  trigger_attachment_page
 
   reason = ineligibility_reasons.open_case
   if (has_NON_probation_open_cases is True): sorry_end
@@ -87,11 +94,6 @@ code: |
   elif (is_on_probation is None):
     if (wants_to_get_records): finish_with_more
   progressor.increment()
-  
-  # Test
-  #atch_itself = partial_petition_pdf
-  #atch_itself = full_petition_pdf
-  #trigger_attachment_page
 
   reason = ineligibility_reasons.juvenile_cases_in_past_3_years
   if (juvenile_cases_in_past_3_years is True): sorry_end
@@ -129,6 +131,8 @@ code: |
   # and offer choice about saving personal info.
   if (should_show_extra_info):
     if (will_write_personal_info):
+      # Text next steps instructions to put below email buttons
+      atch_after_download = pdf_after_download_partial_v7
       atch_itself = partial_petition_pdf
       trigger_attachment_page
 
@@ -144,6 +148,8 @@ code: |
   applicant.ssn
   progressor.increment()
 
+  # Text next steps instructions to put below email buttons
+  atch_after_download = pdf_after_download_full_v7
   atch_itself = full_petition_pdf
   trigger_attachment_page
   
@@ -151,34 +157,7 @@ code: |
 ---
 comment: Strings that are used multiple times or are awkward
 code: |
-  petition_instructions_todo = """
-    We think you're probably eligible to seal your
-    juvenile records! Your petition is done and ready to
-    print. Next you need to:
-  
-    1. Download it
-    2. Print it
-    3. Sign it in two places (where the arrows are)
-    4. Mail it to:
-    
-    **Commissioner of Probation**
-    **One Ashburton Place, Room 405, Boston, MA 02108**
-  """
-  
-  petition_instructions_after = """
-    Once you mail it, the Commissioner of Probation
-    will look at it. They will also look at your criminal
-    records. They'll see if they agree that you can seal
-    your juvenile records. They will send you a letter
-    telling you what they decided and why they decided that.
-    
-    Because they have a lot of petitions to look at, it can
-    take up to 3 months.
-    
-    If you get the letter back and don't agree with what they
-    said, you can <span style="color:red">TOOD: call them or
-    get help from a lawyer</span>.
-  """
+  petition_instructions_todo = pdf_intro
 
   legal_aid_start = """
     <p style="color:green">If you want to find a lawyer
@@ -351,15 +330,10 @@ code: |
 
   atch_progress = 100
   atch_question = 'Your Petition is Ready!'
-  subq_middle = """
-    You can download it and you can email it to
-    yourself or someone else. The email subject line
-    will be <strong>
-  """ + atch_email_subject + "</strong>.\n"
   subq_end ="<div>&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;</div>"
 
-  atch_subquestion = petition_instructions_todo + subq_middle + petition_instructions_after + subq_end
-  atch_after_buttons = ''
+  atch_subquestion = pdf_subquestion_v7
+  atch_after_download = pdf_after_download_full_v7
   
   atch_name = 'juvenile-sealing-petition'
   atch_file_extension = 'pdf'
@@ -446,16 +420,6 @@ subquestion: |
   We hope we were able to help a little.
 
   ${more_resources}
-buttons:
-  - Exit: exit
-  - Restart: restart
----
-id: thank_you_did_not_finish
-event: thank_you_did_not_finish
-progress: 100
-question: Thank you for coming and hope to see you soon!
-comment: |
-  - TODO: Give more resources
 buttons:
   - Exit: exit
   - Restart: restart

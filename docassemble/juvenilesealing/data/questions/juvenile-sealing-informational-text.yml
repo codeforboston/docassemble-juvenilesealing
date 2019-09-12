@@ -45,10 +45,10 @@ code: |
   """
 
   getting_cori = """To ask for your <span style="color: green">online</span>
-  adult CORI report, create an account at
-  [Massachusetts iCORI site](https://icori.chs.state.ma.us/icori/ext/global/landing.action?page=1&bod=1566991096995&m=presentLanding).
-  It costs $25, but if you are low income you might be be able
-  to ask for a waiver of the fee."""
+    adult CORI report, create an account at
+    [Massachusetts iCORI site](https://icori.chs.state.ma.us/icori/ext/global/landing.action?page=1&bod=1566991096995&m=presentLanding).
+    It costs $25, but if you are low income you might be be able
+    to ask for a waiver of the fee."""
 
   getting_juvenile_records = """To ask for a free copy of your Massachusetts
     juvenile record, see the
@@ -102,6 +102,114 @@ code: |
   sealing_booklet_text = """Read more about sealing
   juvenile records from the
   [GBLS 2019 booklet](https://www.gbls.org/sites/default/files/2019-08/juvenile_booklet_august_2019F.pdf)."""
+---
+id: sealing_final_instructions
+code: |
+  pdf_end_title = "Your Petition is Ready!"
+  email_subject = "Petition to Seal Records"
+  
+  pdf_intro = """We think you're probably eligible to seal your
+    juvenile records and your petition is ready to print!"""
+
+  download_or_email = """You can download it or you can email it to
+    yourself or someone else. The email subject line will
+    be <strong>{}</strong>.\n""".format(email_subject)
+  
+  pdf_next_steps_start = """Next you need to:
+  
+    1. Download it
+    1. Print it"""
+    
+  pdf_next_steps_end = """1. Sign it in two places (where the arrows are)
+    1. Mail it. Remember to put your own address in
+    the top left of the envelope so they can send
+    information back to you. Mail it to:
+    
+    **Commissioner of Probation**[BR]
+    **One Ashburton Place, Room 405**[BR]
+    **Boston, MA 02108**
+  """
+  
+  pdf_next_steps_by_hand = "1. Fill in your own information"
+
+  petition_instructions_after = """Once you mail it,
+    the Commissioner of Probation
+    will look at it. They will also look at your criminal
+    records. They'll see if they agree that you can seal
+    your juvenile records. They will send you a letter
+    telling you what they decided and why they made that decision.
+    
+    It can take up to 3 months because they have a lot
+    of petitions to look at.
+    
+    If you get the letter back and don't agree with what they
+    said, you can <span style="color:red">TODO: call them or
+    get help from a lawyer</span>.
+  """
+  
+  # ------------
+  # ---- v5 ----
+  pdf_subquestion_full_v5 = """
+    {pdf_intro} {download_or_email}
+
+    {pdf_next_steps_start}
+    {pdf_next_steps_end}
+    
+    {petition_instructions_after}
+  """.format(
+    pdf_intro                    = pdf_intro,
+    download_or_email            = download_or_email,
+    pdf_next_steps_start         = pdf_next_steps_start,
+    pdf_next_steps_end           = pdf_next_steps_end,
+    petition_instructions_after  = petition_instructions_after
+  )
+  
+  pdf_subquestion_partial_v5 = """
+    {pdf_intro} {download_or_email}
+
+    {pdf_next_steps_start}
+    {pdf_next_steps_by_hand}
+    {pdf_next_steps_end}
+    
+    {petition_instructions_after}
+  """.format(
+    pdf_intro                    = pdf_intro,
+    download_or_email            = download_or_email,
+    pdf_next_steps_start         = pdf_next_steps_start,
+    pdf_next_steps_by_hand       = pdf_next_steps_by_hand,
+    pdf_next_steps_end           = pdf_next_steps_end,
+    petition_instructions_after  = petition_instructions_after
+  )
+  
+  # ------------
+  # ---- v7 ----
+  pdf_subquestion_v7 = """{pdf_intro} {download_or_email}""".format(
+    pdf_intro         = pdf_intro,
+    download_or_email = download_or_email
+  )
+  pdf_after_download_full_v7 = """
+    {pdf_next_steps_start}
+    {pdf_next_steps_end}
+    
+    {petition_instructions_after}
+  """.format(
+    pdf_next_steps_start         = pdf_next_steps_start,
+    pdf_next_steps_end           = pdf_next_steps_end,
+    petition_instructions_after  = petition_instructions_after
+  )
+
+  pdf_after_download_partial_v7 = """
+    {pdf_next_steps_start}
+    {pdf_next_steps_by_hand}
+    {pdf_next_steps_end}
+    
+    {petition_instructions_after}
+  """.format(
+    pdf_next_steps_start         = pdf_next_steps_start,
+    pdf_next_steps_by_hand       = pdf_next_steps_by_hand,
+    pdf_next_steps_end           = pdf_next_steps_end,
+    petition_instructions_after  = petition_instructions_after
+  )
 ---
 id: more_resources_text
 code: |
