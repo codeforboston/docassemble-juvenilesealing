@@ -84,11 +84,11 @@ yesnomaybe: have_docket_copies_already
 #  docket sheets. <span style="color: red">(TODO: Need website)</span>
 ---
 id: read_citizen_disclaimer
-question: Are you a US citizen?
+question: ${citizen_disclaimer}
 yesno: read_citizen_disclaimer
 ---
 id: wants_fed_job
-question: Will you ever want to do any of these?
+question: ${jobs_title}
 subquestion: |
   ${jobs_list}
 yesnomaybe: wants_fed_job
