@@ -60,7 +60,8 @@ code: |
   reason = ''
   dockets_link = 'TODO'
   
-  #partial_petition
+  # Testing
+  # partial_petition
 
   # How to make sure a pro se user sees the warnings?
   should_show_extra_info = False
@@ -150,7 +151,7 @@ fields:
 id: juvenile_cases
 question: Juvenile Cases
 subquestion: |
-  **Note: For all questions, motor vehicle offenses where the fine was not over $50 don't count.**
+  **Note:** For all the questions here, motor vehicle offenses where the fine was not over $50 don't count.
 fields: 
   - note: Have you had any juvenile cases in any state in the USA on or after ${ today().minus(years=3) }?
   - no label: juvenile_cases_in_past_3_years
@@ -170,7 +171,7 @@ fields:
 id: adult_cases
 question: Adult Cases
 subquestion: |
-  **Note: For all questions, motor vehicle offenses where the fine was not over $50 don't count.**
+  **Note:** For all the questions here, motor vehicle offenses where the fine was not over $50 don't count.
 fields:
   - note: Have you had any convictions on or after ${ today().minus(years=3) } in any adult court in the USA?
   - no label: convicted_in_past_3_years_states
@@ -243,8 +244,8 @@ buttons:
 ---
 id: partial_petition
 event: partial_petition
-question: Your Petition is Ready!
-#subquestion: Your form needed two checkmarks.
+question: ${pdf_end_title}
+subquestion: ${pdf_subquestion_partial_v5}
 comment: |
   Replace file name with customized file name?
 attachment:
@@ -274,8 +275,8 @@ attachment:
 ---
 id: full_petition
 event: full_petition
-question: Your Petition is Ready!
-#subquestion: Your form needed two checkmarks.
+question: ${pdf_end_title}
+subquestion: ${pdf_subquestion_full_v5}
 comment: |
   Replace file name with customized file name?
 attachment:
@@ -328,15 +329,6 @@ subquestion: |
   We hope we were able to help a little.
 
   ${more_resources}
-buttons:
-  - Exit: exit
-  - Restart: restart
----
-id: thank_you_did_not_finish
-event: thank_you_did_not_finish
-question: Thank you and hope to see you soon!
-comment: |
-  - TODO: Give more resources
 buttons:
   - Exit: exit
   - Restart: restart
