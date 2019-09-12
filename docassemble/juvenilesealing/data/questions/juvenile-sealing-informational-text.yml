@@ -59,7 +59,7 @@ code: |
   jobs_list = """
     * Work with young children
     * Work for a bank in certain positions
-    * Work for or join the military
+    * Join or work for the military
     * Work for an employer who participates in the Work
        Opportunity Tax Credit (WOTC) program
     * Work for an employer that has federal funding
@@ -75,7 +75,7 @@ code: |
   adult CORI report, create an account at
   [Massachusetts iCORI site](https://icori.chs.state.ma.us/icori/ext/global/landing.action?page=1&bod=1566991096995&m=presentLanding).
   It costs $25, but if you are low income you might be be able
-  to ask for waiver of the fee."""
+  to ask for a waiver of the fee."""
 
   getting_juvenile_records = """To ask for a free copy of your Massachusetts
     juvenile record, see the
