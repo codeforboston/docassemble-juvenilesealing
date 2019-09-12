@@ -57,9 +57,11 @@ comment: |
   3. TODO: Link to info on CORI FAQ - what if CORI wrong, what it is etc.?
     answer: mass legal help website about that
     todo: will send link. Also, though, de-emphasize getting records
-  4. TODO: ADDRESS TO MAIL IT TO
+  x 4. TODO: ADDRESS TO MAIL IT TO
   answer: at top of form. copy from there
-  4b. v5 needs instructions added
+  [-done-] todo: put in instructions
+  x 4b. [-done-] v5 needs instructions added
+  4c. TODO: Construct email for v7 (not sure how v5 does it)
   5. further resources:
   answer: Will send
     - applying for jobs booklet (will be put online)
