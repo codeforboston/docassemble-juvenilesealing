@@ -94,12 +94,12 @@ yesnomaybe: wants_fed_job
 id: how_to_get_copies
 code: |
   how_to_get_copies = """
-    For copies of juvenile or adult docket sheets,
+    For certified copies of juvenile or adult docket sheets,
     go to the clerk’s office at the courthouse that
     handled your case. It costs $2.50 per page, but if
     your income is low, you can ask to get the fee waived.
     The staff may require you to fill out a form
-    called an “affidavit of indigency” listing your
+    called an “affidavit of indigence” listing your
     income to get the fee waived.
   """
 
@@ -135,6 +135,8 @@ subquestion: |
   It may take some more time, but it may be better in the end.
   
   ${how_to_get_copies}
+
+  ${more_resources}
 buttons:
   - Exit: exit
   - Restart: restart
