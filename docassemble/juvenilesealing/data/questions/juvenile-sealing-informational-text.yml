@@ -20,7 +20,7 @@ code: |
   
     <span style="color: green">If you have the information you need,</span>
     these questions
-    can take about to **30 minutes** to answer.""" + " " + records_can_help
+    can take about to **40 minutes** to answer.""" + " " + records_can_help
   
   may_pause_for_dockets = """You also might have to
   stop and come back later if you need to
@@ -53,7 +53,7 @@ code: |
   getting_juvenile_records = """To ask for a free copy of your Massachusetts
     juvenile record, see the
     [GBLS juvenile record request document](https://www.gbls.org/sites/default/files/juvenile_booklet_onelj.pdf).
-    It will give you a form to print and tell you what to do.</span>"""
+    It will give you a form to print and tell you what to do."""
   
   # TODO: implement
   out_of_state_records = """We can't help you get
@@ -112,13 +112,17 @@ code: |
     juvenile records and your petition is ready to print!"""
 
   download_or_email = """You can download it or you can email it to
-    yourself or someone else. The email subject line will
+    yourself or someone else."""
+
+  subject_line = """The email subject line will
     be <strong>{}</strong>.\n""".format(email_subject)
   
   pdf_next_steps_start = """Next you need to:
   
     1. Download it
     1. Print it"""
+  
+  pdf_next_steps_by_hand = "1. Fill in your own information"
     
   pdf_next_steps_end = """1. Sign it in two places (where the arrows are)
     1. Mail it. Remember to put your own address in
@@ -129,8 +133,6 @@ code: |
     **One Ashburton Place, Room 405**[BR]
     **Boston, MA 02108**
   """
-  
-  pdf_next_steps_by_hand = "1. Fill in your own information"
 
   petition_instructions_after = """Once you mail it,
     the Commissioner of Probation
@@ -146,7 +148,8 @@ code: |
     said, you can <span style="color:red">TODO: call them or
     get help from a lawyer</span>.
   """
-  
+
+
   # ------------
   # ---- v5 ----
   pdf_subquestion_full_v5 = """
@@ -183,10 +186,12 @@ code: |
   
   # ------------
   # ---- v7 ----
-  pdf_subquestion_v7 = """{pdf_intro} {download_or_email}""".format(
+  pdf_subquestion_v7 = """{pdf_intro} {download_or_email} {subject_line}""".format(
     pdf_intro         = pdf_intro,
-    download_or_email = download_or_email
+    download_or_email = download_or_email,
+    subject_line      = subject_line
   )
+
   pdf_after_download_full_v7 = """
     {pdf_next_steps_start}
     {pdf_next_steps_end}
@@ -210,13 +215,56 @@ code: |
     pdf_next_steps_end           = pdf_next_steps_end,
     petition_instructions_after  = petition_instructions_after
   )
+  
+
+  # ----------------
+  # ---- Shared ----
+  # Though not sure how to get it into v5
+  
+  email_full = """
+    {pdf_intro}
+
+    {pdf_next_steps_start}
+    {pdf_next_steps_end}
+    
+    {petition_instructions_after}
+  """.format(
+    pdf_intro                    = pdf_intro,
+    pdf_next_steps_start         = pdf_next_steps_start,
+    pdf_next_steps_end           = pdf_next_steps_end,
+    petition_instructions_after  = petition_instructions_after
+  )
+  
+  email_partial = """
+    {pdf_intro}
+
+    {pdf_next_steps_start}
+    {pdf_next_steps_by_hand}
+    {pdf_next_steps_end}
+    
+    {petition_instructions_after}
+  """.format(
+    pdf_intro                    = pdf_intro,
+    pdf_next_steps_start         = pdf_next_steps_start,
+    pdf_next_steps_by_hand       = pdf_next_steps_by_hand,
+    pdf_next_steps_end           = pdf_next_steps_end,
+    petition_instructions_after  = petition_instructions_after
+  )
 ---
 id: more_resources_text
 code: |
-  # TODO: implement
-  more_resources = """Here are some places with more information:
-  
-    * [Links to more GBLS information about criminal record problems](https://www.gbls.org/self-help/cori)
-    *
+  # TODO: get links
+  more_resources = """Maybe you can find more help on these pages too:
+
+  * [Try to find legal help in your area](https://www.masslegalservices.org/findlegalaid). Remember that not every area has people who can help with criminal records.
+  * [More links to GBLS information about criminal record problems](https://www.gbls.org/self-help/cori)
+  * A detailed GBLS Know Your Rights booklet TODO: what's the link?
+  * About applying for jobs TODO: what's the link?
+  * About criminal records and housing TODO: what's the link?
+  * Finding housing TODO: what's a good link?
+  * Finding benefit/social work support in your area TODO: what a good link?
+  * About criminal record expungement TODO: what's a good link?
   """
+---
+comment: TODO: make page about getting docket sheets
 ---

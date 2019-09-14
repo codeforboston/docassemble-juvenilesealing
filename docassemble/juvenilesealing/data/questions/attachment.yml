@@ -90,7 +90,7 @@ fields:
   - note: ${atch_after_download}
 script: |
   <script>
-
+  
     $("#downloadAttachment").click(function(){
       url_action_call('open_atch', '', function(){});
     });

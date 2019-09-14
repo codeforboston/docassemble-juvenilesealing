@@ -61,7 +61,7 @@ code: |
   dockets_link = 'TODO'
   
   # Testing
-  # partial_petition
+  partial_petition
 
   # How to make sure a pro se user sees the warnings?
   should_show_extra_info = False
@@ -197,6 +197,7 @@ fields:
 ---
 id: eligible
 field: will_write_personal_info
+comment: TODO: make page about getting docket sheets
 question: You Might Be Eligible!
 subquestion: |
   We think you're probably eligible to seal your juvenile records.
@@ -206,9 +207,6 @@ subquestion: |
   docket sheets for all of your cases**.
   It can take a while, but
   please get them before finishing your form.
-  Go to this website:
-  
-  <span style="background: aqua">**(Need link for website)**</span>
   % endif
   
   We've created a form that has marks in the
@@ -272,6 +270,9 @@ attachment:
       - "signature_always": ''
       - "checkboxes.juvenile": Yes
       - "signature_juvenile": ''
+buttons:
+  - Exit: exit
+  - Restart: restart
 ---
 id: full_petition
 event: full_petition
@@ -345,6 +346,8 @@ subquestion: |
   % if (not reason == ""):
   Come back when that has changed so we can help seal your records!
   % endif
+
+  ${more_resources}
 comment: |
   TODO: Add more resources they can go to.
 buttons:

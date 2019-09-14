@@ -131,8 +131,9 @@ code: |
   # and offer choice about saving personal info.
   if (should_show_extra_info):
     if (will_write_personal_info):
-      # Text next steps instructions to put below email buttons
+      # Text next steps instructions for various environments
       atch_after_download = pdf_after_download_partial_v7
+      atch_email_contents = email_partial
       atch_itself = partial_petition_pdf
       trigger_attachment_page
 
@@ -140,16 +141,14 @@ code: |
   # too, but... without progress. So don't do that.
   first_name = applicant.name.first
   progressor.increment()
-  #filename = first_name + '-' + last_name + '-juvenile-sealing-petition'
-
   applicant.mothers_maiden_name
   progressor.increment()
-
   applicant.ssn
   progressor.increment()
 
-  # Text next steps instructions to put below email buttons
+  # Text next steps instructions for various environments
   atch_after_download = pdf_after_download_full_v7
+  atch_email_contents = email_full
   atch_itself = full_petition_pdf
   trigger_attachment_page
   
@@ -270,6 +269,7 @@ yesnomaybe: incarcerated_in_past_3_years
 ---
 id: eligible
 field: will_write_personal_info
+comment: TODO: make page about getting docket sheets
 question: You Might Be Eligible!
 subquestion: |
   We think you're probably eligible to seal your juvenile records.
@@ -279,9 +279,6 @@ subquestion: |
   docket sheets for all of your cases**.
   It can take a while, but
   please get them before finishing your form.
-  Go to this website:
-  
-  <span style="color:green">**(Need link for website)**</span>
   % endif
   
   We've created a form that has marks in the
@@ -326,11 +323,11 @@ code: |
   else:
     atch_default_email_address = ''
   atch_email_subject= 'Petition to Seal Records'
-  atch_email_contents = petition_instructions_todo + "\n\n" + petition_instructions_after
+  #atch_email_contents = petition_instructions_todo + "\n\n" + petition_instructions_after
 
   atch_progress = 100
   atch_question = 'Your Petition is Ready!'
-  subq_end ="<div>&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;</div>"
+  subq_end = "<div>&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;</div>"
 
   atch_subquestion = pdf_subquestion_v7
   atch_after_download = pdf_after_download_full_v7
