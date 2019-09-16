@@ -93,55 +93,18 @@ subquestion: |
   ${jobs_list}
 yesnomaybe: wants_fed_job
 ---
-id: how_to_get_copies
-code: |
-  how_to_get_copies = """
-    For certified copies of juvenile or adult docket sheets,
-    go to the clerk’s office at the courthouse that
-    handled your case. It costs $2.50 per page, but if
-    your income is low, you can ask to get the fee waived.
-    The staff may require you to fill out a form
-    called an “affidavit of indigence” listing your
-    income to get the fee waived.
-  """
-
-#  how_to_get_copies = """
-#    To ask for a certified copy of
-#    your docket sheets for a case, go to
-#    the clerk’s office at the courthouse that handled your case.
-#    It can cost $2.50 per page, but if your income is low, you
-#    can ask, "Can I get the fee waived". You might have to write your
-#    income in a form called an “affidavit of indigency” to get
-#    the fee waived.
-#  """
----
 id: do_not_seal
 event: do_not_seal
 question: Sealing can be a bad idea for immigrants
 subquestion: |
-  If you seal your
-  records without getting the docket sheets
-  for all of your cases first and
-  ICE requires a hearing,
-  you might not have time to unseal those records before
-  the hearing. ICE (Immigration  Customs Enforcement) staff
-  get copies of FBI reports on people trying to become
-  citizens or get papers to stay in the U.S., but the FBI
-  reports often do not say  whether you were found guilty
-  or what happened at the end of your case.
-  **If you have a certified copy of the docket sheets for all
-  of your cases, you can prove what really happened in your case.**
+  ${why_copies_1}
   
-  It is a good idea to get a certified copy of the docket sheets for
-  all of your cases before trying to seal your records.
-  It may take some more time, but it may be better in the end.
-  
-  ${how_to_get_copies}
+  ${how_to_get_certified_copies}
+
+  ${more_resources}
 buttons:
   - Exit: exit
   - Restart: restart
-under: |
-  ${sealing_booklet_text}
 ---
 id: fed_job_disclaimer
 event: wants_docket_sheets
@@ -159,7 +122,7 @@ subquestion: |
   You can always unseal your records, but it will take
   more time.
 
-  ${how_to_get_copies}
+  ${how_to_get_certified_copies}
 
 #  Only some crimes will stop you from getting those jobs.
 #  **If you have a certified copy of the docket sheets for
@@ -174,7 +137,7 @@ subquestion: |
 #  different website
 #  **(TODO: Need name of website)** with instructions.
 buttons:
-  - Exit and order sheets: exit
+  - Come back another time: exit
   - Try sealing: leave
     url: ${needs_dockets_url}
 ---
