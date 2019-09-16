@@ -70,11 +70,102 @@ code: |
   copies of docket sheets for all of your cases?**
 
   Note: A docket sheet is different than a
-  criminal record called a CORI or juvenile report.
-  Docket sheets are
+  criminal record report called a CORI or juvenile
+  record report. Docket sheets are
   papers in your court case at the courthouse that say
   what happened in each of your cases every time
   you went to court."""
+---
+id: why_copies
+code: |
+  why_copies_1 = """If you seal your
+    records without getting the docket sheets
+    for all of your cases first and
+    ICE (Immigration  Customs Enforcement) requires a hearing,
+    you might not have time to unseal those records
+    and get the copies you need before the hearing. ICE staff
+    get copies of FBI reports on people trying to become
+    citizens or get papers to stay in the U.S., but the FBI
+    reports often do not say if you were found guilty
+    or what happened at the end of your case.
+    **If you have a certified copy of the docket sheets for all
+    of your cases, you can prove what really happened in your case.**
+
+    It is a good idea to get a certified copy of the docket sheets for
+    all of your cases before trying to seal your records.
+    It may take some more time, but it may be better in the end.
+  """
+---
+id: certified_copies_page_text
+code: |
+  about_certified_copies_title = "Certified Copies of Docket Sheets"
+  about_certified_copies = """A docket sheet is different than a
+    criminal record report called a CORI or juvenile
+    record report. Docket sheets are
+    papers from the courthouse that say
+    what happened in a case every time
+    you went to court for that case.
+    
+    Sadly, every case has its own docket sheets and
+    those sheets are kept at the courthouse that handled
+    that case. To get the certified copies
+    of juvenile or adult docket sheets of a case, you
+    must go to the clerk’s office in the courthouse that
+    handled that case. You can say, "I'd like certified copies
+    of my docket sheets for all of my cases." You must
+    do this for all of your cases.
+    
+    It can sometimes cost about $2.50 for each page,
+    but if you can't affort to pay that much, you
+    can ask, "Can I get the fee waived?" The staff
+    will probably have you fill out a form called an
+    “affidavit of indigency” where you'll put down
+    how much you and the family members that live with you
+    get payed. That's to show why you can't afford
+    to pay the fee.
+    
+    You can also send a letter to ask for the docket sheets,
+    but that isn't as good. It costs more, it
+    takes longer, and it could take a couple of tries.
+    If you want to order the sheets by mail, first call
+    the courthouse and ask how much it will cost to
+    print the sheets.
+    <span style="color: red">
+    Then write a letter that says, TODO: what does it say?
+    </span>.
+    Next write a check for the amount of money
+    the courthouse wants. Put those both in an envelope to
+    mail to the courthouse. Remember to include your return
+    address on the envelope.
+    
+    <span style="color: red">
+    TODO: Are there courthouse instructions online for requesting
+    docket sheets?
+    </span>.
+  """
+---
+id: certified_copies_text
+code: |
+  how_to_get_certified_copies = """For certified copies
+    of juvenile or adult docket sheets,
+    go to the clerk’s office at the courthouse that
+    handled your case. It can cost about $2.50 per page,
+    but if
+    your income is low, you can ask to get the fee waived.
+    The staff may require you to fill out a form
+    called an “affidavit of indigency” listing your
+    income to get the fee waived.
+  """
+
+#  how_to_get_copies = """
+#    To ask for a certified copy of
+#    your docket sheets for a case, go to
+#    the clerk’s office at the courthouse that handled your case.
+#    It can cost $2.50 per page, but if your income is low, you
+#    can ask, "Can I get the fee waived". You might have to write your
+#    income in a form called an “affidavit of indigency” to get
+#    the fee waived.
+#  """
 ---
 id: citizen_text
 code: |
@@ -255,16 +346,23 @@ id: more_resources_text
 code: |
   # TODO: get links
   more_resources = """Maybe you can find more help on these pages too:
-
+  
   * [Try to find legal help in your area](https://www.masslegalservices.org/findlegalaid). Remember that not every area has people who can help with criminal records.
-  * [More links to GBLS information about criminal record problems](https://www.gbls.org/self-help/cori)
-  * A detailed GBLS Know Your Rights booklet TODO: what's the link?
+  * More links to GBLS information about [criminal record problems](https://www.gbls.org/self-help/cori)
+  * A [GBLS booklet just about sealing](https://www.gbls.org/sites/default/files/2019-08/juvenile_booklet_august_2019F.pdf) that includes an example petition
+  * A detailed GBLS ["Know Your Rights Booklet"](https://www.gbls.org/sites/default/files/2019-04/know-your-cori-rights-041819.pdf) on many topics related to sealing and expungement
   * About applying for jobs TODO: what's the link?
-  * About criminal records and housing TODO: what's the link?
-  * Finding housing TODO: what's a good link?
-  * Finding benefit/social work support in your area TODO: what a good link?
-  * About criminal record expungement TODO: what's a good link?
+  * [Criminal records and housing](https://www.masslegalhelp.org/cori/housing)
+  * [Finding housing](https://www.masslegalhelp.org/housing/finding-housing)
+  * Medical, mental health, and recovery support sites:
+  
+  &nbsp;&nbsp;&nbsp;[https://www.alternativehomehealthcarellc.com/patient-resources](https://www.alternativehomehealthcarellc.com/patient-resources)[BR]
+  &nbsp;&nbsp;&nbsp;[https://www.cominghomedirectory.org/coming-home-category/physical-and-mental-health/](https://www.cominghomedirectory.org/coming-home-category/physical-and-mental-health/)[BR]
+  &nbsp;&nbsp;&nbsp;[https://www.cominghomedirectory.org/coming-home-category/substance-use/](https://www.cominghomedirectory.org/coming-home-category/substance-use/)[BR]
+
+  * [Marijuana case sealing and expungement](https://www.gbls.org/sites/default/files/2019-05/booklet-7-seal-decriminalized-cannabis-cases-5119-f.pdf)
   """
 ---
-comment: TODO: make page about getting docket sheets
+comment: |
+  TODO: make page about getting docket sheets
 ---
