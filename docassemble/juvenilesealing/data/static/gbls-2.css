@@ -266,14 +266,14 @@ h1.h3 {
   text-align: center;
 }
 
-h4 {
+h2 {
   font-size: 16px;
   font-weight: bold;
   /*text-transform: uppercase;*/
   margin-bottom: 1em;
 }
 
-h4:before {
+h2:before {
   font-size: 16px;
   white-space: pre;
   content: "_________________________________________________________________\A\A";
