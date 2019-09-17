@@ -52,10 +52,15 @@ question: |
   Your Family
 comment: |
   - TODO: P. - Better definition of mother and father names?
+  - TODO: Change var name of x.fathers_maiden_name
+  - TODO: Better explanation of your father's name - language
+  - TODO: Explanation of 'maiden name'
 fields:
-  - Mother's maiden name: x.mothers_maiden_name
-  - "Father's full name <span style='color: red'>(before he was married?)</span>": x.fathers_maiden_name
-  - "Husband/Wife's name": x.spouses_name
+  - "Mother's maiden name": x.mothers_maiden_name
+    required: False
+  - "Father's full name": x.fathers_maiden_name
+    required: False
+  - "Husband/Wife's name (if you are married)": x.spouses_name
     required: False
   
 ---
@@ -63,12 +68,13 @@ generic object: Individual
 question: |
   Other Information
 fields:
+  - Social Security Number (SSN): x.ssn
   - Date of birth: x.birthdate
   - Place of Birth: x.place_of_birth
   - Alias/maiden name/previous name: x.alias
     required: False
   - Occupation: x.occupation
-  - Social Security Number (SSN): x.ssn
+    required: False
 #  - note: Social Security Number (SSN)
 #  - no label: x.ssn
 #    datatype: ssn

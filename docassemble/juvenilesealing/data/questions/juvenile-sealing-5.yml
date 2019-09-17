@@ -58,7 +58,6 @@ id: flow
 code: |
 
   reason = ''
-  dockets_link = 'TODO'
   
   # Testing
   partial_petition
@@ -111,7 +110,6 @@ code: |
   # Make sure they get a chance to order their docket sheets.
   if (should_show_extra_info):
     if (will_write_personal_info):
-      # TODO: Link to docket sheets instead
       partial_petition
 
   # Get their personal details
@@ -131,7 +129,7 @@ default validation messages:
 id: open_cases
 question: |
   Open Cases
-fields: 
+fields:
   - note: |
       Do you have any open criminal or juvenile cases right now anywhere in the USA?
   - no label: has_NON_probation_open_cases
@@ -197,19 +195,21 @@ fields:
 ---
 id: eligible
 field: will_write_personal_info
-comment: TODO: make page about getting docket sheets
 question: You Might Be Eligible!
 subquestion: |
   We think you're probably eligible to seal your juvenile records.
 
   % if (needs_dockets):
   **You can also still see how to get a certified copy of the
-  docket sheets for all of your cases**.
+  [docket sheets](${ url_action('about_docket_sheets') })
+  for all of your cases**.
   It can take a while, but
-  please get them before finishing your form.
+  it is a good idea to get them before finishing your form.
   % endif
   
-  We've created a form that has marks in the
+  ## What Next?
+
+  We've created a form that has checkmarks in the
   right places.
   Now the form needs some of your
   personal information. You can do it two ways:
@@ -242,7 +242,7 @@ buttons:
 ---
 id: partial_petition
 event: partial_petition
-question: ${pdf_end_title}
+question: ${get_pdf_title}
 subquestion: ${pdf_subquestion_partial_v5}
 comment: |
   Replace file name with customized file name?
