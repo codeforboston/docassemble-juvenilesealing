@@ -108,7 +108,6 @@ yesno: read_citizen_disclaimer
 ---
 id: wants_fed_job
 question: Will you ever want to do any of these?
-# TODO: How does it affect running for political office?
 subquestion: |
   * Work with young children
   * Work for a bank or mortgage company in certain positions
@@ -153,8 +152,6 @@ buttons:
 ---
 id: fed_job_disclaimer
 event: wants_docket_sheets
-comment: |
-  TODO: new text ok?
 question: You may need your docket sheets to get some jobs
 subquestion: |
   Some criminal charges may stop you from getting
@@ -176,7 +173,7 @@ subquestion: |
   You can always unseal your records to get the docket
   sheets, but it will take more time.
 
-  [Read more about docket sheets](${ url_action('about_docket_sheets') }).
+  [Read more about docket sheets](${ url_action('about_docket_sheets') })
 buttons:
   - Come back another time: exit
   - Try sealing: leave
