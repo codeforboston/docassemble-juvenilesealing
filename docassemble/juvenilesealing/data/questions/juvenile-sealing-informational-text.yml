@@ -52,7 +52,7 @@ content: |
 id: records_can_help_text
 template: records_can_help
 content: |
-  It will be easier to give the right answers if you
+  It might be easier to give the right answers if you
   have a copy of your juvenile record report,
   and also your CORI report if you had cases in an adult court.
   These reports will give a summary of all your criminal charges
@@ -90,7 +90,7 @@ template: do_you_have_sheets_title
 content: |
   Certified Copies of Docket Sheets
 ---
-id: do_you_have_sheets_title_text
+id: have_certified_copy_text
 template: have_certified_copy
 content: |
   **Do you already have certified
@@ -126,9 +126,7 @@ content: |
 id: certified_copies_page_text_question
 field: about_docket_sheets
 # TODO: Are there courthouse instructions online for requesting
-#    docket sheets?
-# TODO: What's special about certified ones.
-# TODO: draft an example letter (and envelope with ATTENTION?)
+#    docket sheets? A: No
 # [text](${ url_action('about_docket_sheets') })
 question: About Docket Sheets
 subquestion: |
@@ -215,7 +213,6 @@ content: |
   * Work for a senator, representative, or other politician
   * Work in any job that needs a federal background
   check
-# TODO: How does it affect running for political office?
 ---
 id: jobs_explanation_title_text
 template: jobs_explanation_title
@@ -307,14 +304,12 @@ content: |
 ---
 id: subject_line_text
 template: subject_line
-# TODO: Make it version-specific
 content: |
   The email subject line will be
   <strong>${atch_email_subject}</strong>.
 ---
 id: subject_line_v5_text
 template: subject_line_v5
-# TODO: Make it version-specific
 content: |
   The email subject line will be
   <strong>juvenile-sealing-petition</strong>.
@@ -449,10 +444,4 @@ content: |
       * [https://www.cominghomedirectory.org/coming-home-category/physical-and-mental-health/](https://www.cominghomedirectory.org/coming-home-category/physical-and-mental-health/)
       * [https://www.cominghomedirectory.org/coming-home-category/substance-use/](https://www.cominghomedirectory.org/coming-home-category/substance-use/)
   * [Marijuana case sealing and expungement](https://www.gbls.org/sites/default/files/2019-05/booklet-7-seal-decriminalized-cannabis-cases-5119-f.pdf)
-
----
-comment: |
-  TODO: make page about getting docket sheets
----
-
 ---
