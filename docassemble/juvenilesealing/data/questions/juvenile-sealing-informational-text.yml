@@ -96,60 +96,60 @@ code: |
     It may take some more time, but it may be better in the end.
   """
 ---
-id: certified_copies_page_text
-code: |
-  about_certified_copies_title = "Certified Copies of Docket Sheets"
-  about_certified_copies = """A docket sheet is different than a
-    criminal record report called a CORI or juvenile
-    record report. Docket sheets are
-    papers from the courthouse that say
-    what happened in a case every time
-    you went to court for that case.
-    
-    Sadly, every case has its own docket sheets and
-    those sheets are kept at the courthouse that handled
-    that case. To get the certified copies
-    of juvenile or adult docket sheets of a case, you
-    must go to the clerk’s office in the courthouse that
-    handled that case. You can say, "I'd like certified copies
-    of my docket sheets for all of my cases." You must
-    do this for all of your cases.
-    
-    It can sometimes cost about $2.50 for each page,
-    but if you can't affort to pay that much, you
-    can ask, "Can I get the fee waived?" The staff
-    will probably have you fill out a form called an
-    “affidavit of indigency” where you'll put down
-    how much you and the family members that live with you
-    get payed. That's to show why you can't afford
-    to pay the fee.
-    
-    You can also send a letter to ask for the docket sheets,
-    but that isn't as good. It costs more, it
-    takes longer, and it could take a couple of tries.
-    If you want to order the sheets by mail, first call
-    the courthouse and ask how much it will cost to
-    print the sheets.
-    <span style="color: red">
-    Then write a letter that says, TODO: what does it say?
-    </span>.
-    Next write a check for the amount of money
-    the courthouse wants. Put those both in an envelope to
-    mail to the courthouse. Remember to include your return
-    address on the envelope.
-    
-    <span style="color: red">
-    TODO: Are there courthouse instructions online for requesting
-    docket sheets?
-    </span>.
-  """
+id: certified_copies_page_text_question
+field: about_docket_sheets
+# TODO: Are there courthouse instructions online for requesting
+#    docket sheets?
+# TODO: What's special about certified ones.
+# TODO: draft an example letter (and envelope with ATTENTION?)
+# [text](${ url_action('about_docket_sheets') })
+question: About Docket Sheets
+subquestion: |
+  A docket sheet is different than a criminal record
+  report (called a CORI) or juvenile record report. Docket
+  sheets are papers from the courthouse that say
+  what happened in a case every time you went
+  to court for that case.
+
+  If you seal your records you won't be able to get
+  certified copies of your docket sheets until you
+  unseal them again. That can sometimes take a long time.
+
+  Sadly, every case has its own docket
+  sheets and those sheets are kept at the courthouse
+  that handled that case. For each case, go to the clerk’s
+  office in the courthouse that handled the case and say,
+  "I'd like certified copies of my docket sheets
+  for all of my cases." You have to do it
+  at each courthouse where you had a case.
+
+  It can cost up to $2.50 for each page, but if you
+  can't affort to pay that much, you can ask,
+  "Can I get the fee waived?" The staff will probably
+  have you fill out a form called an
+  “affidavit of indigency” where you'll put down
+  how much you and the family members that live
+  with you get payed. That's to show why you can't
+  afford to pay the fee.
+
+  You can also send a letter to ask for the docket
+  sheets.  If you want to order the sheets by mail,
+  first call the courthouse and ask how much it will
+  cost to print the sheets. Then write a letter that
+  says, "What does it say?" Next write a check for
+  the amount of money the courthouse wants. Put those
+  both in an envelope to mail to the courthouse.
+  Remember to include your return address on the envelope.
+  If you don't get anything back, call to find out how
+  it's going.
+continue button label: Keep going
 ---
 id: certified_copies_text
 code: |
   how_to_get_certified_copies = """For certified copies
     of juvenile or adult docket sheets,
     go to the clerk’s office at the courthouse that
-    handled your case. It can cost about $2.50 per page,
+    handled your case. It can cost up to $2.50 per page,
     but if
     your income is low, you can ask to get the fee waived.
     The staff may require you to fill out a form
@@ -177,16 +177,74 @@ code: |
 
   jobs_list = """
     * Work with young children
-    * Work for a bank in certain positions
+    * Work for a bank or mortgage company in certain positions
     * Join or work for the military
     * Work for an employer who participates in the Work
        Opportunity Tax Credit (WOTC) program
     * Work for an employer that has federal funding
-    * Work for a political office
-    * Run for political office
-    * Work for any other job that needs a federal background
+    * Work for a senator, representative, or other politician
+    * Work in any job that needs a federal background
     check
   """
+# TODO: How does it affect running for political office?
+---
+id: jobs_explanation_text
+code: |
+  jobs_explanation_title = "You may need your docket sheets to get some jobs"
+  jobs_explanation = """
+    Some criminal charges may stop you from getting
+    certain kinds of jobs,
+    <span style="color: green">
+    but some criminal charges aren't a problem.
+    </span>
+    If you seal your records,
+    there are a few agencies and a few types of employers
+    who can get CORI reports that have information about
+    sealed records, so they might ask you some
+    questions about those.
+    **If you have a certified copy of the docket sheets
+    for all of your cases, you can prove what happened
+    in your case.** This may help you get the job.
+    You can always unseal your records to get the docket
+    sheets, but it will take
+    more time.
+  """
+comment: |
+  jobs_explanation = """
+    Some criminal charges may stop you from getting
+    certain kinds of jobs,
+    ***
+    but some criminal charges aren't a problem.
+    ***
+    If you seal your records,
+    there are a few agencies and a few types of employers
+    who can get CORI reports that have information about
+    sealed records,
+    ***
+    but they can't see what those charges were. They
+    ***
+    might ask you some
+    questions about those.
+    **If you have a certified copy of the docket sheets
+    for all of your cases, you can prove what happened
+    in your case.** This may help you get the job.
+    You can always unseal your records to get the docket
+    sheets, but it will take
+    more time.
+  """
+
+#  Only some crimes will stop you from getting those jobs.
+#  **If you have a certified copy of the docket sheets for
+#  all of your cases you can
+#  prove what your record really is** and maybe still get
+#  the job. You can always unseal your records, but it will
+#  take more time.
+  
+#  **It can take a while, but we recommend you get
+#  a certified copy of your docket sheets
+#  before trying to seal your records**. We can link you to a
+#  different website
+#  **(TODO: Need name of website)** with instructions.
 ---
 id: learn_more_sealing_text
 code: |
@@ -194,175 +252,169 @@ code: |
   juvenile records from the
   [GBLS 2019 booklet](https://www.gbls.org/sites/default/files/2019-08/juvenile_booklet_august_2019F.pdf)."""
 ---
-id: sealing_final_instructions
-code: |
-  pdf_end_title = "Your Petition is Ready!"
-  email_subject = "Petition to Seal Records"
+id: pdf_page_title_text
+template: get_pdf_title
+content: |
+  Your Petition is Ready!
+---
+id: email_subject_text
+template: email_subject
+content: |
+  Petition to Seal Records
+---
+id: pdf_intro_text
+template: pdf_intro
+content: |
+  We think you're probably eligible to seal your
+  juvenile records and your petition is ready to print!
+---
+id: download_or_email_text
+template: download_or_email
+content: |
+  You can download it or you can email it to
+  yourself or someone else.
+---
+id: subject_line_text
+template: subject_line
+# TODO: Make it version-specific
+content: |
+  The email subject line will be
+  <strong>juvenile-sealing-petition</strong>.
+---
+id: pdf_next_steps_start_text
+template: pdf_next_steps_start
+content: |
+  Next you need to:
   
-  pdf_intro = """We think you're probably eligible to seal your
-    juvenile records and your petition is ready to print!"""
-
-  download_or_email = """You can download it or you can email it to
-    yourself or someone else."""
-
-  subject_line = """The email subject line will
-    be <strong>{}</strong>.\n""".format(email_subject)
-  
-  pdf_next_steps_start = """Next you need to:
-  
-    1. Download it
-    1. Print it"""
-  
-  pdf_next_steps_by_hand = "1. Fill in your own information"
+  1. Download it
+  1. Print it
+---
+id: pdf_next_steps_by_hand_text
+template: pdf_next_steps_by_hand
+content: |
+  1. Fill in your own information
+---
+id: pdf_next_steps_end_text
+template: pdf_next_steps_end
+content: |
+  1. Sign it in two places (where the arrows are)
+  1. Mail it. Remember to put your own address in
+  the top left of the envelope so they can send
+  information back to you. Mail it to:
     
-  pdf_next_steps_end = """1. Sign it in two places (where the arrows are)
-    1. Mail it. Remember to put your own address in
-    the top left of the envelope so they can send
-    information back to you. Mail it to:
-    
-    **Commissioner of Probation**[BR]
-    **One Ashburton Place, Room 405**[BR]
-    **Boston, MA 02108**
-  """
+  **Commissioner of Probation**[BR]
+  **One Ashburton Place, Room 405**[BR]
+  **Boston, MA 02108**
+---
+id: petition_instructions_after_text
+template: petition_instructions_after
+content: |
+  Once you mail it,
+  the Commissioner of Probation
+  will look at it and your criminal
+  records. They'll see if they agree that you can seal
+  your juvenile records. They will send you a letter
+  telling you what they decided to seal
+  and why they made that decision.
 
-  petition_instructions_after = """Once you mail it,
-    the Commissioner of Probation
-    will look at it. They will also look at your criminal
-    records. They'll see if they agree that you can seal
-    your juvenile records. They will send you a letter
-    telling you what they decided and why they made that decision.
-    
-    It can take up to 3 months because they have a lot
-    of petitions to look at.
-    
-    If you get the letter back and don't agree with what they
-    said, you can <span style="color:red">TODO: call them or
-    get help from a lawyer</span>.
-  """
+  It can take up to 3 months because so
+  many people send them petitions to seal records.
 
+  If you get the letter back and don't agree with what they
+  said, you can call the Commissioner’s Office and ask
+  them to explain to you why they would not seal all your
+  records. The number is (617) 727 - 5300. You can also
+  [try to find legal help near you](https://www.masslegalservices.org/findlegalaid).
+  Remember that not every area has someone that
+  can help with criminal records.
+---
+id: pdf_subquestion_partial_v5_text
+template: pdf_subquestion_partial_v5
+content: |
+  ${pdf_intro} ${download_or_email}
 
-  # ------------
-  # ---- v5 ----
-  pdf_subquestion_full_v5 = """
-    {pdf_intro} {download_or_email}
+  ${pdf_next_steps_start}
+  ${pdf_next_steps_by_hand}
+  ${pdf_next_steps_end}
 
-    {pdf_next_steps_start}
-    {pdf_next_steps_end}
-    
-    {petition_instructions_after}
-  """.format(
-    pdf_intro                    = pdf_intro,
-    download_or_email            = download_or_email,
-    pdf_next_steps_start         = pdf_next_steps_start,
-    pdf_next_steps_end           = pdf_next_steps_end,
-    petition_instructions_after  = petition_instructions_after
-  )
-  
-  pdf_subquestion_partial_v5 = """
-    {pdf_intro} {download_or_email}
+  ${petition_instructions_after}
+---
+id: pdf_subquestion_full_v5_text
+template: pdf_subquestion_full_v5
+content: |
+  ${pdf_intro} ${download_or_email}
 
-    {pdf_next_steps_start}
-    {pdf_next_steps_by_hand}
-    {pdf_next_steps_end}
-    
-    {petition_instructions_after}
-  """.format(
-    pdf_intro                    = pdf_intro,
-    download_or_email            = download_or_email,
-    pdf_next_steps_start         = pdf_next_steps_start,
-    pdf_next_steps_by_hand       = pdf_next_steps_by_hand,
-    pdf_next_steps_end           = pdf_next_steps_end,
-    petition_instructions_after  = petition_instructions_after
-  )
-  
-  # ------------
-  # ---- v7 ----
-  pdf_subquestion_v7 = """{pdf_intro} {download_or_email} {subject_line}""".format(
-    pdf_intro         = pdf_intro,
-    download_or_email = download_or_email,
-    subject_line      = subject_line
-  )
+  ${pdf_next_steps_start}
+  ${pdf_next_steps_end}
 
-  pdf_after_download_full_v7 = """
-    {pdf_next_steps_start}
-    {pdf_next_steps_end}
-    
-    {petition_instructions_after}
-  """.format(
-    pdf_next_steps_start         = pdf_next_steps_start,
-    pdf_next_steps_end           = pdf_next_steps_end,
-    petition_instructions_after  = petition_instructions_after
-  )
+  ${petition_instructions_after}
+---
+id: pdf_subquestion_v7_text
+template: pdf_subquestion_v7
+content: |
+  ${pdf_intro} ${download_or_email} ${subject_line}
+---
+id: pdf_after_download_full_v7_text
+template: pdf_after_download_full_v7
+content: |
+  ${pdf_next_steps_start}
+  ${pdf_next_steps_end}
 
-  pdf_after_download_partial_v7 = """
-    {pdf_next_steps_start}
-    {pdf_next_steps_by_hand}
-    {pdf_next_steps_end}
-    
-    {petition_instructions_after}
-  """.format(
-    pdf_next_steps_start         = pdf_next_steps_start,
-    pdf_next_steps_by_hand       = pdf_next_steps_by_hand,
-    pdf_next_steps_end           = pdf_next_steps_end,
-    petition_instructions_after  = petition_instructions_after
-  )
-  
+  ${petition_instructions_after}
+---
+id: pdf_after_download_partial_v7_text
+template: pdf_after_download_partial_v7
+content: |
+  ${pdf_next_steps_start}
+  ${pdf_next_steps_by_hand}
+  ${pdf_next_steps_end}
 
-  # ----------------
-  # ---- Shared ----
-  # Though not sure how to get it into v5
-  
-  email_full = """
-    {pdf_intro}
+  ${petition_instructions_after}
+---
+id: email_partial_text
+template: email_partial
+content: |
+  ${pdf_intro}
 
-    {pdf_next_steps_start}
-    {pdf_next_steps_end}
-    
-    {petition_instructions_after}
-  """.format(
-    pdf_intro                    = pdf_intro,
-    pdf_next_steps_start         = pdf_next_steps_start,
-    pdf_next_steps_end           = pdf_next_steps_end,
-    petition_instructions_after  = petition_instructions_after
-  )
-  
-  email_partial = """
-    {pdf_intro}
+  ${pdf_next_steps_start}
+  ${pdf_next_steps_by_hand}
+  ${pdf_next_steps_end}
 
-    {pdf_next_steps_start}
-    {pdf_next_steps_by_hand}
-    {pdf_next_steps_end}
-    
-    {petition_instructions_after}
-  """.format(
-    pdf_intro                    = pdf_intro,
-    pdf_next_steps_start         = pdf_next_steps_start,
-    pdf_next_steps_by_hand       = pdf_next_steps_by_hand,
-    pdf_next_steps_end           = pdf_next_steps_end,
-    petition_instructions_after  = petition_instructions_after
-  )
+  ${petition_instructions_after}
+---
+id: email_full_text
+template: email_full
+content: |
+  ${pdf_intro}
+
+  ${pdf_next_steps_start}
+  ${pdf_next_steps_end}
+
+  ${petition_instructions_after}
 ---
 id: more_resources_text
-code: |
+template: more_resources
+comment: |
   # TODO: get links
-  more_resources = """Maybe you can find more help on these pages too:
+content: |
+  Maybe you can find more help on these pages too:
   
+  * A [GBLS booklet just about sealing](https://www.gbls.org/sites/default/files/2019-08/juvenile_booklet_august_2019F.pdf) that includes an example petition
   * [Try to find legal help in your area](https://www.masslegalservices.org/findlegalaid). Remember that not every area has people who can help with criminal records.
   * More links to GBLS information about [criminal record problems](https://www.gbls.org/self-help/cori)
-  * A [GBLS booklet just about sealing](https://www.gbls.org/sites/default/files/2019-08/juvenile_booklet_august_2019F.pdf) that includes an example petition
   * A detailed GBLS ["Know Your Rights Booklet"](https://www.gbls.org/sites/default/files/2019-04/know-your-cori-rights-041819.pdf) on many topics related to sealing and expungement
   * About applying for jobs TODO: what's the link?
   * [Criminal records and housing](https://www.masslegalhelp.org/cori/housing)
   * [Finding housing](https://www.masslegalhelp.org/housing/finding-housing)
   * Medical, mental health, and recovery support sites:
-  
-  &nbsp;&nbsp;&nbsp;[https://www.alternativehomehealthcarellc.com/patient-resources](https://www.alternativehomehealthcarellc.com/patient-resources)[BR]
-  &nbsp;&nbsp;&nbsp;[https://www.cominghomedirectory.org/coming-home-category/physical-and-mental-health/](https://www.cominghomedirectory.org/coming-home-category/physical-and-mental-health/)[BR]
-  &nbsp;&nbsp;&nbsp;[https://www.cominghomedirectory.org/coming-home-category/substance-use/](https://www.cominghomedirectory.org/coming-home-category/substance-use/)[BR]
-
+      * [https://www.alternativehomehealthcarellc.com/patient-resources](https://www.alternativehomehealthcarellc.com/patient-resources)
+      * [https://www.cominghomedirectory.org/coming-home-category/physical-and-mental-health/](https://www.cominghomedirectory.org/coming-home-category/physical-and-mental-health/)
+      * [https://www.cominghomedirectory.org/coming-home-category/substance-use/](https://www.cominghomedirectory.org/coming-home-category/substance-use/)
   * [Marijuana case sealing and expungement](https://www.gbls.org/sites/default/files/2019-05/booklet-7-seal-decriminalized-cannabis-cases-5119-f.pdf)
-  """
+
 ---
 comment: |
   TODO: make page about getting docket sheets
+---
+
 ---
