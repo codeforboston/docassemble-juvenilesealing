@@ -46,60 +46,105 @@ code: |
   # Strings that get reused
   sealing_url = 'https://interviews-dev.gbls.org/interview?dockets=notneeded&i=docassemble.playground42%3Ajuvenile-sealing-5.yml'
   needs_dockets_url = 'https://interviews-dev.gbls.org/interview?dockets=needed&i=docassemble.playground42%3Ajuvenile-sealing-5.yml'
-  get_docket_url = 'https://duckduckgo.com'
 ---
 id: intro
 field: intro
-question: ${intro_title}
+question: Can You Seal Your Juvenile Record?
 subquestion: |
-  ${form_steps}
+  To find out, this is what we need to do: 
 
-  ${more_form_info}
+  1. Find out if there's a reason you **shouldn't** seal your records.
+  1. Ask questions about your old and open cases.
+  1. Tell you if you might be eligible for sealing.
+  1. Ask for personal details like your social security number.
+
+  After that, we can give you a form (petition) to download,
+  print, and sign. We'll tell you where to mail it.
+
+  ## More about this form
+    
+  <span style="color: green">If you have the information you need,</span>
+  these questions
+  can take about to **40 minutes** to answer.
+
+  ${records_can_help}
 
   ${getting_juvenile_records} ${getting_cori}
 
-  ${may_pause_for_dockets}
+  You also might have to
+  stop and come back later if you need to
+  get a certified copy of your
+  [docket sheets](${ url_action('about_docket_sheets') }).
   
-  ${will_ask_permission_to_store}
+  If we need to store any personally
+  identifying information,
+  like your name and social
+  security number, we will ask you first.
 
-  ${usa_possessions}
+  **Note:** Whenever we say USA
+  that includes United States
+  possessions (like Guam).
 under: |
-  ${sealing_booklet_text}
+  Read more about sealing juvenile records from the
+  [GBLS 2019 booklet](https://www.gbls.org/sites/default/files/2019-08/juvenile_booklet_august_2019F.pdf).
 ---
 id: do_you_have_sheets
-comment: |
-  - TODO: Should we show this before or after we see if they're
-    eligible or not? Having them go through the whole thing
-    just to have to come back in the future would be a pain.
-    On the other hand, having them go through the trouble
-    of getting a certified copy and then not be eligible is
-    also not great.
-    [Answer: Before]
-question: ${do_you_have_sheets_title}
+question: Certified Copies of Docket Sheets
 subquestion: |
-  ${have_certified_copy}
+  **Do you already have certified
+  copies of
+  [docket sheets](${ url_action('about_docket_sheets') })
+  for all of your cases?**
+
+  Note: A [docket sheet](${ url_action('about_docket_sheets') })
+  is different than a
+  criminal record report called a CORI or juvenile
+  record report.
 yesnomaybe: have_docket_copies_already
-#under: |
-#  Go to this website to find out about certified
-#  docket sheets. <span style="color: red">(TODO: Need website)</span>
 ---
 id: read_citizen_disclaimer
-question: ${citizen_disclaimer}
+question: Are you a US citizen?
 yesno: read_citizen_disclaimer
 ---
 id: wants_fed_job
-question: ${jobs_title}
+question: Will you ever want to do any of these?
+# TODO: How does it affect running for political office?
 subquestion: |
-  ${jobs_list}
+  * Work with young children
+  * Work for a bank or mortgage company in certain positions
+  * Join or work for the military
+  * Work for an employer who participates in the Work
+     Opportunity Tax Credit (WOTC) program
+  * Work for an employer that has federal funding
+  * Work for a senator, representative, or other politician
+  * Work in any job that needs a federal background
+  check
 yesnomaybe: wants_fed_job
 ---
 id: do_not_seal
 event: do_not_seal
 question: Sealing can be a bad idea for immigrants
 subquestion: |
-  ${why_copies_1}
-  
-  ${how_to_get_certified_copies}
+  If you seal your
+  records without getting the
+  [docket sheets](${ url_action('about_docket_sheets') })
+  for all of your cases first and
+  ICE (Immigration  Customs Enforcement) requires a hearing,
+  you might not have time to unseal those records
+  and get the copies you need before the hearing. ICE staff
+  get copies of FBI reports on people trying to become
+  citizens or get papers to stay in the U.S., but the FBI
+  reports often do not say if you were found guilty
+  or what happened at the end of your case.
+  **If you have a certified copy of the
+  [docket sheets](${ url_action('about_docket_sheets') })
+  for all of your cases, you can prove
+  what really happened in your case.**
+
+  It is a good idea to get a certified copy of the
+  [docket sheets](${ url_action('about_docket_sheets') })
+  for all of your cases before trying to seal your records.
+  It may take some more time, but it may be better in the end.
 
   ${more_resources}
 buttons:
@@ -108,36 +153,32 @@ buttons:
 ---
 id: fed_job_disclaimer
 event: wants_docket_sheets
+comment: |
+  TODO: new text ok?
 question: You may need your docket sheets to get some jobs
 subquestion: |
   Some criminal charges may stop you from getting
-  certain kinds of jobs. If you seal your records,
+  certain kinds of jobs,
+  <span style="color: green">
+  but some criminal charges aren't a problem.
+  </span>
+  If you seal your records,
   there are a few agencies and a few types of employers
   who can get CORI reports that have information about
-  sealed records. They may also ask you some
-  questions about your sealed records.
-  **If you have a certified copy of the docket sheets
-  for all of your cases,  you can prove what happened
+  sealed records, so they might ask you some
+  questions about those. They might want to look at
+  the sheets to see if they can hire you.
+  **If you have a certified copy of the
+  [docket sheets](${ url_action('about_docket_sheets') })
+  for all of your cases, you can prove what happened
   in your case.** This may help you get the job.
-  You can always unseal your records, but it will take
-  more time.
 
-  ${how_to_get_certified_copies}
+  You can always unseal your records to get the docket
+  sheets, but it will take more time.
 
-#  Only some crimes will stop you from getting those jobs.
-#  **If you have a certified copy of the docket sheets for
-#  all of your cases you can
-#  prove what your record really is** and maybe still get
-#  the job. You can always unseal your records, but it will
-#  take more time.
-  
-#  **It can take a while, but we recommend you get
-#  a certified copy of your docket sheets
-#  before trying to seal your records**. We can link you to a
-#  different website
-#  **(TODO: Need name of website)** with instructions.
+  [Read more about docket sheets](${ url_action('about_docket_sheets') }).
 buttons:
   - Come back another time: exit
   - Try sealing: leave
-    url: ${needs_dockets_url}
+    url: ${ needs_dockets_url }
 ---

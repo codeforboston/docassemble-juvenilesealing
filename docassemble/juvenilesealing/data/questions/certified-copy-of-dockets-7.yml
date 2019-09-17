@@ -64,7 +64,7 @@ subquestion: |
 under: |
   ${sealing_booklet_text}
 ---
-id: have_sheets_already
+id: do_you_have_sheets
 comment: |
   - TODO: Should we show this before or after we see if they're
     eligible or not? Having them go through the whole thing
@@ -103,41 +103,16 @@ subquestion: |
 buttons:
   - Exit: exit
   - Restart: restart
-under: |
-  ${sealing_booklet_text}
 ---
 id: fed_job_disclaimer
 event: wants_docket_sheets
-question: You may need your docket sheets to get some jobs
+question: ${jobs_explanation_title}
 subquestion: |
-  Some criminal charges may stop you from getting
-  certain kinds of jobs. If you seal your records,
-  there are a few agencies and a few types of employers
-  who can get CORI reports that have information about
-  sealed records. They may also ask you some
-  questions about your sealed records.
-  **If you have a certified copy of the docket sheets
-  for all of your cases,  you can prove what happened
-  in your case.** This may help you get the job.
-  You can always unseal your records, but it will take
-  more time.
+  ${jobs_explanation}
 
   ${how_to_get_certified_copies}
-
-#  Only some crimes will stop you from getting those jobs.
-#  **If you have a certified copy of the docket sheets for
-#  all of your cases you can
-#  prove what your record really is** and maybe still get
-#  the job. You can always unseal your records, but it will
-#  take more time.
-  
-#  **It can take a while, but we recommend you get
-#  a certified copy of your docket sheets
-#  before trying to seal your records**. We can link you to a
-#  different website
-#  **(TODO: Need name of website)** with instructions.
 buttons:
-  - Exit: exit
+  - Come back another time: exit
   - Try sealing: leave
     url: ${ needs_dockets_url }
 ---
