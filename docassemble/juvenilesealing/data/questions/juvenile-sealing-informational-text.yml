@@ -2,71 +2,98 @@
 comment: |
   Pro se informational copy that shared between versions.
 ---
-id: intro_text
-code: |
-  intro_title = "Can You Seal Your Juvenile Record?"
+id: intro_title_text
+template: intro_title
+content: |
+  Can You Seal Your Juvenile Record?
+---
+id: form_steps_text
+template: form_steps
+content: |
+  To find out, this is what we need to do: 
 
-  form_steps = """To find out, this is what we need to do: 
+  1. Find out if there's a reason you **shouldn't** seal your records.
+  1. Ask questions about your old and open cases.
+  1. Tell you if you might be eligible for sealing.
+  1. Ask for personal details like your social security number.
 
-    1. Find out if there's a reason you **shouldn't** seal your records.
-    1. Ask questions about your old and open cases.
-    1. Tell you if you might be eligible for sealing.
-    1. Ask for personal details like your social security number.
-
-    After that, we can give you a form (petition) to download,
-    print, and sign. We'll tell you where to mail it."""
+  After that, we can give you a form (petition) to download,
+  print, and sign. We'll tell you where to mail it.
+---
+id: more_form_info_text
+template: more_form_info
+content: |
+  ## More about this form
   
-  more_form_info = """#### More about this form
-  
-    <span style="color: green">If you have the information you need,</span>
-    these questions
-    can take about to **40 minutes** to answer.""" + " " + records_can_help
-  
-  may_pause_for_dockets = """You also might have to
+  <span style="color: green">If you have the information you need,</span>
+  these questions
+  can take about to **40 minutes** to answer. ${records_can_help}
+---
+id: may_pause_for_dockets_text
+template: may_pause_for_dockets
+content: |
+  You also might have to
   stop and come back later if you need to
-  get a certified copy of your docket sheets."""
-    
-  will_ask_permission_to_store = """If we need to store any personally
-  identifying information,
+  get a certified copy of your docket sheets.
+---
+id: will_ask_permission_to_store_text
+template: will_ask_permission_to_store
+content: |
+  If we need to store any personally identifying information,
   like your name and social
-  security number, we will ask you first."""
-  
-  usa_possessions = """**Note:** Whenever we say USA
-  that includes United States
-  possessions (like Guam)."""
+  security number, we will ask you first.
 ---
-id: getting_cori_and_juvi_records_text
-code: |
-  records_can_help = """It will be easier to give the right answers if you
-    have a copy of your juvenile record report,
-    and also your CORI report if you had cases in an adult court.
-    These reports will give a summary of all your criminal charges
-    and tell you how each case ended.
-  """
-
-  getting_cori = """To ask for your <span style="color: green">online</span>
-    adult CORI report, create an account at
-    [Massachusetts iCORI site](https://icori.chs.state.ma.us/icori/ext/global/landing.action?page=1&bod=1566991096995&m=presentLanding).
-    It costs $25, but if you are low income you might be be able
-    to ask for a waiver of the fee."""
-
-  getting_juvenile_records = """To ask for a free copy of your Massachusetts
-    juvenile record, see the
-    [GBLS juvenile record request document](https://www.gbls.org/sites/default/files/juvenile_booklet_onelj.pdf).
-    It will give you a form to print and tell you what to do."""
-  
-  # TODO: implement
-  out_of_state_records = """We can't help you get
-    records from other states. Do the best you can with those
-    questions. The <span style="color: red">[clean slate clearing house]()</span>
-    might be able to help you find out how to get those
-    records."""
+id: usa_possessions_text
+template: usa_possessions
+content: |
+  **Note:** Whenever we say USA
+  that includes United States possessions (like Guam).
 ---
-id: do_you_have_sheets_text
-code: |
-  do_you_have_sheets_title = "Certified Copies of Docket Sheets"
-
-  have_certified_copy = """**Do you already have certified
+id: records_can_help_text
+template: records_can_help
+content: |
+  It will be easier to give the right answers if you
+  have a copy of your juvenile record report,
+  and also your CORI report if you had cases in an adult court.
+  These reports will give a summary of all your criminal charges
+  and tell you how each case ended.
+---
+id: getting_cori_text
+template: getting_cori
+content: |
+  To ask for your <span style="color: green">online</span>
+  adult CORI report, create an account at
+  [Massachusetts iCORI site](https://icori.chs.state.ma.us/icori/ext/global/landing.action?page=1&bod=1566991096995&m=presentLanding).
+  It costs $25, but if you are low income you might be be able
+  to ask for a waiver of the fee.
+---
+id: getting_juvenile_records_text
+template: getting_juvenile_records
+content: |
+  To ask for a free copy of your Massachusetts
+  juvenile record, see the
+  [GBLS juvenile record request document](https://www.gbls.org/sites/default/files/juvenile_booklet_onelj.pdf).
+  It will give you a form to print and tell you what to do.
+---
+id: out_of_state_records_text
+template: out_of_state_records
+# TODO: implement
+content: |
+  We can't help you get records from other states.
+  Do the best you can with those
+  questions. The
+  <span style="color: red">[clean slate clearing house]()</span>
+  might be able to help you find out how to get those records.
+---
+id: do_you_have_sheets_title_text
+template: do_you_have_sheets_title
+content: |
+  Certified Copies of Docket Sheets
+---
+id: do_you_have_sheets_title_text
+template: have_certified_copy
+content: |
+  **Do you already have certified
   copies of docket sheets for all of your cases?**
 
   Note: A docket sheet is different than a
@@ -74,27 +101,27 @@ code: |
   record report. Docket sheets are
   papers in your court case at the courthouse that say
   what happened in each of your cases every time
-  you went to court."""
+  you went to court.
 ---
 id: why_copies
-code: |
-  why_copies_1 = """If you seal your
-    records without getting the docket sheets
-    for all of your cases first and
-    ICE (Immigration  Customs Enforcement) requires a hearing,
-    you might not have time to unseal those records
-    and get the copies you need before the hearing. ICE staff
-    get copies of FBI reports on people trying to become
-    citizens or get papers to stay in the U.S., but the FBI
-    reports often do not say if you were found guilty
-    or what happened at the end of your case.
-    **If you have a certified copy of the docket sheets for all
-    of your cases, you can prove what really happened in your case.**
+template: why_copies_1
+content: |
+  If you seal your
+  records without getting the docket sheets
+  for all of your cases first and
+  ICE (Immigration  Customs Enforcement) requires a hearing,
+  you might not have time to unseal those records
+  and get the copies you need before the hearing. ICE staff
+  get copies of FBI reports on people trying to become
+  citizens or get papers to stay in the U.S., but the FBI
+  reports often do not say if you were found guilty
+  or what happened at the end of your case.
+  **If you have a certified copy of the docket sheets for all
+  of your cases, you can prove what really happened in your case.**
 
-    It is a good idea to get a certified copy of the docket sheets for
-    all of your cases before trying to seal your records.
-    It may take some more time, but it may be better in the end.
-  """
+  It is a good idea to get a certified copy of the docket sheets for
+  all of your cases before trying to seal your records.
+  It may take some more time, but it may be better in the end.
 ---
 id: certified_copies_page_text_question
 field: about_docket_sheets
@@ -145,17 +172,16 @@ subquestion: |
 continue button label: Keep going
 ---
 id: certified_copies_text
-code: |
-  how_to_get_certified_copies = """For certified copies
-    of juvenile or adult docket sheets,
-    go to the clerk’s office at the courthouse that
-    handled your case. It can cost up to $2.50 per page,
-    but if
-    your income is low, you can ask to get the fee waived.
-    The staff may require you to fill out a form
-    called an “affidavit of indigency” listing your
-    income to get the fee waived.
-  """
+template: how_to_get_certified_copies
+content: |
+  For certified copies
+  of juvenile or adult docket sheets,
+  go to the clerk’s office at the courthouse that
+  handled your case. It can cost up to $2.50 per page,
+  but if your income is low, you can ask to get the fee waived.
+  The staff may require you to fill out a form
+  called an “affidavit of indigency” listing your
+  income to get the fee waived.
 
 #  how_to_get_copies = """
 #    To ask for a certified copy of
@@ -168,47 +194,53 @@ code: |
 #  """
 ---
 id: citizen_text
-code: |
-  citizen_disclaimer = "Are you a US citizen?"
+template: citizen_disclaimer
+content: |
+  Are you a US citizen?
+---
+id: jobs_title_text
+template: jobs_title
+content: |
+  Will you ever want to do any of these?
 ---
 id: jobs_text
-code: |
-  jobs_title = "Will you ever want to do any of these?"
-
-  jobs_list = """
-    * Work with young children
-    * Work for a bank or mortgage company in certain positions
-    * Join or work for the military
-    * Work for an employer who participates in the Work
-       Opportunity Tax Credit (WOTC) program
-    * Work for an employer that has federal funding
-    * Work for a senator, representative, or other politician
-    * Work in any job that needs a federal background
-    check
-  """
+template: jobs_list
+content: |
+  * Work with young children
+  * Work for a bank or mortgage company in certain positions
+  * Join or work for the military
+  * Work for an employer who participates in the Work
+     Opportunity Tax Credit (WOTC) program
+  * Work for an employer that has federal funding
+  * Work for a senator, representative, or other politician
+  * Work in any job that needs a federal background
+  check
 # TODO: How does it affect running for political office?
 ---
+id: jobs_explanation_title_text
+template: jobs_explanation_title
+content: |
+  You may need your docket sheets to get some jobs
+---
 id: jobs_explanation_text
-code: |
-  jobs_explanation_title = "You may need your docket sheets to get some jobs"
-  jobs_explanation = """
-    Some criminal charges may stop you from getting
-    certain kinds of jobs,
-    <span style="color: green">
-    but some criminal charges aren't a problem.
-    </span>
-    If you seal your records,
-    there are a few agencies and a few types of employers
-    who can get CORI reports that have information about
-    sealed records, so they might ask you some
-    questions about those.
-    **If you have a certified copy of the docket sheets
-    for all of your cases, you can prove what happened
-    in your case.** This may help you get the job.
-    You can always unseal your records to get the docket
-    sheets, but it will take
-    more time.
-  """
+template: jobs_explanation
+content: |
+  Some criminal charges may stop you from getting
+  certain kinds of jobs,
+  <span style="color: green">
+  but some criminal charges aren't a problem.
+  </span>
+  If you seal your records,
+  there are a few agencies and a few types of employers
+  who can get CORI reports that have information about
+  sealed records, so they might ask you some
+  questions about those.
+  **If you have a certified copy of the docket sheets
+  for all of your cases, you can prove what happened
+  in your case.** This may help you get the job.
+  You can always unseal your records to get the docket
+  sheets, but it will take
+  more time.
 comment: |
   jobs_explanation = """
     Some criminal charges may stop you from getting
@@ -244,13 +276,12 @@ comment: |
 #  a certified copy of your docket sheets
 #  before trying to seal your records**. We can link you to a
 #  different website
-#  **(TODO: Need name of website)** with instructions.
 ---
 id: learn_more_sealing_text
-code: |
-  sealing_booklet_text = """Read more about sealing
-  juvenile records from the
-  [GBLS 2019 booklet](https://www.gbls.org/sites/default/files/2019-08/juvenile_booklet_august_2019F.pdf)."""
+template: sealing_booklet_text
+content: |
+  Read more about sealing juvenile records from the
+  [GBLS 2019 booklet](https://www.gbls.org/sites/default/files/2019-08/juvenile_booklet_august_2019F.pdf).
 ---
 id: pdf_page_title_text
 template: get_pdf_title
@@ -276,6 +307,13 @@ content: |
 ---
 id: subject_line_text
 template: subject_line
+# TODO: Make it version-specific
+content: |
+  The email subject line will be
+  <strong>${atch_email_subject}</strong>.
+---
+id: subject_line_v5_text
+template: subject_line_v5
 # TODO: Make it version-specific
 content: |
   The email subject line will be
@@ -331,7 +369,7 @@ content: |
 id: pdf_subquestion_partial_v5_text
 template: pdf_subquestion_partial_v5
 content: |
-  ${pdf_intro} ${download_or_email}
+  ${pdf_intro} ${download_or_email} ${subject_line_v5}
 
   ${pdf_next_steps_start}
   ${pdf_next_steps_by_hand}

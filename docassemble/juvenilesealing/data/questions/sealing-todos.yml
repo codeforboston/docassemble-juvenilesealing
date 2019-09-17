@@ -1,6 +1,51 @@
 comment: |
-  # New Questions C
+  # New Questions E
+  1. How does it affect running for political office?
+  2. Example docket sheet request and address.
+  
+  # Answered Questions D:
+  Q: is this trying to give directions to go to the courthouse? If so, maybe we can handle this by creating a link to an informational page I make. The more text we add, the less people are going to read.
+    You also might have to stop and come back later if you need to get a certified copy **of “docket sheets” from your case at the courthouse.**
+  A: will look (for what?)
+  status: text has been written, inner page linked to.
+  todo: Ask Quinten about adding a webpage on gbls for that.
+
+  xQ: I added resource for regular sealing info too
+  [-done-] A: ok
+
+  xQ: They can explain without the docket sheets. They need the sheets to prove what happened.
+    "it may be more easy to explain what happened in your case"
+  [-done-] A:  they might want to look at the sheets to see if they can hire you.
+
+  xQ: Where did you want "SEALING YOUR JUVENILE RECORDS" to go in here?
+
+    "...finishing your form.
+
+    SEALING YOUR JUVENILE RECORDS
+
+    We've created..."
+  [-done-] A: What do you want to do next or something as heading in between content
+
+  xQ: Father's name
+  [-done-] A: remove spouse name
+    - father's full name - not required
+    # Required things
+    own name
+    ssn
+    dob
+    address
+    place of birth
+
+  xQ: What's the phone # for the Comm. of probation?
+      1. Call the Commissioner’s Office and ask them to explain to you why they would not seal all your records
+  [-done-] A: (617) 727 - 5300
+
+  xQ: Docket sheets page:
+  [-done-] A: Text written
+
+  # Answered Questions C
   1. Father's full name? Maiden name?
+  [-done-]: full name. no explanation for now
 
   # Answered Questions B
   1. How get records of other states
@@ -12,12 +57,12 @@ comment: |
     from other states.
     todo: Will be sent link.
   x 2. Work for the military, too (contractors)?
-  [-done-] todo: "Join or work for the military."
-  [-done-] todo: "Certain jobs at a bank." (teller is sometimes
+  [-done-]: "Join or work for the military."
+  [-done-]: "Certain jobs at a bank." (teller is sometimes
     ok) (mortgage broker a problem)
   x 3. All children?
   answer: Not high school students. Under 6 or so.
-  [-done-]  todo: "young children"
+  [-done-]: "young children"
   4. Separate page for docket instructions?
   answer: Maybe
     Info: best to request in person. Mail sometimes falls between the cracks.
@@ -31,22 +76,22 @@ comment: |
       [-done-] answer: Back off a bit about records. Most people know
         answers well enough and they'll get feedback if
         they're missing info.
-          [-done-] todo: Don't block.
+          [-done-]: Don't block.
   6. Post-release handling.
   answer/todo: We're all happy to keep iterating.
-  7. TODO: Add link to expungement info?
-  answer: maybe. only if we find a good place
+  7. Add link to expungement info?
+  answer/todo: maybe. only if we find a good place
   Notes:
   - Don't use the term 'CARI'. It's a little different and would be confusing.
   
   # Answered Questions A
   x 0. Is juv. delinquency vs. youthful offencer cases.
-  [-done-] todo: Reduce it to one question
+  [-done-]: Reduce it to one question
   x 1. TODO: Timing? Took 20 min. for legal students.
-  [-done-] todo: Say 30 min.?
+  [-done-]: Say 30 min.? 40?
   1b. They have a form for something else that seems to
     work really well. They'll send it over just for us to get a gander.
-  2. TODO: What if there is no legal help in their area?
+  2. What if there is no legal help in their area?
   answer: That's a tough question. There are lots of little
     things to persue.
     - Go to courthouse of any court where
@@ -54,14 +99,14 @@ comment: |
     - Also, if send petition in and rejected, will get reasons why.
     - Honestly address people who may not be able to get help.
     todo: That stuff
-  3. TODO: Link to info on CORI FAQ - what if CORI wrong, what it is etc.?
+  3. Link to info on CORI FAQ - what if CORI wrong, what it is etc.?
     answer: mass legal help website about that
-    todo: will send link. Also, though, de-emphasize getting records
-  x 4. TODO: ADDRESS TO MAIL IT TO
+    todo: (done?) (what if cori wrong) will send link. Also, though, de-emphasize getting records
+  x 4. ADDRESS TO MAIL IT TO
   answer: at top of form. copy from there
-  [-done-] todo: put in instructions
+  [-done-]: put in instructions
   x 4b. [-done-] v5 needs instructions added
-  4c. TODO: Construct email for v7 (not sure how v5 does it)
+  4c. [-done-] Construct email for v7 (not sure how v5 does it)
   5. further resources:
   answer: Will send
     - applying for jobs booklet (will be put online)
