@@ -269,7 +269,8 @@ yesnomaybe: incarcerated_in_past_3_years
 ---
 id: eligible
 field: will_write_personal_info
-comment: TODO: make page about getting docket sheets
+comment: |
+  TODO: make page about getting docket sheets
 question: You Might Be Eligible!
 subquestion: |
   We think you're probably eligible to seal your juvenile records.
