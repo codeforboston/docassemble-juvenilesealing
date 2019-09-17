@@ -323,8 +323,6 @@ buttons:
 ---
 id: finish_with_more
 event: finish_with_more
-comment: |
-  TODO: Who gets the feedback? Link back to CFJJ advocacy work somehow?
 question: Thank you for coming today
 subquestion: |
   We hope we were able to help a little.
@@ -348,8 +346,6 @@ subquestion: |
   % endif
 
   ${more_resources}
-comment: |
-  TODO: Add more resources they can go to.
 buttons:
   - Exit: exit
   - Restart: restart
