@@ -2,38 +2,52 @@
 comment: |
   Pro se informational copy that shared between versions.
 ---
-id: intro_text
-code: |
-  intro_title = "Can You Seal Your Juvenile Record?"
+id: intro_title_text
+template: intro_title
+content: |
+  Can You Seal Your Juvenile Record?
+---
+id: form_steps_text
+template: form_steps
+content: |
+  To find out, this is what we need to do: 
 
-  form_steps = """To find out, this is what we need to do: 
+  1. Find out if there's a reason you **shouldn't** seal your records.
+  1. Ask questions about your old and open cases.
+  1. Tell you if you might be eligible for sealing.
+  1. Ask for personal details like your social security number.
 
-    1. Find out if there's a reason you **shouldn't** seal your records.
-    1. Ask questions about your old and open cases.
-    1. Tell you if you might be eligible for sealing.
-    1. Ask for personal details like your social security number.
-
-    After that, we can give you a form (petition) to download,
-    print, and sign. We'll tell you where to mail it."""
+  After that, we can give you a form (petition) to download,
+  print, and sign. We'll tell you where to mail it.
+---
+id: more_form_info_text
+template: more_form_info
+content: |
+  ## More about this form
   
-  more_form_info = """#### More about this form
-  
-    <span style="color: green">If you have the information you need,</span>
-    these questions
-    can take about to **40 minutes** to answer.""" + " " + records_can_help
-  
-  may_pause_for_dockets = """You also might have to
+  <span style="color: green">If you have the information you need,</span>
+  these questions
+  can take about to **40 minutes** to answer. ${records_can_help}
+---
+id: may_pause_for_dockets_text
+template: may_pause_for_dockets
+content: |
+  You also might have to
   stop and come back later if you need to
-  get a certified copy of your docket sheets."""
-    
-  will_ask_permission_to_store = """If we need to store any personally
-  identifying information,
+  get a certified copy of your docket sheets.
+---
+id: will_ask_permission_to_store_text
+template: will_ask_permission_to_store
+content: |
+  If we need to store any personally identifying information,
   like your name and social
-  security number, we will ask you first."""
-  
-  usa_possessions = """**Note:** Whenever we say USA
-  that includes United States
-  possessions (like Guam)."""
+  security number, we will ask you first.
+---
+id: usa_possessions_text
+template: usa_possessions
+content: |
+  **Note:** Whenever we say USA
+  that includes United States possessions (like Guam).
 ---
 id: records_can_help_text
 template: records_can_help
@@ -65,16 +79,11 @@ id: out_of_state_records_text
 template: out_of_state_records
 # TODO: implement
 content: |
-  We can't help you get
-  records from other states. Do the best you can with those
-  questions. The <span style="color: red">[clean slate clearing house]()</span>
-  might be able to help you find out how to get those
-  records.
----
-id: _text
-template: blah
-content: |
-  blah
+  We can't help you get records from other states.
+  Do the best you can with those
+  questions. The
+  <span style="color: red">[clean slate clearing house]()</span>
+  might be able to help you find out how to get those records.
 ---
 id: do_you_have_sheets_title_text
 template: do_you_have_sheets_title
@@ -169,8 +178,7 @@ content: |
   of juvenile or adult docket sheets,
   go to the clerk’s office at the courthouse that
   handled your case. It can cost up to $2.50 per page,
-  but if
-  your income is low, you can ask to get the fee waived.
+  but if your income is low, you can ask to get the fee waived.
   The staff may require you to fill out a form
   called an “affidavit of indigency” listing your
   income to get the fee waived.
@@ -268,7 +276,6 @@ comment: |
 #  a certified copy of your docket sheets
 #  before trying to seal your records**. We can link you to a
 #  different website
-#  **(TODO: Need name of website)** with instructions.
 ---
 id: learn_more_sealing_text
 template: sealing_booklet_text
@@ -300,6 +307,13 @@ content: |
 ---
 id: subject_line_text
 template: subject_line
+# TODO: Make it version-specific
+content: |
+  The email subject line will be
+  <strong>${atch_email_subject}</strong>.
+---
+id: subject_line_v5_text
+template: subject_line_v5
 # TODO: Make it version-specific
 content: |
   The email subject line will be
@@ -355,7 +369,7 @@ content: |
 id: pdf_subquestion_partial_v5_text
 template: pdf_subquestion_partial_v5
 content: |
-  ${pdf_intro} ${download_or_email}
+  ${pdf_intro} ${download_or_email} ${subject_line_v5}
 
   ${pdf_next_steps_start}
   ${pdf_next_steps_by_hand}
