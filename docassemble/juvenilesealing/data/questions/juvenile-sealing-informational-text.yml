@@ -158,7 +158,7 @@ subquestion: |
   afford to pay the fee.
 
   You can also send a letter to ask for the docket
-  sheets.  If you want to order the sheets by mail,
+  sheets. If you want to order the sheets by mail,
   first call the courthouse and ask how much it will
   cost to print the sheets. Then write a letter that
   says, "What does it say?" Next write a check for
@@ -390,6 +390,8 @@ content: |
 id: pdf_after_download_full_v7_text
 template: pdf_after_download_full_v7
 content: |
+  &#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;
+
   ${pdf_next_steps_start}
   ${pdf_next_steps_end}
 
@@ -398,6 +400,8 @@ content: |
 id: pdf_after_download_partial_v7_text
 template: pdf_after_download_partial_v7
 content: |
+  &#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;
+
   ${pdf_next_steps_start}
   ${pdf_next_steps_by_hand}
   ${pdf_next_steps_end}
