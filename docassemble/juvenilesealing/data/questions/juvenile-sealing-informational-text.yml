@@ -305,14 +305,8 @@ content: |
 id: subject_line_text
 template: subject_line
 content: |
-  The email subject line will be
+  The email's name will be
   <strong>${atch_email_subject}</strong>.
----
-id: subject_line_v5_text
-template: subject_line_v5
-content: |
-  The email subject line will be
-  <strong>juvenile-sealing-petition</strong>.
 ---
 id: pdf_next_steps_start_text
 template: pdf_next_steps_start
@@ -364,7 +358,7 @@ content: |
 id: pdf_subquestion_partial_v5_text
 template: pdf_subquestion_partial_v5
 content: |
-  ${pdf_intro} ${download_or_email} ${subject_line_v5}
+  ${pdf_intro} ${download_or_email} ${subject_line}
 
   ${pdf_next_steps_start}
   ${pdf_next_steps_by_hand}
@@ -387,10 +381,15 @@ template: pdf_subquestion_v7
 content: |
   ${pdf_intro} ${download_or_email} ${subject_line}
 ---
+id: gbls_horizontal_line
+template: hr
+content: |
+  &#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;
+---
 id: pdf_after_download_full_v7_text
 template: pdf_after_download_full_v7
 content: |
-  &#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;
+  ${hr}
 
   ${pdf_next_steps_start}
   ${pdf_next_steps_end}
@@ -400,7 +399,8 @@ content: |
 id: pdf_after_download_partial_v7_text
 template: pdf_after_download_partial_v7
 content: |
-  &#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;
+  
+  ${hr}
 
   ${pdf_next_steps_start}
   ${pdf_next_steps_by_hand}
