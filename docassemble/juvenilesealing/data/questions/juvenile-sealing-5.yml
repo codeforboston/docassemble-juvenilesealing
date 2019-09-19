@@ -39,28 +39,26 @@ objects:
 id: reasons
 code: |
   # ### Creating reasons ####
-  start = "Sorry, but because you "
   years = " in the past three years**"
-  end = " you're not eligible to get your juvenile record sealed."
 
   ineligibility_reasons.wants_to_continue = ""
-  ineligibility_reasons.open_case = start + "**have an open case**" + end
-  ineligibility_reasons.probation = start + "**are on probation**" + end
-  ineligibility_reasons.juvenile_cases_in_past_3_years = start + "**had a juvenile case in a US state" + years + end
-  ineligibility_reasons.juvenile_custody_usa = start + "**have been in juvenile custody in a US state" + years + end
-  ineligibility_reasons.convicted_states = start + "**were convicted" + years + end
-  ineligibility_reasons.convicted_federal = start + "**were convicted" + years + end
-  ineligibility_reasons.incarcerated = start + "**were incarcerated" + years + end
+  ineligibility_reasons.open_case = "**have an open case**"
+  ineligibility_reasons.probation = "**are on probation**"
+  ineligibility_reasons.juvenile_cases_in_past_3_years = "**had a juvenile case in a US state" + years
+  ineligibility_reasons.juvenile_custody_usa = "**have been in juvenile custody in a US state" + years
+  ineligibility_reasons.convicted_states = "**were convicted" + years
+  ineligibility_reasons.convicted_federal = "**were convicted" + years
+  ineligibility_reasons.incarcerated = "**were incarcerated" + years
 
 ---
 mandatory: True
 id: flow
 code: |
 
-  reason = ''
+  reasons = []
   
   # Testing
-  partial_petition
+  #partial_petition
 
   # How to make sure a pro se user sees the warnings?
   should_show_extra_info = False
@@ -70,40 +68,56 @@ code: |
     if (url_args['dockets'] == 'needed'):
       needs_dockets = True
 
-  reason = ineligibility_reasons.open_case
-  if (has_NON_probation_open_cases == 'True'): sorry_end
-  elif (has_NON_probation_open_cases == 'unsure'):
-    if (wants_to_get_records): finish_with_more
-
-  reason = ineligibility_reasons.probation
-  if (is_on_probation == 'True'): sorry
-  elif (is_on_probation == 'unsure'):
-    if (wants_to_get_records): finish_with_more
-
-  reason = ineligibility_reasons.juvenile_cases_in_past_3_years
-  if (juvenile_cases_in_past_3_years == 'True'): sorry_end
-  elif (juvenile_cases_in_past_3_years == 'unsure'):
-    if (wants_to_get_records): finish_with_more
   
-  reason = ineligibility_reasons.juvenile_custody_usa
-  if (juvenile_custody_in_past_3_years_usa == 'True'): sorry_end
-  elif (juvenile_custody_in_past_3_years_usa == 'unsure'):
-    if (wants_to_get_records): finish_with_more
+  if (has_NON_probation_open_cases == 'True'):
+    reasons.append( ineligibility_reasons.open_case )
+  if (is_on_probation == 'True'):
+    reasons.append( ineligibility_reasons.probation )
+    
+  if (
+       has_NON_probation_open_cases == 'True' or
+       is_on_probation == 'True'
+     ): sorry_end
+  elif (
+         has_NON_probation_open_cases == 'unsure' or
+         is_on_probation == 'unsure'
+       ):
+        if (wants_to_get_records): finish_with_more
 
-  reason = ineligibility_reasons.convicted_states
-  if (convicted_in_past_3_years_states == 'True'): sorry_end
-  elif (convicted_in_past_3_years_states == 'unsure'):
-    if (wants_to_get_records): finish_with_more
+  if (juvenile_cases_in_past_3_years == 'True'):
+    reasons.append( ineligibility_reasons.juvenile_cases_in_past_3_years )
+  if (juvenile_custody_in_past_3_years_usa == 'True'):
+    reasons.append( ineligibility_reasons.juvenile_custody_usa )
+    
+  if (
+       juvenile_cases_in_past_3_years == 'True' or
+       juvenile_custody_in_past_3_years_usa == 'True'
+     ): sorry_end
+  elif (
+         juvenile_cases_in_past_3_years == 'unsure' or
+         juvenile_custody_in_past_3_years_usa == 'unsure'
+       ):
+        if (wants_to_get_records): finish_with_more
 
-  reason = ineligibility_reasons.convicted_federal
-  if (convicted_in_past_3_years_federal == 'True'): sorry_end
-  elif (convicted_in_past_3_years_federal == 'unsure'):
-    if (wants_to_get_records): finish_with_more
-
-  reason = ineligibility_reasons.incarcerated
-  if (incarcerated_in_past_3_years == 'True'): sorry_end
-  elif (incarcerated_in_past_3_years == 'unsure'):
-    if (wants_to_get_records): finish_with_more
+  if (
+       convicted_in_past_3_years_states == 'True' or
+       convicted_in_past_3_years_federal == 'True'
+     ):
+      reasons.append( ineligibility_reasons.convicted_states )
+  if (incarcerated_in_past_3_years == 'True'):
+    reasons.append( ineligibility_reasons.incarcerated )
+    
+  if (
+       convicted_in_past_3_years_states == 'True' or
+       convicted_in_past_3_years_federal == 'True' or
+       incarcerated_in_past_3_years == 'True'
+     ): sorry_end
+  elif (
+         convicted_in_past_3_years_states == 'unsure' or
+         convicted_in_past_3_years_federal == 'unsure' or
+         incarcerated_in_past_3_years == 'unsure'
+       ):
+        if (wants_to_get_records): finish_with_more
 
   # Otherwise they're eligible!
   
@@ -276,7 +290,7 @@ buttons:
 ---
 id: full_petition
 event: full_petition
-question: ${pdf_end_title}
+question: ${get_pdf_title}
 subquestion: ${pdf_subquestion_full_v5}
 comment: |
   Replace file name with customized file name?
@@ -337,11 +351,11 @@ event: sorry_end
 question: |
   Thank you and sorry we couldn't help
 subquestion: |
-  % if (not reason == ""):
-  ${ reason }
+  % if (len(reasons) > 0):
+  ${ construct_reasons(reasons) }
   % endif
   
-  % if (not reason == ""):
+  % if (len(reasons) > 0):
   Come back when that has changed so we can help seal your records!
   % endif
 
@@ -350,6 +364,17 @@ buttons:
   - Exit: exit
   - Restart: restart
 ---
+id: construct_reasons
+code: |
+
+  start = "Sorry, but because you "
+  end = " you're not eligible to get your juvenile record sealed."
+
+  def construct_reasons (reasons):
+    reason = start + comma_and_list(reasons) + end
+    return reason
+---
+id: meta_utils
 code: |
 
   def log_me(message):
