@@ -1,25 +1,6 @@
 comment: |
-  # New Questions E
-  1. How does it affect running for political office?
-  todo: 
-  2. Example docket sheet request and address (with ATTENTION?).
-  todo: 
-  3. What's special about certified docket sheets?
-  todo: 
-  4. About applying for jobs - what's the link?
-  todo: 
-  5. Who gets the feedback? Link back to CFJJ advocacy work somehow?
-  todo: Ask Quinten about getting feedback
-  6. wants_docket_sheets new text about other charges ok?
-  todo: 
-  7. How do the courts themselves know about records in other states?
-  todo: 
-  8. Set up signing in/accounts? Worth it with so few questions?
-  todo: 
-  9. Do we want to do any kind of analytics? If so what? (ask CFJJ too)
-  todo: 
 
-  Reiterated questions:
+  # Reiterated questions:
   1. Will you be adding text about CORI and juvenile
   records not having records from other states?
   Or do we need to handle that a different way.
@@ -28,6 +9,25 @@ comment: |
   3. Which is the 'what if your CORI seems wrong'
   booklet? Do we already have the link to that?
   4. Where to put text about some people not getting help?
+
+  # Questions F
+  1. Who gets the feedback? Link back to CFJJ advocacy work somehow?
+  todo: Ask Quinten about getting feedback
+  todo: answer: 
+  2. wants_docket_sheets new text about other charges ok?
+  todo: 
+  
+  # Answers E
+  1. How does it affect running for political office?
+  todo: Nothing technical that we know of
+  2. Example docket sheet request and address (with ATTENTION?).
+  todo: Will be constructed an sent soon
+  2b. Example envelope
+  todo: construct ATTENTION: Criminal clerk's office example
+  3. What's special about certified docket sheets?
+  todo: Embossing and possibly colored stamp
+  4. About applying for jobs - what's the link?
+  todo: Not up yet
   
   # Answered Questions D:
   Q: is this trying to give directions to go
@@ -148,7 +148,6 @@ comment: |
     - [-done-] GBLS booklets links page
 
   # TODOs
-  TODO: Can reasons be converted into templates?
   TODO: Different instructions for partially completed form
   TODO: Troubleshoot link styles
   TODO: [I've forgotten what this means. Navigating to previous
