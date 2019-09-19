@@ -77,11 +77,10 @@ code: |
       needs_dockets = True
   
   # Test
-  atch_itself = partial_petition_pdf
-  
-  atch_after_download = pdf_after_download_partial_v7
   #atch_itself = full_petition_pdf
-  trigger_attachment_page
+  #atch_itself = partial_petition_pdf
+  #atch_after_download = pdf_after_download_partial_v7
+  #trigger_attachment_page
 
   reason = ineligibility_reasons.open_case
   if (has_NON_probation_open_cases is True): sorry_end
@@ -323,7 +322,7 @@ code: |
     atch_default_email_address = user_info().email
   else:
     atch_default_email_address = ''
-  atch_email_subject= 'Petition to Seal Records'
+  atch_email_subject = 'Petition to Seal Records'
   #atch_email_contents = petition_instructions_todo + "\n\n" + petition_instructions_after
 
   atch_progress = 100
