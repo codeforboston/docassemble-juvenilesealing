@@ -25,7 +25,7 @@ template: more_form_info
 content: |
   ## More about this form
   
-  <span class="new">If you have the information you need,</span>
+  <span style="color: green">If you have the information you need,</span>
   these questions
   can take about to **40 minutes** to answer. ${records_can_help}
 ---
@@ -61,7 +61,7 @@ content: |
 id: getting_cori_text
 template: getting_cori
 content: |
-  To ask for your <span class="new">online</span>
+  To ask for your <span style="color: green">online</span>
   adult CORI report, create an account at
   [Massachusetts iCORI site](https://icori.chs.state.ma.us/icori/ext/global/landing.action?page=1&bod=1566991096995&m=presentLanding).
   It costs $25, but if you are low income you might be be able
@@ -224,7 +224,7 @@ template: jobs_explanation
 content: |
   Some criminal charges may stop you from getting
   certain kinds of jobs,
-  <span class="new">
+  <span style="color: green">
   but some criminal charges aren't a problem.
   </span>
   If you seal your records,
@@ -247,10 +247,10 @@ comment: |
     ***
     If you seal your records,
     there are a few agencies and a few types of employers
-    who can get CORI reports that
+    who can get CORI reports that have information about
+    sealed records,
     ***
-    show that you have a sealed record, but they can't
-    see what the charges. They
+    but they can't see what those charges were. They
     ***
     might ask you some
     questions about those.
@@ -305,8 +305,14 @@ content: |
 id: subject_line_text
 template: subject_line
 content: |
-  The email's name will be
+  The email subject line will be
   <strong>${atch_email_subject}</strong>.
+---
+id: subject_line_v5_text
+template: subject_line_v5
+content: |
+  The email subject line will be
+  <strong>juvenile-sealing-petition</strong>.
 ---
 id: pdf_next_steps_start_text
 template: pdf_next_steps_start
@@ -358,7 +364,7 @@ content: |
 id: pdf_subquestion_partial_v5_text
 template: pdf_subquestion_partial_v5
 content: |
-  ${pdf_intro} ${download_or_email} ${subject_line}
+  ${pdf_intro} ${download_or_email} ${subject_line_v5}
 
   ${pdf_next_steps_start}
   ${pdf_next_steps_by_hand}
@@ -398,8 +404,8 @@ content: |
 ---
 id: pdf_after_download_partial_v7_text
 template: pdf_after_download_partial_v7
+comment: Did this revert again? hr got removed. Did I never save it?
 content: |
-  
   ${hr}
 
   ${pdf_next_steps_start}
@@ -436,7 +442,7 @@ comment: |
 content: |
   Maybe you can find more help on these pages too:
   
-  * A [GBLS booklet just about sealing](https://www.gbls.org/sites/default/files/2019-08/juvenile_booklet_august_2019F.pdf) that includes an example petition
+  * A [GBLS booklet just about sealing juvenile records](https://www.gbls.org/sites/default/files/2019-08/juvenile_booklet_august_2019F.pdf) that includes an example petition
   * [Try to find legal help in your area](https://www.masslegalservices.org/findlegalaid). Remember that not every area has people who can help with criminal records.
   * More links to GBLS information about [criminal record problems](https://www.gbls.org/self-help/cori)
   * A detailed GBLS ["Know Your Rights Booklet"](https://www.gbls.org/sites/default/files/2019-04/know-your-cori-rights-041819.pdf) on many topics related to sealing and expungement
