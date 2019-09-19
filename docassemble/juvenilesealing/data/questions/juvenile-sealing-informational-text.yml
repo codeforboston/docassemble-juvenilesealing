@@ -25,7 +25,7 @@ template: more_form_info
 content: |
   ## More about this form
   
-  <span style="color: green">If you have the information you need,</span>
+  <span class="new">If you have the information you need,</span>
   these questions
   can take about to **40 minutes** to answer. ${records_can_help}
 ---
@@ -61,7 +61,7 @@ content: |
 id: getting_cori_text
 template: getting_cori
 content: |
-  To ask for your <span style="color: green">online</span>
+  To ask for your <span class="new">online</span>
   adult CORI report, create an account at
   [Massachusetts iCORI site](https://icori.chs.state.ma.us/icori/ext/global/landing.action?page=1&bod=1566991096995&m=presentLanding).
   It costs $25, but if you are low income you might be be able
@@ -224,7 +224,7 @@ template: jobs_explanation
 content: |
   Some criminal charges may stop you from getting
   certain kinds of jobs,
-  <span style="color: green">
+  <span class="new">
   but some criminal charges aren't a problem.
   </span>
   If you seal your records,
@@ -247,10 +247,10 @@ comment: |
     ***
     If you seal your records,
     there are a few agencies and a few types of employers
-    who can get CORI reports that have information about
-    sealed records,
+    who can get CORI reports that
     ***
-    but they can't see what those charges were. They
+    show that you have a sealed record, but they can't
+    see what the charges. They
     ***
     might ask you some
     questions about those.

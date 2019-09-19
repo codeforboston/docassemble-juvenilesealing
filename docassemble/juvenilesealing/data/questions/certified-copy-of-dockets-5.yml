@@ -63,7 +63,7 @@ subquestion: |
 
   ## More about this form
     
-  <span style="color: green">If you have the information you need,</span>
+  <span class="new">If you have the information you need,</span>
   these questions
   can take about to **40 minutes** to answer.
 
@@ -156,7 +156,7 @@ question: You may need your docket sheets to get some jobs
 subquestion: |
   Some criminal charges may stop you from getting
   certain kinds of jobs,
-  <span style="color: green">
+  <span class="new">
   but some criminal charges aren't a problem.
   </span>
   If you seal your records,
