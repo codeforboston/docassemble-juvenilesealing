@@ -34,22 +34,6 @@ comment: |
   questions are about the applicant?
 objects:
   - applicant: Individual
-  - ineligibility_reasons: DAObject
----
-id: reasons
-code: |
-  # ### Creating reasons ####
-  years = " in the past three years**"
-
-  ineligibility_reasons.wants_to_continue = ""
-  ineligibility_reasons.open_case = "**have an open case**"
-  ineligibility_reasons.probation = "**are on probation**"
-  ineligibility_reasons.juvenile_cases_in_past_3_years = "**had a juvenile case in a US state" + years
-  ineligibility_reasons.juvenile_custody_usa = "**have been in juvenile custody in a US state" + years
-  ineligibility_reasons.convicted_states = "**were convicted" + years
-  ineligibility_reasons.convicted_federal = "**were convicted" + years
-  ineligibility_reasons.incarcerated = "**were incarcerated" + years
-
 ---
 mandatory: True
 id: flow
@@ -68,11 +52,10 @@ code: |
     if (url_args['dockets'] == 'needed'):
       needs_dockets = True
 
-  
   if (has_NON_probation_open_cases == 'True'):
-    reasons.append( ineligibility_reasons.open_case )
+    reasons.append( open_case_reason.content )
   if (is_on_probation == 'True'):
-    reasons.append( ineligibility_reasons.probation )
+    reasons.append( probation_reason.content )
     
   if (
        has_NON_probation_open_cases == 'True' or
@@ -85,9 +68,9 @@ code: |
         if (wants_to_get_records): finish_with_more
 
   if (juvenile_cases_in_past_3_years == 'True'):
-    reasons.append( ineligibility_reasons.juvenile_cases_in_past_3_years )
+    reasons.append( juvenile_cases_reason.content )
   if (juvenile_custody_in_past_3_years_usa == 'True'):
-    reasons.append( ineligibility_reasons.juvenile_custody_usa )
+    reasons.append( juvenile_custody_reason.content )
     
   if (
        juvenile_cases_in_past_3_years == 'True' or
@@ -103,9 +86,9 @@ code: |
        convicted_in_past_3_years_states == 'True' or
        convicted_in_past_3_years_federal == 'True'
      ):
-      reasons.append( ineligibility_reasons.convicted_states )
+      reasons.append( convicted_reason.content )
   if (incarcerated_in_past_3_years == 'True'):
-    reasons.append( ineligibility_reasons.incarcerated )
+    reasons.append( incarcerated_reason.content )
     
   if (
        convicted_in_past_3_years_states == 'True' or
@@ -135,7 +118,7 @@ code: |
 
   full_petition
   
-  placeholder_end
+  finish_with_more
 ---
 default validation messages:
   multiple choice required: You have to pick one.
@@ -255,7 +238,7 @@ buttons:
   - Restart: restart
 ---
 id: partial_petition
-event: partial_petition
+field: partial_petition
 question: ${get_pdf_title}
 subquestion: ${pdf_subquestion_partial_v5}
 comment: |
@@ -284,12 +267,9 @@ attachment:
       - "signature_always": ''
       - "checkboxes.juvenile": Yes
       - "signature_juvenile": ''
-buttons:
-  - Exit: exit
-  - Restart: restart
 ---
 id: full_petition
-event: full_petition
+field: full_petition
 question: ${get_pdf_title}
 subquestion: ${pdf_subquestion_full_v5}
 comment: |
@@ -318,9 +298,6 @@ attachment:
       - "signature_always": ''
       - "checkboxes.juvenile": Yes
       - "signature_juvenile": ''
-buttons:
-  - Exit: exit
-  - Restart: restart
 ---
 id: suggest_get_records
 field: wants_to_get_records
@@ -364,15 +341,58 @@ buttons:
   - Exit: exit
   - Restart: restart
 ---
+id: reasons_start
+template: reasons_start
+content: |
+  Sorry, but because you
+---
+id: years
+template: years
+content: |
+  in the past three years**
+---
+id: open_case_reason
+template: open_case_reason
+content: |
+  **have an open case**
+---
+id: probation_reason
+template: probation_reason
+content: |
+  **are on probation**
+---
+id: juvenile_cases_reason
+template: juvenile_cases_reason
+content: |
+  **had a juvenile case in the USA ${years}
+---
+id: juvenile_custody_reason
+template: juvenile_custody_reason
+content: |
+  **have been in juvenile custody in the USA ${years}
+---
+id: convicted_reason
+template: convicted_reason
+content: |
+  **were convicted in the USA ${years}
+---
+id: incarcerated_reason
+template: incarcerated_reason
+content: |
+  **were incarcerated in the USA ${years}
+---
+id: reasons_end
+template: reasons_end
+content: |
+  you're not eligible to get your juvenile record sealed.
+---
 id: construct_reasons
 code: |
 
-  start = "Sorry, but because you "
-  end = " you're not eligible to get your juvenile record sealed."
-
   def construct_reasons (reasons):
-    reason = start + comma_and_list(reasons) + end
+    reason = reasons_start.content + ' ' + comma_and_list(reasons) + ' ' + reasons_end.content
     return reason
+
 ---
 id: meta_utils
 code: |
