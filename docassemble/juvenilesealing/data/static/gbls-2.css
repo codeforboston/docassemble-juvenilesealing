@@ -348,3 +348,13 @@ body.da-pad-for-navbar {
     padding: 0px;
   }
 }
+
+
+/* Development */
+.new {
+  color: green !important;
+}
+
+.todo {
+  color: red !important;
+}
