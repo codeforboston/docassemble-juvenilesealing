@@ -386,6 +386,11 @@ template: reasons_end
 content: |
   you're not eligible to get your juvenile record sealed.
 ---
+id: email_subject_text
+template: atch_email_subject
+content: |
+  juvenile-sealing-petition
+---
 id: construct_reasons
 code: |
 
