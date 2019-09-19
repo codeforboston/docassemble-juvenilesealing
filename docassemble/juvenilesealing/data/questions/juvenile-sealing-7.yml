@@ -322,6 +322,7 @@ code: |
     atch_default_email_address = user_info().email
   else:
     atch_default_email_address = ''
+
   atch_email_subject = 'Petition to Seal Records'
   #atch_email_contents = petition_instructions_todo + "\n\n" + petition_instructions_after
 
@@ -410,8 +411,6 @@ buttons:
 id: finish_with_more
 event: finish_with_more
 progress: 100
-comment: |
-  TODO: Who gets the feedback? Link back to CFJJ advocacy work somehow?
 question: Thank you for coming today
 subquestion: |
   We hope we were able to help a little.
