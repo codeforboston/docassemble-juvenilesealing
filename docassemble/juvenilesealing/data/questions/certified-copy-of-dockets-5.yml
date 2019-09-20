@@ -36,8 +36,9 @@ code: |
 
   if (not have_docket_copies_already is True):
     if (not read_citizen_disclaimer):
-      do_not_seal  # end
-    elif (wants_fed_job is True or wants_fed_job is None):
+      if (talked_to_a_lawyer is False or talked_to_a_lawyer is None):
+        do_not_seal  # end
+    if (wants_fed_job is True or wants_fed_job is None):
       wants_docket_sheets  # end
 
   command('leave', url=sealing_url)  # end
@@ -120,10 +121,44 @@ subquestion: |
   check
 yesnomaybe: wants_fed_job
 ---
+id: lawyer
+question: Have you talked to a lawyer?
+subquestion: |
+  If you seal your records and
+  ICE (Immigration  Customs Enforcement) requires a hearing,
+  it might take too long to get the paperwork
+  they ask for. Getting
+  [certified copies of the docket sheets for all of your cases](${ url_action('about_docket_sheets') })
+  can help with that, but it's a good idea to
+  get legal advice before sealing your records.
+  
+  Have you talked to a lawyer about what you
+  can do to protect yourself?
+yesnomaybe: talked_to_a_lawyer
+---
 id: do_not_seal
 event: do_not_seal
-question: Sealing can be a bad idea for immigrants
+question: Sealing can be a bad idea for non-citizens
 subquestion: |
+  Please talk to a lawyer about what you should do.
+  You can ask the lawyer about getting certified copies of the
+  [docket sheets](${ url_action('about_docket_sheets') })
+  for all of your cases before trying to seal your records.
+  Getting those copies could take some more time,
+  but it can be better in the end.
+  You can look for legal help in your area by
+  answering the questions on the
+  [Mass Legal Help finder](https://www.masslegalservices.org/findlegalaid).
+  
+  Come back when you're ready so we can try again!
+  
+  ${hr}
+  
+  ${more_resources}
+buttons:
+  - Exit: exit
+  - Restart: restart
+comment: |
   If you seal your
   records without getting the
   [docket sheets](${ url_action('about_docket_sheets') })
@@ -146,9 +181,6 @@ subquestion: |
   It may take some more time, but it may be better in the end.
 
   ${more_resources}
-buttons:
-  - Exit: exit
-  - Restart: restart
 ---
 id: fed_job_disclaimer
 event: wants_docket_sheets
