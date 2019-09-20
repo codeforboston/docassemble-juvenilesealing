@@ -35,6 +35,16 @@ comment: |
 objects:
   - applicant: Individual
 ---
+comment: |
+  Using questions from other interviews
+  Has to be up here to avoid circularity issues
+include:
+  - personal-details.yml
+---
+comment: Using text strings that are shared between versions
+include:
+  - juvenile-sealing-informational-text.yml
+---
 mandatory: True
 id: flow
 code: |
@@ -110,6 +120,12 @@ code: |
       partial_petition
 
   # Get their personal details
+
+  # If legal server data is available, get it that way
+  # There are other ways to do this, but I believe this
+  # is the most explicit and clear
+  set_up_legal_server_data
+
   first_name = applicant.name.first
   #last_name = applicant.name.last
   #filename = first_name + '-' + last_name + '-juvenile-sealing-petition'
@@ -222,14 +238,6 @@ buttons:
   - Finish by hand: True
   - Keep using this form: False
 ---
-comment: Using questions from other interviews
-include:
-  - personal-details.yml
----
-comment: Using text strings that are shared between versions
-include:
-  - juvenile-sealing-informational-text.yml
----
 id: placeholder_end
 event: placeholder_end
 question: PDF creation coming soon!
@@ -286,9 +294,9 @@ attachment:
       - "applicant.dob": ${applicant.birthdate}
       - "applicant.alias": ${applicant.alias}
       - "applicant.address": ${applicant.address.address}
-      - "applicant.city": ${applicant.city}
-      - "applicant.state": ${applicant.state}
-      - "applicant.zip": ${applicant.zip}
+      - "applicant.city": ${applicant.address.city}
+      - "applicant.state": ${applicant.address.state}
+      - "applicant.zip": ${applicant.address.zip}
       - "applicant.occupation": ${applicant.occupation}
       - "applicant.ssn": ${applicant.ssn}
       - "applicant.place_of_birth": ${applicant.place_of_birth}
