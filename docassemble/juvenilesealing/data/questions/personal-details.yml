@@ -25,10 +25,11 @@ comment: |
 objects:
   - ls_fields: LegalServerFields.using(url_args=url_args,client=applicant)
 ---
-id: legal_server_data_getter
-mandatory: True
+id: set_up_legal_server_data
+sets: set_up_legal_server_data
 code: |
   ls_fields
+  set_up_legal_server_data = True
 ---
 id: old_test
 code: |
@@ -49,9 +50,9 @@ fields:
 
   - note: "**Address**"
   - Street address: x.address.address
-  - City: x.city
-  - State: x.state
-  - Zipcode: x.zip
+  - City: x.address.city
+  - State: x.address.state
+  - Zipcode: x.address.zip
 ---
 id: Family
 generic object: Individual
