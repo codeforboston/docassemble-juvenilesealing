@@ -1,4 +1,14 @@
 comment: |
+  
+  # TODOs
+  TODO: Add language/questions/clarity specifying MA
+  TODO: Different instructions for partially completed form
+  TODO: Troubleshoot link styles
+  TODO: [I've forgotten what this means. Navigating to previous
+  questionnaire?] Equivalent of 
+    url: |
+      ${ referring_url() }
+  but don't send back to preliminary questions. [to accomplish what?]
 
   # Reiterated questions:
   1. Will you be adding text about CORI and juvenile
@@ -147,14 +157,7 @@ comment: |
     - [-done/not doing-] ~Big know your cori rights booklet~
     - [-done-] GBLS booklets links page
 
-  # TODOs
-  TODO: Different instructions for partially completed form
-  TODO: Troubleshoot link styles
-  TODO: [I've forgotten what this means. Navigating to previous
-  questionnaire?] Equivalent of 
-    url: |
-      ${ referring_url() }
-  but don't send back to preliminary questions. [to accomplish what?]
+  # Not TODOs
   [-future-] TODO: Link to Mass Legal juvenile record request interview in future
   [-future-] TODO: 'may' to 'can'? Really go over language with a fine-toothed
     comb. Maybe do user testing with existing language
