@@ -285,7 +285,7 @@ attachment:
       - "applicant.name.middle": ${applicant.name.middle}
       - "applicant.dob": ${applicant.birthdate}
       - "applicant.alias": ${applicant.alias}
-      - "applicant.address": ${applicant.address}
+      - "applicant.address": ${applicant.address.address}
       - "applicant.city": ${applicant.city}
       - "applicant.state": ${applicant.state}
       - "applicant.zip": ${applicant.zip}

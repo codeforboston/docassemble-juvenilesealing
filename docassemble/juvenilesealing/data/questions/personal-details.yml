@@ -22,14 +22,21 @@ modules:
 ---
 comment: |
   If this is not a separate objects block, it will create an error condition.
-#objects:
-#  - ls_fields: LegalServerFields.using(url_args=url_args,client=client,advocate=advocate,adverse_parties=adverse_parties)
+objects:
+  - ls_fields: LegalServerFields.using(url_args=url_args,client=applicant)
 ---
+id: legal_server_data_getter
+mandatory: True
+code: |
+  ls_fields
+---
+id: old_test
 code: |
   #applicant.name.first
   #applicant.mothers_maiden_name
   #applicant.ssn
 ---
+id: name_and_address
 generic object: Individual
 question: |
   Name and Address
@@ -41,12 +48,12 @@ fields:
   - Last name: x.name.last
 
   - note: "**Address**"
-  - Street address: x.address
+  - Street address: x.address.address
   - City: x.city
   - State: x.state
   - Zipcode: x.zip
-    datatype: integer
 ---
+id: Family
 generic object: Individual
 question: |
   Your Family
@@ -64,6 +71,7 @@ fields:
     required: False
   
 ---
+id: ssn_and_other_details
 generic object: Individual
 question: |
   Other Information
