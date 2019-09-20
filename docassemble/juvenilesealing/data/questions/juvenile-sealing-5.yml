@@ -37,7 +37,7 @@ objects:
 ---
 comment: |
   Using questions from other interviews
-  Has to be up here to avoid circularity issues
+  Has to be before flow code block to avoid circularity issues
 include:
   - personal-details.yml
 ---
@@ -52,7 +52,7 @@ code: |
   reasons = []
   
   # Testing
-  #partial_petition
+  partial_petition
 
   # How to make sure a pro se user sees the warnings?
   should_show_extra_info = False
@@ -125,12 +125,13 @@ code: |
   # There are other ways to do this, but I believe this
   # is the most explicit and clear
   set_up_legal_server_data
+  
+  applicant.name_and_address
+  applicant.family
+  applicant.ssn_and_other_info
 
-  first_name = applicant.name.first
-  #last_name = applicant.name.last
+  # Not private enough?
   #filename = first_name + '-' + last_name + '-juvenile-sealing-petition'
-  applicant.mothers_maiden_name
-  applicant.ssn
 
   full_petition
   

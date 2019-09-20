@@ -39,6 +39,7 @@ code: |
 ---
 id: name_and_address
 generic object: Individual
+continue button field: x.name_and_address
 question: |
   Name and Address
 fields:
@@ -54,8 +55,9 @@ fields:
   - State: x.address.state
   - Zipcode: x.address.zip
 ---
-id: Family
+id: family
 generic object: Individual
+continue button field: x.family
 question: |
   Your Family
 comment: |
@@ -72,8 +74,9 @@ fields:
     required: False
   
 ---
-id: ssn_and_other_details
+id: ssn_and_other_info
 generic object: Individual
+continue button field: x.ssn_and_other_info
 question: |
   Other Information
 fields:
