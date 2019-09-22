@@ -51,6 +51,8 @@ code: |
 
   reasons = []
   
+  user = applicant
+  
   # Testing
   partial_petition
 
