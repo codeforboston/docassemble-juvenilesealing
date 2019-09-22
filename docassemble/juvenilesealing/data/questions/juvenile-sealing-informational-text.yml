@@ -159,12 +159,16 @@ subquestion: |
 
   You can also send a letter to ask for the docket
   sheets. If you want to order the sheets by mail,
-  first call the courthouse and ask how much it will
-  cost to print the sheets. Then write a letter that
-  says, "What does it say?" Next write a check for
-  the amount of money the courthouse wants. Put those
-  both in an envelope to mail to the courthouse.
-  Remember to include your return address on the envelope.
+  first call the courthouse that handled the case
+  and ask how much it will cost to print the sheets.
+  Go to a post office to get a money order for that
+  amount. Then write a letter that
+  says, "TODO: What does it say?" Put those
+  both in an envelope. On the front of the envelope
+  write 'Attention: Criminal clerk's office' and then
+  the address underneat that. Also
+  write your return address in the top left. Mail
+  it to the courthouse.
   If you don't get anything back, call to find out how
   it's going.
 continue button label: Keep going
