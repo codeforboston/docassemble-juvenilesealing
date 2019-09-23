@@ -338,6 +338,7 @@ code: |
   atch_do_new_window_download = True
   atch_download_label = 'Download'
   atch_do_new_window_email = False
+  atch_open_label = 'See the petition'
 ---
 id: partial_petition
 attachment:
