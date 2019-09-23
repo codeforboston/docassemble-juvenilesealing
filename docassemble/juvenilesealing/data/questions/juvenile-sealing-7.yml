@@ -336,7 +336,7 @@ code: |
   atch_name = 'juvenile-sealing-petition'
   atch_file_extension = 'pdf'
   atch_do_new_window_download = True
-  atch_download_label = 'Download PDF for printing (you can open it in your browser)'
+  atch_download_label = 'Download'
   atch_do_new_window_email = False
 ---
 id: partial_petition
