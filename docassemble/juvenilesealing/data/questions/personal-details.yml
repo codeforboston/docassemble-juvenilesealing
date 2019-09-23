@@ -18,19 +18,28 @@ modules:
 #objects:
 #  - applicant: Individual
 #  - advocate: Individual
-#  - adverse_parties: DAList.using(object_type=Person,auto_gather=False,gathered=True)
+#  - adverse_parties: DAList.using(object_type=Person, auto_gather=False, gathered=True)
 ---
 comment: |
   If this is not a separate objects block, it will create an error condition.
-#objects:
-#  - ls_fields: LegalServerFields.using(url_args=url_args,client=client,advocate=advocate,adverse_parties=adverse_parties)
+objects:
+  - ls_fields: LegalServerFields.using(url_args=url_args, client=applicant)
 ---
+id: set_up_legal_server_data
+sets: set_up_legal_server_data
+code: |
+  ls_fields
+  set_up_legal_server_data = True
+---
+id: old_test
 code: |
   #applicant.name.first
   #applicant.mothers_maiden_name
   #applicant.ssn
 ---
+id: name_and_address
 generic object: Individual
+continue button field: x.name_and_address
 question: |
   Name and Address
 fields:
@@ -41,13 +50,14 @@ fields:
   - Last name: x.name.last
 
   - note: "**Address**"
-  - Street address: x.address
-  - City: x.city
-  - State: x.state
-  - Zipcode: x.zip
-    datatype: integer
+  - Street address: x.address.address
+  - City: x.address.city
+  - State: x.address.state
+  - Zipcode: x.address.zip
 ---
+id: family
 generic object: Individual
+continue button field: x.family
 question: |
   Your Family
 comment: |
@@ -64,7 +74,9 @@ fields:
     required: False
   
 ---
+id: ssn_and_other_info
 generic object: Individual
+continue button field: x.ssn_and_other_info
 question: |
   Other Information
 fields:
