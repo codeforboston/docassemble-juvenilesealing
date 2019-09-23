@@ -61,6 +61,8 @@ code: |
     if (not defined(attr)):
       define(attr, defaults[attr])
 
+  print_href = "javascript:this.print(\"" + atch_link + "\")"
+
   set_progress(atch_progress)
 
   # If I don't have this here, I get errors about circular logic
@@ -78,8 +80,18 @@ fields:
         has been created for you.
       </div>
   - html: |
-      <a id="downloadAttachment" class="download-link atch-button" href=${atch_link}>
+      <a id="downloadAttachment" class="download-link atch-button" href=${atch_link} type="application/pdf">
         <i class="fas fa-download"></i> ${atch_download_label}
+      </a>
+  - html: |
+      <a href=${print_href} src=${atch_link} type="application/pdf" class="print-link atch-button">
+        <div id="printAttachment1" type="application/pdf" class="print-link atch-button" href=${atch_link} src=${atch_link}>
+          <i class="fas fa-print"></i> Print
+        </div>
+      </a>
+  - html: |
+      <a href=${print_href} type="application/pdf" class="print-link atch-button">
+        <i class="fas fa-print"></i> Print
       </a>
   - E-mail: atch_email_address
     datatype: email
@@ -90,9 +102,8 @@ fields:
   - note: ${atch_after_download}
 script: |
   <script>
-  
-    $("#downloadAttachment").click(function(){
-      url_action_call('open_atch', '', function(){});
+    $("#openAttachement").click(function(){
+      window.open('MyPDF.pdf', '_blank', 'fullscreen=yes'); return false;
     });
 
     $("#sendAttachmentEmail").click(function(){
@@ -127,12 +138,6 @@ code: |
   address = action_argument('address')
   was_successful = send_email(to=address, template=email_text, attachments=atch_itself)
   json_response(dict(was_successful=was_successful, email_address=address))
----
-comment: |
-id: open_atch
-event: open_atch
-code: |
-  command('leave', url=atch_link)
 ---
 id: log_to_docassemble
 event: log_to_docassemble
