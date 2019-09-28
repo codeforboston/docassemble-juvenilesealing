@@ -2,8 +2,14 @@ comment: |
   
   # TODOs
   TODO: Add language/questions/clarity specifying MA
-  TODO: Different instructions for partially completed form
-  TODO: Troubleshoot link styles
+  TODO: Add info about court self-help centers
+  TODO: Add page about... something. I've forgotten what.
+  TODO: Call a section explicitly 'How will I know my record
+  is sealed?'
+  TODO: Add 'You won't get in trouble for getting an answer
+  wrong.'
+  TODO: 'What will employers see' link at the beginning (maybe
+  list of what you can read in Know Your CORI Rights)
   TODO: [I've forgotten what this means. Navigating to previous
   questionnaire?] Equivalent of 
     url: |
@@ -14,15 +20,38 @@ comment: |
   1. Will you be adding text about CORI and juvenile
   records not having records from other states?
   Or do we need to handle that a different way.
+  todo: 
   2. If we'll handle that in this interview, we need
   a link to the clean slate clearing house.
+  todo: 
   3. Which is the 'what if your CORI seems wrong'
   booklet? Do we already have the link to that?
+  todo: 
   4. Where to put text about some people not getting help?
+  todo: 
   
   # Questions G
   1. Immigration feedback?
-  todo: Add question about legal consult
+  todo: Add question/page about legal consult [in what
+  way did I maen this?]
+  2. Is there anything that's expungable that's not on your
+  CORI or CARI?
+  todo: 
+  3. How do the _courts_ get records from other states?
+  todo: 
+  4. Is there such a thing as expungement for a not <21
+  first-time misdemeanor? I heard somewhere that there was.
+  Wasn't sure of the source I was getting it from.
+  todo: 
+  5. Can a dismissal can still be on your record sometimes?
+  How to ask them about that? Does it still count as
+  convicted if there was misconduct, etc? If they're going
+  off of their record.
+  todo: 
+  6. Need copies of disposition as well as dockets? Heard this.
+  todo: 
+  7. Need to warn about social equity program before sealing?
+  todo: 
 
   # Questions F
   1. Who gets the feedback? Link back to CFJJ advocacy work somehow?
@@ -171,6 +200,18 @@ comment: |
     - employment
     - [-done/not doing-] ~Big know your cori rights booklet~
     - [-done-] GBLS booklets links page
+  
+  # Expungement
+  1. Time-based expungement is pretty straightforward? In
+  DA opinion?
+  2. Language about, 'This is to help you learn if you might
+  be eligible and to apply/try to expunge, not if you're
+  eligible to expunge.'
+  3. For expungement, do convictions in other states matter
+  too?
+  4. TODO: Describe difference between misdemeanor and felony?
+  5. Need to send a sealing/expungement petition to each
+  court where you had a case or just one place?
 
   # Not TODOs
   [-future-] TODO: Link to Mass Legal juvenile record request interview in future

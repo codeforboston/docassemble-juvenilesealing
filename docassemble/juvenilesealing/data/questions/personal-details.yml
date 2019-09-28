@@ -10,6 +10,10 @@ comment: |
 modules:
   - docassemble.base.util
   - docassemble.gbls.legal_server
+  - docassemble.ssa.ssa
+---
+features:
+  javascript: docassemble.ssa:ssa.js
 ---
 comment: |
   If this is not a separate objects block, it will create an error condition.
@@ -71,10 +75,14 @@ continue button field: x.ssn_and_other_info
 question: |
   Other Information
 fields:
-  - Social Security Number (SSN): x.ssn
+#  - Social Security Number (SSN): x.ssn
   - Date of birth: x.birthdate
   - Place of Birth: x.place_of_birth
   - Alias/maiden name/previous name: x.alias
     required: False
   - Occupation: x.occupation
     required: False
+  - note: Social Security Number (SSN)
+  - no label: x.ssn
+    datatype: ssn
+    validate: is_valid_ssn
