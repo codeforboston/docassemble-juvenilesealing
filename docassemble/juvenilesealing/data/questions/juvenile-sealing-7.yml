@@ -77,10 +77,10 @@ code: |
       needs_dockets = True
   
   # Test
-  atch_after_download = pdf_after_download_partial_v7
-  atch_email_contents = email_partial
-  atch_itself = partial_petition_pdf
-  trigger_attachment_page
+  #atch_after_download = pdf_after_download_partial_v7
+  #atch_email_contents = email_partial
+  #atch_itself = partial_petition_pdf
+  #trigger_attachment_page
 
   reason = ineligibility_reasons.open_case
   if (has_NON_probation_open_cases is True): sorry_end
