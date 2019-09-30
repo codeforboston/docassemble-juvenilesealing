@@ -342,13 +342,19 @@ template: petition_instructions_after
 content: |
   Once you mail it,
   the Commissioner of Probation
-  will look at it and your criminal
+  will look at the petition you sent and at your criminal
   records. They'll see if they agree that you can seal
-  your juvenile records. They will send you a letter
-  telling you what they decided to seal
-  and why they made that decision.
-
-  It can take up to 3 months because so
+  your juvenile records.
+  
+  ## How will I know if my juvenile records are sealed?
+  
+  You'll get a letter from the Commissioner of Probation that
+  says they've sealed your juvenile records. TODO: How long
+  till it takes effect?
+  
+  Whatever they decide, they will send you a letter telling
+  you what they decided to seal and why they made that decision.
+  It can take up to 3 months to get a letter because so
   many people send them petitions to seal records.
 
   If you get the letter back and don't agree with what they
