@@ -117,6 +117,7 @@ button.daquestionbackbutton.btn-link:hover {
 .btn span {
   font-weight: 700;
   color: rgba(64, 64, 64, 1);
+  color: rgba(99, 99, 99, 1);
 }
 
 .btn-primary,
@@ -126,6 +127,7 @@ button.daquestionbackbutton.btn-link:hover {
 .btn-primary:not(:disabled):not(.disabled):active,
 .show>.btn-primary.dropdown-toggle {
   border-color: rgba(64, 64, 64, 1);
+  border-color: rgba(99, 99, 99, 1);
   background-color: white;
 }
 
@@ -136,10 +138,10 @@ button.btn-secondary:focus,
 .btn-secondary:not(:disabled):not(.disabled).active,
 .btn-secondary:not(:disabled):not(.disabled):active,
 .show>.btn-secondary.dropdown-toggle {
-  /*background: rgba( 99, 99, 99, 1 );
-  border-color: rgba( 99, 99, 99, 1 );*/
-  border-color: rgba(64, 64, 64, 1);
+  background-color: rgba( 99, 99, 99, 1 );
+  border-color: rgba( 99, 99, 99, 1 );
   background-color: white;
+  border-color: rgba(64, 64, 64, 1);
 }
 button.btn-secondary span {
   /* color: white; */
