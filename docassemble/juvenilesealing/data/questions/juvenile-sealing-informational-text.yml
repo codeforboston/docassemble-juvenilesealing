@@ -52,11 +52,13 @@ content: |
 id: records_can_help_text
 template: records_can_help
 content: |
-  It might be easier to give the right answers if you
-  have a copy of your juvenile record report,
+  You need to know about your convictions in Massachusetts
+  and in other states. You won't get in trouble for getting
+  answers wrong, but it might be easier for you to give the
+  right answers if you have a copy of your juvenile record report,
   and also your CORI report if you had cases in an adult court.
   These reports will give a summary of all your criminal charges
-  and tell you how each case ended.
+  in Massachusetts and tell you how each case ended.
 ---
 id: getting_cori_text
 template: getting_cori
@@ -73,7 +75,7 @@ content: |
   To ask for a free copy of your Massachusetts
   juvenile record, see the
   [GBLS juvenile record request document](https://www.gbls.org/sites/default/files/juvenile_booklet_onelj.pdf).
-  It will give you a form to print and tell you what to do.
+  It has a form to print and it tells you what to do.
 ---
 id: out_of_state_records_text
 template: out_of_state_records
