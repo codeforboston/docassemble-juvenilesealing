@@ -24,7 +24,7 @@ features:
 ---
 default screen parts:
   right: |
-    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,900&display=swap" rel="stylesheet">
 ---
 comment: Using text strings that are shared between versions
 include:
@@ -68,9 +68,12 @@ subquestion: |
 
   ## More about this form
     
-  <span class="new">If you have the information you need,</span>
-  these questions
-  can take about to **40 minutes** to answer.
+  ### How long does it take to finish?
+  
+  It can take about **40 minutes** to answer all the questions
+  if you have the information you need.
+
+  ### What kind of information do I need?
 
   ${records_can_help}
 
@@ -80,6 +83,8 @@ subquestion: |
   stop and come back later if you need to
   get a certified copy of your
   [docket sheets](${ url_action('about_docket_sheets') }).
+  
+  ### Privacy
   
   If we need to store any personally
   identifying information,
@@ -227,8 +232,8 @@ event: sorry_end
 question: |
   Thank you and sorry we couldn't help
 subquestion: |
-  This tool can only help with sealing *juvenile records
-  in Massachusetts*.
+  This tool can only help with sealing **juvenile records
+  in Massachusetts**.
 
   ${more_resources}
 buttons:
