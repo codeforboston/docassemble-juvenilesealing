@@ -23,7 +23,7 @@ features:
 ---
 default screen parts:
   right: |
-    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,900&display=swap" rel="stylesheet">
 ---
 comment: |
   - Do objects always need to be in their own file?

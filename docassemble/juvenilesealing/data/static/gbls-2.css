@@ -115,7 +115,7 @@ button.daquestionbackbutton.btn-link:hover {
   padding: 1em;
 }
 .btn span {
-  font-weight: bold;
+  font-weight: 700;
   color: rgba(64, 64, 64, 1);
 }
 
@@ -233,23 +233,23 @@ label.btn-primary:not(:disabled):not(.disabled):active,
 /* ======== END BUTTONS ======== */
 
 
-.h1, .h2, .h3, .h4, .h5, .h6 {
-  position: relative;
-  text-transform: uppercase;
-  color: rgba( 99, 99, 99, 1 );
-  font-weight: 400;
-  margin-bottom: 1em;
-}
-
 .da-page-header {
   border-bottom: 0;
 }
 
+.h1, .h2, .h3, .h4, .h5, .h6,
+h1, h2, h3, h4, h5, h6  {
+  position: relative;
+  color: rgba( 99, 99, 99, 1 );
+  font-weight: 700;
+}
+
+.h1, .h2, h1, h2, h1.h3 {
+  text-transform: uppercase;
+  margin-bottom: 1em;
+}
+
 h1.h3:after {
-  /*
-  white-space: pre;
-  content: "\A_________________________________________________________________";
-  */
   content: "";
   position: absolute;
   bottom: -1rem;
@@ -261,15 +261,12 @@ h1.h3:after {
 
 h1.h3 {
   font-size: 18px;
-  font-weight: bold; /* temporary? */
   text-transform: uppercase;
   text-align: center;
 }
 
 h2 {
   font-size: 16px;
-  font-weight: bold;
-  /*text-transform: uppercase;*/
   margin-bottom: 1em;
 }
 
@@ -278,6 +275,12 @@ h2:before {
   white-space: pre;
   content: "_________________________________________________________________\A\A";
 }
+
+.h3, h3 {
+  font-size: 1em;
+  margin-bottom: .8em;
+}
+
 
 /*.daundertext:before {
   font-size: 16px;
@@ -298,8 +301,7 @@ ol, ul {
 }
 
 strong {
-  font-weight: 900;
-  color: black;
+  font-weight: 700;
 }
 
 
