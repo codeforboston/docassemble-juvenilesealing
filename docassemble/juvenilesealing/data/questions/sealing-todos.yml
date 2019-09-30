@@ -1,8 +1,6 @@
 comment: |
   
   # TODOs
-  - TODO: Add 'You won't get in trouble for getting an answer
-  wrong.'
   - TODO: 'What will employers see' link at the beginning (maybe
   list of what you can read in Know Your CORI Rights)
   - TODO: [I've forgotten what this means. Navigating to previous
@@ -10,14 +8,16 @@ comment: |
     url: |
       ${ referring_url() }
   but don't send back to preliminary questions. [to accomplish what?]
+  [Maybe this was about not being able to go back to
+  docket sheet questionnaire from the sealing questionnaire...]
 
   # Reiterated questions:
   1. Will you be adding text about CORI and juvenile
   records not having records from other states?
   Or do we need to handle that a different way.
   todo: 
-  2. If we'll handle that in this interview, we need
-  a link to the clean slate clearing house.
+  2. If we'll handle that [other states] in this interview,
+  we need a link to the clean slate clearing house.
   todo: 
   3. Which is the 'what if your CORI seems wrong'
   booklet? Do we already have the link to that?
@@ -28,7 +28,7 @@ comment: |
   # Questions G
   1. Immigration feedback?
   todo: Add question/page about legal consult [in what
-  way did I maen this?]
+  way did I mean this?]
   2. Is there anything that's expungable that's not on your
   CORI or CARI?
   todo: 
@@ -56,6 +56,8 @@ comment: |
   10. How long after getting the letter from probation will
   all the departments fully put sealing into effect?
   todo: 
+  11. How long does it take to get your docket sheets?
+  todo: 
 
   # Questions F
   1. Who gets the feedback? Link back to CFJJ advocacy work somehow?
@@ -68,20 +70,14 @@ comment: |
   5. What to say in the letter requesting the docket sheets?
   todo: 
   
-  Answers F
+  # Answers F
   4. Do non-citizens have SSNs?
-  todo: Yes. Everyone sealing will have one.
+  [-done-] Yes. Everyone sealing will have one.
   6. For requesting dockets by mail
   todo: need money order or certified check
   post office sells money orders
   
-  # Answers E
-  1. How does it affect running for political office?
-  todo: Nothing technical that we know of
-  2. Example docket sheet request and address (with ATTENTION?).
-  todo: Will be constructed an sent soon
-  2b. Example envelope
-  todo: construct ATTENTION: Criminal clerk's office example
+  # E Answers
   3. What's special about certified docket sheets?
   todo: Embossing and possibly colored stamp
   4. About applying for jobs - what's the link?
@@ -221,6 +217,17 @@ comment: |
   - Add language/questions/clarity specifying MA
   - Call a section explicitly 'How will I know my record
   is sealed?'
+  - Add 'You won't get in trouble for getting an answer
+  wrong.'
+
+  # E Done
+  1. How does it affect running for political office?
+  [-done-] Nothing technical that we know of
+  2. Example docket sheet request and address (with ATTENTION?).
+  [-done-] Will be constructed an sent soon
+  2b. Example envelope
+  [-done-] (not really doing) construct ATTENTION: Criminal
+  clerk's office example
 
   # Not TODOs
   [-future-] TODO: Link to Mass Legal juvenile record request interview in future
