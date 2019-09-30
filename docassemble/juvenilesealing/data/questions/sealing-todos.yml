@@ -163,18 +163,12 @@ comment: |
         answers well enough and they'll get feedback if
         they're missing info.
           [-done-]: Don't block.
-  6. Post-release handling.
-  answer/todo: We're all happy to keep iterating.
   7. Add link to expungement info?
   answer/todo: maybe. only if we find a good place
   Notes:
   - Don't use the term 'CARI'. It's a little different and would be confusing.
   
-  # Answered Questions A
-  x 0. Is juv. delinquency vs. youthful offencer cases.
-  [-done-]: Reduce it to one question
-  x 1. TODO: Timing? Took 20 min. for legal students.
-  [-done-]: Say 30 min.? 40?
+  # A Questions
   1b. They have a form for something else that seems to
     work really well. They'll send it over just for us to get a gander.
   2. What if there is no legal help in their area?
@@ -187,12 +181,8 @@ comment: |
     todo: That stuff
   3. Link to info on CORI FAQ - what if CORI wrong, what it is etc.?
     answer: mass legal help website about that
-    todo: (done?) (what if cori wrong) will send link. Also, though, de-emphasize getting records
-  x 4. ADDRESS TO MAIL IT TO
-  answer: at top of form. copy from there
-  [-done-]: put in instructions
-  x 4b. [-done-] v5 needs instructions added
-  4c. [-done-] Construct email for v7 (not sure how v5 does it)
+    todo: (done?) (what if cori wrong) will send link. Also, though, de-emphasize
+    getting records
   5. further resources:
   answer: Will send
     - applying for jobs booklet (will be put online)
@@ -212,22 +202,6 @@ comment: |
   4. TODO: Describe difference between misdemeanor and felony?
   5. Need to send a sealing/expungement petition to each
   court where you had a case or just one place?
-  
-  # Done
-  - Add language/questions/clarity specifying MA
-  - Call a section explicitly 'How will I know my record
-  is sealed?'
-  - Add 'You won't get in trouble for getting an answer
-  wrong.'
-
-  # E Done
-  1. How does it affect running for political office?
-  [-done-] Nothing technical that we know of
-  2. Example docket sheet request and address (with ATTENTION?).
-  [-done-] Will be constructed an sent soon
-  2b. Example envelope
-  [-done-] (not really doing) construct ATTENTION: Criminal
-  clerk's office example
 
   # Not TODOs
   [-future-] TODO: Link to Mass Legal juvenile record request interview in future
@@ -235,4 +209,6 @@ comment: |
     comb. Maybe do user testing with existing language
   [-future-] TODO (booklet): 'WHO CAN SEE JUVENILE CASES ON A CORI REPORT?'
     - before or after sealing?
+  [-future-] Post-release handling.
+  answer/todo: We're all happy to keep iterating.
 ---
