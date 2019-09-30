@@ -1,16 +1,15 @@
 comment: |
   
   # TODOs
-  TODO: Add language/questions/clarity specifying MA
-  TODO: Add info about court self-help centers
-  TODO: Add page about... something. I've forgotten what.
-  TODO: Call a section explicitly 'How will I know my record
+  - TODO: Add info about court self-help centers
+  - TODO: Add page about... something. I've forgotten what.
+  - TODO: Call a section explicitly 'How will I know my record
   is sealed?'
-  TODO: Add 'You won't get in trouble for getting an answer
+  - TODO: Add 'You won't get in trouble for getting an answer
   wrong.'
-  TODO: 'What will employers see' link at the beginning (maybe
+  - TODO: 'What will employers see' link at the beginning (maybe
   list of what you can read in Know Your CORI Rights)
-  TODO: [I've forgotten what this means. Navigating to previous
+  - TODO: [I've forgotten what this means. Navigating to previous
   questionnaire?] Equivalent of 
     url: |
       ${ referring_url() }
@@ -212,6 +211,9 @@ comment: |
   4. TODO: Describe difference between misdemeanor and felony?
   5. Need to send a sealing/expungement petition to each
   court where you had a case or just one place?
+  
+  # Done
+  - Add language/questions/clarity specifying MA
 
   # Not TODOs
   [-future-] TODO: Link to Mass Legal juvenile record request interview in future

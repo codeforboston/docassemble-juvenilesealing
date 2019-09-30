@@ -33,6 +33,9 @@ include:
 mandatory: True
 code: |
   intro
+  
+  if (has_ma_juv_record is False):
+    sorry_end
 
   if (not have_docket_copies_already is True):
     if (not read_citizen_disclaimer):
@@ -43,6 +46,7 @@ code: |
 
   command('leave', url=sealing_url)  # end
 ---
+id: reused_strings
 code: |
   # Strings that get reused
   sealing_url = 'https://interviews-dev.gbls.org/interview?dockets=notneeded&i=docassemble.playground42%3Ajuvenile-sealing-5.yml'
@@ -88,6 +92,13 @@ subquestion: |
 under: |
   Read more about sealing juvenile records from the
   [GBLS 2019 booklet](https://www.gbls.org/sites/default/files/2019-08/juvenile_booklet_august_2019F.pdf).
+---
+id: in_ma
+question: |
+  Do you have a juvenile record in Massachusetts?
+subquestion: |
+  This tool is only for sealing Massachusetts juvenile crimes.
+yesnomaybe: has_ma_juv_record
 ---
 id: do_you_have_sheets
 question: Certified Copies of Docket Sheets
@@ -210,4 +221,17 @@ buttons:
   - Come back another time: exit
   - Try sealing: leave
     url: ${ needs_dockets_url }
+---
+id: not_helped
+event: sorry_end
+question: |
+  Thank you and sorry we couldn't help
+subquestion: |
+  This tool can only help with sealing *juvenile records
+  in Massachusetts*.
+
+  ${more_resources}
+buttons:
+  - Exit: exit
+  - Restart: restart
 ---
