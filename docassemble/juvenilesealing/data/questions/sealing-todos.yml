@@ -1,10 +1,6 @@
 comment: |
   
   # TODOs
-  - TODO: Add info about court self-help centers
-  - TODO: Add page about... something. I've forgotten what.
-  - TODO: Call a section explicitly 'How will I know my record
-  is sealed?'
   - TODO: Add 'You won't get in trouble for getting an answer
   wrong.'
   - TODO: 'What will employers see' link at the beginning (maybe
@@ -50,6 +46,15 @@ comment: |
   6. Need copies of disposition as well as dockets? Heard this.
   todo: 
   7. Need to warn about social equity program before sealing?
+  What other such programs, etc. are there?
+  todo: 
+  8. Add info about court self-help centers (what's the info?)
+  todo: 
+  9. Is there anything specific we can put about a successful
+  letter of probation?
+  todo: 
+  10. How long after getting the letter from probation will
+  all the departments fully put sealing into effect?
   todo: 
 
   # Questions F
@@ -214,6 +219,8 @@ comment: |
   
   # Done
   - Add language/questions/clarity specifying MA
+  - Call a section explicitly 'How will I know my record
+  is sealed?'
 
   # Not TODOs
   [-future-] TODO: Link to Mass Legal juvenile record request interview in future
