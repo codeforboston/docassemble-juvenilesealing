@@ -72,8 +72,6 @@ comment: |
   todo: 
   
   # E Answers
-  3. What's special about certified docket sheets?
-  todo: Embossing and possibly colored stamp
   4. About applying for jobs - what's the link?
   todo: (linked in the know your rights booklet)
   
@@ -86,12 +84,12 @@ comment: |
     "You also might have to stop and come back later
     if you need to get a certified copy **of “docket sheets”
     from your case at the courthouse.**"
-  A: will look (for what?)
+  A: will look (for what? I think at page created)
   status: text has been written, inner page linked to.
   todo: Ask Quinten about adding a webpage on gbls for that.
 
   # Answered Questions B
-  1b. Can't help them get those records?
+  1b. Can't help them get out of state records?
   answer: clean slate clearing house. For info for getting records
     from other states.
     todo: Will be sent link for clean slate clearing house.
@@ -99,6 +97,7 @@ comment: |
   # A Questions
   1b. They have a form for something else that seems to
     work really well. They'll send it over just for us to get a gander.
+    todo: ask about the form
   2. What if there is no legal help in their area?
   answer: That's a tough question. There are lots of little
     things to persue.
@@ -114,7 +113,7 @@ comment: |
   5. further resources:
   answer: Will send
     - applying for jobs booklet (will be put online)
-    - cori and housing
+    - [-done-] cori and housing
     - employment
     - [-done/not doing-] ~Big know your cori rights booklet~
     - [-done-] GBLS booklets links page
