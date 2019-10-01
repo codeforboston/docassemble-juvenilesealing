@@ -132,21 +132,37 @@ field: about_docket_sheets
 # [text](${ url_action('about_docket_sheets') })
 question: About Docket Sheets
 subquestion: |
+  ## Facts about docket sheets
+
+  ### What are docket sheets?
+
   A docket sheet is different than a criminal record
   report (called a CORI) or juvenile record report. Docket
   sheets are papers from the courthouse that say
   what happened in a case every time you went
   to court for that case.
+  
+  ### What's different about a certified copy of the docket sheets?
+
+  A certified copy of the sheets
+  will have a special mark on it that looks like the
+  courthouse's seal. It'll either be a colored stamp or
+  an area where the paper is raised up in the shape of the
+  seal.
+
+  ### Why can sealing be a problem?
 
   If you seal your records you won't be able to get
   certified copies of your docket sheets until you
   unseal them again. That can sometimes take a long time.
 
+  ## Getting certified copies
+
   Sadly, every case has its own docket
   sheets and those sheets are kept at the courthouse
   that handled that case.
   
-  ## Getting certified copies in person
+  ### Getting certified copies in person
   
   For each case, go to the clerk’s
   office in the courthouse that handled the case and say,
