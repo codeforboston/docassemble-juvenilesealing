@@ -1,4 +1,5 @@
 # TODOs
+
 - TODO: Where to request feedback about bugs, etc?
 - TODO: GBLS informational pages? Plan for maintanance?
 - TODO: [I've forgotten what this means. Navigating to previous
@@ -11,41 +12,59 @@ docket sheet questionnaire from the sealing questionnaire...]
 
 ---------------------
 
-# Misc
-- Court services center to print it out. Call ahead before you go.
-- Housing thing from Quinten has that advice. Maybe look at that.
+# V5.3 Group feedback
+- todo: 'Place of Birth' to 'Place of birth' to match others
+- todo: 'To find out if you can try to seal your record,'
+'these are the steps this tool will take you through:'
+- todo: Replace the word 'eligible' wherever possible?
+- todo: Discuss how/where to use the word 'petition' vs. 'form'
+- todo: Fix 40 min text typos. 'up to 40 minutes'
+- todo: 'If you want, we'll ask you for things like your name and
+social security number to help us fill out the rest of the form
+for you.
+- todo: 'Privacy' to 'What about my privacy?'
+- todo: 'You need to know' to 'It will help if you know'
+Maybe then we don't need the warning about getting answers wrong.
+- todo: It's ok if you get some answers wrong.
+- todo: 'a copy of -both- your juvenile record ~report~, and also...'
+- todo: remove green from text
+- todo: Something like: "Other states' court websites may have information on how you can request your records from them."
 
-# CORI clarity
-* 4. Which is the 'what if your CORI seems wrong'
-booklet? Do we already have the link to that?
-todo: kyr booklet. Section on mass legal help website.
-correcting record.
-* 5. 'What will employers see' link at the beginning? (maybe
-list of what you can read in Know Your CORI Rights)
-todo: Same link as applying for a job
+---------------------
+
+# Misc
+
+----------------------
+
+# Users
+- Q: If we can attend some of the CORI clinics, what kinds of
+things would it be ok for us to do there?
+todo: 
 
 ---------------------
 
 # Form questions
 * 3. Just skip non-required personal question fields?
 todo: Sure, we'll see which ones.
-** 2. Need a link to the clean slate clearing house for
-out of state records?
-todo: will send link
-2. wants_docket_sheets new text about other charges ok?
-todo: 
-** 4. About applying for jobs - where is that link in the kyr booklet?
-Did not find.
-todo: The info is in the booklet. There's a separate one they'll
-put online.
+
+* Q: "You also might have to stop and come back later
+  if you need to get a certified copy **of “docket sheets”
+  from your case at the courthouse.**"
+Is this trying to give directions to go to the
+courthouse? If so, maybe we can handle
+this by creating a link to an informational page
+we make. The more text we add, the less people are
+going to read.
+A: will look (I think a page created for dockets)
+status: text has been written, have linked to inner page.
+todo: Get an eye on it.
 
 1. QQ: Who gets the feedback? Link back to CFJJ advocacy work somehow?
 todo: answer: 
 
 ---------------------
 
-
-# Sealing process clarity
+# Sealing process clarity for users
 * 10. How long after getting the letter from probation will
 all the departments fully put sealing into effect?
 todo:
@@ -68,31 +87,21 @@ businesses before sealing? What other such programs, etc.
 are there?
 todo: Shorten interface 'applying for jobs or programs,
 bring charges against the court'
-
-* 8. Add info about court self-help centers (what's the info?)
-todo: (call up the court. maybe list online. website for trial courts may have numbers. google it)
 * 9. Is there anything specific we can put about what a successful
 letter from probation would look like?
 todo: Will list all the records that are sealed. Should be clear.
-Will look for
+Will be given
 sample acceptance and rejection letters. Most part the system is
 good about sealing the recors that need it.
 
-3. Where to put text about some people not getting help?
-todo: talk about text to group
-
 ---------------------
 
-* # Sealing process Questions
-* 3. How do the _courts_ get records from other states?
-todo: Nothing.
-  - Tripple i. They can have probation run the record. Hard
-  for an individual to do it.
-* 5. Can a dismissal can still be on your record sometimes?
+* # Sealing process Questions from us
+* 5. Can a dismissal still be on your record sometimes?
 How to ask them about that? Does it still count as
 convicted if there was misconduct, etc? If they're going
 off of their record.
-todo: Yes, non convictions can be on your record. It can be on
+todo: Yes, non-convictions can be on your record. It can be on
 your CORI. Any time your case isn't dismissed before arraignment.
 Did you ever have a trial. (diff experience between trial
 and arraignment?)
@@ -101,44 +110,38 @@ CORI or CARI?
 todo: Won't address weeds
   - Criminal case dismissed before arraignment. There will be
   a physical file at the courthouse. People can get that file.
-  Won't show up on CORI, though. Will be sealed.
-* 6. Need copies of disposition as well as dockets? Heard this.
-todo: Nothing. It's on the docket sheets
+  Won't show up on CORI, though. Will be sealed. But will be
+  physically available until sealed or expunged (I think).
 
 ---------------------
 
 # Immigration
-1b. todo: As project liason about immigration stuff.
+1. Follow-up on this stuff after contact.
 1. Immigration feedback?
 todo: Add question/page about legal consult [in what
 way did I mean this?]
 
 ---------------------
 
-# Answered Questions D:
-Q: is this trying to give directions to go to the
-courthouse? If so, maybe we can handle
-this by creating a link to an informational page
-I make. The more text we add, the less people are
-going to read.
-  "You also might have to stop and come back later
-  if you need to get a certified copy **of “docket sheets”
-  from your case at the courthouse.**"
-A: will look (for what? I think a page created for dockets)
-status: text has been written, have linked to inner page.
-todo: Get an eye on it.
+# Further Resources
+- Is court self-help center same as court services center?
+todo: 
 
-# Answered Questions B
-1b. Can't help them get out of state records?
-answer: clean slate clearing house. For info for getting records
-  from other states.
-  todo: Will be sent link for clean slate clearing house.
+** 2. Need a link to the clean slate clearing house for
+out of state records?
+todo: will send link (followup)
 
-# A Questions
-1b. They have a form for something else that seems to
-  work really well. They'll send it over just for us to get a
-  gander.
-  todo: ask about the form
+** 4. About applying for jobs - where is that link in the kyr booklet?
+Did not find.
+todo: The info is in the booklet. There's a separate doc they'll
+put online, though. (followup)
+* 5. 'What will employers see' link at the beginning? (maybe
+list of what you can read in Know Your CORI Rights)
+todo: Same link as applying for a job. They will put up
+separate doc.
+
+3. Where to put text about some people not getting help?
+todo: talk about text to group (followup)
 2. What if there is no legal help in their area?
   answer: Tough question. There are lots of little
   things to persue.
@@ -146,18 +149,38 @@ answer: clean slate clearing house. For info for getting records
   you have a case and talk to somebody in probation, for example.
   - Also, if send petition in and rejected, will get reasons why.
   - Honestly address people who may not be able to get help.
-  todo: That stuff
+  todo: That stuff. Talk to group
+
+* 4. Which is the 'what if your CORI seems wrong'
+booklet? Do we already have the link to that?
+todo: kyr booklet. Section on mass legal help website -
+correcting record.
+
+* 8. Add info about court self-help centers. What's the info?
+todo: call up the court. maybe list online. website for trial
+courts may have numbers. google it. (do I remember this right?:
+Each one has different ways in which they might be willing
+to help? Some may help print stuff?) Put up some text and get
+review.
+
 3. Link to info on CORI FAQ - what if CORI wrong, what it is etc.?
   answer: mass legal help website about that
-  todo: (done?) (what if cori wrong) will send link. Also, though, de-emphasize
-  getting records
-5. further resources:
-answer: Will send
+  todo: (done?) (what if cori wrong) will send link. Also,
+  though, de-emphasize getting records
+
+5. further resources Will send:
   - applying for jobs booklet (will be put online)
   - [-done-] cori and housing
-  - employment
-  - [-done/not doing-] ~Big know your cori rights booklet~
+  - employment (same as jobs booklet?)
+  - [-done/not doing?-] Big know your cori rights booklet -
+  ask group (followup)
   - [-done-] GBLS booklets links page
+
+- Court services center to print it out. Call ahead before you go.
+  todo: Ask on slack about housing form. Might have a good
+  model for that advice.
+
+---------------------
 
 # Expungement
 1. Time-based expungement is pretty straightforward? In
@@ -185,4 +208,8 @@ todo:
 answer/todo: We're all happy to keep iterating.
 [-future-] TODO: Add link to expungement info?
 answer/todo: maybe. only if we find a good place
+[-future-] TODO: They have a form for something else that seems to
+  work really well. They'll send it over just for us to get a
+  gander.
+  todo: ask about the form
 ---
