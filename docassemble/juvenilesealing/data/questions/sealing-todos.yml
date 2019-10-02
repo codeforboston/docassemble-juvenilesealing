@@ -13,22 +13,22 @@ docket sheet questionnaire from the sealing questionnaire...]
 ---------------------
 
 # V5.3 Group feedback
-- todo: 'Place of Birth' to 'Place of birth' to match others
-- todo: 'To find out if you can try to seal your record,'
-'these are the steps this tool will take you through:'
+- todo: Don't take users away from the page for definitions of
+words. Maybe try terms: https://docassemble.org/docs/initial.html#terms
+- todo: 'To find out if you can try to seal your record,
+these are the steps we'll do with you:'. Maybe.
+  done? Attempt to be checked.
 - todo: Replace the word 'eligible' wherever possible?
 - todo: Discuss how/where to use the word 'petition' vs. 'form'
-- todo: Fix 40 min text typos. 'up to 40 minutes'
-- todo: 'If you want, we'll ask you for things like your name and
-social security number to help us fill out the rest of the form
-for you.
-- todo: 'Privacy' to 'What about my privacy?'
 - todo: 'You need to know' to 'It will help if you know'
-Maybe then we don't need the warning about getting answers wrong.
+Maybe then we don't need the warning about getting answers wrong?
+Either way, do more to de-emphasize.
 - todo: It's ok if you get some answers wrong.
 - todo: 'a copy of -both- your juvenile record ~report~, and also...'
 - todo: remove green from text
-- todo: Something like: "Other states' court websites may have information on how you can request your records from them."
+- todo: Something like: "Other states' court websites may have
+information on how you can request your records from them." instead
+of 'do your best'.
 
 ---------------------
 
