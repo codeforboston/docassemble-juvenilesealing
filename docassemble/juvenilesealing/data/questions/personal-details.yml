@@ -77,7 +77,7 @@ question: |
 fields:
 #  - Social Security Number (SSN): x.ssn
   - Date of birth: x.birthdate
-  - Place of Birth: x.place_of_birth
+  - Place of birth: x.place_of_birth
   - Alias/maiden name/previous name: x.alias
     required: False
   - Occupation: x.occupation
