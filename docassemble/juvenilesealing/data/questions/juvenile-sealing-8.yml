@@ -1,0 +1,417 @@
+---
+comment: |
+  - Immigration asked in previous separate form.
+  - Don't ask personal info until we know they want to print the form.
+  - If they get here from the docket form, it's pro se user. Show more options.
+  - Personal info code can look like https://github.com/GBLS/docassemble-gbls/blob/master/docassemble/gbls/data/questions/basic-questions-gbls.yml
+
+  TODOs: see sealing-todo.yml
+---
+metadata:
+  title: |
+    Juvenile Sealing
+  short title: |
+    Juvenile Sealing
+  subtitle: |
+    Version 8
+  authors:
+    - name: Team
+      organization: Citizens for Juvenile Justice and Code for Boston
+---
+features:
+  progress bar: True
+  question back button: True
+  css: gbls-8.css
+---
+default screen parts:
+  right: |
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,900&display=swap" rel="stylesheet">
+---
+modules:
+  - .ProgressTracker
+---
+include:
+  # Using questions from other interviews
+  # Has to be before flow code block to avoid circularity issues
+  - personal-details.yml
+  - attachment.yml
+  # Using text strings that are shared between versions
+  - juvenile-sealing-informational-text.yml
+---
+comment: |
+  - Do objects always need to be in their own file? [No]
+  - If I do `objects from file`, will that also pull
+  in the logic below or do I have to import that separately?
+  - Should `applicant` be `user` instead, even though the
+  questions are about the applicant?
+objects:
+  - applicant: Individual
+---
+mandatory: True
+id: flow
+code: |
+
+  reasons = []
+  
+  # Testing
+  #partial_petition
+
+  # How to make sure a pro se user sees the warnings?
+  should_show_extra_info = False
+  needs_dockets = False
+  if ('dockets' in url_args):
+    should_show_extra_info = True
+    if (url_args['dockets'] == 'needed'):
+      needs_dockets = True
+
+  if (has_NON_probation_open_cases == 'True'):
+    reasons.append( open_case_reason.content )
+  if (is_on_probation == 'True'):
+    reasons.append( probation_reason.content )
+    
+  if (
+       has_NON_probation_open_cases == 'True' or
+       is_on_probation == 'True'
+     ): sorry_end
+  elif (
+         has_NON_probation_open_cases == 'unsure' or
+         is_on_probation == 'unsure'
+       ):
+        if (wants_to_get_records): finish_with_more
+
+  if (juvenile_cases_in_past_3_years == 'True'):
+    reasons.append( juvenile_cases_reason.content )
+  if (juvenile_custody_in_past_3_years_usa == 'True'):
+    reasons.append( juvenile_custody_reason.content )
+    
+  if (
+       juvenile_cases_in_past_3_years == 'True' or
+       juvenile_custody_in_past_3_years_usa == 'True'
+     ): sorry_end
+  elif (
+         juvenile_cases_in_past_3_years == 'unsure' or
+         juvenile_custody_in_past_3_years_usa == 'unsure'
+       ):
+        if (wants_to_get_records): finish_with_more
+
+  if (
+       convicted_in_past_3_years_states == 'True' or
+       convicted_in_past_3_years_federal == 'True'
+     ):
+      reasons.append( convicted_reason.content )
+  if (incarcerated_in_past_3_years == 'True'):
+    reasons.append( incarcerated_reason.content )
+    
+  if (
+       convicted_in_past_3_years_states == 'True' or
+       convicted_in_past_3_years_federal == 'True' or
+       incarcerated_in_past_3_years == 'True'
+     ): sorry_end
+  elif (
+         convicted_in_past_3_years_states == 'unsure' or
+         convicted_in_past_3_years_federal == 'unsure' or
+         incarcerated_in_past_3_years == 'unsure'
+       ):
+        if (wants_to_get_records): finish_with_more
+
+  # Otherwise they're eligible!
+  
+  # Make sure they get a chance to order their docket sheets.
+  if (should_show_extra_info):
+    if (will_write_personal_info):
+      partial_petition
+
+  # Get their personal details
+
+  # If legal server data is available, get it that way
+  # There are other ways to do this, but I believe this
+  # is the most explicit and clear
+  set_up_legal_server_data
+  
+  applicant.name_and_address
+  applicant.family
+  applicant.ssn_and_other_info
+
+  # Not private enough?
+  #filename = first_name + '-' + last_name + '-juvenile-sealing-petition'
+
+  full_petition
+  
+  finish_with_more
+---
+default validation messages:
+  multiple choice required: You have to pick one.
+---
+id: open_cases
+question: |
+  Open Cases
+fields:
+  - note: |
+      Do you have any open criminal or juvenile cases right now anywhere in the USA?
+  - no label: has_NON_probation_open_cases
+    input type: radio
+    choices:
+      - Yes: True
+      - No: False
+      - I don't know: 'unsure'
+  - note: "Are you now on probation for any criminal or juvenile case in the USA, including any federal court case?"
+  - no label: is_on_probation
+    input type: radio
+    choices:
+      - Yes: True
+      - No: False
+      - I don't know: 'unsure'
+---
+id: juvenile_cases
+question: Juvenile Cases
+subquestion: |
+  **Note:** For all the questions here, motor vehicle offenses where the fine was not over $50 don't count.
+fields: 
+  - note: Have you had any juvenile cases in any state in the USA on or after ${ today().minus(years=3) }?
+  - no label: juvenile_cases_in_past_3_years
+    input type: radio
+    choices:
+      - Yes: True
+      - No: False
+      - I don't know: 'unsure'
+  - note: Have you been in juvenile custody anywhere in the USA on or after ${ today().minus(years=3) }?
+  - no label: juvenile_custody_in_past_3_years_usa
+    input type: radio
+    choices:
+      - Yes: True
+      - No: False
+      - I don't know: 'unsure'
+---
+id: adult_cases
+question: Adult Cases
+subquestion: |
+  **Note:** For all the questions here, motor vehicle offenses where the fine was not over $50 don't count.
+fields:
+  - note: Have you had any convictions on or after ${ today().minus(years=3) } in any adult court in the USA?
+  - no label: convicted_in_past_3_years_states
+    input type: radio
+    choices:
+      - Yes: True
+      - No: False
+      - I don't know: 'unsure'
+  - note: Have you had any convictions on or after ${ today().minus(years=3) } in any federal court?
+  - no label: convicted_in_past_3_years_federal
+    input type: radio
+    choices:
+      - Yes: True
+      - No: False
+      - I don't know: 'unsure'
+  - note: Were you incarcerated in the USA on or after ${ today().minus(years=3) }?
+  - no label: incarcerated_in_past_3_years
+    input type: radio
+    choices:
+      - Yes: True
+      - No: False
+      - I don't know: 'unsure'
+---
+id: eligible
+field: will_write_personal_info
+question: You Might Be Eligible!
+subquestion: |
+  We think you're probably eligible to seal your juvenile records.
+
+  % if (needs_dockets):
+  **You can also still see how to get a certified copy of the
+  [docket sheets](${ url_action('about_docket_sheets') })
+  for all of your cases**.
+  It can take a while, but
+  it is a good idea to get them before finishing your form.
+  % endif
+  
+  ## What Next?
+
+  We've created a form that has checkmarks in the
+  right places.
+  Now the form needs some of your
+  personal information. You can do it two ways:
+  
+  1. Print the form and finish filling it out by hand.
+  2. Keep using our online form to answer the
+  questions.
+  
+  If you use our form, your personal information
+  will be stored
+  securely online and only you can ever see it.
+buttons:
+  - Finish by hand: True
+  - Keep using this form: False
+---
+id: placeholder_end
+event: placeholder_end
+question: PDF creation coming soon!
+buttons:
+  - Exit: exit
+  - Restart: restart
+---
+id: partial_petition
+field: partial_petition
+question: ${get_pdf_title}
+subquestion: ${pdf_subquestion_partial_v5}
+comment: |
+  Replace file name with customized file name?
+attachment:
+  - name: juvenile-sealing-petition
+    filename: juvenile-sealing-petition
+    pdf template file: juvenile-sealing-petition.pdf
+    fields:
+      - "applicant.no_delinquency": Yes
+      - "applicant.name.last": ''
+      - "applicant.name.first": ''
+      - "applicant.name.middle": ''
+      - "applicant.dob": ''
+      - "applicant.alias": ''
+      - "applicant.address": ''
+      - "applicant.city": ''
+      - "applicant.state": ''
+      - "applicant.zip": ''
+      - "applicant.occupation": ''
+      - "applicant.ssn": ''
+      - "applicant.place_of_birth": ''
+      - "applicant.fathers_name": ''
+      - "applicant.mothers_maiden_name": ''
+      - "applicant.spouses_name": ''
+      - "signature_always": ''
+      - "checkboxes.juvenile": Yes
+      - "signature_juvenile": ''
+---
+id: full_petition
+field: full_petition
+question: ${get_pdf_title}
+subquestion: ${pdf_subquestion_full_v5}
+comment: |
+  Replace file name with customized file name?
+attachment:
+  - name: juvenile-sealing-petition
+    filename: juvenile-sealing-petition
+    pdf template file: juvenile-sealing-petition.pdf
+    fields:
+      - "applicant.no_delinquency": Yes
+      - "applicant.name.last": ${applicant.name.last}
+      - "applicant.name.first": ${applicant.name.first}
+      - "applicant.name.middle": ${applicant.name.middle}
+      - "applicant.dob": ${applicant.birthdate}
+      - "applicant.alias": ${applicant.alias}
+      - "applicant.address": ${applicant.address.address}
+      - "applicant.city": ${applicant.address.city}
+      - "applicant.state": ${applicant.address.state}
+      - "applicant.zip": ${applicant.address.zip}
+      - "applicant.occupation": ${applicant.occupation}
+      - "applicant.ssn": ${applicant.ssn}
+      - "applicant.place_of_birth": ${applicant.place_of_birth}
+      - "applicant.fathers_name": ${applicant.fathers_maiden_name}
+      - "applicant.mothers_maiden_name": ${applicant.mothers_maiden_name}
+      - "applicant.spouses_name": ${applicant.spouses_name}
+      - "signature_always": ''
+      - "checkboxes.juvenile": Yes
+      - "signature_juvenile": ''
+---
+id: suggest_get_records
+field: wants_to_get_records
+question: Do you want to get your records?
+subquestion: |
+  ${records_can_help}
+
+  ${getting_juvenile_records} ${getting_cori}
+
+  Do you want to get your records first?
+buttons:
+  - Yes, I'll come back later: True
+  - No, I'll keep going: False
+---
+id: finish_with_more
+event: finish_with_more
+question: Thank you for coming today
+subquestion: |
+  We hope we were able to help a little.
+
+  ${more_resources}
+buttons:
+  - Exit: exit
+  - Restart: restart
+---
+id: not_helped
+event: sorry_end
+question: |
+  Thank you and sorry we couldn't help
+subquestion: |
+  % if (len(reasons) > 0):
+  ${ construct_reasons(reasons) }
+  % endif
+  
+  % if (len(reasons) > 0):
+  Come back when that has changed so we can help seal your records!
+  % endif
+
+  ${more_resources}
+buttons:
+  - Exit: exit
+  - Restart: restart
+---
+id: reasons_start
+template: reasons_start
+content: |
+  Sorry, but because you
+---
+id: years
+template: years
+content: |
+  in the past three years**
+---
+id: open_case_reason
+template: open_case_reason
+content: |
+  **have an open case**
+---
+id: probation_reason
+template: probation_reason
+content: |
+  **are on probation**
+---
+id: juvenile_cases_reason
+template: juvenile_cases_reason
+content: |
+  **had a juvenile case in the USA ${years}
+---
+id: juvenile_custody_reason
+template: juvenile_custody_reason
+content: |
+  **have been in juvenile custody in the USA ${years}
+---
+id: convicted_reason
+template: convicted_reason
+content: |
+  **were convicted in the USA ${years}
+---
+id: incarcerated_reason
+template: incarcerated_reason
+content: |
+  **were incarcerated in the USA ${years}
+---
+id: reasons_end
+template: reasons_end
+content: |
+  you're not eligible to get your juvenile record sealed.
+---
+id: email_subject_text
+template: atch_email_subject
+content: |
+  juvenile-sealing-petition
+---
+id: construct_reasons
+code: |
+
+  def construct_reasons (reasons):
+    reason = reasons_start.content + ' ' + comma_and_list(reasons) + ' ' + reasons_end.content
+    return reason
+
+---
+id: meta_utils
+code: |
+
+  def log_me(message):
+    log(message, 'console')
