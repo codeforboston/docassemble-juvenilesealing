@@ -55,7 +55,6 @@ id: flow
 code: |
 
   reasons = []
-  reason = ''
   
   # Testing
   #partial_petition
@@ -74,30 +73,39 @@ code: |
   progressor = ProgressTracker(10) # Manually assigns 10 pages
   progressor.start()
 
+  reason = ''
+
+  reason = open_case_reason.content
   if (has_NON_probation_open_cases is True): sorry_end
   elif (has_NON_probation_open_cases is unsure): check_unsure
   progressor.increment()
 
+  reason = probation_reason.content
   if (is_on_probation is True): sorry_end
   elif (is_on_probation is unsure): check_unsure
   progressor.increment()
 
+  reason = juvenile_cases_reason.content
   if (juvenile_cases_in_past_3_years is True): sorry_end
   elif (juvenile_cases_in_past_3_years is unsure): check_unsure
   progressor.increment()
 
+  reason = juvenile_custody_reason.content
   if (juvenile_custody_in_past_3_years is True): sorry_end
   elif (juvenile_custody_in_past_3_years is unsure): check_unsure
   progressor.increment()
 
+  reason = convicted_reason.content
   if (convicted_in_past_3_years_states is True): sorry_end
   elif (convicted_in_past_3_years_states is unsure): check_unsure
   progressor.increment()
 
+  reason = convicted_reason.content
   if (convicted_in_past_3_years_federal is True): sorry_end
   elif (convicted_in_past_3_years_federal is unsure): check_unsure
   progressor.increment()
 
+  reason = incarcerated_reason.content
   if (incarcerated_in_past_3_years is True): sorry_end
   elif (incarcerated_in_past_3_years is unsure): check_unsure
   progressor.increment()
@@ -355,11 +363,11 @@ event: sorry_end
 question: |
   Thank you and sorry we couldn't help
 subquestion: |
-  % if (len(reasons) > 0):
-  ${ construct_reasons(reasons) }
+  % if (len(reason) > 0):
+  ${ construct_reasons(reason) }
   % endif
   
-  % if (len(reasons) > 0):
+  % if (len(reason) > 0):
   Come back when that has changed so we can help seal your records!
   % endif
 
@@ -373,40 +381,45 @@ template: reasons_start
 content: |
   Sorry, but because you
 ---
-id: years
-template: years
-content: |
-  in the past three years**
----
 id: open_case_reason
 template: open_case_reason
 content: |
-  **have an open case**
+  have an open case
 ---
 id: probation_reason
 template: probation_reason
 content: |
-  **are on probation**
+  are on probation
+---
+id: probation_is_open
+template: probation_is_open
+content: |
+  (which is the same as an open case)
+---
+id: years
+template: years
+content: |
+  in the past three years
 ---
 id: juvenile_cases_reason
 template: juvenile_cases_reason
 content: |
-  **had a juvenile case in the USA ${years}
+  had a juvenile case in the USA ${years}
 ---
 id: juvenile_custody_reason
 template: juvenile_custody_reason
 content: |
-  **have been in juvenile custody in the USA ${years}
+  have been in juvenile custody in the USA ${years}
 ---
 id: convicted_reason
 template: convicted_reason
 content: |
-  **were convicted in the USA ${years}
+  were convicted in the USA (in a state or federally ${years}
 ---
 id: incarcerated_reason
 template: incarcerated_reason
 content: |
-  **were incarcerated in the USA ${years}
+  were incarcerated in the USA ${years}
 ---
 id: reasons_end
 template: reasons_end
@@ -421,8 +434,8 @@ content: |
 id: construct_reasons
 code: |
 
-  def construct_reasons (reasons):
-    reason = reasons_start.content + ' ' + comma_and_list(reasons) + ' ' + reasons_end.content
+  def construct_reasons ( reason_middle ):
+    reason = reasons_start.content + ' **' + reason_middle + '** ' + reasons_end.content
     return reason
 
 ---
