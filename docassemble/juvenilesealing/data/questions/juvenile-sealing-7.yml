@@ -240,8 +240,6 @@ subquestion: |
   
   Juvenile custody is incarceration for people under the age of <span style="color:red">___</span>
 yesnomaybe: juvenile_custody_in_past_3_years
-
-
 ---
 id: adult_cases_states
 question: Adult Cases - US State Convictions
@@ -264,7 +262,6 @@ question: Adult Cases - Incarceration
 subquestion: |
   Were you incarcerated in the USA on or after ${ today().minus(years=3) }?
 yesnomaybe: incarcerated_in_past_3_years
-
 ---
 id: eligible
 field: will_write_personal_info
