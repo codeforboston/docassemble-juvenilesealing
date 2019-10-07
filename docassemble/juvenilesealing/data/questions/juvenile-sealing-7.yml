@@ -323,7 +323,6 @@ code: |
   atch_email_subject = 'Petition to Seal Records'
   #atch_email_contents = petition_instructions_todo + "\n\n" + petition_instructions_after
 
-  atch_progress = 100
   atch_question = 'Your Petition is Ready!'
   subq_end = "<div>&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;</div>"
 
