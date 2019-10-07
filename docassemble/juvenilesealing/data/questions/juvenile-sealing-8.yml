@@ -247,12 +247,22 @@ buttons:
   - Finish by hand &nbsp; <i class="fas fa-pencil-alt"></i>: True
   - Keep using this form ${next_icon}: False
 ---
+id: exit_text
+template: exit_text
+content: |
+  Exit <i class="fas fa-sign-out-alt"></i>
+---
+id: restart_text
+template: restart_text
+content: |
+  Restart <i class="fas fa-redo"></i>
+---
 id: placeholder_end
 event: placeholder_end
 question: PDF creation coming soon!
 buttons:
-  - Exit: exit
-  - Restart: restart
+  - ${restart_text}: restart
+  - ${exit_text}: exit
 ---
 id: partial_petition
 field: partial_petition
@@ -337,8 +347,8 @@ subquestion: |
 
   ${more_resources}
 buttons:
-  - Exit: exit
-  - Restart: restart
+  - ${restart_text}: restart
+  - ${exit_text}: exit
 ---
 id: not_helped
 event: sorry_end
@@ -355,8 +365,8 @@ subquestion: |
 
   ${more_resources}
 buttons:
-  - Exit: exit
-  - Restart: restart
+  - ${restart_text}: restart
+  - ${exit_text}: exit
 ---
 id: reasons_start
 template: reasons_start
