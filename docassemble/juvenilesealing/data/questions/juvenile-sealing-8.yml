@@ -147,6 +147,11 @@ content: |
   **Note:** Motor vehicle offenses where the fine was
   $50 or less don't count.
 ---
+id: next_icon
+template: next_icon
+content: |
+  <i class="fas fa-chevron-right"></i>
+---
 id: open_cases
 question: |
   Open Cases
@@ -239,8 +244,8 @@ subquestion: |
   will be stored
   securely online and only you can ever see it.
 buttons:
-  - Finish by hand: True
-  - Keep using this form: False
+  - Finish by hand &nbsp; <i class="fas fa-pencil-alt"></i>: True
+  - Keep using this form ${next_icon}: False
 ---
 id: placeholder_end
 event: placeholder_end
