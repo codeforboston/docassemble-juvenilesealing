@@ -50,12 +50,30 @@ comment: |
 objects:
   - applicant: Individual
 ---
+id: pdf_page_variables
+code: |
+  # attachment stuff
+  if (user_logged_in()):
+    atch_default_email_address = user_info().email
+  else:
+    atch_default_email_address = ''
+
+  #atch_email_contents = petition_instructions_todo + "\n\n" + petition_instructions_after
+
+  atch_question = 'Your Petition is Ready!'
+  atch_subquestion = pdf_subquestion_v7
+  atch_after_download = pdf_after_download_full_v7
+  
+  atch_name = 'juvenile-sealing-petition'
+  atch_file_extension = 'pdf'
+  atch_open_label = 'See the petition in a new window'
+  atch_do_new_window_download = True
+  atch_download_label = 'Download'
+  atch_do_new_window_email = False
+---
 mandatory: True
 id: flow
 code: |
-
-  reasons = []
-  
   # Testing
   #partial_petition
 
@@ -122,7 +140,10 @@ code: |
   # Make sure they get a chance to order their docket sheets.
   if (should_show_extra_info):
     if (will_write_personal_info):
+      progressor.increment()
+      set_partial_petition_variables
       partial_petition  # leads to end
+      progressor.increment()
 
   # --------------------
   # Get their personal details
@@ -134,15 +155,28 @@ code: |
   set_up_legal_server_data
   
   applicant.name_and_address
+  progressor.increment()
   applicant.family
+  progressor.increment()
   applicant.ssn_and_other_info
+  progressor.increment()
 
   # Not private enough?
   #filename = first_name + '-' + last_name + '-juvenile-sealing-petition'
 
   full_petition
-  
+  progressor.increment()
+
   finish_with_more
+---
+id: set_partial_petition_variables
+code: |
+  atch_after_download = pdf_after_download_partial_v7
+  atch_email_contents = email_partial
+  atch_itself = partial_petition_pdf
+  trigger_attachment_page
+
+  set_partial_petition_variables = 'done'
 ---
 id: check_unsure
 code: |
@@ -267,20 +301,17 @@ content: |
 ---
 id: placeholder_end
 event: placeholder_end
+progress: 100
 question: PDF creation coming soon!
 buttons:
   - ${restart_text}: restart
   - ${exit_text}: exit
 ---
 id: partial_petition
-field: partial_petition
-question: ${get_pdf_title}
-subquestion: ${pdf_subquestion_partial_v5}
-comment: |
-  Replace file name with customized file name?
 attachment:
-  - name: juvenile-sealing-petition
-    filename: juvenile-sealing-petition
+  - name: ${atch_name}
+    variable name: partial_petition_pdf
+    filename: ${atch_name}
     pdf template file: juvenile-sealing-petition.pdf
     fields:
       - "applicant.no_delinquency": Yes
@@ -304,14 +335,10 @@ attachment:
       - "signature_juvenile": ''
 ---
 id: full_petition
-field: full_petition
-question: ${get_pdf_title}
-subquestion: ${pdf_subquestion_full_v5}
-comment: |
-  Replace file name with customized file name?
 attachment:
-  - name: juvenile-sealing-petition
-    filename: juvenile-sealing-petition
+  - name: ${atch_name}
+    variable name: full_petition_pdf
+    filename: ${atch_name}
     pdf template file: juvenile-sealing-petition.pdf
     fields:
       - "applicant.no_delinquency": Yes
@@ -349,6 +376,7 @@ buttons:
 ---
 id: finish_with_more
 event: finish_with_more
+progress: 100
 question: Thank you for coming today
 subquestion: |
   We hope we were able to help a little.
@@ -360,6 +388,7 @@ buttons:
 ---
 id: not_helped
 event: sorry_end
+progress: 100
 question: |
   Thank you and sorry we couldn't help
 subquestion: |
@@ -414,7 +443,7 @@ content: |
 id: convicted_reason
 template: convicted_reason
 content: |
-  were convicted in the USA (in a state or federally ${years}
+  were convicted in the USA (in a state or federally) ${years}
 ---
 id: incarcerated_reason
 template: incarcerated_reason
@@ -425,11 +454,6 @@ id: reasons_end
 template: reasons_end
 content: |
   you're not eligible to get your juvenile record sealed.
----
-id: email_subject_text
-template: atch_email_subject
-content: |
-  juvenile-sealing-petition
 ---
 id: construct_reasons
 code: |

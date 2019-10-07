@@ -375,7 +375,7 @@ id: subject_line_text
 template: subject_line
 content: |
   The email's name will be
-  <strong>${atch_email_subject}</strong>.
+  <strong>Petition to Seal Records</strong>.
 ---
 id: pdf_next_steps_start_text
 template: pdf_next_steps_start
@@ -413,14 +413,19 @@ content: |
   
   ## How will I know if my juvenile records are sealed?
   
-  You'll get a letter from the Commissioner of Probation that
-  says they've sealed your juvenile records. TODO: How long
-  till it takes effect?
+  The Commissioner of Probation will send you a letter to
+  tell you what they decide. The letter will say which records
+  have been sealed. If some records aren't sealed, the letter
+  will tell you why they made that decision. It can take up to
+  3 months to get a letter because so many people send them
+  petitions to seal records.
   
-  Whatever they decide, they will send you a letter telling
-  you what they decided to seal and why they made that decision.
-  It can take up to 3 months to get a letter because so
-  many people send them petitions to seal records.
+  If the letter says your records are sealed, it can still
+  take about two weeks till your records are ready. Usually
+  it's faster. Remember that most employers can't even see
+  you have any record at all. Only employers that need federal
+  background checks will be able to see a note that you have
+  a sealed record.
 
   If you get the letter back and don't agree with what they
   said, you can call the Commissioner’s Office and ask

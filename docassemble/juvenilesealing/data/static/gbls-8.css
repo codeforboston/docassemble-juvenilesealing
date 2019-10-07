@@ -104,14 +104,16 @@ button.daquestionbackbutton.btn-link:hover {
 .da-field-radio label,
 .da-field-radio label:hover,
 .da-field-radio label:active,
-.da-field-radio label:focus {
+.da-field-radio label:focus,
+.atch-button {
   border-radius: 4px;
   border-width: 2px;
   border-style: solid;
 }
 
 /* Button individual styles. All states. */
-.btn {
+.btn,
+.atch-button {
   padding: 1em;
 }
 .btn span {
@@ -125,7 +127,8 @@ button.daquestionbackbutton.btn-link:hover {
 .btn-primary:focus,
 .btn-primary:not(:disabled):not(.disabled).active,
 .btn-primary:not(:disabled):not(.disabled):active,
-.show>.btn-primary.dropdown-toggle {
+.show>.btn-primary.dropdown-toggle,
+.atch-button {
   border-color: rgba(64, 64, 64, 1);
   border-color: rgba(99, 99, 99, 1);
   background-color: white;
@@ -210,7 +213,7 @@ button.btn-secondary span {
   color: white !important;
 }
 
-/* Selcted inputs. Resting, hover, and focus state. */
+/* Selected inputs. Resting, hover, and focus state. */
 label[aria-checked="true"],
 label[aria-checked="true"]:hover,
 label[aria-checked="true"]:focus {
@@ -222,7 +225,7 @@ label[aria-checked="true"] span {
   color: inherit;
 }
 
-/* Selcted inputs. Other states. */
+/* Selected inputs. Other states. */
 label.btn-primary:focus,
 label.btn-primary:not(:disabled):not(.disabled).active,
 label.btn-primary:not(:disabled):not(.disabled):active,
@@ -230,6 +233,15 @@ label.btn-primary:not(:disabled):not(.disabled):active,
   border-color: rgba(64, 64, 64, 1);
   background-color: rgba(64, 64, 64, 1);
 }
+
+/* For pdf page */
+.atch-button {		
+  width: 100%;		
+  display: block;		
+  text-align: center;		
+}
+
+/* Email button is lower down. See 'email sending' */
 
 
 /* ======== END BUTTONS ======== */
@@ -333,6 +345,54 @@ body.da-pad-for-navbar {
 .navbar ul li.nav-item a.nav-link:hover {
   color: rgba( 190, 64, 77, 1 ) !important;
 }
+
+/* Just for email sending one-line display. Fragile. */		
+.da-field-container-datatype-email {		
+  display: inline;		
+}		
+.da-field-container-datatype-email .da-form-label {		
+  display: inline-block;		
+  min-width: fit-content;		
+  max-width: fit-content;		
+}		}
+.da-field-container-datatype-email .dafieldpart {		
+  display: inline-block;		
+  width: 18em;		
+}		
+.da-field-container-datatype-email .dafieldpart .text-danger {		
+  position: absolute;		
+}		
+.da-field-container-datatype-email + .da-field-container-note {		
+  display: inline-block;		
+  margin: 0;		
+  margin-bottom: 1em;		
+}		
+.da-field-container-datatype-email + .da-field-container-note p {		
+  margin: 0;		
+}		
+#sendEmail,		
+#sendAttachmentEmail {		
+  padding-top: 0.4em;		
+  padding-bottom: .4em;		
+  margin: 0;		
+  color: green !important;		
+  border-color: green;		
+}		
+/* Changing alignment of certain fields */		
+.da-field-container-datatype-email label {		
+  text-align: left !important;		
+  padding-right: 0;		
+  /* Width of two columns instead of 4. This is fragile */		
+  flex: 0 0 16.666667%;		
+  max-width: 16.666667%;		
+}		
+/* Spacing with alert on attachement page */		
+.question-get-attachment .da-field-container-note .alert-success {		
+  margin: 0;		
+}		
+/* Ends email sender one-line */
+
+
 
 @media (max-width: 768px) {
   /* distance to header: 166px 
