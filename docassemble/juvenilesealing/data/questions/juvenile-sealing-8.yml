@@ -27,6 +27,9 @@ default screen parts:
   right: |
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,900&display=swap" rel="stylesheet">
 ---
+default validation messages:
+  multiple choice required: You have to pick one.
+---
 modules:
   - .ProgressTracker
 ---
@@ -52,6 +55,7 @@ id: flow
 code: |
 
   reasons = []
+  reason = ''
   
   # Testing
   #partial_petition
@@ -63,69 +67,62 @@ code: |
     should_show_extra_info = True
     if (url_args['dockets'] == 'needed'):
       needs_dockets = True
+  
+  # --------------------
+  unsure = None
 
-  if (has_NON_probation_open_cases == 'True'):
-    reasons.append( open_case_reason.content )
-  if (is_on_probation == 'True'):
-    reasons.append( probation_reason.content )
-    
-  if (
-       has_NON_probation_open_cases == 'True' or
-       is_on_probation == 'True'
-     ): sorry_end
-  elif (
-         has_NON_probation_open_cases == 'unsure' or
-         is_on_probation == 'unsure'
-       ):
-        if (wants_to_get_records): finish_with_more
+  progressor = ProgressTracker(10) # Manually assigns 10 pages
+  progressor.start()
 
-  if (juvenile_cases_in_past_3_years == 'True'):
-    reasons.append( juvenile_cases_reason.content )
-  if (juvenile_custody_in_past_3_years_usa == 'True'):
-    reasons.append( juvenile_custody_reason.content )
-    
-  if (
-       juvenile_cases_in_past_3_years == 'True' or
-       juvenile_custody_in_past_3_years_usa == 'True'
-     ): sorry_end
-  elif (
-         juvenile_cases_in_past_3_years == 'unsure' or
-         juvenile_custody_in_past_3_years_usa == 'unsure'
-       ):
-        if (wants_to_get_records): finish_with_more
+  if (has_NON_probation_open_cases is True): sorry_end
+  elif (has_NON_probation_open_cases is unsure): check_unsure
+  progressor.increment()
 
-  if (
-       convicted_in_past_3_years_states == 'True' or
-       convicted_in_past_3_years_federal == 'True'
-     ):
-      reasons.append( convicted_reason.content )
-  if (incarcerated_in_past_3_years == 'True'):
-    reasons.append( incarcerated_reason.content )
-    
-  if (
-       convicted_in_past_3_years_states == 'True' or
-       convicted_in_past_3_years_federal == 'True' or
-       incarcerated_in_past_3_years == 'True'
-     ): sorry_end
-  elif (
-         convicted_in_past_3_years_states == 'unsure' or
-         convicted_in_past_3_years_federal == 'unsure' or
-         incarcerated_in_past_3_years == 'unsure'
-       ):
-        if (wants_to_get_records): finish_with_more
+  if (is_on_probation is True): sorry_end
+  elif (is_on_probation is unsure): check_unsure
+  progressor.increment()
 
-  # Otherwise they're eligible!
+  if (juvenile_cases_in_past_3_years is True): sorry_end
+  elif (juvenile_cases_in_past_3_years is unsure): check_unsure
+  progressor.increment()
+
+  if (juvenile_custody_in_past_3_years is True): sorry_end
+  elif (juvenile_custody_in_past_3_years is unsure): check_unsure
+  progressor.increment()
+
+  if (convicted_in_past_3_years_states is True): sorry_end
+  elif (convicted_in_past_3_years_states is unsure): check_unsure
+  progressor.increment()
+
+  if (convicted_in_past_3_years_federal is True): sorry_end
+  elif (convicted_in_past_3_years_federal is unsure): check_unsure
+  progressor.increment()
+
+  if (incarcerated_in_past_3_years is True): sorry_end
+  elif (incarcerated_in_past_3_years is unsure): check_unsure
+  progressor.increment()
+  
+
+  # --------------------
+  # If they got here they're eligible!
+  # --------------------
+  
+  # Testing
+  should_show_extra_info = True
+  needs_dockets = True
   
   # Make sure they get a chance to order their docket sheets.
   if (should_show_extra_info):
     if (will_write_personal_info):
-      partial_petition
+      partial_petition  # leads to end
 
+  # --------------------
   # Get their personal details
+  # --------------------
 
-  # If legal server data is available, get it that way
-  # There are other ways to do this, but I believe this
-  # is the most explicit and clear
+  # If data is available from a legal organization,
+  # get it that way. There are other ways to do this,
+  # but I believe this is the most explicit and clear.
   set_up_legal_server_data
   
   applicant.name_and_address
@@ -139,75 +136,79 @@ code: |
   
   finish_with_more
 ---
-default validation messages:
-  multiple choice required: You have to pick one.
+id: check_unsure
+code: |
+  if (wants_to_get_records): finish_with_more
+  check_unsure = True
+---
+id: motor_vehicle_text
+template: motor_vehicle_cases
+content: |
+  **Note:** Motor vehicle offenses where the fine was
+  $50 or less don't count.
 ---
 id: open_cases
 question: |
   Open Cases
-fields:
-  - note: |
-      Do you have any open criminal or juvenile cases right now anywhere in the USA?
-  - no label: has_NON_probation_open_cases
-    input type: radio
-    choices:
-      - Yes: True
-      - No: False
-      - I don't know: 'unsure'
-  - note: "Are you now on probation for any criminal or juvenile case in the USA, including any federal court case?"
-  - no label: is_on_probation
-    input type: radio
-    choices:
-      - Yes: True
-      - No: False
-      - I don't know: 'unsure'
+subquestion: |
+  Do you have any open criminal or juvenile cases right
+  now anywhere in the USA?
+yesnomaybe: has_NON_probation_open_cases
+---
+id: probation
+question: |
+  Probation
+subquestion: |
+  Are you now on probation for any criminal or juvenile
+  case in the USA, including any federal court case?
+  
+  **Note:** Probation counts as an open case.
+yesnomaybe: is_on_probation
 ---
 id: juvenile_cases
 question: Juvenile Cases
 subquestion: |
-  **Note:** For all the questions here, motor vehicle offenses where the fine was not over $50 don't count.
-fields: 
-  - note: Have you had any juvenile cases in any state in the USA on or after ${ today().minus(years=3) }?
-  - no label: juvenile_cases_in_past_3_years
-    input type: radio
-    choices:
-      - Yes: True
-      - No: False
-      - I don't know: 'unsure'
-  - note: Have you been in juvenile custody anywhere in the USA on or after ${ today().minus(years=3) }?
-  - no label: juvenile_custody_in_past_3_years_usa
-    input type: radio
-    choices:
-      - Yes: True
-      - No: False
-      - I don't know: 'unsure'
+  Have you had any juvenile cases in any state in the USA
+  on or after ${ today().minus(years=3) }?
+
+  ${motor_vehicle_cases}
+yesnomaybe: juvenile_cases_in_past_3_years
 ---
-id: adult_cases
-question: Adult Cases
+id: juvenile_custody
+# TODO: What age are juvenile cases?
+question: Juvenile Custody
 subquestion: |
-  **Note:** For all the questions here, motor vehicle offenses where the fine was not over $50 don't count.
-fields:
-  - note: Have you had any convictions on or after ${ today().minus(years=3) } in any adult court in the USA?
-  - no label: convicted_in_past_3_years_states
-    input type: radio
-    choices:
-      - Yes: True
-      - No: False
-      - I don't know: 'unsure'
-  - note: Have you had any convictions on or after ${ today().minus(years=3) } in any federal court?
-  - no label: convicted_in_past_3_years_federal
-    input type: radio
-    choices:
-      - Yes: True
-      - No: False
-      - I don't know: 'unsure'
-  - note: Were you incarcerated in the USA on or after ${ today().minus(years=3) }?
-  - no label: incarcerated_in_past_3_years
-    input type: radio
-    choices:
-      - Yes: True
-      - No: False
-      - I don't know: 'unsure'
+  Have you been in juvenile custody anywhere in the USA
+  on or after ${ today().minus(years=3) }?
+  
+  **Note:** Juvenile custody is incarceration for people under
+  the age of <span style="color:red">___</span>
+yesnomaybe: juvenile_custody_in_past_3_years
+---
+id: adult_cases_states
+question: Adult Cases - US State Convictions
+subquestion: |
+  Have you had any convictions in any adult court in the USA
+  on or after ${ today().minus(years=3) }?
+
+  ${motor_vehicle_cases}
+yesnomaybe: convicted_in_past_3_years_states
+---
+id: adult_cases_federal
+question: Adult Cases - Federal Convictions
+subquestion: |
+  Have you had any convictions in any federal court
+  on or after ${ today().minus(years=3) }?
+
+  ${motor_vehicle_cases}
+yesnomaybe: convicted_in_past_3_years_federal
+---
+id: adult_incarceration
+question: Adult Cases - Incarceration
+subquestion: |
+  Were you in incarceration in the USA on or after
+  ${ today().minus(years=3) }?
+yesnomaybe: incarcerated_in_past_3_years
 ---
 id: eligible
 field: will_write_personal_info
