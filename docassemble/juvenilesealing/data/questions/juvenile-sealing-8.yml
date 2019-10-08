@@ -307,8 +307,6 @@ code: |
   else:
     atch_default_email_address = ''
 
-  atch_email_subject = 'Petition to Seal Records'
-
   atch_question = 'Your Petition is Ready!'
   subq_end = "<div>&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;</div>"
 
@@ -319,8 +317,9 @@ code: |
   atch_do_new_window_download = True
   atch_download_label = 'Download'
   atch_do_new_window_email = False
-  atch_open_label = 'See the petition'
+  atch_open_label = 'See the petition in a new window'
   atch_send_email_label = 'Send'
+  atch_email_subject = email_subject
 ---
 id: partial_petition
 attachment:
