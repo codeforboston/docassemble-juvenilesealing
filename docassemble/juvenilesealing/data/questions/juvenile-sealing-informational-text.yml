@@ -25,7 +25,7 @@ template: more_form_info
 content: |
   ## More about this form
   
-  <span class="new">If you have the information you need,</span>
+  If you have the information you need,
   these questions
   can take upto **40 minutes** to answer. ${records_can_help}
 ---
