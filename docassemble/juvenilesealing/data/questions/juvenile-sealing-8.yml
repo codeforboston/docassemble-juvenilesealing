@@ -122,8 +122,8 @@ code: |
   # --------------------
   
   # Testing
-  #should_show_extra_info = True
-  #needs_dockets = True
+  should_show_extra_info = True
+  needs_dockets = True
   
   # Make sure they get a chance to order their docket sheets.
   if (should_show_extra_info):
@@ -318,7 +318,7 @@ attachment:
     filename: ${atch_name}
     pdf template file: juvenile-sealing-petition.pdf
     fields:
-      - "applicant.no_delinquency": Yes
+      - "applicant.no_delinquency": 'Yes'
       - "applicant.name.last": ''
       - "applicant.name.first": ''
       - "applicant.name.middle": ''
@@ -335,7 +335,7 @@ attachment:
       - "applicant.mothers_maiden_name": ''
       - "applicant.spouses_name": ''
       - "signature_always": ''
-      - "checkboxes.juvenile": Yes
+      - "checkboxes.juvenile": 'Yes'
       - "signature_juvenile": ''
 ---
 id: full_petition
@@ -345,7 +345,7 @@ attachment:
     filename: ${atch_name}
     pdf template file: juvenile-sealing-petition.pdf
     fields:
-      - "applicant.no_delinquency": Yes
+      - "applicant.no_delinquency": 'Yes'
       - "applicant.name.last": ${applicant.name.last}
       - "applicant.name.first": ${applicant.name.first}
       - "applicant.name.middle": ${applicant.name.middle}
@@ -362,7 +362,7 @@ attachment:
       - "applicant.mothers_maiden_name": ${applicant.mothers_maiden_name}
       - "applicant.spouses_name": ${applicant.spouses_name}
       - "signature_always": ''
-      - "checkboxes.juvenile": Yes
+      - "checkboxes.juvenile": 'Yes'
       - "signature_juvenile": ''
 ---
 id: suggest_get_records
