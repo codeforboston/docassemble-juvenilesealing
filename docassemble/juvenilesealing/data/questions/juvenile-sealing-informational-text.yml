@@ -27,7 +27,7 @@ content: |
   
   <span class="new">If you have the information you need,</span>
   these questions
-  can take about to **40 minutes** to answer. ${records_can_help}
+  can take upto **40 minutes** to answer. ${records_can_help}
 ---
 id: may_pause_for_dockets_text
 template: may_pause_for_dockets
@@ -53,10 +53,10 @@ id: records_can_help_text
 template: records_can_help
 content: |
   You need to know about your convictions in Massachusetts
-  and in other states. You won't get in trouble for getting
-  answers wrong, but it might be easier for you to give the
-  right answers if you have a copy of your juvenile record report,
-  and also your CORI report if you had cases in an adult court.
+  and in other states. If you answer any question incorrectly, 
+  it won't be used against you, but it would help you give the
+  right answers if you have a copy of both your juvenile record 
+  and your CORI report if you had cases in an adult court.
   These reports will give a summary of all your criminal charges
   in Massachusetts and tell you how each case ended.
 ---
@@ -82,8 +82,8 @@ template: out_of_state_records
 # TODO: implement
 content: |
   We can't help you get records from other states.
-  Do the best you can with those
-  questions. The
+  Other states' court websites may have information 
+  on how you can request your records from them. The
   <span style="color: red">[clean slate clearing house]()</span>
   might be able to help you find out how to get those records.
 ---
@@ -304,9 +304,8 @@ content: |
   **If you have a certified copy of the docket sheets
   for all of your cases, you can prove what happened
   in your case.** This may help you get the job.
-  You can always unseal your records to get the docket
-  sheets, but it will take
-  more time.
+  You can always unseal your sealed records to 
+  get the docket sheets, but it will take several weeks.
 comment: |
   jobs_explanation = """
     Some criminal charges may stop you from getting
