@@ -68,6 +68,11 @@ code: |
   atch_email_address
 
 ---
+template: email_text
+subject: ${atch_email_subject}
+content: ${atch_email_contents}
+
+---
 id: get_attachment
 question: ${atch_question}
 subquestion: |
@@ -109,17 +114,13 @@ script: |
         } else {
           flash("Sorry about this, but the email didn't get sent. Try giving it some time and then try again.", "danger", true)
           url_action_call('log_to_docassemble', {
-            message: '\n\n' + responseText + '\n\n'
+            message: response.body  // What is the thing here
           })
         }
       });  // ends url_action_call and callback
     });
 
   </script>
----
-template: email_text
-subject: ${atch_email_subject}
-content: ${atch_email_contents}
 ---
 id: send_atch_email
 event: send_atch_email
