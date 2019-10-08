@@ -26,12 +26,12 @@ comment: |
   - atch_do_new_window_download
   - atch_download_label
   - atch_do_new_window_email
-  - atch_email_label
+  - atch_send_email_label
   - atch_open_label
 ---
 id: trigger_attachment_page
 scan for variables: False
-event: trigger_attachment_page
+only sets: trigger_attachment_page
 code: |
 
   defaults = {
@@ -51,7 +51,7 @@ code: |
     'atch_do_new_window_download': False,
     'atch_download_label': 'Download the document',
     'atch_do_new_window_email': False,
-    'atch_email_label': 'Send',
+    'atch_send_email_label': 'Send',
     'atch_open_label': 'Open it in your browser'
   }
 
@@ -62,9 +62,10 @@ code: |
     if (not defined(attr)):
       define(attr, defaults[attr])
 
-  # If I don't have this here, I get errors about circular logic
+  # This is what actually displays the attachment page
   atch_email_address
 
+  trigger_attachment_page = 'done'
 ---
 template: email_text
 subject: ${atch_email_subject}
@@ -92,7 +93,7 @@ fields:
     datatype: email
     required: False
     default: ${atch_default_email_address}
-  - note: ${ action_button_html("#", id_tag="sendAttachmentEmail", classname="atch-button", new_window=atch_do_new_window_email, icon="envelope", label=atch_email_label, color="primary", size="md") }
+  - note: ${ action_button_html("#", id_tag="sendAttachmentEmail", classname="atch-button", new_window=atch_do_new_window_email, icon="envelope", label=atch_send_email_label, color="primary", size="md") }
 #  - note: ${ action_button_html("#", id_tag="downloadAttachment", classname="atch-button", new_window=atch_do_new_window_download, icon="download", label=atch_download_label, color="primary", size="md") }
   - note: ${atch_after_download}
 script: |

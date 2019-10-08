@@ -37,9 +37,9 @@ include:
   # Using questions from other interviews
   # Has to be before flow code block to avoid circularity issues
   - personal-details.yml
-  - attachment.yml
   # Using text strings that are shared between versions
   - juvenile-sealing-informational-text.yml
+  - attachment.yml
 ---
 comment: |
   - Do objects always need to be in their own file? [No]
@@ -129,14 +129,9 @@ code: |
   if (should_show_extra_info):
     if (will_write_personal_info):
       progressor.increment()
-      atch_after_download = pdf_after_download_partial_v7
-      atch_email_contents = email_partial
-      atch_itself = partial_petition_pdf
-      trigger_attachment_page
-      atch_email_address
+      do_partial_petition
       progressor.increment()
-      placeholder_end
-      #finish_with_more
+      finish_with_more
 
   # --------------------
   # Get their personal details
@@ -154,20 +149,27 @@ code: |
   applicant.ssn_and_other_info
   progressor.increment()
 
-  # Not private enough?
-  #filename = first_name + '-' + last_name + '-juvenile-sealing-petition'
-
-  full_petition
+  do_full_petition
   progressor.increment()
   finish_with_more
 ---
 id: do_partial_petition
 code: |
-  #atch_after_download = pdf_after_download_partial_v7
-  #atch_email_contents = email_partial
-  #atch_itself = partial_petition_pdf
+  atch_after_download = pdf_after_download_partial_v7
+  atch_email_contents = email_partial
+  atch_itself = partial_petition_pdf
+  trigger_attachment_page
 
-  #do_partial_petition = 'done'
+  do_partial_petition = 'done'
+---
+id: do_full_petition
+code: |
+  atch_after_download = pdf_after_download_full_v7
+  atch_email_contents = email_full
+  atch_itself = full_petition_pdf
+  trigger_attachment_page
+  
+  do_full_petition = 'done'
 ---
 id: check_unsure
 code: |
@@ -293,23 +295,32 @@ content: |
 id: pdf_page_variables
 code: |
   # attachment stuff
+
+  # Not private enough?
+  #filename = first_name + '-' + last_name + '-juvenile-sealing-petition'
+
+  # If I don't define this stuff in here (as opposed to
+  # in the text templates file) then they don't show up.
+
   if (user_logged_in()):
     atch_default_email_address = user_info().email
   else:
     atch_default_email_address = ''
 
-  #atch_email_contents = petition_instructions_todo + "\n\n" + petition_instructions_after
+  atch_email_subject = 'Petition to Seal Records'
 
   atch_question = 'Your Petition is Ready!'
+  subq_end = "<div>&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;</div>"
+
   atch_subquestion = pdf_subquestion_v7
-  atch_after_download = pdf_after_download_full_v7
   
   atch_name = 'juvenile-sealing-petition'
   atch_file_extension = 'pdf'
-  atch_open_label = 'See the petition in a new window'
   atch_do_new_window_download = True
   atch_download_label = 'Download'
   atch_do_new_window_email = False
+  atch_open_label = 'See the petition'
+  atch_send_email_label = 'Send'
 ---
 id: partial_petition
 attachment:
