@@ -50,27 +50,6 @@ comment: |
 objects:
   - applicant: Individual
 ---
-id: pdf_page_variables
-code: |
-  # attachment stuff
-  if (user_logged_in()):
-    atch_default_email_address = user_info().email
-  else:
-    atch_default_email_address = ''
-
-  #atch_email_contents = petition_instructions_todo + "\n\n" + petition_instructions_after
-
-  atch_question = 'Your Petition is Ready!'
-  atch_subquestion = pdf_subquestion_v7
-  atch_after_download = pdf_after_download_full_v7
-  
-  atch_name = 'juvenile-sealing-petition'
-  atch_file_extension = 'pdf'
-  atch_open_label = 'See the petition in a new window'
-  atch_do_new_window_download = True
-  atch_download_label = 'Download'
-  atch_do_new_window_email = False
----
 mandatory: True
 id: flow
 code: |
@@ -90,6 +69,15 @@ code: |
 
   progressor = ProgressTracker(10) # Manually assigns 10 pages
   progressor.start()
+  
+  # Testing
+  #atch_after_download = pdf_after_download_partial_v7
+  #atch_email_contents = email_partial
+  #atch_itself = partial_petition_pdf
+  #trigger_attachment_page
+  ##atch_email_address
+  #progressor.increment()
+  #placeholder_end
 
   reason = ''
 
@@ -134,18 +122,18 @@ code: |
   # --------------------
   
   # Testing
-  should_show_extra_info = True
-  needs_dockets = True
+  #should_show_extra_info = True
+  #needs_dockets = True
   
   # Make sure they get a chance to order their docket sheets.
   if (should_show_extra_info):
     if (will_write_personal_info):
       progressor.increment()
-      #do_partial_petition
       atch_after_download = pdf_after_download_partial_v7
       atch_email_contents = email_partial
       atch_itself = partial_petition_pdf
       trigger_attachment_page
+      atch_email_address
       progressor.increment()
       placeholder_end
       #finish_with_more
@@ -175,11 +163,11 @@ code: |
 ---
 id: do_partial_petition
 code: |
-  atch_after_download = pdf_after_download_partial_v7
-  atch_email_contents = email_partial
-  atch_itself = partial_petition_pdf
+  #atch_after_download = pdf_after_download_partial_v7
+  #atch_email_contents = email_partial
+  #atch_itself = partial_petition_pdf
 
-  do_partial_petition = 'done'
+  #do_partial_petition = 'done'
 ---
 id: check_unsure
 code: |
@@ -302,6 +290,27 @@ template: restart_text
 content: |
   Restart <i class="fas fa-redo"></i>
 ---
+id: pdf_page_variables
+code: |
+  # attachment stuff
+  if (user_logged_in()):
+    atch_default_email_address = user_info().email
+  else:
+    atch_default_email_address = ''
+
+  #atch_email_contents = petition_instructions_todo + "\n\n" + petition_instructions_after
+
+  atch_question = 'Your Petition is Ready!'
+  atch_subquestion = pdf_subquestion_v7
+  atch_after_download = pdf_after_download_full_v7
+  
+  atch_name = 'juvenile-sealing-petition'
+  atch_file_extension = 'pdf'
+  atch_open_label = 'See the petition in a new window'
+  atch_do_new_window_download = True
+  atch_download_label = 'Download'
+  atch_do_new_window_email = False
+---
 id: partial_petition
 attachment:
   - name: ${atch_name}
@@ -369,45 +378,6 @@ buttons:
   - Yes, I'll come back later: True
   - No, I'll keep going: False
 ---
-id: placeholder_end
-event: placeholder_end
-progress: 100
-question: PDF creation coming soon!
-buttons:
-  - ${restart_text}: restart
-  - ${exit_text}: exit
----
-id: finish_with_more
-event: finish_with_more
-progress: 100
-question: Thank you for coming today
-subquestion: |
-  We hope we were able to help a little.
-
-  ${more_resources}
-buttons:
-  - ${restart_text}: restart
-  - ${exit_text}: exit
----
-id: not_helped
-event: sorry_end
-progress: 100
-question: |
-  Thank you and sorry we couldn't help
-subquestion: |
-  % if (len(reason) > 0):
-  ${ construct_reasons(reason) }
-  % endif
-  
-  % if (len(reason) > 0):
-  Come back when that has changed so we can help seal your records!
-  % endif
-
-  ${more_resources}
-buttons:
-  - ${restart_text}: restart
-  - ${exit_text}: exit
----
 id: reasons_start
 template: reasons_start
 content: |
@@ -471,3 +441,43 @@ code: |
 
   def log_me(message):
     log(message, 'console')
+---
+id: placeholder_end
+event: placeholder_end
+progress: 100
+question: PDF creation coming soon!
+buttons:
+  - ${restart_text}: restart
+  - ${exit_text}: exit
+---
+id: finish_with_more
+event: finish_with_more
+progress: 100
+question: Thank you for coming today
+subquestion: |
+  We hope we were able to help a little.
+
+  ${more_resources}
+buttons:
+  - ${restart_text}: restart
+  - ${exit_text}: exit
+---
+id: not_helped
+event: sorry_end
+progress: 100
+question: |
+  Thank you and sorry we couldn't help
+subquestion: |
+  % if (len(reason) > 0):
+  ${ construct_reasons(reason) }
+  % endif
+  
+  % if (len(reason) > 0):
+  Come back when that has changed so we can help seal your records!
+  % endif
+
+  ${more_resources}
+buttons:
+  - ${restart_text}: restart
+  - ${exit_text}: exit
+---
