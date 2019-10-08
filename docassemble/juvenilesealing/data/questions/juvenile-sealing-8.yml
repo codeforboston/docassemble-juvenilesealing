@@ -141,9 +141,14 @@ code: |
   if (should_show_extra_info):
     if (will_write_personal_info):
       progressor.increment()
-      set_partial_petition_variables
-      partial_petition  # leads to end
+      #do_partial_petition
+      atch_after_download = pdf_after_download_partial_v7
+      atch_email_contents = email_partial
+      atch_itself = partial_petition_pdf
+      trigger_attachment_page
       progressor.increment()
+      placeholder_end
+      #finish_with_more
 
   # --------------------
   # Get their personal details
@@ -166,17 +171,15 @@ code: |
 
   full_petition
   progressor.increment()
-
   finish_with_more
 ---
-id: set_partial_petition_variables
+id: do_partial_petition
 code: |
   atch_after_download = pdf_after_download_partial_v7
   atch_email_contents = email_partial
   atch_itself = partial_petition_pdf
-  trigger_attachment_page
 
-  set_partial_petition_variables = 'done'
+  do_partial_petition = 'done'
 ---
 id: check_unsure
 code: |
@@ -299,14 +302,6 @@ template: restart_text
 content: |
   Restart <i class="fas fa-redo"></i>
 ---
-id: placeholder_end
-event: placeholder_end
-progress: 100
-question: PDF creation coming soon!
-buttons:
-  - ${restart_text}: restart
-  - ${exit_text}: exit
----
 id: partial_petition
 attachment:
   - name: ${atch_name}
@@ -373,6 +368,14 @@ subquestion: |
 buttons:
   - Yes, I'll come back later: True
   - No, I'll keep going: False
+---
+id: placeholder_end
+event: placeholder_end
+progress: 100
+question: PDF creation coming soon!
+buttons:
+  - ${restart_text}: restart
+  - ${exit_text}: exit
 ---
 id: finish_with_more
 event: finish_with_more

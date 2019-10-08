@@ -1,0 +1,256 @@
+comment: |
+  Currently, the way for legal professionals/volunteers
+  to avoid answering extra questions. Also, to avoid some
+  personal questions being stored with the rest of the data.
+  
+  TODOs: See sealing-todo.yml
+---
+metadata:
+  title: |
+    Juvenile Sealing
+  short title: |
+    Juvenile Dockets
+  subtitle: |
+    Version 8
+  authors:
+    - name: Team
+      organization: Citizens for Juvenile Justice and Code for Boston
+---
+features:
+#  question back button: True # weird looking with the styles...
+#  Also maybe not needed for this first part and good to distinguish
+#  the two?
+  css: gbls-2.css
+---
+default screen parts:
+  right: |
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,900&display=swap" rel="stylesheet">
+---
+comment: Using text strings that are shared between versions
+include:
+  - juvenile-sealing-informational-text.yml
+---
+mandatory: True
+code: |
+  intro
+  
+  if (has_ma_juv_record is False):
+    sorry_end
+
+  if (not have_docket_copies_already is True):
+    if (not read_citizen_disclaimer):
+      if (talked_to_a_lawyer is False or talked_to_a_lawyer is None):
+        do_not_seal  # end
+    if (wants_fed_job is True or wants_fed_job is None):
+      wants_docket_sheets  # end
+
+  command('leave', url=sealing_url)  # end
+---
+id: reused_strings
+code: |
+  # Strings that get reused
+  sealing_url = 'https://interviews-dev.gbls.org/interview?dockets=notneeded&i=docassemble.playground42%3Ajuvenile-sealing-8.yml'
+  needs_dockets_url = 'https://interviews-dev.gbls.org/interview?dockets=needed&i=docassemble.playground42%3Ajuvenile-sealing-8.yml'
+---
+id: intro
+field: intro
+question: Can You Seal Your Juvenile Record?
+subquestion: |
+
+  Sealing your juvenile record means that most people
+  and employers won't see anything at all about your
+  juvenile record. There are rules about when you can
+  and can't seal your juvenile records.
+
+  These are the steps we'll do with you
+  to find out if you can try to seal your records:
+
+  1. Find out if there's a reason you **shouldn't** seal your records.
+  1. Ask questions about your old and open cases.
+  1. Tell you if we think you can seal your records.
+  
+  Then you can get your form right away or let us help
+  you fill in the other parts too - things like your name
+  and social security number.
+
+  Next, you'll need to:
+  1. Print the form.
+  1. Sign the form in two places.
+  1. Mail the form to the Commissioner of Probation. We'll
+  give you the address.
+
+  ## More about this form
+    
+  ### How long does it take to finish?
+  
+  It can take up to **40 minutes** to answer all the questions
+  if you have the information you need.
+
+  ### What kind of information do I need?
+
+  ${records_can_help}
+
+  ${getting_juvenile_records} ${getting_cori}
+
+  You also might have to
+  stop and come back later if you need to
+  get a certified copy of your
+  [docket sheets](${ url_action('about_docket_sheets') }).
+  
+  ### What about my privacy?
+  
+  If we need to store anything about your identity,
+  like your name and social security number,
+  we will ask you first.
+
+  <br/>
+
+  **Note:** Whenever we say USA
+  that includes United States
+  possessions (like Guam).
+under: |
+  Read more about sealing juvenile records from the
+  [GBLS 2019 booklet](https://www.gbls.org/sites/default/files/2019-08/juvenile_booklet_august_2019F.pdf).
+---
+id: in_ma
+question: |
+  Do you have a juvenile record in Massachusetts?
+subquestion: |
+  This tool is only for sealing Massachusetts juvenile crimes.
+yesnomaybe: has_ma_juv_record
+---
+id: do_you_have_sheets
+question: Certified Copies of Docket Sheets
+subquestion: |
+  **Do you already have certified
+  copies of
+  [docket sheets](${ url_action('about_docket_sheets') })
+  for all of your cases?**
+
+  Note: A [docket sheet](${ url_action('about_docket_sheets') })
+  is different than a
+  criminal record report called a CORI or juvenile
+  record report.
+yesnomaybe: have_docket_copies_already
+---
+id: read_citizen_disclaimer
+question: Are you a US citizen?
+yesno: read_citizen_disclaimer
+---
+id: wants_fed_job
+question: Will you ever want to do any of these?
+subquestion: |
+  * Work with young children
+  * Work for a bank or mortgage company in certain positions
+  * Join or work for the military
+  * Work for an employer who participates in the Work
+     Opportunity Tax Credit (WOTC) program
+  * Work for an employer that has federal funding
+  * Work for a senator, representative, or other politician
+  * Work in any job that needs a federal background
+  check
+yesnomaybe: wants_fed_job
+---
+id: lawyer
+question: Have you talked to a lawyer?
+subquestion: |
+  If you seal your records and
+  ICE (Immigration  Customs Enforcement) requires a hearing,
+  it might take too long to get the paperwork
+  they ask for. Getting
+  [certified copies of the docket sheets for all of your cases](${ url_action('about_docket_sheets') })
+  can help with that, but it's a good idea to
+  get legal advice before sealing your records.
+  
+  Have you talked to a lawyer about what you
+  can do to protect yourself?
+yesnomaybe: talked_to_a_lawyer
+---
+id: do_not_seal
+event: do_not_seal
+question: Sealing can be a bad idea for non-citizens
+subquestion: |
+  Please talk to a lawyer about what you should do.
+  You can ask the lawyer about getting certified copies of the
+  [docket sheets](${ url_action('about_docket_sheets') })
+  for all of your cases before trying to seal your records.
+  Getting those copies could take some more time,
+  but it can be better in the end.
+  You can look for legal help in your area by
+  answering the questions on the
+  [Mass Legal Help finder](https://www.masslegalservices.org/findlegalaid).
+  
+  Come back when you're ready so we can try again!
+  
+  ${hr}
+  
+  ${more_resources}
+buttons:
+  - Exit: exit
+  - Restart: restart
+comment: |
+  If you seal your
+  records without getting the
+  [docket sheets](${ url_action('about_docket_sheets') })
+  for all of your cases first and
+  ICE (Immigration  Customs Enforcement) requires a hearing,
+  you might not have time to unseal those records
+  and get the copies you need before the hearing. ICE staff
+  get copies of FBI reports on people trying to become
+  citizens or get papers to stay in the U.S., but the FBI
+  reports often do not say if you were found guilty
+  or what happened at the end of your case.
+  **If you have a certified copy of the
+  [docket sheets](${ url_action('about_docket_sheets') })
+  for all of your cases, you can prove
+  what really happened in your case.**
+
+  It is a good idea to get a certified copy of the
+  [docket sheets](${ url_action('about_docket_sheets') })
+  for all of your cases before trying to seal your records.
+  It may take some more time, but it may be better in the end.
+
+  ${more_resources}
+---
+id: fed_job_disclaimer
+event: wants_docket_sheets
+question: You may need your docket sheets to get some jobs
+subquestion: |
+  Some criminal charges may stop you from getting
+  certain kinds of jobs,
+  <span class="new">
+  but some criminal charges aren't a problem.
+  </span>
+  If you seal your records,
+  there are a few agencies and a few types of employers
+  who can get CORI reports that have information about
+  sealed records, so they might ask you some
+  questions about those. They might want to look at
+  the sheets to see if they can hire you.
+  **If you have a certified copy of the
+  [docket sheets](${ url_action('about_docket_sheets') })
+  for all of your cases, you can prove what happened
+  in your case.** This may help you get the job.
+
+  You can always unseal your records to get the docket
+  sheets, but it will take more time.
+
+  [Read more about docket sheets](${ url_action('about_docket_sheets') })
+buttons:
+  - Come back another time: exit
+  - Try sealing: leave
+    url: ${ needs_dockets_url }
+---
+id: not_helped
+event: sorry_end
+question: |
+  Thank you and sorry we couldn't help
+subquestion: |
+  This tool can only help with sealing **juvenile records
+  in Massachusetts**.
+
+  ${more_resources}
+buttons:
+  - Exit: exit
+  - Restart: restart
+---
