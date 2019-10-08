@@ -350,14 +350,30 @@ content: |
   [GBLS 2019 booklet](https://www.gbls.org/sites/default/files/2019-08/juvenile_booklet_august_2019F.pdf).
 ---
 id: pdf_page_title_text
-template: get_pdf_title
+template: atch_question
 content: |
   Your Petition is Ready!
 ---
-id: email_subject_text
-template: email_subject
+id: pdf_file_name_text
+template: atch_name
+content: |
+  juvenile-sealing-petition
+---
+id: pdf_file_extension_text
+template: atch_file_extension
+content: |
+  pdf
+---
+id: pdf_email_subject_text
+template: atch_email_subject
 content: |
   Petition to Seal Records
+---
+id: subject_line_text
+template: subject_line
+content: |
+  The email's name will be
+  <strong>${atch_email_subject}</strong>.
 ---
 id: pdf_intro_text
 template: pdf_intro
@@ -365,17 +381,26 @@ content: |
   We think you're probably eligible to seal your
   juvenile records and your petition is ready to print!
 ---
+id: pdf_open_me_text
+template: atch_open_label
+content: |
+  See the petition in a new window
+---
+id: pdf_download_me_text
+template: atch_download_label
+content: |
+   Download
+---
 id: download_or_email_text
 template: download_or_email
 content: |
   You can download it or you can email it to
   yourself or someone else.
 ---
-id: subject_line_text
-template: subject_line
+id: send_email_text
+template: atch_send_email_label
 content: |
-  The email's name will be
-  <strong>Petition to Seal Records</strong>.
+  Send
 ---
 id: pdf_next_steps_start_text
 template: pdf_next_steps_start
