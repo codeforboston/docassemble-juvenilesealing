@@ -454,7 +454,7 @@ content: |
 id: pdf_subquestion_v7_text
 template: pdf_subquestion_v7
 content: |
-  ${pdf_intro} ${download_or_email} ${subject_line}
+  ${download_or_email} ${subject_line}
 ---
 id: gbls_horizontal_line
 template: hr
@@ -474,7 +474,6 @@ content: |
 id: pdf_after_download_partial_v7_text
 template: pdf_after_download_partial_v7
 content: |
-  
   ${hr}
 
   ${pdf_next_steps_start}
