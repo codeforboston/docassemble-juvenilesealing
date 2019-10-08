@@ -67,7 +67,7 @@ code: |
   # --------------------
   unsure = None
 
-  progressor = ProgressTracker(10) # Manually assigns 10 pages
+  progressor = ProgressTracker(11) # Manually assigns 10 pages
   progressor.start()
   
   # Testing
@@ -84,37 +84,37 @@ code: |
   reason = open_case_reason.content
   if (has_NON_probation_open_cases is True): sorry_end
   elif (has_NON_probation_open_cases is unsure): check_unsure
-  progressor.increment()
+  progressor.increment()  # 1
 
   reason = probation_reason.content
   if (is_on_probation is True): sorry_end
   elif (is_on_probation is unsure): check_unsure
-  progressor.increment()
+  progressor.increment()  # 2
 
   reason = juvenile_cases_reason.content
   if (juvenile_cases_in_past_3_years is True): sorry_end
   elif (juvenile_cases_in_past_3_years is unsure): check_unsure
-  progressor.increment()
+  progressor.increment()  # 3
 
   reason = juvenile_custody_reason.content
   if (juvenile_custody_in_past_3_years is True): sorry_end
   elif (juvenile_custody_in_past_3_years is unsure): check_unsure
-  progressor.increment()
+  progressor.increment()  # 4
 
   reason = convicted_reason.content
   if (convicted_in_past_3_years_states is True): sorry_end
   elif (convicted_in_past_3_years_states is unsure): check_unsure
-  progressor.increment()
+  progressor.increment()  # 5
 
   reason = convicted_reason.content
   if (convicted_in_past_3_years_federal is True): sorry_end
   elif (convicted_in_past_3_years_federal is unsure): check_unsure
-  progressor.increment()
+  progressor.increment()  # 6
 
   reason = incarcerated_reason.content
   if (incarcerated_in_past_3_years is True): sorry_end
   elif (incarcerated_in_past_3_years is unsure): check_unsure
-  progressor.increment()
+  progressor.increment()  # 7
   
 
   # --------------------
@@ -128,9 +128,10 @@ code: |
   # Make sure they get a chance to order their docket sheets.
   if (should_show_extra_info):
     if (will_write_personal_info):
-      progressor.increment()
+      progressor.increment()  # 8
+      progressor.increment()  # 9
       do_partial_petition
-      progressor.increment()
+      progressor.increment()  # 10, 11
       finish_with_more
 
   # --------------------
@@ -143,14 +144,14 @@ code: |
   set_up_legal_server_data
   
   applicant.name_and_address
-  progressor.increment()
+  progressor.increment()  # 8
   applicant.family
-  progressor.increment()
+  progressor.increment()  # 9
   applicant.ssn_and_other_info
-  progressor.increment()
+  progressor.increment()  # 10
 
   do_full_petition
-  progressor.increment()
+  progressor.increment()  # 11
   finish_with_more
 ---
 id: do_partial_petition
@@ -302,22 +303,21 @@ code: |
   # If I don't define this stuff in here (as opposed to
   # in the text templates file) then they don't show up.
 
-  if (user_logged_in()):
-    atch_default_email_address = user_info().email
-  else:
-    atch_default_email_address = ''
-
   atch_question = 'Your Petition is Ready!'
-  subq_end = "<div>&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;</div>"
-
   atch_subquestion = pdf_subquestion_v7
   
   atch_name = 'juvenile-sealing-petition'
   atch_file_extension = 'pdf'
+
   atch_do_new_window_download = True
   atch_download_label = 'Download'
   atch_do_new_window_email = False
-  atch_open_label = 'See the petition in a new window'
+  atch_open_label = 'See the form in a new window'
+
+  if (user_logged_in()):
+    atch_default_email_address = user_info().email
+  else:
+    atch_default_email_address = ''
   atch_send_email_label = 'Send'
   atch_email_subject = email_subject
 ---
