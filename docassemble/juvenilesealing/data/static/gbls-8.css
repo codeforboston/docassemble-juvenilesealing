@@ -234,6 +234,9 @@ label.btn-primary:not(:disabled):not(.disabled):active,
   background-color: rgba(64, 64, 64, 1);
 }
 
+/* Icons for answer buttons can't happen because CSS selectors
+can't identify text contents */
+
 /* For pdf page */
 .atch-button {		
   width: 100%;		
