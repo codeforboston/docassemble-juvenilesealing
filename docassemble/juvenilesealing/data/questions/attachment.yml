@@ -29,7 +29,6 @@ comment: |
   - atch_email_label
   - atch_open_label
 ---
-scan for variables: False
 id: trigger_attachment_page
 event: trigger_attachment_page
 code: |
@@ -61,8 +60,6 @@ code: |
   for attr in defaults:
     if (not defined(attr)):
       define(attr, defaults[attr])
-
-  print_href = "javascript:this.print(\"" + atch_open_link + "\")"
 
   # If I don't have this here, I get errors about circular logic
   atch_email_address
