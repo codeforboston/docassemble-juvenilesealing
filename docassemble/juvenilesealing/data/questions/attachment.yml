@@ -52,7 +52,7 @@ code: |
     'atch_download_label': 'Download the document',
     'atch_do_new_window_email': False,
     'atch_send_email_label': 'Send',
-    'atch_open_label': 'Open it in your browser'
+    'atch_open_label': 'Open the document in another window'
   }
 
   atch_open_link = atch_itself.pdf.url_for(inline=True)
