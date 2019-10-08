@@ -29,7 +29,6 @@ comment: |
   - atch_email_label
   - atch_open_label
 ---
-scan for variables: False
 id: trigger_attachment_page
 event: trigger_attachment_page
 code: |
@@ -62,10 +61,13 @@ code: |
     if (not defined(attr)):
       define(attr, defaults[attr])
 
-  print_href = "javascript:this.print(\"" + atch_open_link + "\")"
-
   # If I don't have this here, I get errors about circular logic
   atch_email_address
+
+---
+template: email_text
+subject: ${atch_email_subject}
+content: ${atch_email_contents}
 
 ---
 id: get_attachment
@@ -109,17 +111,13 @@ script: |
         } else {
           flash("Sorry about this, but the email didn't get sent. Try giving it some time and then try again.", "danger", true)
           url_action_call('log_to_docassemble', {
-            message: '\n\n' + responseText + '\n\n'
+            message: response.body  // What is the thing here
           })
         }
       });  // ends url_action_call and callback
     });
 
   </script>
----
-template: email_text
-subject: ${atch_email_subject}
-content: ${atch_email_contents}
 ---
 id: send_atch_email
 event: send_atch_email
