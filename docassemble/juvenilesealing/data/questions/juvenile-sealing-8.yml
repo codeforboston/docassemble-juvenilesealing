@@ -480,9 +480,7 @@ question: |
 subquestion: |
   % if (len(reason) > 0):
   ${ construct_reasons(reason) }
-  % endif
-  
-  % if (len(reason) > 0):
+
   Come back when that has changed so we can help seal your records!
   % endif
 
