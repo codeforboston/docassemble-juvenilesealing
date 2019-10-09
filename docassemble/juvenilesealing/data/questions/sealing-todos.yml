@@ -24,7 +24,6 @@ have a text template of resources that we can re-use to just
 have a resources page that's not the final page. We might want
 to create a 'resources' block in that shared text file that
 can be linked to in both interview files.
-- TODO: Implement new ssn formater.
 - TODO: Compare getting certified copies text from spreadsheet
 to certified-copy-of-dockets-8.yml
 - TODO: Checkbox for sending instructions in email too.
