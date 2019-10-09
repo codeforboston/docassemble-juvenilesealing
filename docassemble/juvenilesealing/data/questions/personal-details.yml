@@ -10,10 +10,17 @@ comment: |
 modules:
   - docassemble.base.util
   - docassemble.gbls.legal_server
-  - docassemble.ssa.ssa
+  #- docassemble.ssa.ssa
+  # ssn stuff
+  - .classes
+  - .validate
 ---
 features:
-  javascript: docassemble.ssa:ssa.js
+  #javascript: docassemble.ssa:ssa.js
+  javascript:
+    - caretControl.js
+    - inputDigitWeaving.js
+    - format-ssn-input.js
 ---
 comment: |
   If this is not a separate objects block, it will create an error condition.
@@ -76,13 +83,12 @@ question: |
   Other Information
 fields:
 #  - Social Security Number (SSN): x.ssn
+  - Social Security Number (SSN): x.ssn
+    datatype: ssn  # Will attach the CustomDataType attributes
+    validate: is_valid_ssn
   - Date of birth: x.birthdate
   - Place of birth: x.place_of_birth
   - Alias/maiden name/previous name: x.alias
     required: False
   - Occupation: x.occupation
     required: False
-  - note: Social Security Number (SSN)
-  - no label: x.ssn
-    datatype: ssn
-    validate: is_valid_ssn
