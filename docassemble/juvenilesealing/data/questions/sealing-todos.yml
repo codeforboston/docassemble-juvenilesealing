@@ -1,5 +1,30 @@
 # TODOs
 
+- TODO: What do we want to do about letting people 'sign in' to
+save their progress? Is that only important if/when we add a todo
+list tracker?
+- TODO: Check what text editing work has been undone in the past
+by combing through old commits (prior to... Oct. 3rd or something?)
+- TODO: Now or future? Explain when to seal and when to expunge.
+Scale of 1 to 10, how much impact will it have. It's complicated
+and might be beyond the MVP. That might actually be its own form.
+- TODO: How best to let people know on the first form that
+going to the sealing form will take them away from this
+form and these answers will be lost?
+- TODO: How to warn people about navigating away from any of the
+forms - 'your data will be lost'. Is it already done automatically?
+- TODO: Group links into categories with headings
+- TODO: More clarity on first (or maybe on first question?) page
+about not doing out of state sealing.
+- TODO: Change `out_of_state_records` to something more like:
+"Other states' court websites may have information on how you
+can request your records from them."
+- TODO: Link on first page to just more resources page. Note: We
+have a text template of resources that we can re-use to just
+have a resources page that's not the final page. We might want
+to create a 'resources' block in that shared text file that
+can be linked to in both interview files.
+- TODO: Implement new ssn formater.
 - TODO: Compare getting certified copies text from spreadsheet
 to certified-copy-of-dockets-8.yml
 - TODO: Checkbox for sending instructions in email too.
@@ -40,17 +65,17 @@ of 'do your best'.
 ----------------------
 
 # Users
-- Q: If we can attend some of the CORI clinics, what kinds of
+* Q: If we can attend some of the CORI clinics, what kinds of
 things would it be ok for us to do there?
 todo: 
 
 ---------------------
 
 # Form questions
-* 3. Just skip non-required personal question fields?
+3. Just skip non-required personal question fields?
 todo: Sure, we'll see which ones.
 
-* Q: "You also might have to stop and come back later
+Q: "You also might have to stop and come back later
   if you need to get a certified copy **of “docket sheets”
   from your case at the courthouse.**"
 Is this trying to give directions to go to the
@@ -62,8 +87,11 @@ A: will look (I think a page created for dockets)
 status: text has been written, have linked to inner page.
 todo: Get an eye on it.
 
-What age is juvenile?
+* What age is juvenile?
 todo: 
+
+* What with the GBLS page linking to this form look like? Can
+it talk about the difference between sealing and expungement?
 
 1. QQ: Who gets the feedback? Link back to CFJJ advocacy work somehow?
 todo: answer: 
@@ -71,27 +99,30 @@ todo: answer:
 ---------------------
 
 # Sealing process clarity for users
-* 11. How long does it take to get your docket sheets by mail?
+11. How long does it take to get your docket sheets by mail?
 todo: Add text about this:
   - In person right away unless really old (80's or 90's)
     - Ask how long it is going to take.
   - By mail can take up to a couple weeks.
-* 7. Need to warn about social equity program for marijuana
+7. Need to warn about social equity program for marijuana
 businesses before sealing? What other such programs, etc.
 are there?
 todo: Shorten interface 'applying for jobs or programs,
 bring charges against the court'
-* 9. Is there anything specific we can put about what a successful
+9. Is there anything specific we can put about what a successful
 letter from probation would look like?
 todo: Will list all the records that are sealed. Should be clear.
 Will be given
 sample acceptance and rejection letters. Most part the system is
 good about sealing the recors that need it.
 
+* How long does it take to unseal records?
+todo: 
+
 ---------------------
 
-* # Sealing process Questions from us
-* 5. Can a dismissal still be on your record sometimes?
+# Sealing process Questions from us
+5. Can a dismissal still be on your record sometimes?
 How to ask them about that? Does it still count as
 convicted if there was misconduct, etc? If they're going
 off of their record.
@@ -99,7 +130,7 @@ todo: Yes, non-convictions can be on your record. It can be on
 your CORI. Any time your case isn't dismissed before arraignment.
 Did you ever have a trial. (diff experience between trial
 and arraignment?)
-* 2. Is there anything that's expungable/sealable that's not on your
+2. Is there anything that's expungable/sealable that's not on your
 CORI or CARI?
 todo: Won't address weeds
   - Criminal case dismissed before arraignment. There will be
@@ -127,30 +158,35 @@ todo: will send link (followup)
 
 ** 4. About applying for jobs - where is that link in the kyr booklet?
 Did not find.
-todo: The info is in the booklet. There's a separate doc they'll
+todo: The _info_ is in the booklet. There's a separate doc they'll
 put online, though. (followup)
-* 5. 'What will employers see' link at the beginning? (maybe
+
+5. 'What will employers see' link at the beginning? (maybe
 list of what you can read in Know Your CORI Rights)
 todo: Same link as applying for a job. They will put up
 separate doc.
 
-3. Where to put text about some people not getting help?
-todo: talk about text to group (followup)
-2. What if there is no legal help in their area?
++ 2. What if there is no legal help for this in their area?
   answer: Tough question. There are lots of little
   things to persue.
   - Go to courthouse of any court where
   you have a case and talk to somebody in probation, for example.
   - Also, if send petition in and rejected, will get reasons why.
   - Honestly address people who may not be able to get help.
-  todo: That stuff. Talk to group
+  todo: That stuff. Talk to team:
+  - Possibility (with slight language adustment): |
+    Unfortunately, the below list of resources
+    may not include any resources that you can use. We are
+    working on improving this tool, and if you have any
+    feedback or suggestions for us on what we could do
+    better, please email us at XXX@gbls.org.
 
-* 4. Which is the 'what if your CORI seems wrong'
+4. Which is the 'what if your CORI seems wrong'
 booklet? Do we already have the link to that?
 todo: kyr booklet. Section on mass legal help website -
 correcting record.
 
-* 8. Add info about court self-help centers. What's the info?
+8. Add info about court self-help centers. What's the info?
 todo: call up the court. maybe list online. website for trial
 courts may have numbers. google it. (do I remember this right?:
 Each one has different ways in which they might be willing
@@ -159,8 +195,8 @@ review.
 
 3. Link to info on CORI FAQ - what if CORI wrong, what it is etc.?
   answer: mass legal help website about that
-  todo: (done?) (what if cori wrong) will send link. Also,
-  though, de-emphasize getting records
+  todo: (has the following been done?) (what if cori wrong) will
+  send link. Also, though, de-emphasize getting records
 
 5. further resources Will send:
   - applying for jobs booklet (will be put online)
@@ -170,7 +206,7 @@ review.
   ask group (followup)
   - [-done-] GBLS booklets links page
 
-- Court services center to print it out. Call ahead before you go.
+Court services center to print it out. Call ahead before you go.
   todo: Ask on slack about housing form. Might have a good
   model for that advice.
 
@@ -193,7 +229,8 @@ Wasn't sure of the source I was getting it from.
 todo: 
 
 # Not TODOs
-[-future-] TODO: Link to Mass Legal juvenile record request interview in future
+[-future-] TODO: Link to Mass Legal juvenile record request MassLegalHelp
+interview in future
 [-future-] TODO: 'may' to 'can'? Really go over language with a fine-toothed
   comb. Maybe do user testing with existing language
 [-future-] TODO (booklet): 'WHO CAN SEE JUVENILE CASES ON A CORI REPORT?'
