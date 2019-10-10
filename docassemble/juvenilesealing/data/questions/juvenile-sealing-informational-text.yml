@@ -63,7 +63,7 @@ content: |
 id: getting_cori_text
 template: getting_cori
 content: |
-  To ask for your <span class="new">online</span>
+  To ask for your online
   adult CORI report, create an account at
   [Massachusetts iCORI site](https://icori.chs.state.ma.us/icori/ext/global/landing.action?page=1&bod=1566991096995&m=presentLanding).
   It costs $25, but if you are low income you might be be able
@@ -179,7 +179,7 @@ subquestion: |
   with you get payed. That's to show why you can't
   afford to pay the fee.
 
-  ## Getting certified copies by mail
+  ### Getting certified copies by mail
   
   You can also send a letter to ask for the docket
   sheets. If you want to order the sheets by mail, take
@@ -293,17 +293,18 @@ template: jobs_explanation
 content: |
   Some criminal charges may stop you from getting
   certain kinds of jobs,
-  <span class="new">
   but some criminal charges aren't a problem.
-  </span>
   If you seal your records,
   there are a few agencies and a few types of employers
   who can get CORI reports that have information about
   sealed records, so they might ask you some
   questions about those.
-  **If you have a certified copy of the docket sheets
+  
+  If you have a certified copy of the docket sheets
   for all of your cases, you can prove what happened
-  in your case.** This may help you get the job.
+  in your case.
+  
+  This may help you get the job.
   You can always unseal your records to get the docket
   sheets, but it will take
   more time.
@@ -555,4 +556,19 @@ comment: |
       * [https://www.cominghomedirectory.org/coming-home-category/physical-and-mental-health/](https://www.cominghomedirectory.org/coming-home-category/physical-and-mental-health/)
       * [https://www.cominghomedirectory.org/coming-home-category/substance-use/](https://www.cominghomedirectory.org/coming-home-category/substance-use/)
   * [Marijuana case sealing and expungement](https://www.gbls.org/sites/default/files/2019-05/booklet-7-seal-decriminalized-cannabis-cases-5119-f.pdf)
+---
+id: next_icon
+template: next_icon
+content: |
+  <i class="fas fa-chevron-right"></i>
+---
+id: exit_icon
+template: exit_icon
+content: |
+  <i class="fas fa-sign-out-alt"></i>
+---
+id: exit_text
+template: exit_text
+content: |
+  Exit ${exit_icon}
 ---
