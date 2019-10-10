@@ -32,13 +32,14 @@ include:
 ---
 mandatory: True
 code: |
+
   intro
   
   if (has_ma_juv_record is False):
     sorry_end
 
   if (not have_docket_copies_already is True):
-    if (not read_citizen_disclaimer):
+    if (not read_citizen_disclaimer or read_citizen_disclaimer is None):
       if (talked_to_a_lawyer is False or talked_to_a_lawyer is None):
         do_not_seal  # end
     if (wants_fed_job is True or wants_fed_job is None):
@@ -49,8 +50,8 @@ code: |
 id: reused_strings
 code: |
   # Strings that get reused
-  sealing_url = 'https://interviews-dev.gbls.org/interview?dockets=notneeded&i=docassemble.playground42%3Ajuvenile-sealing-8.yml'
-  needs_dockets_url = 'https://interviews-dev.gbls.org/interview?dockets=needed&i=docassemble.playground42%3Ajuvenile-sealing-8.yml'
+  sealing_url = 'https://interviews-dev.gbls.org/interview?dockets=notneeded&i=docassemble.playground42%3Ajuvenile-sealing-8.yml#page1'
+  needs_dockets_url = 'https://interviews-dev.gbls.org/interview?dockets=needed&i=docassemble.playground42%3Ajuvenile-sealing-8.yml#page1'
 ---
 id: intro
 field: intro
@@ -74,6 +75,7 @@ subquestion: |
   and social security number.
 
   Next, you'll need to:
+
   1. Print the form.
   1. Sign the form in two places.
   1. Mail the form to the Commissioner of Probation. We'll
@@ -116,7 +118,7 @@ id: in_ma
 question: |
   Do you have a juvenile record in Massachusetts?
 subquestion: |
-  This tool is only for sealing Massachusetts juvenile crimes.
+  This tool is for sealing **Massachusetts** juvenile crimes.
 yesnomaybe: has_ma_juv_record
 ---
 id: do_you_have_sheets
@@ -135,10 +137,10 @@ yesnomaybe: have_docket_copies_already
 ---
 id: read_citizen_disclaimer
 question: Are you a US citizen?
-yesno: read_citizen_disclaimer
+yesnomaybe: read_citizen_disclaimer
 ---
 id: wants_fed_job
-question: Will you ever want to do any of these?
+question: Will you ever want to do any of these things?
 subquestion: |
   * Work with young children
   * Work for a bank or mortgage company in certain positions
@@ -218,28 +220,81 @@ question: You may need your docket sheets to get some jobs
 subquestion: |
   Some criminal charges may stop you from getting
   certain kinds of jobs,
-  <span class="new">
   but some criminal charges aren't a problem.
-  </span>
   If you seal your records,
   there are a few agencies and a few types of employers
   who can get CORI reports that have information about
   sealed records, so they might ask you some
   questions about those. They might want to look at
   the sheets to see if they can hire you.
-  **If you have a certified copy of the
-  [docket sheets](${ url_action('about_docket_sheets') })
+  
+  If you have a certified copy of the
+  docket sheets
   for all of your cases, you can prove what happened
-  in your case.** This may help you get the job.
+  in your case.
+  
+  This may help you get the job.
 
   You can always unseal your records to get the docket
   sheets, but it will take more time.
 
   [Read more about docket sheets](${ url_action('about_docket_sheets') })
 buttons:
-  - Come back another time: exit
-  - Try sealing: leave
+  - Exit ${exit_icon}: exit
+  #- ${ action_button_html("#", id_tag="leavingDockets", new_window=False, icon="external-link-alt", label="Try sealing", color="primary", size="md") }
+  #- ${ url_action( 'warn_on_leaving' )} ${next_icon}
+  - Fill out the form ${next_icon}: leave
     url: ${ needs_dockets_url }
+# flash("Because we're trying to protect your privacy, when
+# you go to the next page your answers will be deleted.
+# Are you sure you want to go to the next page?", "info")
+# 
+script: |
+  <script>
+
+    $("#sendAttachmentEmail").click(function(){
+
+      let message = "We are trying to send the email to " + val('atch_email_address') + ".";
+      flash(message, "secondary");
+      
+      console.log('address:', val('atch_email_address') );
+      url_action_call('send_atch_email',
+       {
+         address: val('atch_email_address'),
+         'wants_instructions': val('wants_instructions_in_email')
+        },
+       function (obj_or_html, result_as_text, response) {
+        if (response.status === 200) {
+          console.log(obj_or_html)
+          console.log(result_as_text)
+          console.log(response)
+          flash("The email got sent to " + obj_or_html.email_address + "!", "success", true);
+        } else {
+          flash("Sorry about this, but the email didn't get sent. Try giving it some time and then try again.", "danger", true)
+          console.log( 'response:', response );
+          url_action_call('log_to_docassemble', {
+            message: response.body  // log this object to see its props
+          })
+        }
+      });  // ends url_action_call and callback
+    });
+
+  </script>
+---
+id: leaving_message
+template: leaving_message
+content: |
+  Because we're trying to protect your privacy,
+  when you go to the next page your answers will
+  be deleted. Are you sure you want to go to the next page?
+  
+  action_button_html(#, id_tag="leavingDockets", new_window=False, icon="external-link-alt", label="Keep going", color="primary", size="md")
+  action_button_html("#", id_tag="stayingAtDockets", new_window=False, icon="external-link-alt", label="Stay", color="primary", size="md")
+---
+id: warn_on_leaving
+code: |
+  flash( leaving_message )
+  warn_on_leaving = 'done'
 ---
 id: not_helped
 event: sorry_end
