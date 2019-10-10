@@ -105,6 +105,10 @@ button.daquestionbackbutton.btn-link:hover {
 .da-field-radio label:hover,
 .da-field-radio label:active,
 .da-field-radio label:focus,
+.da-field-checkbox label,
+.da-field-checkbox label:hover,
+.da-field-checkbox label:active,
+.da-field-checkbox label:focus,
 .btn-light,
 .atch-button {
   border-radius: 4px;

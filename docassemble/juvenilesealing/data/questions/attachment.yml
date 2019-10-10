@@ -71,7 +71,7 @@ code: |
 template: email_text
 subject: ${atch_email_subject}
 content: |
-  % if ( wants_instructions_in_email ):
+  % if ( wants_instructions ):
   ${atch_email_contents}
   % endif
 ---
@@ -116,7 +116,10 @@ script: |
       
       console.log('address:', val('atch_email_address') );
       url_action_call('send_atch_email',
-       { address: val('atch_email_address') },
+       {
+         address: val('atch_email_address'),
+         'wants_instructions': val('wants_instructions_in_email')
+        },
        function (obj_or_html, result_as_text, response) {
         if (response.status === 200) {
           console.log(obj_or_html)
@@ -139,6 +142,7 @@ id: send_atch_email
 event: send_atch_email
 code: |
   #raise Exception("error triggered on purpose because we must")
+  wants_instructions = action_argument('wants_instructions')
   address = action_argument('address')
   was_successful = send_email(to=address, template=email_text, attachments=atch_itself)
   json_response(dict(was_successful=was_successful, email_address=address))

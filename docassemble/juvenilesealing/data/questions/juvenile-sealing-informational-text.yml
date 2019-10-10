@@ -363,7 +363,7 @@ content: |
 id: pdf_intro_text
 template: pdf_intro
 content: |
-  We think you're probably eligible to seal your
+  We think might be able to seal your
   juvenile records and your petition is ready to print!
 ---
 id: download_or_email_text
@@ -375,6 +375,8 @@ content: |
 id: pdf_next_steps_start_text
 template: pdf_next_steps_start
 content: |
+  ## What should I do now?
+
   Next you need to:
   
   1. Download it
@@ -493,6 +495,8 @@ content: |
 
   ${petition_instructions_after}
   
+  ## More Links
+
   ${more_resources}
 ---
 id: email_full_text
@@ -505,6 +509,8 @@ content: |
 
   ${petition_instructions_after}
   
+  ## More Links
+
   ${more_resources}
 ---
 id: more_resources_text

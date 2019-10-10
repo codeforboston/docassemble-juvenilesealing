@@ -1,6 +1,9 @@
 # Finished Sealing TODOs
   
 ## Done
+- TODO: Checkbox for sending instructions in email too. Will be
+a little complex, but doable. Basically just tells them they
+will get the instructions in the email.
 - Implement new ssn formater.
 - Custom attachment page with custom email contents in v8!
 - Add language/questions/clarity specifying MA
