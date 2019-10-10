@@ -131,7 +131,7 @@ code: |
       progressor.increment()  # 8
       progressor.increment()  # 9
       do_partial_petition
-      progressor.increment()  # 10, 11
+      progressor.increment()  # 10, # 11
       finish_with_more
 
   # --------------------
@@ -303,7 +303,7 @@ code: |
   # If I don't define this stuff in here (as opposed to
   # in the text templates file) then they don't show up.
 
-  atch_question = 'Your Petition is Ready!'
+  atch_question = 'Your Form is Ready!'
   atch_subquestion = pdf_subquestion_v7
   
   atch_name = 'juvenile-sealing-petition'

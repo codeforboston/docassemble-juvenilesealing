@@ -26,9 +26,6 @@ to create a 'resources' block in that shared text file that
 can be linked to in both interview files.
 - TODO: Compare getting certified copies text from spreadsheet
 to certified-copy-of-dockets-8.yml
-- TODO: Checkbox for sending instructions in email too. Will be
-a little complex, but doable. Basically just tells them they
-will get the instructions in the email.
 - TODO: Where to request feedback about bugs, etc?
 - TODO: GBLS informational pages? Plan for maintanance?
 - TODO: [I've forgotten what this means. Navigating to previous
