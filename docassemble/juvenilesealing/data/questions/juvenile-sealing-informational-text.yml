@@ -515,11 +515,34 @@ content: |
 ---
 id: more_resources_text
 template: more_resources
-comment: |
-  # TODO: get links
 content: |
   Maybe you can find more help on these pages:
+ 
+  ## Information about dealing with criminal records
+
+  * A [GBLS booklet just about sealing juvenile records](https://www.gbls.org/sites/default/files/2019-08/juvenile_booklet_august_2019F.pdf) that includes an example petition
+  * About applying for jobs TODO: what's the link?
+  * [Criminal records and housing](https://www.masslegalhelp.org/cori/housing)
+  * [Marijuana case sealing or expungement](https://www.gbls.org/sites/default/files/2019-05/booklet-7-seal-decriminalized-cannabis-cases-5119-f.pdf)
+  * A detailed GBLS ["Know Your Rights Booklet"](https://www.gbls.org/sites/default/files/2019-04/know-your-cori-rights-041819.pdf) on many topics related to both sealing and expungement
+  * A page with links to more GBLS information about [criminal record problems](https://www.gbls.org/self-help/cori)
+
+  ## Legal help 
+
+  * [Try to find legal help in your area](https://www.masslegalservices.org/findlegalaid). Remember that not every area has people who can help with criminal records.
   
+  ## Other resources
+
+  * [Finding housing](https://www.masslegalhelp.org/housing/finding-housing)
+
+  ## Medical, mental health, and recovery support sites
+
+  * [https://www.alternativehomehealthcarellc.com/patient-resources](https://www.alternativehomehealthcarellc.com/patient-resources)
+  * [https://www.cominghomedirectory.org/coming-home-category/physical-and-mental-health/](https://www.cominghomedirectory.org/coming-home-category/physical-and-mental-health/)
+  * [https://www.cominghomedirectory.org/coming-home-category/substance-use/](https://www.cominghomedirectory.org/coming-home-category/substance-use/)
+
+comment: |
+  # TODO: get the other links
   * A [GBLS booklet just about sealing juvenile records](https://www.gbls.org/sites/default/files/2019-08/juvenile_booklet_august_2019F.pdf) that includes an example petition
   * [Try to find legal help in your area](https://www.masslegalservices.org/findlegalaid). Remember that not every area has people who can help with criminal records.
   * More links to GBLS information about [criminal record problems](https://www.gbls.org/self-help/cori)
