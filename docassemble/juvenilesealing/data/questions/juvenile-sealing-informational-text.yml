@@ -352,7 +352,7 @@ content: |
 id: email_subject_text
 template: email_subject
 content: |
-  Petition to Seal Records
+  Form to Seal Records
 ---
 id: subject_line_text
 template: subject_line
@@ -492,6 +492,8 @@ content: |
   ${pdf_next_steps_end}
 
   ${petition_instructions_after}
+  
+  ${more_resources}
 ---
 id: email_full_text
 template: email_full
@@ -502,6 +504,8 @@ content: |
   ${pdf_next_steps_end}
 
   ${petition_instructions_after}
+  
+  ${more_resources}
 ---
 id: more_resources_text
 template: more_resources

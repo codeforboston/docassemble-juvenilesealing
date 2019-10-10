@@ -105,13 +105,14 @@ button.daquestionbackbutton.btn-link:hover {
 .da-field-radio label:hover,
 .da-field-radio label:active,
 .da-field-radio label:focus,
+.btn-light,
 .atch-button {
   border-radius: 4px;
   border-width: 2px;
   border-style: solid;
 }
 
-/* Button individual styles. All states. */
+/* Just buttons styles. All states. */
 .btn,
 .atch-button {
   padding: 1em;
@@ -120,6 +121,11 @@ button.daquestionbackbutton.btn-link:hover {
   font-weight: 700;
   color: rgba(64, 64, 64, 1);
   color: rgba(99, 99, 99, 1);
+}
+/* Checkbox image alignment */
+input.labelauty + label > span.labelauty-unchecked-image,
+input.labelauty + label > span.labelauty-checked-image {
+  display: inline;
 }
 
 .btn-primary,
@@ -134,7 +140,7 @@ button.daquestionbackbutton.btn-link:hover {
   background-color: white;
 }
 
-/* A black button is kind of alarming... */
+/* A completely black button is kind of alarming... */
 button.btn-secondary,
 button.btn-secondary:hover,
 button.btn-secondary:focus,
@@ -182,6 +188,14 @@ button.btn-secondary span {
   border-color: rgba( 190, 64, 77, 1 );
   background-color: white;
 }
+
+/* Fields with empty labels (so they should take the whole width) */
+/*.da-field-container-emptylabel div {
+  display: block;
+  margin: 0;
+  flex: 1;
+  max-width: 100%
+}*/
 
 /* Unselected inputs. Resting state. */
 .btn-light {
@@ -242,6 +256,11 @@ can't identify text contents */
   width: 100%;		
   display: block;		
   text-align: center;		
+}
+
+/* Send next steps in email button should be closer to email sending inputs */
+.question-get-attachment .da-field-container-inputtype-yesnowide {
+  margin-bottom: .2em;
 }
 
 /* Email button is lower down. See 'email sending' */
