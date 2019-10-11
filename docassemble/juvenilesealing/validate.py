@@ -14,3 +14,11 @@ def is_valid_zip ( inputValue ):
       validation_error("Write the zipcode like this: XXXXX")
     
     return isRightLength
+
+def is_valid_birthday ( inputValue ):
+    isRightLength = len( inputValue ) == 11
+    if ( not isRightLength):
+      validation_error("Write the zipcode like this: XX/XX/XXXX")
+    
+    return isRightLength
+  

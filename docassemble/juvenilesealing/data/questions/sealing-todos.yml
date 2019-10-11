@@ -1,5 +1,10 @@
 # TODOs
 
+- Validate and control birthday entry? That tends to have more
+variety considering some people include 0's and some don't
+- TODO: More consistency with page titles being questions vs.
+being topics. Questions should be in small text right above the
+button choices.
 - TODO: Validate and control zipcode entry
 - TODO: What do we want to do about letting people 'sign in' to
 save their progress? Is that only important if/when we add a todo
