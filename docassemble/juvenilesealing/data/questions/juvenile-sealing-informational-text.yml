@@ -125,6 +125,22 @@ content: |
   all of your cases before trying to seal your records.
   It may take some more time, but it may be better in the end.
 ---
+id: read_more_docket_sheets_text
+template: read_more_docket_sheets
+content: |
+  .. [Read more about docket sheets](${ url_action('about_docket_sheets') })
+---
+id: docket_sheets_blurb_text
+template: docket_sheets_blurb
+content: |
+  A docket sheet is different than a criminal record
+  report (called a CORI) or a juvenile record report.
+---
+id: docket_sheets_popout_text
+template: read_more_docket_sheets
+content: |
+  ${ read_more_docket_sheets } ${ read_more_docket_sheets }
+---
 id: certified_copies_page_text_question
 field: about_docket_sheets
 # TODO: Are there courthouse instructions online for requesting
@@ -132,12 +148,9 @@ field: about_docket_sheets
 # [text](${ url_action('about_docket_sheets') })
 question: About Docket Sheets
 subquestion: |
-  ## Facts about docket sheets
-
   ### What are docket sheets?
 
-  A docket sheet is different than a criminal record
-  report (called a CORI) or juvenile record report. Docket
+  ${docket_sheets_blurb} Docket
   sheets are papers from the courthouse that say
   what happened in a case every time you went
   to court for that case.
@@ -201,7 +214,7 @@ subquestion: |
   535 East Broadway[BR]
   South Boston, MA 02127
 
-  RE: Commonwealth v. John Doe[BR]
+  RE: Commonwealth v. Jane Doe[BR]
   Docket no. 0902CR12345[BR]
   Docket no. 1702CR98765432
 
@@ -220,7 +233,7 @@ subquestion: |
 
   (You sign the letter here)
 
-  John Doe[BR]
+  Jane Doe[BR]
   0 Jump St., Apt. # 2[BR]
   Boston, MA 02114
   
@@ -236,7 +249,7 @@ subquestion: |
   If you don't get anything back (after how long??), call
   to find out how it's going.
 
-continue button label: Keep going
+continue button label: Keep going ${next_icon}
 ---
 id: certified_copies_text
 template: how_to_get_certified_copies
@@ -561,6 +574,11 @@ id: next_icon
 template: next_icon
 content: |
   <i class="fas fa-chevron-right"></i>
+---
+id: restart_text
+template: restart_text
+content: |
+  Restart <i class="fas fa-redo"></i>
 ---
 id: exit_icon
 template: exit_icon

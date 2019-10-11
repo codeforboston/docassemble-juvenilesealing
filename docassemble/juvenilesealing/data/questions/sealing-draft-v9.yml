@@ -1,0 +1,192 @@
+metadata:
+  title: |
+    Juvenile Sealing
+  short title: |
+    Juvenile Dockets
+  subtitle: |
+    Version 8
+  authors:
+    - name: Team
+      organization: Citizens for Juvenile Justice and Code for Boston
+---
+features:
+#  question back button: True # weird looking with the styles...
+#  Also maybe not needed for this first part and good to distinguish
+#  the two?
+  css: gbls-8.css
+---
+default screen parts:
+  right: |
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,900&display=swap" rel="stylesheet">
+---
+comment: Using text strings that are shared between versions
+include:
+  - juvenile-sealing-informational-text.yml
+---
+mandatory: True
+code: |
+  intro
+  
+  if ( has_ma_juv_record is False ):
+    no_ma_records_end
+  elif ( has_ma_juv_record is None ):
+    if ( unsure_records_but_wants_to_try_sealing is False ):
+      goodbye_without_finishing
+
+  if ( not have_docket_copies_already is True ):
+    if ( wants_dockets_first is True ):
+      goodbye_without_finishing  # end
+
+  placeholder_for_form
+---
+id: intro
+field: intro
+question: Can You Seal Your Massachusetts Juvenile Records?
+subquestion: |
+
+  Sealing your juvenile record means that most people
+  and employers won't see anything at all about your
+  juvenile record. (You can read more in the GBLS CORI Booklet.?)
+  (Sealing is different than expunging.?)
+  There are rules about when you can
+  and can't seal your juvenile records.
+
+  These are the steps we'll do with you
+  to find out if you can try to seal your records:
+
+  1. Find out if there's a reason you **shouldn't** seal your records.
+  1. Ask questions about your old and open cases.
+  1. Tell you if we think you can seal your records.
+  
+  Then you can get your form right away or let us help
+  you fill in the other parts too - things like your name
+  and social security number.
+
+  After that you'll need to:
+
+  1. Print the form.
+  1. Sign the form in two places.
+  1. Mail the form to the Commissioner of Probation. We'll
+  give you the address.
+
+  ## Questions and Answers
+    
+  ### How long does it take to finish?
+  
+  It can take up to **40 minutes** to answer all the questions,
+  though it's usually less.
+
+  ### What do I need to know to be able to answer the questions?
+
+  You need to know about your old and open cases. That includes
+  cases in other states and federal cases. Having a copy of
+  your criminal records can help you know the answers to
+  the questions.
+  
+  ### What about my privacy?
+  
+  If we need to store anything about your identity,
+  like your name and social security number,
+  we will ask you first.
+
+  <br/>
+
+  **Note:** Whenever we say USA
+  that includes United States
+  possessions (like Guam).
+
+continue button label: Next ${next_icon}
+
+under: |
+  Read more about sealing juvenile records from the
+  [GBLS 2019 booklet](https://www.gbls.org/sites/default/files/2019-08/juvenile_booklet_august_2019F.pdf).
+---
+id: in_ma
+question: ''
+subquestion: |
+  These questions are for sealing **Massachusetts** juvenile
+  records. Do you have a juvenile record in Massachusetts?
+yesnomaybe: has_ma_juv_record
+---
+id: unsure_of_ma_records
+question: ''
+subquestion: |
+  You can find out if you have a juvenile record in Massachusetts
+  by ordering a copy of it.
+  
+  TODO: Instructions for getting a copy of your juvenile record.
+  
+  Do you still want to see if you can try to seal your records?
+yesno: unsure_records_but_wants_to_try_sealing
+---
+id: no_ma_records_end
+event: no_ma_records_end
+question: |
+  Thank you and sorry we couldn't help
+subquestion: |
+  This tool can only help with sealing **juvenile records
+  in Massachusetts**.
+
+  ${more_resources}
+buttons:
+  - Exit ${exit_icon}: exit
+  - ${restart_text}: restart
+---
+id: do_you_have_sheets
+question: ''
+subquestion: |
+  Do you already have certified copies of the
+  [docket sheets](${ url_action('about_docket_sheets') })
+  for all of your cases?
+
+  **Note:** A [docket sheet](${ url_action('about_docket_sheets') })
+  is different than a criminal record report (called a
+  CORI) or juvenile record report.
+yesnomaybe: have_docket_copies_already
+---
+id: docket_warning
+field: wants_dockets_first
+question: ''
+subquestion: |
+  There are times when it is important to have certified copies of
+  your docket sheets for all your cases.
+
+  If you're not a US citizen, it can be very important to have
+  the copies for a hearing. They can also help for:
+
+  * Getting jobs that need a federal background check
+  * Applying for some government programs (like the Social Equity program)
+  * Taking legal action because someone did something wrong in the case
+  * Whenever you need to prove what happened in the case.
+
+  Once you seal your records you'll have to unseal them to get
+  certified copies. That can sometimes take a while.
+
+  Do you want to get certified copies of your docket sheets before
+  filling out the form to seal your records?
+
+buttons:
+  - Yes, I'll come back another time ${exit_icon}: True
+  - No, I want to fill out the form now ${next_icon}: False
+---
+id: goodbye_without_finishing
+event: goodbye_without_finishing
+progress: 100
+question: Thank you for coming.
+subquestion: |
+  We hope we could help a little.
+
+  {more_resources}
+buttons:
+  - Exit ${exit_icon}: exit
+  - ${restart_text}: restart
+---
+id: placeholder_for_form
+event: placeholder_for_form
+progress: 100
+question: ''
+subquestion: |
+  This would go straight to the form now
+buttons:
+  - ${restart_text}: restart
+---

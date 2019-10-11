@@ -20,7 +20,7 @@ features:
 #  question back button: True # weird looking with the styles...
 #  Also maybe not needed for this first part and good to distinguish
 #  the two?
-  css: gbls-2.css
+  css: gbls-8.css
 ---
 default screen parts:
   right: |
@@ -252,8 +252,11 @@ buttons:
 script: |
   <script>
     let nextInterviewButtonIndex = "1";
+    let buttonSelector = ".da-field-buttons button[value=" +
+      nextInterviewButtonIndex +
+      "]";
 
-    $("#sendAttachmentEmail").click(function(){
+    $( buttonSelector ).click( function openModal () {
 
       let message = "We are trying to send the email to " + val('atch_email_address') + ".";
       flash(message, "secondary");
@@ -290,14 +293,14 @@ content: |
   be deleted. Are you sure you want to go to the next page?
   
   action_button_html(#, id_tag="leavingDockets", new_window=False, icon="external-link-alt", label="Keep going", color="primary", size="md")
-  action_button_html("#", id_tag="stayingAtDockets", new_window=False, icon="external-link-alt", label="Stay", color="primary", size="md")
+  action_button_html("#", id_tag="stayingAtDockets", new_window=False, icon="external-link-alt", label="Back", color="primary", size="md")
 ---
 id: warn_on_leaving
 code: |
   flash( leaving_message )
   warn_on_leaving = 'done'
 ---
-id: not_helped
+id: no_ma_records
 event: sorry_end
 question: |
   Thank you and sorry we couldn't help
