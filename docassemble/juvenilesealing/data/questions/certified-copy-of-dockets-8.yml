@@ -50,8 +50,8 @@ code: |
 id: reused_strings
 code: |
   # Strings that get reused
-  sealing_url = 'https://interviews-dev.gbls.org/interview?dockets=notneeded&i=docassemble.playground42%3Ajuvenile-sealing-8.yml#page1'
-  needs_dockets_url = 'https://interviews-dev.gbls.org/interview?dockets=needed&i=docassemble.playground42%3Ajuvenile-sealing-8.yml#page1'
+  sealing_url = 'https://interviews-dev.gbls.org/interview?new_session=1&dockets=notneeded&i=docassemble.playground42%3Ajuvenile-sealing-8.yml'
+  needs_dockets_url = 'https://interviews-dev.gbls.org/interview?new_session=1&dockets=needed&i=docassemble.playground42%3Ajuvenile-sealing-8.yml'
 ---
 id: intro
 field: intro
