@@ -278,11 +278,6 @@ buttons:
   - Finish by hand &nbsp; <i class="fas fa-pencil-alt"></i>: True
   - Keep using this form ${next_icon}: False
 ---
-id: restart_text
-template: restart_text
-content: |
-  Restart <i class="fas fa-redo"></i>
----
 id: pdf_page_variables
 code: |
   # attachment stuff
