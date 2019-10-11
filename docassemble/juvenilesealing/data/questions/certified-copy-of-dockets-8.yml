@@ -251,6 +251,7 @@ buttons:
 # 
 script: |
   <script>
+    let nextInterviewButtonIndex = "1";
 
     $("#sendAttachmentEmail").click(function(){
 
