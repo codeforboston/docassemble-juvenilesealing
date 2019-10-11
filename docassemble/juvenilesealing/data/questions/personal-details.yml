@@ -20,7 +20,7 @@ features:
   javascript:
     - caretControl.js
     - inputDigitWeaving.js
-    - format-ssn-input.js
+    - format-inputs.js
 ---
 comment: |
   If this is not a separate objects block, it will create an error condition.

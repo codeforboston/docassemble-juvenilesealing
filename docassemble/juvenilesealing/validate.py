@@ -15,10 +15,10 @@ def is_valid_zip ( inputValue ):
     
     return isRightLength
 
-def is_valid_birthday ( inputValue ):
-    isRightLength = len( inputValue ) == 11
+def is_valid_dob ( inputValue ):
+    isRightLength = len( inputValue ) == 10
     if ( not isRightLength):
-      validation_error("Write the zipcode like this: XX/XX/XXXX")
+      validation_error("Write your date of birth like this: XX/XX/XXXX")
     
     return isRightLength
   
