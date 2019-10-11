@@ -1,5 +1,7 @@
 # TODOs
 
+- How do you waive the fee for a CORI online? I saw it once,
+but don't remember
 - Validate and control birthday entry? That tends to have more
 variety considering some people include 0's and some don't
 - TODO: More consistency with page titles being questions vs.
@@ -16,16 +18,20 @@ Scale of 1 to 10, how much impact will it have. It's complicated
 and might be beyond the MVP. That might actually be its own form.
 - TODO: How best to let people know on the first form that
 going to the sealing form will take them away from this
-form and these answers will be lost?
+form and these answers will be lost? - Considering combining the
+forms and maybe not directly ask about citizenship since we're
+being more lenient about that.
 - TODO: How to warn people about navigating away from any of the
 forms - 'your data will be lost'. Is it already done automatically?
-- TODO: Group links into categories with headings
+[I think this may be the same as the question above]
+- TODO: Group links into categories with headings [Is the current
+version sufficient?]
 - TODO: More clarity on first (or maybe on first question?) page
 about not doing out of state sealing.
 - TODO: Change `out_of_state_records` to something more like:
 "Other states' court websites may have information on how you
 can request your records from them."
-- TODO: Link on first page to just more resources page. Note: We
+- TODO: Link on first page to just more resources page? Note: We
 have a text template of resources that we can re-use to just
 have a resources page that's not the final page. We might want
 to create a 'resources' block in that shared text file that
@@ -49,7 +55,7 @@ docket sheet questionnaire from the sealing questionnaire...]
 words. Maybe try terms: https://docassemble.org/docs/initial.html#terms
 - todo: 'To find out if you can try to seal your record,
 these are the steps we'll do with you:'. Maybe.
-  done? Attempt to be checked.
+  done? Attempt made needs to be checked.
 - todo: Replace the word 'eligible' wherever possible?
 - todo: Discuss how/where to use the word 'petition' vs. 'form'
 - todo: 'You need to know' to 'It will help if you know'
@@ -103,6 +109,8 @@ todo: answer:
 ---------------------
 
 # Sealing process clarity for users
+* How do you get your federal records? Are they on your CORI?
+todo: 
 11. How long does it take to get your docket sheets by mail?
 todo: Add text about this:
   - In person right away unless really old (80's or 90's)
