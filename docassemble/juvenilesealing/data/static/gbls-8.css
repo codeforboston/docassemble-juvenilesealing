@@ -47,9 +47,17 @@ button.daquestionbackbutton.btn-link span {
 
 a,
 a:hover,
-button.daquestionbackbutton.btn-link:focus {
+button.daquestionbackbutton.btn-link:hover,
+button.daquestionbackbutton.btn-link:focus,
+.daterm,
+.daterm:hover {
   text-decoration: underline;
   text-decoration-color: rgba( 190, 64, 77, 1 );
+}
+
+.daterm,
+.daterm:hover {
+  text-decoration-style: dashed;
 }
 
 .btn,

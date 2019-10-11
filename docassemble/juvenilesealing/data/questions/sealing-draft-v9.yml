@@ -14,6 +14,11 @@ features:
 #  Also maybe not needed for this first part and good to distinguish
 #  the two?
   css: gbls-8.css
+#---
+#terms:
+#  docket sheets: |
+#    Can't use templates in terms, so that would make this
+#    harder to maintain. ${ docket_sheets_popover }
 ---
 default screen parts:
   right: |
@@ -136,12 +141,15 @@ id: do_you_have_sheets
 question: ''
 subquestion: |
   Do you already have certified copies of the
-  [docket sheets](${ url_action('about_docket_sheets') })
+  {docket sheets}
   for all of your cases?
 
-  **Note:** A [docket sheet](${ url_action('about_docket_sheets') })
-  is different than a criminal record report (called a
-  CORI) or juvenile record report.
+  **Note:** A docket sheet is different than a criminal
+  record report (called a CORI) or juvenile record report.
+terms:
+  # Templates in terms work down here
+  docket sheets: |
+    ${ docket_sheets_popover }
 yesnomaybe: have_docket_copies_already
 ---
 id: docket_warning
