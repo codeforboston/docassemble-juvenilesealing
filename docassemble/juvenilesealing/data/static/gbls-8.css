@@ -374,20 +374,28 @@ body.da-pad-for-navbar {
   color: rgba( 190, 64, 77, 1 ) !important;
 }
 
-/* Just for email sending one-line display. Fragile. */		
+/* Just for email sending one-line display. Fragile. */
+/* Second rows account for `labels above fields: True` */
 .question-get-attachment .da-field-container-datatype-email {		
   display: inline;		
 }
-.question-get-attachment .da-field-container-datatype-email .da-form-label {		
+.question-get-attachment .da-field-container-datatype-email .da-form-label,
+.question-get-attachment .da-field-container-datatype-email .da-top-label {		
   display: inline-block;		
-  min-width: fit-content;		
-  max-width: fit-content;		
+  padding-right: 1em;
+  text-align: left !important;		
+  /* Width of two columns instead of 4. This is fragile */		
+  flex: 0 0 16.666667%;		
+  max-width: 16.666667%;		
+  min-width: fit-content;			
 }
-.question-get-attachment .da-field-container-datatype-email .dafieldpart {		
+.question-get-attachment .da-field-container-datatype-email .dafieldpart,
+.question-get-attachment .da-field-container-datatype-email input[type="email"] {		
   display: inline-block;		
   width: 18em;		
 }
-.question-get-attachment .da-field-container-datatype-email .dafieldpart .text-danger {		
+.question-get-attachment .da-field-container-datatype-email .dafieldpart .text-danger,
+.question-get-attachment .da-field-container-datatype-email input[type="email"] .text-danger {		
   position: absolute;		
 }
 .question-get-attachment .da-field-container-datatype-email + .da-field-container-note {		
@@ -405,15 +413,6 @@ body.da-pad-for-navbar {
   margin: 0;		
   color: green !important;		
   border-color: green;		
-}
-
-/* Changing alignment of certain fields */		
-.question-get-attachment .da-field-container-datatype-email label {		
-  text-align: left !important;		
-  padding-right: 0;		
-  /* Width of two columns instead of 4. This is fragile */		
-  flex: 0 0 16.666667%;		
-  max-width: 16.666667%;		
 }
 
 /* Spacing with alert on attachement page */		
