@@ -25,7 +25,7 @@ template: more_form_info
 content: |
   ## More about this form
   
-  <span class="new">If you have the information you need,</span>
+  If you have the information you need,
   these questions
   can take about to **40 minutes** to answer. ${records_can_help}
 ---
@@ -52,7 +52,7 @@ content: |
 id: records_can_help_text
 template: records_can_help
 content: |
-  You need to know about your convictions in Massachusetts
+  It will help to know about your criminal records in Massachusetts
   and in other states. You won't get in trouble for getting
   answers wrong, but it might be easier for you to give the
   right answers if you have a copy of your juvenile record report,
@@ -60,32 +60,65 @@ content: |
   These reports will give a summary of all your criminal charges
   in Massachusetts and tell you how each case ended.
 ---
+id: about_records_intro_text
+template: about_records_intro
+content: |
+  These reports will give a summary of all your criminal charges
+  in Massachusetts and tell you how each case ended.
+---
+id: read_more_records_text
+template: read_more_records
+content: |
+  [Read more about getting your records...](${ url_action('about_getting_records') })
+---
+id: records_popover_text
+template: records_popover
+content: |
+  ${ about_records_intro } ${ read_more_records }
+---
 id: getting_cori_text
 template: getting_cori
 content: |
   To ask for your online
-  adult CORI report, create an account at
-  [Massachusetts iCORI site](https://icori.chs.state.ma.us/icori/ext/global/landing.action?page=1&bod=1566991096995&m=presentLanding).
+  adult CORI report, make an account at
+  [Massachusetts iCORI site ${external_link_icon}](https://icori.chs.state.ma.us/icori/ext/global/landing.action?page=1&bod=1566991096995&m=presentLanding).
   It costs $25, but if you are low income you might be be able
   to ask for a waiver of the fee.
+# TODO: How do you waive the fee online? I saw it once, but don't remember
+# TODO: How to get dederal records?
 ---
 id: getting_juvenile_records_text
 template: getting_juvenile_records
 content: |
   To ask for a free copy of your Massachusetts
   juvenile record, see the
-  [GBLS juvenile record request document](https://www.gbls.org/sites/default/files/juvenile_booklet_onelj.pdf).
+  [GBLS juvenile record request document ${external_link_icon}](https://www.gbls.org/sites/default/files/juvenile_booklet_onelj.pdf).
   It has a form to print and it tells you what to do.
 ---
 id: out_of_state_records_text
 template: out_of_state_records
-# TODO: implement
 content: |
-  We can't help you get records from other states.
-  Do the best you can with those
-  questions. The
-  <span style="color: red">[clean slate clearing house]()</span>
-  might be able to help you find out how to get those records.
+  If you want to get records from other states you'll
+  need to go to the websites for those states and
+  see if they have information on how you can request those
+  records. The
+  <span style="color: red">clean slate clearing house (TODO)</span>
+  might also be able to help you find out how to get those records.
+---
+id: getting_your_records
+# [text](${ url_action('about_getting_records') })
+field: about_getting_records
+question: About Getting Your Criminal Records
+subquestion: |
+  ${ about_records_intro }
+  
+  ${ getting_juvenile_records }
+  
+  ${ getting_cori }
+  
+  ${ out_of_state_records }
+
+continue button label: Keep going ${next_icon}  
 ---
 id: do_you_have_sheets_title_text
 template: do_you_have_sheets_title
@@ -574,6 +607,11 @@ id: next_icon
 template: next_icon
 content: |
   <i class="fas fa-chevron-right"></i>
+---
+id: external_link_icon
+template: external_link_icon
+content: |
+  <i class="fas fa-external-link-alt"></i>
 ---
 id: restart_text
 template: restart_text

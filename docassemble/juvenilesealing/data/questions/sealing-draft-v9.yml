@@ -46,6 +46,8 @@ code: |
 ---
 id: intro
 field: intro
+terms:
+  a copy of your criminal records: ${ records_popover }
 question: Can You Seal Your Massachusetts Juvenile Records?
 subquestion: |
 
@@ -84,9 +86,9 @@ subquestion: |
   ### What do I need to know to be able to answer the questions?
 
   You need to know about your old and open cases. That includes
-  cases in other states and federal cases. Having a copy of
-  your criminal records can help you know the answers to
-  the questions.
+  cases in other states and federal cases. Having
+  {a copy of your criminal records}
+  can help you know the answers to the questions.
   
   ### What about my privacy?
   
@@ -104,7 +106,7 @@ continue button label: Next ${next_icon}
 
 under: |
   Read more about sealing juvenile records from the
-  [GBLS 2019 booklet](https://www.gbls.org/sites/default/files/2019-08/juvenile_booklet_august_2019F.pdf).
+  [GBLS 2019 booklet ${external_link_icon}](https://www.gbls.org/sites/default/files/2019-08/juvenile_booklet_august_2019F.pdf).
 ---
 id: in_ma
 question: ''
