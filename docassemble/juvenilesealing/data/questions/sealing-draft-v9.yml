@@ -36,11 +36,11 @@ code: |
     no_ma_records_end
   elif ( has_ma_juv_record is None ):
     if ( unsure_records_but_wants_to_try_sealing is False ):
-      goodbye_without_finishing
+      not_finishing_end
 
   if ( not have_docket_copies_already is True ):
     if ( wants_dockets_first is True ):
-      goodbye_without_finishing  # end
+      not_finishing_end  # end
 
   placeholder_for_form
 ---
@@ -177,8 +177,8 @@ buttons:
   - Yes, I'll come back another time ${exit_icon}: True
   - No, I want to fill out the form now ${next_icon}: False
 ---
-id: goodbye_without_finishing
-event: goodbye_without_finishing
+id: end_without_finishing
+event: not_finishing_end
 progress: 100
 question: Thank you for coming.
 subquestion: |
