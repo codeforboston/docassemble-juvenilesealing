@@ -21,9 +21,6 @@ going to the sealing form will take them away from this
 form and these answers will be lost? - Considering combining the
 forms and maybe not directly ask about citizenship since we're
 being more lenient about that.
-- TODO: How to warn people about navigating away from any of the
-forms - 'your data will be lost'. Is it already done automatically?
-[I think this may be the same as the question above]
 - TODO: Group links into categories with headings [Is the current
 version sufficient?]
 - TODO: More clarity on first (or maybe on first question?) page
@@ -53,17 +50,13 @@ docket sheet questionnaire from the sealing questionnaire...]
 # V5.3 Group feedback
 - todo: Don't take users away from the page for definitions of
 words. Maybe try terms: https://docassemble.org/docs/initial.html#terms
+  status: terms implemented, waiting for feedback.
 - todo: 'To find out if you can try to seal your record,
 these are the steps we'll do with you:'. Maybe.
-  done? Attempt made needs to be checked.
+  status: implemented, waiting for feedback.
 - todo: Replace the word 'eligible' wherever possible?
 - todo: Discuss how/where to use the word 'petition' vs. 'form'
-- todo: 'You need to know' to 'It will help if you know'
-Maybe then we don't need the warning about getting answers wrong?
-Either way, do more to de-emphasize.
 - todo: It's ok if you get some answers wrong.
-- todo: 'a copy of -both- your juvenile record ~report~, and also...'
-- todo: remove green from text
 
 ---------------------
 
@@ -79,7 +72,17 @@ todo:
 ---------------------
 
 # Form questions
-3. Just skip non-required personal question fields?
+* What age is juvenile?
+todo: 
+
+* What with the GBLS page linking to this form look like? Can
+it talk about the difference between sealing and expungement?
+
+** 1. QQ: Who gets the feedback? Link back to CFJJ
+advocacy work somehow?
+todo: answer: 
+
+** 3. Just skip non-required personal question fields?
 todo: Sure, we'll see which ones.
 
 Q: "You also might have to stop and come back later
@@ -94,39 +97,34 @@ A: will look (I think a page created for dockets)
 status: text has been written, have linked to inner page.
 todo: Get an eye on it.
 
-* What age is juvenile?
-todo: 
-
-* What with the GBLS page linking to this form look like? Can
-it talk about the difference between sealing and expungement?
-
-1. QQ: Who gets the feedback? Link back to CFJJ advocacy work somehow?
-todo: answer: 
-
 ---------------------
 
 # Sealing process clarity for users
+
+* Needs to be gotten from individual relevant courthouses?
+  1. docket sheets: yes
+  2. CORI report(s): no
+  3. Juvenile record(s):
+  4. Help from court services for (legal help/just support??):
+
+* How long does it take to unseal records?
+todo: 
+
 * How do you get your federal records? Are they on your CORI?
 todo: 
-11. How long does it take to get your docket sheets by mail?
-todo: Add text about this:
-  - In person right away unless really old (80's or 90's)
-    - Ask how long it is going to take.
-  - By mail can take up to a couple weeks.
+
 7. Need to warn about social equity program for marijuana
 businesses before sealing? What other such programs, etc.
 are there?
 todo: Shorten interface 'applying for jobs or programs,
 bring charges against the court'
+
 9. Is there anything specific we can put about what a successful
 letter from probation would look like?
 todo: Will list all the records that are sealed. Should be clear.
 Will be given
-sample acceptance and rejection letters. Most part the system is
+** sample acceptance and rejection letters. Most part the system is
 good about sealing the recors that need it.
-
-* How long does it take to unseal records?
-todo: 
 
 ---------------------
 
@@ -137,8 +135,10 @@ convicted if there was misconduct, etc? If they're going
 off of their record.
 todo: Yes, non-convictions can be on your record. It can be on
 your CORI. Any time your case isn't dismissed before arraignment.
-Did you ever have a trial. (diff experience between trial
+
+* Q: Did you ever have a trial. (diff experience between trial
 and arraignment?)
+
 2. Is there anything that's expungable/sealable that's not on your
 CORI or CARI?
 todo: Won't address weeds
@@ -217,7 +217,9 @@ review.
 
 Court services center to print it out. Call ahead before you go.
   todo: Ask on slack about housing form. Might have a good
-  model for that advice.
+  model for that advice. for: calling to ask for help when
+  they don't have other support, call to ask for dockets maybe,
+  anything else?
 
 ---------------------
 
