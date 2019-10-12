@@ -94,5 +94,5 @@ fields:
   - Place of birth: x.place_of_birth
   - Alias/maiden name/previous name: x.alias
     required: False
-  - Occupation: x.occupation
+  - Occupation (what you do): x.occupation
     required: False

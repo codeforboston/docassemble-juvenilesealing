@@ -10,7 +10,7 @@ metadata:
       organization: Citizens for Juvenile Justice and Code for Boston
 ---
 features:
-#  question back button: True # weird looking with the styles...
+  question back button: True
 #  Also maybe not needed for this first part and good to distinguish
 #  the two?
   css: gbls-8.css
