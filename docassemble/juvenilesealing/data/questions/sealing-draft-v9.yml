@@ -186,7 +186,7 @@ question: Thank you for coming.
 subquestion: |
   We hope we could help a little.
 
-  {more_resources}
+  ${more_resources}
 buttons:
   - Exit ${exit_icon}: exit
   - ${restart_text}: restart

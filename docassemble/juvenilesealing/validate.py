@@ -11,7 +11,7 @@ def is_valid_ssn ( inputValue ):
 def is_valid_zip ( inputValue ):
     isRightLength = len( inputValue ) == 5
     if ( not isRightLength):
-      validation_error("Write the zipcode like this: XXXXX")
+      validation_error("Write the zipcode with 5 numbers: XXXXX")
     
     return isRightLength
 
