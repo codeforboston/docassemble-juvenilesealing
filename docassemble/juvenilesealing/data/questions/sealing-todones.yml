@@ -1,6 +1,11 @@
 # Finished Sealing TODOs
   
 ## Done
+- todo: remove green from text
+- todo: 'a copy of -both- your juvenile record ~report~, and also...'
+- todo: 'You need to know' to 'It will help if you know'
+Maybe then we don't need the warning about getting answers wrong?
+Either way, do more to de-emphasize.
 - TODO: Checkbox for sending instructions in email too. Will be
 a little complex, but doable. Basically just tells them they
 will get the instructions in the email.
@@ -40,11 +45,17 @@ for you. (did something similar)
 
 ---------------------
 
-# Sealing process clarity
+# Sealing process clarity for users
+
+11. How long does it take to get your docket sheets by mail?
+todo: Add text about this:
+  - In person right away unless really old (80's or 90's)
+    - Ask how long it is going to take.
+  - By mail can take up to a couple weeks.
   
 ---------------------
 
-# Sealing process Questions
+# Sealing process questions
 1. Will we be adding text about CORI and juvenile
 records not having records from other states?
 Or do we need to handle that a different way.
