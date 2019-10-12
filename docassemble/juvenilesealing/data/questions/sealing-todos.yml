@@ -30,7 +30,7 @@ version sufficient?]
 about not doing out of state sealing.
 - TODO: Change `out_of_state_records` to something more like:
 "Other states' court websites may have information on how you
-can request your records from them."
+can request your records from them." instead of 'do your best'.
 - TODO: Link on first page to just more resources page? Note: We
 have a text template of resources that we can re-use to just
 have a resources page that's not the final page. We might want
@@ -64,9 +64,6 @@ Either way, do more to de-emphasize.
 - todo: It's ok if you get some answers wrong.
 - todo: 'a copy of -both- your juvenile record ~report~, and also...'
 - todo: remove green from text
-- todo: Something like: "Other states' court websites may have
-information on how you can request your records from them." instead
-of 'do your best'.
 
 ---------------------
 
