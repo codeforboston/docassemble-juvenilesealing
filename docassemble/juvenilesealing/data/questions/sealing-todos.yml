@@ -18,14 +18,16 @@ Scale of 1 to 10, how much impact will it have. It's complicated
 and might be beyond the MVP. That might actually be its own form.
 - TODO: How best to let people know on the first form that
 going to the sealing form will take them away from this
-form and these answers will be lost? - Considering combining the
+form and these answers will be lost? - [Considering combining the
 forms and maybe not directly ask about citizenship since we're
-being more lenient about that.
+being more lenient about that.]
 - TODO: Group links into categories with headings [Is the current
 version sufficient?]
 - TODO: More clarity on first (or maybe on first question?) page
 about not doing out of state sealing.
-- TODO: Change `out_of_state_records` to something more like:
+- Done in v9 draft, but not implemented officially yet (like some
+other) stuff. TODO:
+Change `out_of_state_records` to something more like:
 "Other states' court websites may have information on how you
 can request your records from them." instead of 'do your best'.
 - TODO: Link on first page to just more resources page? Note: We
