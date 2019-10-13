@@ -1,6 +1,10 @@
 # Finished Sealing TODOs
   
 ## Done
+- TODO: Validate and control zipcode entry. Fixed in commit #8b2ee29
+- Validate and control birthday entry? That tends to have more
+variety considering some people include 0's and some don't. Fixed
+in commit #8b2ee29
 - todo: remove green from text
 - todo: 'a copy of -both- your juvenile record ~report~, and also...'
 - todo: 'You need to know' to 'It will help if you know'

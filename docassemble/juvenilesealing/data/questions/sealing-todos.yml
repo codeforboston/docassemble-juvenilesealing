@@ -1,13 +1,13 @@
 # TODOs
 
+- Should birthdate numbers be controlled or validated?
+(no 00 till end, no above 12 in months). People may just be in
+the middle of putting in their birthdate.
 - How do you waive the fee for a CORI online? I saw it once,
 but don't remember
-- Validate and control birthday entry? That tends to have more
-variety considering some people include 0's and some don't
 - TODO: More consistency with page titles being questions vs.
 being topics. Questions should be in small text right above the
 button choices.
-- TODO: Validate and control zipcode entry
 - TODO: What do we want to do about letting people 'sign in' to
 save their progress? Is that only important if/when we add a todo
 list tracker?
