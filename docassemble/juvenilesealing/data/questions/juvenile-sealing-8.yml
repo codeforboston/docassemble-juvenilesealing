@@ -57,13 +57,15 @@ code: |
   # Testing
   #partial_petition
 
-  # How to make sure a pro se user sees the warnings?
-  should_show_extra_info = False
-  needs_dockets = False
-  if ('dockets' in url_args):
-    should_show_extra_info = True
-    if (url_args['dockets'] == 'needed'):
-      needs_dockets = True
+  # No 100% sure wayof making sure a pro se user sees the warnings.
+  # Has to use the right link. Better with combo forms.
+  if ( not defined( 'should_show_extra_info' )):
+    should_show_extra_info = False
+    needs_dockets = False
+    if ('dockets' in url_args):
+      should_show_extra_info = True
+      if (url_args['dockets'] == 'needed'):
+        needs_dockets = True
   
   # --------------------
   unsure = None
@@ -72,13 +74,7 @@ code: |
   progressor.start()
   
   # Testing
-  #atch_after_download = pdf_after_download_partial_v7
-  #atch_email_contents = email_partial
-  #atch_itself = partial_petition_pdf
-  #trigger_attachment_page
-  ##atch_email_address
-  #progressor.increment()
-  #placeholder_end
+  #do_partial_petition
 
   reason = ''
 
@@ -123,11 +119,15 @@ code: |
   # --------------------
   
   # Testing
-  should_show_extra_info = True
-  needs_dockets = True
+  #should_show_extra_info = True
+  #needs_dockets = True
+  
+  log( defined('should_show_extra_info'), 'console' )
+  log( 'is defined', 'console' )
+  log( should_show_extra_info, 'console' )
   
   # Make sure they get a chance to order their docket sheets.
-  if (should_show_extra_info):
+  if ( defined('should_show_extra_info') and should_show_extra_info is True ):
     if (will_write_personal_info):
       progressor.increment()  # 8
       progressor.increment()  # 9
@@ -257,10 +257,9 @@ subquestion: |
 
   % if (needs_dockets):
   **You can also still see how to get a certified copy of the
-  [docket sheets](${ url_action('about_docket_sheets') })
-  for all of your cases**.
+  {docket sheets} for all of your cases**.
   It can take a while, but
-  it is a good idea to get them before finishing your form.
+  it is a good idea to get them before mailing your form.
   % endif
   
   ## What Next?
@@ -280,6 +279,10 @@ subquestion: |
 buttons:
   - Finish by hand &nbsp; <i class="fas fa-pencil-alt"></i>: True
   - Keep using this form ${next_icon}: False
+terms:
+  # Templates in terms work in questions
+  docket sheets: |
+    ${ docket_sheets_popover }
 ---
 id: pdf_page_variables
 code: |

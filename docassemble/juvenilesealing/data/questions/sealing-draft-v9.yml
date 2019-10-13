@@ -39,12 +39,16 @@ code: |
       not_finishing_end
 
   if ( not have_docket_copies_already is True ):
+    needs_dockets = True
     if ( wants_dockets_first is True ):
       not_finishing_end  # end
 
+  should_show_extra_info = True
+
   do_sealing_form
-  #placeholder_for_form
 ---
+# DO NOT place above the 'flow' code block
+# Will run in the place it appears in the code flow
 include:
   - juvenile-sealing-8.yml
 ---
@@ -153,7 +157,7 @@ subquestion: |
   **Note:** A docket sheet is different than a criminal
   record report (called a CORI) or juvenile record report.
 terms:
-  # Templates in terms work down here
+  # Templates in terms work in questions
   docket sheets: |
     ${ docket_sheets_popover }
 yesnomaybe: have_docket_copies_already
