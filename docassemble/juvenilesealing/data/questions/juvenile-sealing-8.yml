@@ -154,6 +154,8 @@ code: |
   do_full_petition
   progressor.increment()  # 11
   finish_with_more
+
+  do_sealing_form = 'done'
 ---
 id: do_partial_petition
 code: |
