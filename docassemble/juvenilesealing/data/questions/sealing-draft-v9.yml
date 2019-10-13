@@ -42,7 +42,11 @@ code: |
     if ( wants_dockets_first is True ):
       not_finishing_end  # end
 
-  placeholder_for_form
+  do_sealing_form
+  #placeholder_for_form
+---
+include:
+  - juvenile-sealing-8.yml
 ---
 id: intro
 field: intro
