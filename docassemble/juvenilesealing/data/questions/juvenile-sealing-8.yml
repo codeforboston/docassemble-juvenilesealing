@@ -251,9 +251,9 @@ yesnomaybe: incarcerated_in_past_3_years
 ---
 id: eligible
 field: will_write_personal_info
-question: You Might Be Eligible!
+question: You Might Be Able to Seal Your Records!
 subquestion: |
-  We think you're probably eligible to seal your juvenile records.
+  We think you can probably seal your juvenile records.
 
   % if (needs_dockets):
   **You can also still see how to get a certified copy of the
@@ -368,7 +368,7 @@ attachment:
 ---
 id: suggest_get_records
 field: wants_to_get_records
-question: Do you want to get your records?
+question: Having Your Criminal Records Can Help
 subquestion: |
   ${records_can_help}
 
