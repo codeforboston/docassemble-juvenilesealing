@@ -1,5 +1,22 @@
 # TODOs
 
+---------------------
+# Team
+
+- What if there is no legal help for this in their area?
+  answer: Tough question. There are lots of little
+  things to persue. Write text: |
+    - Go to courthouse of any court where you have a case and
+    talk to somebody in probation, for example.
+    (https://www.mass.gov/guides/find-a-courthouse-serving-you)
+    - Also, if send petition in and rejected, will get reasons why.
+    - Honestly address people who may not be able to get help.
+  - Possibility (with slight language adustment): |
+    Unfortunately, the below list of resources
+    may not include any resources that you can use. We are
+    working on improving this tool, and if you have any
+    feedback or suggestions for us on what we could do
+    better, please email us at XXX@gbls.org.
 - Should birthdate numbers be controlled or validated?
 (no 00 till end, no above 12 in months). People may just be in
 the middle of putting in their birthdate.
@@ -122,7 +139,7 @@ todo:
 businesses before sealing? What other such programs, etc.
 are there?
 todo: Shorten interface 'applying for jobs or programs,
-bring charges against the court'
+bring charges against the court' [see v9]
 
 9. Is there anything specific we can put about what a successful
 letter from probation would look like?
@@ -134,28 +151,15 @@ good about sealing the recors that need it.
 ---------------------
 
 # Sealing process Questions from us
-5. Can a dismissal still be on your record sometimes?
-How to ask them about that? Does it still count as
-convicted if there was misconduct, etc? If they're going
-off of their record.
-todo: Yes, non-convictions can be on your record. It can be on
-your CORI. Any time your case isn't dismissed before arraignment.
 
-* Q: Did you ever have a trial. (diff experience between trial
-and arraignment?)
-
-2. Is there anything that's expungable/sealable that's not on your
-CORI or CARI?
-todo: Won't address weeds
-  - Criminal case dismissed before arraignment. There will be
-  a physical file at the courthouse. People can get that file.
-  Won't show up on CORI, though. Will be sealed. But will be
-  physically available until sealed or expunged (I think).
+* Q: Did you ever have a trial? <- useful question?
+(diff experience between trial and arraignment?)
 
 ---------------------
 
 # Immigration
-1. Follow-up on this stuff after contact.
+1. Follow-up on this stuff after liason.
+todo: Don't block and de-emphasize [see v9]
 1. Immigration feedback?
 todo: Add question/page about legal consult [in what
 way did I mean this?]
@@ -163,24 +167,22 @@ way did I mean this?]
 ---------------------
 
 # Further Resources
-- Is court self-help center same as court services center?
-todo: 
 
-** 2. Need a link to the clean slate clearing house for
-out of state records?
-todo: will send link (followup)
+* Is court self-help center same as court services center?
+todo: 
 
 ** 4. About applying for jobs - where is that link in the kyr booklet?
 Did not find.
 todo: The _info_ is in the booklet. There's a separate doc they'll
 put online, though. (followup)
 
-5. 'What will employers see' link at the beginning? (maybe
+** 5. 'What will employers see' link at the beginning? (maybe
 list of what you can read in Know Your CORI Rights)
 todo: Same link as applying for a job. They will put up
-separate doc.
+separate doc (doc mentioned above as job doc).
 
-+ 2. What if there is no legal help for this in their area?
++ 2. [listed in team section] What if there is no legal help
+  for this in their area?
   answer: Tough question. There are lots of little
   things to persue.
   - Go to courthouse of any court where you have a case and
@@ -196,10 +198,18 @@ separate doc.
     feedback or suggestions for us on what we could do
     better, please email us at XXX@gbls.org.
 
-4. Which is the 'what if your CORI seems wrong'
+** 4. [Are we going to include this? Is it a question people
+specifically have on their minds?]
+Which is the 'what if your CORI seems wrong'
 booklet? Do we already have the link to that?
 todo: kyr booklet. Section on mass legal help website -
 correcting record.
+todo: What is the section/link?
+[Duplicate of above]
+3. Link to info on CORI FAQ - what if CORI wrong, what it is etc.?
+  answer: mass legal help website about that
+  todo: (has the following been done?) (what if cori wrong) will
+  send link. Also, though, de-emphasize getting records
 
 8. Add info about court self-help centers. What's the info?
 todo: call up the court. maybe list online. website for trial
@@ -207,11 +217,6 @@ courts may have numbers. google it. (do I remember this right?:
 Each one has different ways in which they might be willing
 to help? Some may help print stuff?) Put up some text and get
 review.
-
-3. Link to info on CORI FAQ - what if CORI wrong, what it is etc.?
-  answer: mass legal help website about that
-  todo: (has the following been done?) (what if cori wrong) will
-  send link. Also, though, de-emphasize getting records
 
 5. further resources Will send:
   - applying for jobs booklet (will be put online)
@@ -226,6 +231,25 @@ Court services center to print it out. Call ahead before you go.
   model for that advice. for: calling to ask for help when
   they don't have other support, call to ask for dockets maybe,
   anything else?
+
+---------------------
+
+# Transfer to important project knowledge
+
+5. Can a dismissal still be on your record sometimes?
+How to ask them about that? Does it still count as
+convicted if there was misconduct, etc? If they're going
+off of their record.
+todo: Yes, non-convictions can be on your record. It can be on
+your CORI. Any time your case isn't dismissed before arraignment.
+
+2. Is there anything that's expungable/sealable that's not on your
+CORI or CARI?
+todo: Won't address weeds
+  - Criminal case dismissed before arraignment. There will be
+  a physical file at the courthouse. People can get that file.
+  Won't show up on CORI, though. Will be sealed. But will be
+  physically available until sealed or expunged (I think).
 
 ---------------------
 
