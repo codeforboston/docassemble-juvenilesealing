@@ -117,9 +117,6 @@ subquestion: |
   ${ getting_cori }
   
   ${ out_of_state_records }
-  
-  The If you want to find out a lot more about criminal records
-  you can look at TODO ______ (big cori booklet)
 
 continue button label: Keep going ${next_icon}  
 ---
