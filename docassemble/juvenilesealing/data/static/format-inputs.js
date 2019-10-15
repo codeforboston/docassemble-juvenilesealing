@@ -37,6 +37,24 @@ $( document ).on( 'daPageLoad', function (){
 
   for ( let input of inputs ) {
     keepInputFormatted( input, dobPattern );
+    console.log(daValidationHandler);
+    $(input).validate({
+      'submitHandler': daValidationHandler,
+      'rules': {
+        '_attachment_email_address': {
+          'minlength': 1,
+          'required': true,
+          'email': true
+        }
+      },
+      'messages': {
+        '_attachment_email_address': {
+          'required': "\"" + "An e-mail address is required." + "\"",
+          'email': "\"" + "You need to enter a complete e-mail address." + "\""
+        }
+      },
+      'errorClass': 'da-has-error'
+    })
   }
 
 });  // ends dob pattern
