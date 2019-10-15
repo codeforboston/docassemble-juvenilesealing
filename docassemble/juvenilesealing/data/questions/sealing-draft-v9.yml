@@ -170,7 +170,11 @@ subquestion: |
   your docket sheets for all your cases.
 
   If you're not a US citizen, it can be very important to have
-  the copies for a hearing. They can also help for:
+  the copies for a hearing. In fact, if you are a non-citizen it
+  would be a good idea to talk to a lawyer before you seal
+  your records.
+  
+  Certified copies of your docket sheets can also help for:
 
   * Getting jobs that need a federal background check
   * Applying for some government programs (like the Social Equity program)
@@ -185,7 +189,7 @@ subquestion: |
 
 buttons:
   - Yes, I'll come back another time ${exit_icon}: True
-  - No, I want to fill out the form now ${next_icon}: False
+  - No, I want to keep going ${next_icon}: False
 ---
 id: end_without_finishing
 event: not_finishing_end
