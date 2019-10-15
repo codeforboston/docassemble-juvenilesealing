@@ -1,6 +1,9 @@
 # Finished Sealing TODOs
   
 ## Done
+- TODO: More consistency with page titles being questions vs.
+being topics. Questions should be in small text right above the
+button choices.
 - Fix email 'invalid' error message being placed incorrectly.
 - TODO: Validate and control zipcode entry. Fixed in commit #8b2ee29
 - Validate and control birthday entry? That tends to have more

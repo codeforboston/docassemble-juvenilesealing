@@ -5,31 +5,28 @@
 the middle of putting in their birthdate.
 - How do you waive the fee for a CORI online? I saw it once,
 but don't remember
-- TODO: More consistency with page titles being questions vs.
-being topics. Questions should be in small text right above the
-button choices.
 - TODO: What do we want to do about letting people 'sign in' to
 save their progress? Is that only important if/when we add a todo
 list tracker?
 - TODO: Check what text editing work has been undone in the past
 by combing through old commits (prior to... Oct. 3rd or something?)
-- TODO: Now or future? Explain when to seal and when to expunge.
+- TODO: (Now or future?) Explain when to seal and when to expunge.
 Scale of 1 to 10, how much impact will it have. It's complicated
 and might be beyond the MVP. That might actually be its own form.
 - TODO: How best to let people know on the first form that
 going to the sealing form will take them away from this
 form and these answers will be lost? - [Considering combining the
 forms and maybe not directly ask about citizenship since we're
-being more lenient about that.]
+being more lenient about that. v9 is a draft of that.]
 - TODO: Group links into categories with headings [Is the current
 version sufficient?]
 - TODO: More clarity on first (or maybe on first question?) page
 about not doing out of state sealing.
-- Done in v9 draft, but not implemented officially yet (like some
-other) stuff. TODO:
-Change `out_of_state_records` to something more like:
+- TODO: Change `out_of_state_records` to something more like:
 "Other states' court websites may have information on how you
 can request your records from them." instead of 'do your best'.
+[Done in v9 draft, but not implemented officially yet (like some
+other stuff.)]
 - TODO: Link on first page to just more resources page? Note: We
 have a text template of resources that we can re-use to just
 have a resources page that's not the final page. We might want
@@ -52,7 +49,7 @@ docket sheet questionnaire from the sealing questionnaire...]
 # V5.3 Group feedback
 - todo: Don't take users away from the page for definitions of
 words. Maybe try terms: https://docassemble.org/docs/initial.html#terms
-  status: terms implemented, waiting for feedback.
+  status: terms implemented, waiting for feedback. [See v9]
 - todo: 'To find out if you can try to seal your record,
 these are the steps we'll do with you:'. Maybe.
   status: implemented, waiting for feedback.
@@ -63,6 +60,11 @@ these are the steps we'll do with you:'. Maybe.
 ---------------------
 
 # Misc
+* P: Replace the word 'eligible' wherever possible?
+todo:
+
+* P: Discuss how/where to use the word 'petition' vs. 'form'
+todo:
 
 ----------------------
 
@@ -79,6 +81,7 @@ todo:
 
 * What with the GBLS page linking to this form look like? Can
 it talk about the difference between sealing and expungement?
+todo:
 
 ** 1. QQ: Who gets the feedback? Link back to CFJJ
 advocacy work somehow?
