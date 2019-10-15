@@ -384,7 +384,8 @@ body.da-pad-for-navbar {
 
 /* Just for email sending one-line display. Fragile. */
 /* Second rows account for `labels above fields: True` */
-.question-get-attachment .da-field-container-datatype-email {		
+.question-get-attachment .da-field-container-datatype-email {
+  position: relative;	
   display: inline;		
 }
 .question-get-attachment .da-field-container-datatype-email .da-form-label,
@@ -398,13 +399,15 @@ body.da-pad-for-navbar {
   min-width: fit-content;			
 }
 .question-get-attachment .da-field-container-datatype-email .dafieldpart,
-.question-get-attachment .da-field-container-datatype-email input[type="email"] {		
+.question-get-attachment .da-field-container-datatype-email input[type="email"] {
   display: inline-block;		
   width: 18em;		
 }
 .question-get-attachment .da-field-container-datatype-email .dafieldpart .text-danger,
-.question-get-attachment .da-field-container-datatype-email input[type="email"] .text-danger {		
-  position: absolute;		
+.question-get-attachment .da-field-container-datatype-email input[type="email"] +.text-danger {		
+  position: absolute;
+  top: 2em;
+  left: 0;
 }
 .question-get-attachment .da-field-container-datatype-email + .da-field-container-note {		
   display: inline-block;		

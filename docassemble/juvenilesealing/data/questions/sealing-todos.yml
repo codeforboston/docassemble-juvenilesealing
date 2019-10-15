@@ -1,6 +1,5 @@
 # TODOs
 
-- Fix email 'invalid' error message being placed incorrectly.
 - Should birthdate numbers be controlled or validated?
 (no 00 till end, no above 12 in months). People may just be in
 the middle of putting in their birthdate.

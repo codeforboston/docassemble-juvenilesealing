@@ -1,6 +1,7 @@
 # Finished Sealing TODOs
   
 ## Done
+- Fix email 'invalid' error message being placed incorrectly.
 - TODO: Validate and control zipcode entry. Fixed in commit #8b2ee29
 - Validate and control birthday entry? That tends to have more
 variety considering some people include 0's and some don't. Fixed
