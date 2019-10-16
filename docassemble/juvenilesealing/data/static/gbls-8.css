@@ -73,6 +73,8 @@ button.daquestionbackbutton.btn-link:hover {
 
 
 /* Required answers */
+
+
 /*.form-group.darequired
 .darequired,*/
 /*.form-group.darequired .dawidecol,*/
@@ -82,7 +84,8 @@ button.daquestionbackbutton.btn-link:hover {
 
 .form-group.darequired .dawidecol:before {
   position: absolute;
-  content: 'You must answer this question';
+  content: '(You have to answer this question)';
+  margin-left: 1em;
   color: #dc3545;
   top: -1em;
   left: 1em;
@@ -90,13 +93,24 @@ button.daquestionbackbutton.btn-link:hover {
 
 .darequired .dafieldpart:before {
   position: absolute;
-  content: 'You must answer this question';
+  content: '(You have to answer this question)';
+  margin-left: 1em;
   color: #dc3545;
   top: -1em;
 }
 
 .form-group.darequired .da-form-label:after {
   content: '';
+}
+
+.da-top-label +.dafieldpart:before {
+  content: '';
+}
+
+.form-group.darequired .da-top-label:after {
+  content: '(You have to answer this question)';
+  margin-left: 1em;
+  color: #dc3545;
 }
 
 
