@@ -57,7 +57,7 @@ code: |
   # Testing
   #partial_petition
 
-  # No 100% sure wayof making sure a pro se user sees the warnings.
+  # No 100% sure way of making sure a pro se user sees the warnings.
   # Has to use the right link. Better with combo forms.
   if ( not defined( 'should_show_extra_info' )):
     should_show_extra_info = False
@@ -119,8 +119,8 @@ code: |
   # --------------------
   
   # Testing
-  should_show_extra_info = True
-  needs_dockets = True
+  #should_show_extra_info = True
+  #needs_dockets = True
   
   log( defined('should_show_extra_info'), 'console' )
   log( 'is defined', 'console' )
