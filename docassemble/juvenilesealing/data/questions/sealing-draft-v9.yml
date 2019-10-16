@@ -55,8 +55,6 @@ include:
 ---
 id: intro
 field: intro
-terms:
-  a copy of your criminal records: ${ records_popover }
 question: Can You Seal Your Massachusetts Juvenile Records?
 subquestion: |
 
@@ -116,6 +114,9 @@ continue button label: Next ${next_icon}
 under: |
   Read more about sealing juvenile records from the
   [GBLS 2019 booklet ${external_link_icon}](https://www.gbls.org/sites/default/files/2019-08/juvenile_booklet_august_2019F.pdf).
+
+terms:
+  a copy of your criminal records: ${ records_popover }
 ---
 id: in_ma
 question: ''
