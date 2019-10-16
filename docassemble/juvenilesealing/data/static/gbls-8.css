@@ -73,6 +73,13 @@ button.daquestionbackbutton.btn-link:hover {
 
 
 /* Required answers */
+/*.form-group.darequired
+.darequired,*/
+/*.form-group.darequired .dawidecol,*/
+/*.darequired .dafieldpart {
+  position: relative;
+}*/
+
 .form-group.darequired .dawidecol:before {
   position: absolute;
   content: 'You must answer this question';

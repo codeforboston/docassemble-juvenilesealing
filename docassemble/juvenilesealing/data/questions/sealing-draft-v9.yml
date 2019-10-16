@@ -37,7 +37,8 @@ code: |
   elif ( has_ma_juv_record is None ):
     if ( unsure_records_but_wants_to_try_sealing is False ):
       not_finishing_end
-
+  
+  needs_dockets = False
   if ( not have_docket_copies_already is True ):
     needs_dockets = True
     if ( wants_dockets_first is True ):
@@ -59,12 +60,12 @@ terms:
 question: Can You Seal Your Massachusetts Juvenile Records?
 subquestion: |
 
-  Sealing your juvenile record means that most people
-  and employers won't see anything at all about your
-  juvenile record. (You can read more in the GBLS CORI Booklet.?)
-  (Sealing is different than expunging.?)
-  There are rules about when you can
-  and can't seal your juvenile records.
+  Sealing your juvenile record means that most
+  employers won't even be able to see that your record
+  exists. Employers that do federal background checks and
+  people like police and judges will see a note that you
+  have a sealed criminal record. There are rules about when
+  you can and can't seal your juvenile records.
 
   These are the steps we'll do with you
   to find out if you can try to seal your records:
