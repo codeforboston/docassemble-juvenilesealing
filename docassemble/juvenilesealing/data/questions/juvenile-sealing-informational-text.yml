@@ -206,7 +206,11 @@ subquestion: |
 
   Sadly, every case has its own docket
   sheets and those sheets are kept at the courthouse
-  that handled that case.
+  that handled that case. Having
+  {a copy of your Massachusetts criminal records}
+  can make it easier to make sure you get all your docket
+  sheets because they will have the docket numbers for
+  your cases.
   
   ### Getting certified copies in person
   
@@ -284,6 +288,9 @@ subquestion: |
   to find out how it's going.
 
 continue button label: Keep going ${next_icon}
+
+terms:
+  a copy of your criminal records: ${ records_popover }
 ---
 id: certified_copies_text
 template: how_to_get_certified_copies
