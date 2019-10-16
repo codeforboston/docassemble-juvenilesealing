@@ -119,8 +119,8 @@ code: |
   # --------------------
   
   # Testing
-  #should_show_extra_info = True
-  #needs_dockets = True
+  should_show_extra_info = True
+  needs_dockets = True
   
   log( defined('should_show_extra_info'), 'console' )
   log( 'is defined', 'console' )
