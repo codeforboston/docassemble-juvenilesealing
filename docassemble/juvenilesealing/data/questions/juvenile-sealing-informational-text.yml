@@ -179,6 +179,8 @@ field: about_docket_sheets
 # TODO: Are there courthouse instructions online for requesting
 #    docket sheets? A: No
 # [text](${ url_action('about_docket_sheets') })
+terms:
+  a copy of your Massachusetts criminal records: ${ records_popover }
 question: About Docket Sheets
 subquestion: |
   ### What are docket sheets?
@@ -204,7 +206,7 @@ subquestion: |
 
   ## Getting certified copies
 
-  Sadly, every case has its own docket
+  Every case has its own docket
   sheets and those sheets are kept at the courthouse
   that handled that case. Having
   {a copy of your Massachusetts criminal records}
@@ -214,24 +216,25 @@ subquestion: |
   
   ### Getting certified copies in person
   
-  For each case, go to the clerk’s
+  Getting copies in person is the easiest and fastest
+  way to do this. For each case, go to the clerk’s
   office in the courthouse that handled the case and say,
   "I'd like certified copies of my docket sheets
   for all of my cases." You have to do it
   at each courthouse where you had a case.
 
   It can cost up to $2.50 for each page, but if you
-  can't affort to pay that much, you can ask,
+  can't afford to pay that much, you can ask,
   "Can I get the fee waived?" The staff will probably
   have you fill out a form called an
   “affidavit of indigency” where you'll put down
-  how much you and the family members that live
-  with you get payed. That's to show why you can't
+  how much you get paid. That's to show why you can't
   afford to pay the fee.
 
   ### Getting certified copies by mail
   
-  You can also send a letter to ask for the docket
+  Even though it's easier and faster to go in person,
+  you can also send a letter to ask for the docket
   sheets. It can take two weeks or so. If you want
   to order the sheets by mail, take
   these steps:
@@ -240,10 +243,20 @@ subquestion: |
   and ask how much it will cost to print the sheets.
   1. Go to a post office to get a money order for that amount.
   1. Write a letter that asks for the docket
-  sheets. This is an example of what it can look like:
+  sheets. An example of what it can look like is at
+  the bottom of this page.
+  1. Print that letter and sign it.
+  1. Put the letter and the money order in an envelope.
+  1. On the front of the envelope, write the courthouse's address.
+  1. Above that address, write 'Attention: Criminal clerk's office'.
+  1. Write your own mailing address in the top left of the envelope.
+  1. Put a stamp on the envelope and mail it.
 
-  <br/>
-  
+  If you don't get anything back after two or three weeks, call
+  to find out how it's going.
+
+  ## An example letter to the courthouse
+
   ${ today() }
 
   Clerk’s Office[BR]
@@ -274,23 +287,8 @@ subquestion: |
   Jane Doe[BR]
   0 Jump St., Apt. # 2[BR]
   Boston, MA 02114
-  
-  <br/>
-  
-  4. Print that letter and sign it.
-  1. Put the letter and the money order in an envelope.
-  1. On the front of the envelope, write the courthouse's address.
-  1. Above that address, write 'Attention: Criminal clerk's office'.
-  1. Write your own mailing address in the top left of the envelope.
-  1. Put a stamp on the envelope and mail it.
-
-  If you don't get anything back after two or three weeks, call
-  to find out how it's going.
 
 continue button label: Keep going ${next_icon}
-
-terms:
-  a copy of your criminal records: ${ records_popover }
 ---
 id: certified_copies_text
 template: how_to_get_certified_copies
@@ -575,12 +573,11 @@ content: |
  
   ## Information about dealing with criminal records
 
-  * A [GBLS booklet just about sealing juvenile records](https://www.gbls.org/sites/default/files/2019-08/juvenile_booklet_august_2019F.pdf) that includes an example petition
+  * A [GBLS booklet just about sealing juvenile records](https://www.gbls.org/sites/default/files/2019-08/juvenile_booklet_august_2019F.pdf) that includes an example petition.
   * About applying for jobs TODO: what's the link?
-  * [Criminal records and housing](https://www.masslegalhelp.org/cori/housing)
   * [Marijuana case sealing or expungement](https://www.gbls.org/sites/default/files/2019-05/booklet-7-seal-decriminalized-cannabis-cases-5119-f.pdf)
-  * A detailed GBLS ["Know Your Rights Booklet"](https://www.gbls.org/sites/default/files/2019-04/know-your-cori-rights-041819.pdf) on many topics related to both sealing and expungement
-  * A page with links to more GBLS information about [criminal record problems](https://www.gbls.org/self-help/cori)
+  * A detailed GBLS ["Know Your Rights Booklet"](https://www.gbls.org/sites/default/files/2019-04/know-your-cori-rights-041819.pdf) on many topics related to both sealing and expungement.
+  * A page with links to more GBLS information about [criminal record problems](https://www.gbls.org/self-help/cori).
 
   ## Legal help 
 
@@ -588,7 +585,8 @@ content: |
   
   ## Other resources
 
-  * [Finding housing](https://www.masslegalhelp.org/housing/finding-housing)
+  * One page on Mass legal help about [criminal records and housing](https://www.masslegalhelp.org/cori/housing).
+  * Another page on Mass Legal Help page just about [finding housing](https://www.masslegalhelp.org/housing/finding-housing).
 
   ## Medical, mental health, and recovery support sites
 
