@@ -29,6 +29,7 @@ include:
   - juvenile-sealing-informational-text.yml
 ---
 mandatory: True
+id: docket_flow_code
 code: |
   intro
   
@@ -125,6 +126,7 @@ yesno: unsure_records_but_wants_to_try_sealing
 ---
 id: no_ma_records_end
 event: no_ma_records_end
+progress: 100
 question: |
   Thank you and sorry we couldn't help
 subquestion: |
