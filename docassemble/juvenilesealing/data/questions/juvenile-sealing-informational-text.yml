@@ -400,7 +400,7 @@ id: learn_more_sealing_text
 template: sealing_booklet_text
 content: |
   Read more about sealing juvenile records from the
-  [GBLS 2019 booklet](https://www.gbls.org/sites/default/files/2019-08/juvenile_booklet_august_2019F.pdf).
+  [GBLS 2019 booklet ${external_link_icon}](https://www.gbls.org/sites/default/files/2019-08/juvenile_booklet_august_2019F.pdf).
 ---
 id: email_subject_text
 template: email_subject
@@ -481,7 +481,7 @@ content: |
   said, you can call the Commissioner’s Office and ask
   them to explain to you why they would not seal all your
   records. The number is (617) 727 - 5300. You can also
-  [try to find legal help near you](https://www.masslegalservices.org/findlegalaid).
+  [try to find legal help near you ${external_link_icon}](https://www.masslegalservices.org/findlegalaid).
   Remember that not every area has someone that
   can help with criminal records.
 ---
