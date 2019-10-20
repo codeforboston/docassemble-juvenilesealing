@@ -83,7 +83,7 @@ content: |
   adult CORI report, make an account at
   [Massachusetts iCORI site ${external_link_icon}](https://icori.chs.state.ma.us/icori/ext/global/landing.action?page=1&bod=1566991096995&m=presentLanding).
   It costs $25, but if you are low income you might be be able
-  to ask for a waiver of the fee.
+  to ask for a waiver of the fee so you don't have to pay it.
 # TODO: How do you waive the fee online? I saw it once, but don't remember
 # TODO: How to get dederal records?
 ---
@@ -100,7 +100,7 @@ template: out_of_state_records
 content: |
   If you want to get records from other states you'll
   need to go to the websites for those states and
-  see if they have information on how you can request those
+  see if they have information about how you can request those
   records. The
   [clean slate clearing house ${external_link_icon}](https://cleanslateclearinghouse.org/states/)
   might also be able to help you find out how to get those records.
@@ -203,16 +203,20 @@ subquestion: |
   If you seal your records you won't be able to get
   certified copies of your docket sheets until you
   unseal them again. That can sometimes take a long time.
+  If you need to show your docket
+  sheets to a judge at a hearing or you apply for some
+  kinds of jobs, it might take too long to unseal your records
+  and get those docket sheets.
 
   ## Getting certified copies
 
-  Every case has its own docket
-  sheets and those sheets are kept at the courthouse
-  that handled that case. Having
+  Having
   {a copy of your Massachusetts criminal records}
   can make it easier to make sure you get all your docket
   sheets because they will have the docket numbers for
-  your cases.
+  your cases. Every case has its own docket
+  sheets and those sheets are kept at the courthouse
+  that handled that case.
   
   ### Getting certified copies in person
   
@@ -240,7 +244,8 @@ subquestion: |
   these steps:
   
   1. Call the courthouse that handled the case
-  and ask how much it will cost to print the sheets.
+  and ask how much you need to pay the court to
+  print and mail the sheets.
   1. Go to a post office to get a money order for that amount.
   1. Write a letter that asks for the docket
   sheets. An example of what it can look like is at
@@ -248,14 +253,14 @@ subquestion: |
   1. Print that letter and sign it.
   1. Put the letter and the money order in an envelope.
   1. On the front of the envelope, write the courthouse's address.
-  1. Above that address, write 'Attention: Criminal clerk's office'.
+  1. Above that address, write *Attention: Criminal clerk's office*.
   1. Write your own mailing address in the top left of the envelope.
   1. Put a stamp on the envelope and mail it.
 
   If you don't get anything back after two or three weeks, call
   to find out how it's going.
 
-  ## An example letter to the courthouse
+  ## An example of a letter to the courthouse
 
   ${ today() }
 
