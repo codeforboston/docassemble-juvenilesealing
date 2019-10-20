@@ -185,7 +185,7 @@ buttons:
 id: end_without_finishing
 event: not_finishing_end
 progress: 100
-question: Thank you for coming.
+question: Thank you for coming
 subquestion: |
   We hope we could help a little.
 
