@@ -427,6 +427,7 @@ content: |
 id: download_or_email_text
 template: download_or_email
 content: |
+  This kind of form is called a petition.
   You can download it or you can email it to
   yourself or someone else.
 ---
