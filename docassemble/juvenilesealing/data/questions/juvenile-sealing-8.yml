@@ -219,9 +219,6 @@ question: Juvenile Custody
 subquestion: |
   Have you been in juvenile custody anywhere in the USA
   on or after ${ today().minus(years=3) }?
-  
-  **Note:** Juvenile custody is incarceration for people under
-  the age of <span style="color:red">___</span>
 yesnomaybe: juvenile_custody_in_past_3_years
 ---
 id: adult_cases_states
