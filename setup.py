@@ -53,7 +53,11 @@ setup(name='docassemble.juvenilesealing',
       url='https://docassemble.org',
       packages=find_packages(),
       namespace_packages=['docassemble'],
-      install_requires=['docassemble.gbls'],
+      install_requires=[
+          'docassemble.gbls',
+          'aloe',
+          'selenium',
+      ],
       zip_safe=False,
       package_data=find_package_data(where='docassemble/juvenilesealing/', package='docassemble.juvenilesealing'),
      )
