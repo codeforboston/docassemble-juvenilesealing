@@ -1,0 +1,26 @@
+{
+  "name": "docassemble-juvenilesealing",
+  "version": "1.0.0",
+  "description": "This process should be easier for both petitioners themselves and\r legal professionals who hope to support petitioners. This tool\r is focused on MA.",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "puppeteer": "^2.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/niharikasingh/docassemble-juvenilesealing.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/niharikasingh/docassemble-juvenilesealing/issues"
+  },
+  "homepage": "https://github.com/niharikasingh/docassemble-juvenilesealing#readme"
+}
