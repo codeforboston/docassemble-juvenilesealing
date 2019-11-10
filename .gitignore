@@ -1,0 +1,5 @@
+venv/*
+tests/chromedriver
+*DS_Store*
+*pyc
+*__pycache__*
