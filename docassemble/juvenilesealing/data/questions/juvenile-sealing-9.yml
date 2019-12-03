@@ -31,10 +31,6 @@ default screen parts:
 default validation messages:
   multiple choice required: You have to pick one.
 ---
-comment: |
-  modules:
-  - .ProgressTracker
----
 include:
   # Using questions from other interviews
   # Has to be before flow code block to avoid circularity issues
@@ -70,6 +66,8 @@ code: |
   # --------------------
   unsure = None
   reason = ''
+  
+  progressor.set( progress_start_number )
 
   reason = open_case_reason.content
   if (has_NON_probation_open_cases is True): sorry_end
