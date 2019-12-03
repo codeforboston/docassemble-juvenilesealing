@@ -19,8 +19,8 @@ metadata:
       organization: Citizens for Juvenile Justice and Code for Boston
 ---
 features:
-  progress bar: True
-  question back button: True
+  #progress bar: True
+  #question back button: True
   labels above fields: True
   css: gbls-8.css
 ---
@@ -31,7 +31,8 @@ default screen parts:
 default validation messages:
   multiple choice required: You have to pick one.
 ---
-modules:
+comment: |
+  modules:
   - .ProgressTracker
 ---
 include:
@@ -51,11 +52,10 @@ comment: |
 objects:
   - applicant: Individual
 ---
-mandatory: True
 id: flow
 code: |
   # Testing
-  #partial_petition
+  #do_partial_petition
 
   # No 100% sure way of making sure a pro se user sees the warnings.
   # Has to use the right link. Better with combo forms.
@@ -69,13 +69,6 @@ code: |
   
   # --------------------
   unsure = None
-
-  progressor = ProgressTracker(11) # Manually assigns 10 pages
-  progressor.start()
-  
-  # Testing
-  #do_partial_petition
-
   reason = ''
 
   reason = open_case_reason.content
