@@ -11,6 +11,7 @@ metadata:
 ---
 features:
   question back button: True
+  progress bar: True
 #  Also maybe not needed for this first part and good to distinguish
 #  the two?
   css: gbls-8.css
@@ -28,24 +29,40 @@ comment: Using text strings that are shared between versions
 include:
   - juvenile-sealing-text-9.yml
 ---
+modules:
+  - .ProgressTracker
+---
 mandatory: True
 id: docket_flow_code
 code: |
+  progressor = ProgressTracker(16)
+  progressor.start()
+
   intro
   
   if ( has_ma_juv_record is False ):
     no_ma_records_end
   elif ( has_ma_juv_record is None ):
+    progressor.increment()  # 1
     if ( unsure_records_but_wants_to_try_sealing is False ):
       not_finishing_end
+  else:
+    progressor.increment()  # 1
+  
+  progressor.increment()  # 2
   
   needs_dockets = False
   if ( not have_docket_copies_already is True ):
+    progressor.increment()  # 3
     needs_dockets = True
     if ( have_docket_copies_already is None ):  # They don't know
       about_docket_sheets
     if ( wants_dockets_first is True ):
+      progressor.increment()  # 4
       not_finishing_end  # end
+  else:
+    progressor.increment()  # 3
+    progressor.increment()  # 4
 
   should_show_extra_info = True
   do_sealing_form
