@@ -1,0 +1,20 @@
+---
+comment: Common features and functionality useful for GBLS interviews
+---
+features:
+  progress bar: True
+  question back button: True
+  labels above fields: True
+  bootstrap theme: gbls-bootstrap-theme.css
+  css: gbls.css
+---
+default screen parts:
+  right: |
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,900&display=swap" rel="stylesheet">
+---
+default validation messages:
+  multiple choice required: You have to pick one.
+---
+modules:
+  - .ProgressTracker
+---
