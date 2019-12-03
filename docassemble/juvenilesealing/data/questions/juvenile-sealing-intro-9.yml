@@ -9,28 +9,15 @@ metadata:
     - name: Team
       organization: Citizens for Juvenile Justice and Code for Boston
 ---
-features:
-  question back button: True
-  progress bar: True
-#  Also maybe not needed for this first part and good to distinguish
-#  the two?
-  css: gbls-8.css
-#---
 #terms:
 #  docket sheets: |
 #    Can't use templates in terms, so that would make this
 #    harder to maintain. ${ docket_sheets_popover }
 ---
-default screen parts:
-  right: |
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,900&display=swap" rel="stylesheet">
----
 comment: Using text strings that are shared between versions
 include:
+  - gbls-setup-temp.yml
   - juvenile-sealing-text-9.yml
----
-modules:
-  - .ProgressTracker
 ---
 mandatory: True
 id: docket_flow_code
