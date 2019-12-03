@@ -14,9 +14,9 @@ metadata:
 #    Can't use templates in terms, so that would make this
 #    harder to maintain. ${ docket_sheets_popover }
 ---
-comment: Using text strings that are shared between versions
 include:
   - gbls-setup-temp.yml
+  # Using text strings that are shared between versions
   - juvenile-sealing-text-9.yml
 ---
 mandatory: True
@@ -52,6 +52,7 @@ code: |
     progressor.increment()  # 4
 
   should_show_extra_info = True
+  progress_start_number = progressor.get_step_number()
   do_sealing_form
 ---
 # DO NOT place above the 'flow' code block
