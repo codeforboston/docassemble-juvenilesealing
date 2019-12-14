@@ -1,0 +1,436 @@
+---
+comment: |
+  Pro se informational copy that shared between versions.
+---
+id: records_can_help_text
+template: records_can_help
+content: |
+  It will help to know about your criminal records in Massachusetts
+  and in other states. You won't get in trouble for getting
+  answers wrong, but it might be easier for you to give the
+  right answers if you have a copy of both your juvenile record,
+  and also your CORI report if you had cases in an adult court.
+  These reports will give a summary of all your criminal charges
+  in Massachusetts and tell you how each case ended.
+---
+id: about_records_intro_text
+template: about_records_intro
+content: |
+  These reports will give a summary of all your criminal charges
+  in Massachusetts and tell you how each case ended.
+---
+id: read_more_records_text
+template: read_more_records
+content: |
+  [Read more about getting your records...](${ url_action('about_getting_records') })
+---
+id: records_popover_text
+template: records_popover
+content: |
+  ${ about_records_intro } ${ read_more_records }
+---
+id: getting_cori_text
+template: getting_cori
+content: |
+  To ask for your online
+  adult CORI report, make an account at
+  [Massachusetts iCORI site ${external_link_icon}](https://icori.chs.state.ma.us/icori/ext/global/landing.action?page=1&bod=1566991096995&m=presentLanding).
+  It costs $25, but if you are low income you might be be able
+  to ask for a waiver of the fee so you don't have to pay it.
+# TODO: How do you waive the fee online? I saw it once, but don't remember
+# TODO: How to get federal records?
+---
+id: getting_juvenile_records_text
+template: getting_juvenile_records
+content: |
+  To ask for a free copy of your Massachusetts
+  juvenile record, see the
+  [GBLS juvenile record request document ${external_link_icon}](https://www.gbls.org/sites/default/files/juvenile_booklet_onelj.pdf).
+  It has a form to print and it tells you what to do.
+---
+id: out_of_state_records_text
+template: out_of_state_records
+content: |
+  If you want to get records from other states you'll
+  need to go to the websites for those states and
+  see if they have information about how you can request those
+  records. The
+  [clean slate clearing house ${external_link_icon}](https://cleanslateclearinghouse.org/states/)
+  might also be able to help you find out how to get those records.
+---
+id: getting_your_records
+# [text](${ url_action('about_getting_records') })
+field: about_getting_records
+question: About Getting Your Criminal Records
+subquestion: |
+  ${ about_records_intro }
+  
+  ${ getting_juvenile_records }
+  
+  ${ getting_cori }
+  
+  ${ out_of_state_records }
+
+continue button label: Keep going ${next_icon}  
+---
+id: read_more_docket_sheets_text
+template: read_more_docket_sheets
+content: |
+  [Read more about docket sheets...](${ url_action('about_docket_sheets') })
+---
+id: docket_sheets_blurb_text
+template: docket_sheets_blurb
+content: |
+  A docket sheet is different than a criminal record
+  report (called a CORI) or a juvenile record report.
+---
+id: docket_sheets_popover_text
+template: docket_sheets_popover
+content: |
+  ${ docket_sheets_blurb } ${ read_more_docket_sheets }
+---
+id: certified_copies_page_text_question
+field: about_docket_sheets
+# TODO: Are there courthouse instructions online for requesting
+#    docket sheets? A: No
+# [text](${ url_action('about_docket_sheets') })
+terms:
+  a copy of your Massachusetts criminal records: ${ records_popover }
+question: About Docket Sheets
+subquestion: |
+  ### What are docket sheets?
+
+  ${docket_sheets_blurb} Docket
+  sheets are papers from the courthouse that say
+  what happened in a case every time you went
+  to court for that case.
+  
+  ### What's different about a certified copy of the docket sheets?
+
+  A certified copy of the sheets
+  will have a special mark on it that looks like the
+  courthouse's seal. It'll either be a colored stamp or
+  an area where the paper is raised up in the shape of the
+  seal.
+
+  ### Why can sealing be a problem?
+
+  If you seal your records you won't be able to get
+  certified copies of your docket sheets until you
+  unseal them again. That can sometimes take a long time.
+  If you need to show your docket
+  sheets to a judge at a hearing or you apply for some
+  kinds of jobs, it might take too long to unseal your records
+  and get those docket sheets.
+
+  ## Getting certified copies
+
+  Having
+  {a copy of your Massachusetts criminal records}
+  can make it easier to make sure you get all your docket
+  sheets because they will have the docket numbers for
+  your cases. Every case has its own docket
+  sheets and those sheets are kept at the courthouse
+  that handled that case.
+  
+  ### Getting certified copies in person
+  
+  Getting copies in person is the easiest and fastest
+  way to do this. For each case, go to the clerk’s
+  office in the courthouse that handled the case and say,
+  "I'd like certified copies of my docket sheets
+  for all of my cases." You have to do it
+  at each courthouse where you had a case.
+
+  It can cost up to $2.50 for each page, but if you
+  can't afford to pay that much, you can ask,
+  "Can I get the fee waived?" The staff will probably
+  have you fill out a form called an
+  “affidavit of indigency” where you'll put down
+  how much you get paid. That's to show why you can't
+  afford to pay the fee.
+
+  ### Getting certified copies by mail
+  
+  Even though it's easier and faster to go in person,
+  you can also send a letter to ask for the docket
+  sheets. It can take two weeks or so. If you want
+  to order the sheets by mail, take
+  these steps:
+  
+  1. Call the courthouse that handled the case
+  and ask how much you need to pay the court to
+  print and mail the sheets.
+  1. Go to a post office to get a money order for that amount.
+  1. Write a letter that asks for the docket
+  sheets. An example of what it can look like is at
+  the bottom of this page.
+  1. Print that letter and sign it.
+  1. Put the letter and the money order in an envelope.
+  1. On the front of the envelope, write the courthouse's address.
+  1. Above that address, write *Attention: Criminal clerk's office*.
+  1. Write your own mailing address in the top left of the envelope.
+  1. Put a stamp on the envelope and mail it.
+
+  If you don't get anything back after two or three weeks, call
+  to find out how it's going.
+
+  ## An example of a letter to the courthouse
+
+  ${ today() }
+
+  Clerk’s Office[BR]
+  South Boston Division[BR]
+  Boston Municipal Court[BR]
+  535 East Broadway[BR]
+  South Boston, MA 02127
+
+  RE: Commonwealth v. Jane Doe[BR]
+  Docket no. 0902CR12345[BR]
+  Docket no. 1702CR98765432
+
+  Dear Staff:
+
+  Please send me certified copies of the docket sheets for my
+  criminal cases that are listed above. 
+
+  If you are not able to send me the certified copies
+  or you have any questions, please call me at
+  555-555-5555.
+
+  Thank you for your help.
+
+  Sincerely,
+
+  (You sign the letter here)
+
+  Jane Doe[BR]
+  0 Jump St., Apt. # 2[BR]
+  Boston, MA 02114
+
+continue button label: Keep going ${next_icon}
+---
+id: learn_more_sealing_text
+template: sealing_booklet_text
+content: |
+  Read more about sealing juvenile records from the
+  [GBLS 2019 booklet ${external_link_icon}](https://www.gbls.org/sites/default/files/2019-08/juvenile_booklet_august_2019F.pdf).
+---
+id: email_subject_text
+template: email_subject
+content: |
+  Form to Seal Records
+---
+id: subject_line_text
+template: subject_line
+content: |
+  The email's name will be
+  <strong>${email_subject}</strong>.
+---
+id: pdf_intro_text
+template: pdf_intro
+content: |
+  We think might be able to seal your
+  juvenile records and your petition is ready to print!
+---
+id: download_or_email_text
+template: download_or_email
+content: |
+  This kind of form is called a petition.
+  You can download it or you can email it to
+  yourself or someone else.
+---
+id: pdf_next_steps_start_text
+template: pdf_next_steps_start
+content: |
+  ## What should I do now?
+
+  Next you need to:
+  
+  1. Download it
+  1. Print it
+---
+id: pdf_next_steps_by_hand_text
+template: pdf_next_steps_by_hand
+content: |
+  1. Fill in your own information
+---
+id: pdf_next_steps_end_text
+template: pdf_next_steps_end
+content: |
+  1. Sign it in two places (where the arrows are)
+  1. Mail it. Remember to put your own address in
+  the top left of the envelope so they can send
+  information back to you. Mail it to:
+    
+  **Commissioner of Probation**[BR]
+  **One Ashburton Place, Room 405**[BR]
+  **Boston, MA 02108**
+---
+id: petition_instructions_after_text
+template: petition_instructions_after
+content: |
+  Once you mail it,
+  the Commissioner of Probation
+  will look at the petition you sent and at your criminal
+  records. They'll see if they agree that you can seal
+  your juvenile records.
+  
+  ## How will I know if my juvenile records are sealed?
+  
+  The Commissioner of Probation will send you a letter to
+  tell you what they decide. The letter will say which records
+  have been sealed. If some records aren't sealed, the letter
+  will tell you why they made that decision. It can take up to
+  3 months to get a letter because so many people send them
+  petitions to seal records.
+  
+  If the letter says your records are sealed, it can still
+  take about two weeks till your records are ready. Usually
+  it's faster. After that, most employers won't see
+  you have any record at all. Only employers that need federal
+  background checks will be able to see a note that you have
+  a sealed record. Other people, like police officers and judges,
+  will also be able to see a note that you have a sealed record.
+
+  If you get the letter back and don't agree with what they
+  said, you can call the Commissioner’s Office and ask
+  them to explain to you why they would not seal all your
+  records. The number is (617) 727 - 5300. You can also
+  [try to find legal help near you ${external_link_icon}](https://www.masslegalservices.org/findlegalaid).
+  Remember that not every area has someone that
+  can help with criminal records.
+---
+id: pdf_subquestion_text
+template: pdf_subquestion
+content: |
+  ${download_or_email} ${subject_line}
+---
+id: gbls_horizontal_line
+template: hr
+content: |
+  &#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;
+---
+id: pdf_after_download_full_text
+template: pdf_after_download_full
+content: |
+  ${hr}
+
+  ${pdf_next_steps_start}
+  ${pdf_next_steps_end}
+
+  ${petition_instructions_after}
+---
+id: pdf_after_download_partial_text
+template: pdf_after_download_partial
+content: |
+  ${hr}
+
+  ${pdf_next_steps_start}
+  ${pdf_next_steps_by_hand}
+  ${pdf_next_steps_end}
+
+  ${petition_instructions_after}
+---
+id: email_partial_text
+template: email_partial
+content: |
+  ${pdf_intro}
+
+  ${pdf_next_steps_start}
+  ${pdf_next_steps_by_hand}
+  ${pdf_next_steps_end}
+
+  ${petition_instructions_after}
+  
+  ## More Links
+
+  ${more_resources}
+---
+id: email_full_text
+template: email_full
+content: |
+  ${pdf_intro}
+
+  ${pdf_next_steps_start}
+  ${pdf_next_steps_end}
+
+  ${petition_instructions_after}
+  
+  ## More Links
+
+  ${more_resources}
+---
+id: more_resources_text
+template: more_resources
+content: |
+  Maybe you can find more help on these pages:
+ 
+  ## Information about dealing with criminal records
+
+  * A [GBLS booklet just about sealing juvenile records ${external_link_icon}](https://www.gbls.org/sites/default/files/2019-08/juvenile_booklet_august_2019F.pdf) that includes an example petition.
+  * About applying for jobs TODO: what's the link?
+  * Information about [criminal records and housing ${external_link_icon}](https://www.masslegalhelp.org/cori/housing)  on the Mass Legal Help site.
+  * [Marijuana case sealing or expungement ${external_link_icon}](https://www.gbls.org/sites/default/files/2019-05/booklet-7-seal-decriminalized-cannabis-cases-5119-f.pdf)
+  * A detailed GBLS ["Know Your Rights Booklet" ${external_link_icon}](https://www.gbls.org/sites/default/files/2019-04/know-your-cori-rights-041819.pdf) on many topics related to both sealing and expungement.
+  * A page with links to more GBLS information about [criminal record problems ${external_link_icon}](https://www.gbls.org/self-help/cori).
+
+  ## Legal help 
+
+  * [Try to find legal help in your area ${external_link_icon}](https://www.masslegalservices.org/findlegalaid). Remember that not every area has people who can help with criminal records.
+  
+  ## Other resources
+
+  * A page just about [finding housing ${external_link_icon}](https://www.masslegalhelp.org/housing/finding-housing) on the Mass Legal Help site.
+
+  ## Medical, mental health, and recovery support sites
+
+  * [https://www.alternativehomehealthcarellc.com/patient-resources ${external_link_icon}](https://www.alternativehomehealthcarellc.com/patient-resources)
+  * [https://www.cominghomedirectory.org/coming-home-category/physical-and-mental-health/ ${external_link_icon}](https://www.cominghomedirectory.org/coming-home-category/physical-and-mental-health/)
+  * [https://www.cominghomedirectory.org/coming-home-category/substance-use/ ${external_link_icon}](https://www.cominghomedirectory.org/coming-home-category/substance-use/)
+  
+  You can also search online for your local court self-help
+  centers, then ask them if there are ways they can help you.
+  Sometimes they can help you print things or help you find
+  forms or documents.
+
+comment: |
+  # TODO: get the other links
+  * A [GBLS booklet just about sealing juvenile records](https://www.gbls.org/sites/default/files/2019-08/juvenile_booklet_august_2019F.pdf) that includes an example petition
+  * [Try to find legal help in your area](https://www.masslegalservices.org/findlegalaid). Remember that not every area has people who can help with criminal records.
+  * More links to GBLS information about [criminal record problems](https://www.gbls.org/self-help/cori)
+  * A detailed GBLS ["Know Your Rights Booklet"](https://www.gbls.org/sites/default/files/2019-04/know-your-cori-rights-041819.pdf) on many topics related to sealing and expungement
+  * About applying for jobs TODO: what's the link?
+  * [Criminal records and housing](https://www.masslegalhelp.org/cori/housing)
+  * [Finding housing](https://www.masslegalhelp.org/housing/finding-housing)
+  * Medical, mental health, and recovery support sites:
+      * [https://www.alternativehomehealthcarellc.com/patient-resources](https://www.alternativehomehealthcarellc.com/patient-resources)
+      * [https://www.cominghomedirectory.org/coming-home-category/physical-and-mental-health/](https://www.cominghomedirectory.org/coming-home-category/physical-and-mental-health/)
+      * [https://www.cominghomedirectory.org/coming-home-category/substance-use/](https://www.cominghomedirectory.org/coming-home-category/substance-use/)
+  * [Marijuana case sealing and expungement](https://www.gbls.org/sites/default/files/2019-05/booklet-7-seal-decriminalized-cannabis-cases-5119-f.pdf)
+---
+id: next_icon
+template: next_icon
+content: |
+  <i class="fas fa-chevron-right"></i>
+---
+id: external_link_icon
+template: external_link_icon
+content: |
+  <i class="fas fa-external-link-alt"></i>
+---
+id: restart_text
+template: restart_text
+content: |
+  Restart <i class="fas fa-redo"></i>
+---
+id: exit_icon
+template: exit_icon
+content: |
+  <i class="fas fa-sign-out-alt"></i>
+---
+id: exit_text
+template: exit_text
+content: |
+  Exit ${exit_icon}
+---
