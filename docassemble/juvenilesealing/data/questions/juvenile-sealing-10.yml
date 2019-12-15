@@ -117,10 +117,6 @@ code: |
   #should_show_extra_info = True
   #needs_dockets = True
   
-  log( defined('should_show_extra_info'), 'console' )
-  log( 'is defined', 'console' )
-  log( should_show_extra_info, 'console' )
-  
   # Make sure they get a chance to order their docket sheets.
   if ( defined('should_show_extra_info') and should_show_extra_info is True ):
     if (will_write_personal_info):
@@ -431,7 +427,6 @@ code: |
 ---
 id: meta_utils
 code: |
-
   def log_me(message):
     log(message, 'console')
 ---
