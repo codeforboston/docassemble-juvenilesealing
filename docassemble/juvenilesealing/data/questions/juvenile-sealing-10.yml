@@ -7,17 +7,6 @@ comment: |
 
   TODOs: see sealing-todo.yml
 ---
-metadata:
-  title: |
-    Juvenile Sealing
-  short title: |
-    Juvenile Sealing
-  subtitle: |
-    Version 10
-  authors:
-    - name: Team
-      organization: Citizens for Juvenile Justice and Code for Boston
----
 features:
   #progress bar: True
   #question back button: True
