@@ -42,8 +42,11 @@ code: |
   # Testing
   #do_partial_petition
 
+  # KEEP THESE NOTES
   # No 100% sure way of making sure a pro se user sees the warnings.
   # Has to use the right link. Better with combo forms.
+  
+  # THIS SHOULD BE REMOVABLE NOW
   if ( not defined( 'should_show_extra_info' )):
     should_show_extra_info = False
     needs_dockets = False
@@ -53,6 +56,8 @@ code: |
         needs_dockets = True
   
   # --------------------
+  isEligibile = False
+
   unsure = None
   reason = ''
   
@@ -93,9 +98,19 @@ code: |
   elif (incarcerated_in_past_3_years is unsure): check_unsure
   progressor.increment()  # 7
   
+  if (
+         has_NON_probation_open_cases           is False
+         and is_on_probation                    is False
+         and juvenile_cases_in_past_3_years     is False
+         and juvenile_custody_in_past_3_years   is False
+         and convicted_in_past_3_years_states   is False
+         and convicted_in_past_3_years_federal  is False
+         and incarcerated_in_past_3_years       is False
+     ):
+      isEligible = True
 
   # --------------------
-  # If they got here they're eligible!
+  # Eligibility questions over. They may or may not be eligible.
   # --------------------
   
   # Testing
