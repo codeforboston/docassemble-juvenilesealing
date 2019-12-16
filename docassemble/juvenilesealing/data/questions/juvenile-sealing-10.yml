@@ -118,7 +118,7 @@ code: |
   #needs_dockets = True
   
   # Make sure they get a chance to order their docket sheets.
-  if ( defined('should_show_extra_info') and should_show_extra_info is True ):
+  if ( should_show_extra_info is True ):
     if (will_write_personal_info):
       progressor.increment()  # 8
       progressor.increment()  # 9
@@ -239,11 +239,18 @@ yesnomaybe: incarcerated_in_past_3_years
 ---
 id: eligible
 field: will_write_personal_info
-question: You Might Be Able to Seal Your Records!
+question: You Might Be Able to Seal Your Records
 subquestion: |
-  We think you can probably seal your juvenile records.
+  #  % if ( isEligible is True ):
+  #  We think you can probably seal your juvenile records.
+  #  % endif
 
-  % if (needs_dockets):
+  #  % if ( isEligible is False ):
+  #  We think you probably will not be able seal your
+  #  juvenile records, but you can still try.
+  #  % endif
+
+  % if ( needs_dockets ):
   **You can also still see how to get a certified copy of the
   {docket sheets} for all of your cases**.
   It can take a while, but
