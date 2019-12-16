@@ -89,8 +89,9 @@ fields:
     datatype: ssn  # Will attach the CustomDataType attributes
     validate: is_valid_ssn
   - Date of birth: x.birthdate
-    datatype: dob  # Will attach the CustomDataType attributes
-    validate: is_valid_dob
+    datatype: date
+    #datatype: dob  # Will attach the CustomDataType attributes
+    #validate: is_valid_dob
   - Place of birth: x.place_of_birth
   - Alias/maiden name/previous name: x.alias
     required: False
