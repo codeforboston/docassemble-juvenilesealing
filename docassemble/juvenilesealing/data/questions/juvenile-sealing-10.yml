@@ -7,19 +7,6 @@ comment: |
 
   TODOs: see sealing-todo.yml
 ---
-features:
-  #progress bar: True
-  #question back button: True
-  labels above fields: True
-  css: gbls-8.css
----
-default screen parts:
-  right: |
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,900&display=swap" rel="stylesheet">
----
-default validation messages:
-  multiple choice required: You have to pick one.
----
 include:
   # Using questions from other interviews
   # Has to be before flow code block to avoid circularity issues
