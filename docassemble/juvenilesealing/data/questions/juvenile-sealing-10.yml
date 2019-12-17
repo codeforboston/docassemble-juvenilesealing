@@ -43,7 +43,7 @@ code: |
         needs_dockets = True
   
   # --------------------
-  isEligibile = False
+  isEligible = False
 
   unsure = None
   reason = ''
@@ -228,14 +228,14 @@ id: eligible
 field: will_write_personal_info
 question: You Might Be Able to Seal Your Records
 subquestion: |
-  #  % if ( isEligible is True ):
-  #  We think you can probably seal your juvenile records.
-  #  % endif
+  % if ( isEligible is True ):
+  We think you can probably seal your juvenile records.
+  % endif
 
-  #  % if ( isEligible is False ):
-  #  We think you probably will not be able seal your
-  #  juvenile records, but you can still try.
-  #  % endif
+  % if ( isEligible is False ):
+  We think you probably will not be able seal your
+  juvenile records, but you can still try.
+  % endif
 
   % if ( needs_dockets ):
   **You can also still see how to get a certified copy of the
