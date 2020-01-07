@@ -220,7 +220,7 @@ yesnomaybe: convicted_in_past_3_years_federal
 id: adult_incarceration
 question: Adult Cases - Incarceration
 subquestion: |
-  Were you in incarceration in the USA on or after
+  Were you incarcerated in the USA on or after
   ${ today().minus(years=3) }?
 yesnomaybe: incarcerated_in_past_3_years
 ---
