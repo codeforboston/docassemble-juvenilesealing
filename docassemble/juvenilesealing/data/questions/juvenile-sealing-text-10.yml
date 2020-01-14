@@ -64,14 +64,14 @@ field: about_getting_records
 question: About Getting Your Criminal Records
 subquestion: |
   ${ about_records_intro }
-  
+
   ${ getting_juvenile_records }
-  
+
   ${ getting_cori }
-  
+
   ${ out_of_state_records }
 
-continue button label: Keep going ${next_icon}  
+continue button label: Keep going ${next_icon}
 ---
 id: read_more_docket_sheets_text
 template: read_more_docket_sheets
@@ -96,32 +96,8 @@ field: about_docket_sheets
 # [text](${ url_action('about_docket_sheets') })
 terms:
   a copy of your Massachusetts criminal records: ${ records_popover }
-question: About Docket Sheets
+question: How to Get Docket Sheets
 subquestion: |
-  ### What are docket sheets?
-
-  ${docket_sheets_blurb} Docket
-  sheets are papers from the courthouse that say
-  what happened in a case every time you went
-  to court for that case.
-  
-  ### What's different about a certified copy of the docket sheets?
-
-  A certified copy of the sheets
-  will have a special mark on it that looks like the
-  courthouse's seal. It'll either be a colored stamp or
-  an area where the paper is raised up in the shape of the
-  seal.
-
-  ### Why can sealing be a problem?
-
-  If you seal your records you won't be able to get
-  certified copies of your docket sheets until you
-  unseal them again. That can sometimes take a long time.
-  If you need to show your docket
-  sheets to a judge at a hearing or you apply for some
-  kinds of jobs, it might take too long to unseal your records
-  and get those docket sheets.
 
   ## Getting certified copies
 
@@ -132,9 +108,9 @@ subquestion: |
   your cases. Every case has its own docket
   sheets and those sheets are kept at the courthouse
   that handled that case.
-  
+
   ### Getting certified copies in person
-  
+
   Getting copies in person is the easiest and fastest
   way to do this. For each case, go to the clerk’s
   office in the courthouse that handled the case and say,
@@ -151,13 +127,13 @@ subquestion: |
   afford to pay the fee.
 
   ### Getting certified copies by mail
-  
+
   Even though it's easier and faster to go in person,
   you can also send a letter to ask for the docket
   sheets. It can take two weeks or so. If you want
   to order the sheets by mail, take
   these steps:
-  
+
   1. Call the courthouse that handled the case
   and ask how much you need to pay the court to
   print and mail the sheets.
@@ -192,7 +168,7 @@ subquestion: |
   Dear Staff:
 
   Please send me certified copies of the docket sheets for my
-  criminal cases that are listed above. 
+  criminal cases that are listed above.
 
   If you are not able to send me the certified copies
   or you have any questions, please call me at
@@ -208,7 +184,7 @@ subquestion: |
   0 Jump St., Apt. # 2[BR]
   Boston, MA 02114
 
-continue button label: Keep going ${next_icon}
+continue button label: Continue ${next_icon}
 ---
 id: learn_more_sealing_text
 template: sealing_booklet_text
@@ -246,7 +222,7 @@ content: |
   ## What should I do now?
 
   Next you need to:
-  
+
   1. Download it
   1. Print it
 ---
@@ -262,7 +238,7 @@ content: |
   1. Mail it. Remember to put your own address in
   the top left of the envelope so they can send
   information back to you. Mail it to:
-    
+
   **Commissioner of Probation**[BR]
   **One Ashburton Place, Room 405**[BR]
   **Boston, MA 02108**
@@ -275,16 +251,16 @@ content: |
   will look at the petition you sent and at your criminal
   records. They'll see if they agree that you can seal
   your juvenile records.
-  
+
   ## How will I know if my juvenile records are sealed?
-  
+
   The Commissioner of Probation will send you a letter to
   tell you what they decide. The letter will say which records
   have been sealed. If some records aren't sealed, the letter
   will tell you why they made that decision. It can take up to
   3 months to get a letter because so many people send them
   petitions to seal records.
-  
+
   If the letter says your records are sealed, it can still
   take about two weeks till your records are ready. Usually
   it's faster. After that, most employers won't see
@@ -342,7 +318,7 @@ content: |
   ${pdf_next_steps_end}
 
   ${petition_instructions_after}
-  
+
   ## More Links
 
   ${more_resources}
@@ -356,7 +332,7 @@ content: |
   ${pdf_next_steps_end}
 
   ${petition_instructions_after}
-  
+
   ## More Links
 
   ${more_resources}
@@ -365,7 +341,7 @@ id: more_resources_text
 template: more_resources
 content: |
   Maybe you can find more help on these pages:
- 
+
   ## Information about dealing with criminal records
 
   * A [GBLS booklet just about sealing juvenile records ${external_link_icon}](https://www.gbls.org/sites/default/files/2019-08/juvenile_booklet_august_2019F.pdf) that includes an example petition.
@@ -375,10 +351,10 @@ content: |
   * A detailed GBLS ["Know Your Rights Booklet" ${external_link_icon}](https://www.gbls.org/sites/default/files/2019-04/know-your-cori-rights-041819.pdf) on many topics related to both sealing and expungement.
   * A page with links to more GBLS information about [criminal record problems ${external_link_icon}](https://www.gbls.org/self-help/cori).
 
-  ## Legal help 
+  ## Legal help
 
   * [Try to find legal help in your area ${external_link_icon}](https://www.masslegalservices.org/findlegalaid). Remember that not every area has people who can help with criminal records.
-  
+
   ## Other resources
 
   * A page just about [finding housing ${external_link_icon}](https://www.masslegalhelp.org/housing/finding-housing) on the Mass Legal Help site.
@@ -388,7 +364,7 @@ content: |
   * [https://www.alternativehomehealthcarellc.com/patient-resources ${external_link_icon}](https://www.alternativehomehealthcarellc.com/patient-resources)
   * [https://www.cominghomedirectory.org/coming-home-category/physical-and-mental-health/ ${external_link_icon}](https://www.cominghomedirectory.org/coming-home-category/physical-and-mental-health/)
   * [https://www.cominghomedirectory.org/coming-home-category/substance-use/ ${external_link_icon}](https://www.cominghomedirectory.org/coming-home-category/substance-use/)
-  
+
   You can also search online for your local court self-help
   centers, then ask them if there are ways they can help you.
   Sometimes they can help you print things or help you find
