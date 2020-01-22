@@ -46,7 +46,7 @@ code: |
     # If user wants to see docket sheet instructions
     if ( wants_dockets_first is True ):
       # User has not seen docket sheet instructions yet
-      if ( not about_docket_sheets is True ):
+      if ( not request_docket_sheets is True ):
         certified_copies_page_text_question
       # User has seen docket sheet instructions, so take them to the end
       else:
@@ -172,6 +172,11 @@ subquestion: |
   There are times when it is important to have certified copies of
   your docket sheets for all your cases.
 
+  If you seal your records you won't be able to get
+  certified copies of your docket sheets until you
+  unseal them again. Unsealing your records can
+  take a long time.
+
   If you're not a US citizen, it can be very important to have
   the copies for a hearing. It
   would be a good idea to talk to a lawyer before you seal
@@ -193,16 +198,6 @@ subquestion: |
   sheets are papers from the courthouse that say
   what happened in a case every time you went
   to court for that case.
-
-  ### Why can sealing be a problem?
-
-  If you seal your records you won't be able to get
-  certified copies of your docket sheets until you
-  unseal them again. That can sometimes take a long time.
-  If you need to show your docket
-  sheets to a judge at a hearing or you apply for some
-  kinds of jobs, it might take too long to unseal your records
-  and get those docket sheets.
 
   ### What's a certified copy of docket sheets?
 

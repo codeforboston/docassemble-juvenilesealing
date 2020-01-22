@@ -76,7 +76,7 @@ continue button label: Keep going ${next_icon}
 id: read_more_docket_sheets_text
 template: read_more_docket_sheets
 content: |
-  [Read more about docket sheets...](${ url_action('about_docket_sheets') })
+  [Read more about docket sheets...](${ url_action('wants_dockets_first') })
 ---
 id: docket_sheets_blurb_text
 template: docket_sheets_blurb
@@ -90,10 +90,10 @@ content: |
   ${ docket_sheets_blurb } ${ read_more_docket_sheets }
 ---
 id: certified_copies_page_text_question
-field: about_docket_sheets
+field: request_docket_sheets
 # TODO: Are there courthouse instructions online for requesting
 #    docket sheets? A: No
-# [text](${ url_action('about_docket_sheets') })
+# [text](${ url_action('request_docket_sheets') })
 terms:
   a copy of your Massachusetts criminal records: ${ records_popover }
 question: How to Get Docket Sheets
@@ -184,7 +184,7 @@ subquestion: |
   0 Jump St., Apt. # 2[BR]
   Boston, MA 02114
 
-continue button label: Continue ${next_icon}
+continue button label: Keep going ${next_icon}
 ---
 id: learn_more_sealing_text
 template: sealing_booklet_text
