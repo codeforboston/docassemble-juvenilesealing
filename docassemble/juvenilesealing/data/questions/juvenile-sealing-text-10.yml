@@ -96,6 +96,7 @@ field: about_docket_sheets
 # [text](${ url_action('about_docket_sheets') })
 terms:
   a copy of your Massachusetts criminal records: ${ records_popover }
+  your Massachusetts CORI report and on your juvenile records: ${ records_popover }
 question: About Docket Sheets
 subquestion: |
   ### What are docket sheets?
@@ -119,19 +120,18 @@ subquestion: |
   certified copies of your docket sheets until you
   unseal them again. That can sometimes take a long time.
   If you need to show your docket
-  sheets to a judge at a hearing or you apply for some
-  kinds of jobs, it might take too long to unseal your records
+  sheets to a judge at an immigration hearing or if you
+  apply for some kinds of jobs, it might take too long
+  to unseal your records
   and get those docket sheets.
 
   ## Getting certified copies
 
-  Having
-  {a copy of your Massachusetts criminal records}
-  can make it easier to make sure you get all your docket
-  sheets because they will have the docket numbers for
-  your cases. Every case has its own docket
-  sheets and those sheets are kept at the courthouse
-  that handled that case.
+  Docket sheets for a case are kept at the courthouse
+  that handled that case. To get docket sheets for a
+  case, you might need to know the docket number of
+  that case. You can find those docket numbers on 
+  {your Massachusetts CORI report and on your juvenile records}.
   
   ### Getting certified copies in person
   
@@ -140,21 +140,23 @@ subquestion: |
   office in the courthouse that handled the case and say,
   "I'd like certified copies of my docket sheets
   for all of my cases." You have to do it
-  at each courthouse where you had a case.
+  at each courthouse where you had a case. You might need
+  to know the docket numbers of your cases.
 
-  It can cost up to $2.50 for each page, but if you
-  can't afford to pay that much, you can ask,
-  "Can I get the fee waived?" The staff will probably
-  have you fill out a form called an
-  “affidavit of indigency” where you'll put down
-  how much you get paid. That's to show why you can't
-  afford to pay the fee.
+  It can cost up to $2.50 for each page
+  that they have to print, but if you
+  can't afford to pay that much, you can say, "I'd like
+  to fill out an affidavit of indigency to waive the fee."
+  The staff should then give you a form to fill out.
+  You will write down how much you get paid on that form
+  to show why you can’t afford to pay the fee.
 
   ### Getting certified copies by mail
   
   Even though it's easier and faster to go in person,
   you can also send a letter to ask for the docket
-  sheets. It can take two weeks or so. If you want
+  sheets. It can take two weeks or so. You will need
+  to know the docket number of your cases. If you want
   to order the sheets by mail, take
   these steps:
   
@@ -167,13 +169,23 @@ subquestion: |
   the bottom of this page.
   1. Print that letter and sign it.
   1. Put the letter and the money order in an envelope.
-  1. On the front of the envelope, write the courthouse's address.
-  1. Above that address, write *Attention: Criminal clerk's office*.
+  1. On the front of the envelope, write the courthouse’s name and address.
+  1. Above that address, write *Attention: Criminal clerk's office*. See an example of that below.
   1. Write your own mailing address in the top left of the envelope.
   1. Put a stamp on the envelope and mail it.
 
-  If you don't get anything back after two or three weeks, call
-  to find out how it's going.
+  If you don't get anything back after two or three weeks,
+  call the clerk's office. Tell them, "I mailed a request
+  for my docket sheets. Can you help me find out when I'll
+  get those?"
+
+  ## An example of the address on an envelope
+  
+  Attention: Criminal clerk’s office[BR]
+  South Boston Division[BR]
+  Boston Municipal Court[BR]
+  535 East Broadway[BR]
+  South Boston, MA 02127
 
   ## An example of a letter to the courthouse
 
@@ -288,10 +300,9 @@ content: |
   If the letter says your records are sealed, it can still
   take about two weeks till your records are ready. Usually
   it's faster. After that, most employers won't see
-  you have any record at all. Only employers that need federal
-  background checks will be able to see a note that you have
-  a sealed record. Other people, like police officers and judges,
-  will also be able to see a note that you have a sealed record.
+  you have any record at all. Only employers who do federal
+  background checks and people like police will be able to see
+  your criminal record.
 
   If you get the letter back and don't agree with what they
   said, you can call the Commissioner’s Office and ask
