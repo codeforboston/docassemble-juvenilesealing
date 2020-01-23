@@ -40,13 +40,13 @@ code: |
 
   needs_dockets = False
   # If user doesn't answer yes for docket sheets, show user the docket sheet description
-  if ( not have_docket_copies_already is True ):
+  if ( not have_docket_copies_already ):
     progressor.increment()  # 3
     needs_dockets = True
     # If user wants to see docket sheet instructions
-    if ( wants_dockets_first is True ):
+    if ( wants_dockets_first ):
       # User has not seen docket sheet instructions yet
-      if ( not request_docket_sheets is True ):
+      if ( not request_docket_sheets ):
         certified_copies_page_text_question
       # User has seen docket sheet instructions, so take them to the end
       else:
