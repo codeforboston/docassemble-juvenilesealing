@@ -25,5 +25,3 @@ Scenario: Qualify for sealing and elect to finish by hand
     Then I click the button "Continue"
     Then I should see the phrase "We hope we were able to help a little."
 
-
-
