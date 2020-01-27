@@ -43,7 +43,7 @@ def find_package_data(where='.', package='', exclude=standard_exclude, exclude_d
     return out
 
 setup(name='docassemble.juvenilesealing',
-      version='0.0.115',
+      version='0.0.116',
       description=('A docassemble extension for sealing juvenile records.'),
       long_description='To get tests to run, you need to download chromedriver from https://sites.google.com/a/chromium.org/chromedriver/ and put it in `tests/`\r\nYou also need to `pip3 install aloe selenium certifi`\r\n\r\nTo run [a feature test](https://docassemble.org/docs/development.html#bdd):\r\n```\r\ncd tests\r\naloe features/hello_world.feature\r\n```',
       long_description_content_type='text/markdown',
