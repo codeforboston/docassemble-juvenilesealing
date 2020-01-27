@@ -47,7 +47,7 @@ code: |
     if ( wants_dockets_first ):
       # User has not seen docket sheet instructions yet
       if ( not request_docket_sheets ):
-        certified_copies_page_text_question
+        request_docket_sheets
       # User has seen docket sheet instructions, so take them to the end
       else:
         progressor.increment()  # 4
@@ -151,6 +151,7 @@ buttons:
 ---
 id: do_you_have_sheets
 question: ''
+undefine: wants_dockets_first
 subquestion: |
   Do you already have certified copies of the
   {docket sheets}
