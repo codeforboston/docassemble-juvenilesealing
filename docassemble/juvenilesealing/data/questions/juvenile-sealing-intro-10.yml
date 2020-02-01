@@ -44,14 +44,9 @@ code: |
     progressor.increment()  # 3
     needs_dockets = True
     # If user wants to see docket sheet instructions
-    if ( wants_dockets_first ):
-      # User has not seen docket sheet instructions yet
-      if ( not request_docket_sheets ):
-        request_docket_sheets
-      # User has seen docket sheet instructions, so take them to the end
-      else:
-        progressor.increment()  # 4
-        not_finishing_end  # end
+    if ( wants_dockets_first and request_docket_sheets ):
+      progressor.increment()  # 4
+      not_finishing_end  # end
 
   else:
     progressor.increment()  # 3

@@ -109,8 +109,6 @@ subquestion: |
   sheets and those sheets are kept at the courthouse
   that handled that case.
 
-  ## Getting certified copies
-
   Docket sheets for a case are kept at the courthouse
   that handled that case. To get docket sheets for a
   case, you might need to know the docket number of
@@ -153,7 +151,7 @@ subquestion: |
   for my docket sheets. Can you help me find out when I'll
   get those?"
 
-  ## An example of the address on an envelope
+  ### An example of the address on an envelope
 
   Attention: Criminal clerk’s office[BR]
   South Boston Division[BR]
@@ -161,7 +159,7 @@ subquestion: |
   535 East Broadway[BR]
   South Boston, MA 02127
 
-  ## An example of a letter to the courthouse
+  ### An example of a letter to the courthouse
 
   ${ today() }
 
@@ -194,7 +192,9 @@ subquestion: |
   0 Jump St., Apt. # 2[BR]
   Boston, MA 02114
 
-continue button label: Keep going ${next_icon}
+buttons:
+  - I will come back to the quiz after ordering my docket sheets ${exit_icon}: True
+  - I want to keep going with the quiz ${next_icon}: False
 ---
 id: learn_more_sealing_text
 template: sealing_booklet_text
