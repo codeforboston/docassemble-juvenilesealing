@@ -97,10 +97,8 @@ field: request_docket_sheets
 terms:
   a copy of your Massachusetts criminal records: ${ records_popover }
   your Massachusetts CORI report and on your juvenile records: ${ records_popover }
-question: How to Get Docket Sheets
+question: How to Get Certified Docket Sheets
 subquestion: |
-  ## Getting certified copies
-
   Having
   {a copy of your Massachusetts criminal records}
   can make it easier to make sure you get all your docket
@@ -114,6 +112,16 @@ subquestion: |
   case, you might need to know the docket number of
   that case. You can find those docket numbers on
   {your Massachusetts CORI report and on your juvenile records}.
+
+  ### Getting certified copies in person
+
+  Getting copies in person is the easiest and fastest
+  way to do this. For each case, go to the clerk’s
+  office in the courthouse that handled the case and say,
+  "I'd like certified copies of my docket sheets
+  for all of my cases." You have to do it
+  at each courthouse where you had a case. You might need
+  to know the docket numbers of your cases.
 
   It can cost up to $2.50 for each page
   that they have to print, but if you
