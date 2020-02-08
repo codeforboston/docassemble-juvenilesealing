@@ -36,15 +36,14 @@ is focused on MA.
 1. No access to printers.
 1. Which vocabulary will they find familiar?
 
-**We want users to be at the table for this work.**
+**User research needs to play a large role in the design of this tool.**
 
 This tool is made with [Docassemble](https://github.com/jhpyle/docassemble).
 
 ## Testing
 
-To get tests to run, you need to:
-1. Download chromedriver from https://sites.google.com/a/chromium.org/chromedriver/ and put it in `tests/`
-2. `pip3 install aloe selenium certifi`
+To get tests to run, you need to download chromedriver from https://sites.google.com/a/chromium.org/chromedriver/ and put it in `tests/`
+You also need to `pip3 install aloe selenium certifi`
 
 To run [a feature test](https://docassemble.org/docs/development.html#bdd):
 ```
