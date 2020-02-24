@@ -1,0 +1,232 @@
+metadata:
+  title: |
+    Juvenile Sealing
+  short title: |
+    Juvenile Sealing Intro
+  subtitle: |
+    Version 10
+  authors:
+    - name: Team
+      organization: Citizens for Juvenile Justice and Code for Boston
+---
+#terms:
+#  docket sheets: |
+#    Can't use templates in terms, so that would make this
+#    harder to maintain. ${ docket_sheets_popover }
+---
+include:
+  - gbls-setup-temp.yml
+  # Using text strings that are shared between versions
+  - juvenile-sealing-text-10.yml
+---
+mandatory: True
+id: docket_flow_code
+code: |
+  progressor = ProgressTracker(16)
+  progressor.start()
+
+  intro
+
+  if ( has_ma_juv_record is False ):
+    no_ma_records_end
+  elif ( has_ma_juv_record is None ):
+    progressor.increment()  # 1
+    if ( unsure_records_but_wants_to_try_sealing is False ):
+      not_finishing_end
+  else:
+    progressor.increment()  # 1
+
+  progressor.increment()  # 2
+
+  needs_dockets = False
+  # If user doesn't answer yes for docket sheets, show user the docket sheet description
+  if ( not have_docket_copies_already ):
+    progressor.increment()  # 3
+    needs_dockets = True
+    # If user wants to see docket sheet instructions
+    if ( wants_dockets_first and request_docket_sheets ):
+      progressor.increment()  # 4
+      not_finishing_end  # end
+
+  else:
+    progressor.increment()  # 3
+    progressor.increment()  # 4
+
+  should_show_extra_info = True
+  progress_start_number = progressor.get_step_number()
+  do_sealing_form
+---
+# DO NOT place above the 'flow' code block
+# Will run in the place it appears in the code flow
+include:
+  - juvenile-sealing-10.yml
+---
+id: intro
+field: intro
+question: Can You Seal Your Massachusetts Juvenile Records?
+subquestion: |
+
+  Sealing your juvenile record means that most
+  employers won't be able to see that it
+  exists. Only employers who do federal background checks and
+  people like police will be able to see your criminal record.
+
+  To see if you can try to seal your records, we will:
+
+  1. Find out if there's a reason you **shouldn't** seal your records.
+  1. Ask questions about your old and open cases.
+  1. Tell you if we think you can seal your records.
+
+  Then you can get your form right away or let us help
+  you fill in the other parts too.
+
+  ### Time
+
+  It can take up to **40 minutes** to answer all the questions,
+  though it's usually less.
+
+  ### What you need
+
+  You need to know about your closed cases and open cases.
+  That includes cases in other states and federal cases.
+  Having {a copy of your criminal records}
+  can help you know the answers to the questions.
+
+  ### Privacy
+
+  If we need to store anything about your identity
+  we will ask you first.
+
+  <br/>
+
+  **Note:** Whenever we say USA
+  that includes United States
+  possessions (like Guam).
+
+continue button label: Next ${next_icon}
+
+under: |
+  Read more about sealing juvenile records in the
+  [GBLS 2019 booklet ${external_link_icon}](https://www.gbls.org/sites/default/files/2019-08/juvenile_booklet_august_2019F.pdf).
+
+terms:
+  a copy of your criminal records: ${ records_popover }
+---
+id: in_ma
+question: ''
+subquestion: |
+  These questions are for sealing **Massachusetts** juvenile
+  records. Do you have a juvenile record in Massachusetts?
+yesnomaybe: has_ma_juv_record
+---
+id: unsure_of_ma_records
+question: ''
+subquestion: |
+  You can find out if you have a juvenile record in Massachusetts
+  by ordering a copy of it.
+
+  ${getting_juvenile_records}
+
+  Do you still want to see if you can try to seal your records?
+yesno: unsure_records_but_wants_to_try_sealing
+---
+id: no_ma_records_end
+event: no_ma_records_end
+progress: 100
+question: |
+  Thank you and sorry we couldn't help
+subquestion: |
+  This tool can only help with sealing **juvenile records
+  in Massachusetts**.
+
+  ${more_resources}
+buttons:
+  - Exit ${exit_icon}: exit
+  - ${restart_text}: restart
+---
+id: do_you_have_sheets
+question: ''
+undefine: wants_dockets_first
+subquestion: |
+  Do you already have certified copies of the
+  {docket sheets}
+  for all of your juvenile cases?
+
+  **Note:** A docket sheet is different than a criminal
+  record report (called a CORI) or juvenile record report.
+terms:
+  # Templates in terms work in questions
+  docket sheets: |
+    ${ docket_sheets_popover }
+yesnomaybe: have_docket_copies_already
+---
+id: docket_warning
+field: wants_dockets_first
+question: Why Get Docket Sheets?
+subquestion: |
+  There are times when it is important to have certified copies of
+  your docket sheets for all your cases.
+
+  If you seal your records you won't be able to get
+  certified copies of your docket sheets until you
+  unseal them again. Unsealing your records can
+  take a long time.
+
+  If you're not a US citizen, it can be very important to have
+  the copies for a hearing, like an immigration hearing. It is
+  a good idea  to a lawyer before you seal
+  your records.
+
+  Certified copies of your docket sheets can also help for:
+
+  * Getting jobs that need a federal background check
+  * Applying for some government programs
+  * Taking legal action related to your arrest or the case (like suing someone)
+  * Whenever you need to prove what happened in the case
+
+  Once you seal your records, you'll have to unseal them to get
+  certified copies. That can sometimes take a while.
+
+  ### What are docket sheets?
+
+  ${docket_sheets_blurb} Docket
+  sheets are papers from the courthouse that say
+  what happened in a case every time you went
+  to court for that case.
+
+  ### What's a certified copy of docket sheets?
+
+  A certified copy of docket sheets
+  will have a special mark on it that looks like the
+  courthouse's seal. It'll either be a colored stamp or
+  an area where the paper is raised up in the shape of the
+  seal.
+
+  Do you want to get certified copies of your docket sheets before
+  filling out the form to seal your records?
+
+buttons:
+  - Yes, show me how to get my certified docket sheets ${exit_icon}: True
+  - No, I want to keep going ${next_icon}: False
+---
+id: end_without_finishing
+event: not_finishing_end
+progress: 100
+question: Thank you for coming
+subquestion: |
+  We hope we could help a little.
+
+  ${more_resources}
+buttons:
+  - Exit ${exit_icon}: exit
+  - ${restart_text}: restart
+---
+id: placeholder_for_form
+event: placeholder_for_form
+progress: 100
+question: ''
+subquestion: |
+  This would go straight to the form now
+buttons:
+  - ${restart_text}: restart
+---
