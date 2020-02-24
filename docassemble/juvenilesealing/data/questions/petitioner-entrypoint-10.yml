@@ -18,6 +18,7 @@ include:
   - gbls-setup-temp.yml
   # Using text strings that are shared between versions
   - juvenile-sealing-text-10.yml
+  - shared-content.yml
 ---
 mandatory: True
 id: docket_flow_code
