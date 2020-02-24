@@ -76,22 +76,6 @@ subquestion: |
 
 continue button label: Keep going ${next_icon}
 ---
-id: read_more_docket_sheets_text
-template: read_more_docket_sheets
-content: |
-  [Read more about docket sheets...](${ url_action('wants_dockets_first') })
----
-id: docket_sheets_blurb_text
-template: docket_sheets_blurb
-content: |
-  A docket sheet is different than a criminal record
-  report (called a CORI) or a juvenile record report.
----
-id: docket_sheets_popover_text
-template: docket_sheets_popover
-content: |
-  ${ docket_sheets_blurb } ${ read_more_docket_sheets }
----
 id: certified_copies_page_text_question
 field: request_docket_sheets
 # TODO: Are there courthouse instructions online for requesting
