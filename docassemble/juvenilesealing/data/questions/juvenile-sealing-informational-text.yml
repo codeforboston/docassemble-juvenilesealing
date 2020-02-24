@@ -621,26 +621,31 @@ comment: |
       * [https://www.cominghomedirectory.org/coming-home-category/substance-use/](https://www.cominghomedirectory.org/coming-home-category/substance-use/)
   * [Marijuana case sealing and expungement](https://www.gbls.org/sites/default/files/2019-05/booklet-7-seal-decriminalized-cannabis-cases-5119-f.pdf)
 ---
+# added to shared-content.yml
 id: next_icon
 template: next_icon
 content: |
   <i class="fas fa-chevron-right"></i>
 ---
+# added to shared-content.yml
 id: external_link_icon
 template: external_link_icon
 content: |
   <i class="fas fa-external-link-alt"></i>
 ---
+# added to shared-content.yml
 id: restart_text
 template: restart_text
 content: |
   Restart <i class="fas fa-redo"></i>
 ---
+# added to shared-content.yml
 id: exit_icon
 template: exit_icon
 content: |
   <i class="fas fa-sign-out-alt"></i>
 ---
+# added to shared-content.yml
 id: exit_text
 template: exit_text
 content: |
