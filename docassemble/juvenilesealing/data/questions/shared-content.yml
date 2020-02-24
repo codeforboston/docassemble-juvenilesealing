@@ -4,6 +4,9 @@ comment: |
   Can't change references in files yet because
   those files are being replaced with other files.
 ---
+comment: |
+  Section: Certified docket sheets stuff
+---
 id: docket_sheets_popover_text
 template: docket_sheets_popover
 content: |
@@ -19,6 +22,9 @@ id: read_more_docket_sheets_text
 template: read_more_docket_sheets
 content: |
   [Read more about docket sheets...](${ url_action('wants_dockets_first') })
+---
+comment: |
+  Section: Buttons and icons
 ---
 # unimplemented
 id: continue_button
