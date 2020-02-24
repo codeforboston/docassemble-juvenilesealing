@@ -188,8 +188,8 @@ subquestion: |
   Boston, MA 02114
 
 buttons:
-  - I will come back to the quiz after ordering my docket sheets ${exit_icon}: True
-  - I want to keep going with the quiz ${next_icon}: False
+  - I will come back to the form after ordering my docket sheets ${exit_icon}: True
+  - I want to keep going with the form ${next_icon}: False
 ---
 id: learn_more_sealing_text
 template: sealing_booklet_text
