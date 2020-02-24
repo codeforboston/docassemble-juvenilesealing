@@ -1,0 +1,30 @@
+metadata:
+  title: |
+    Juvenile Sealing Clinic
+  short title: |
+    Juvenile Sealing
+  subtitle: |
+    Version 10
+  authors:
+    - name: Team
+      organization: Citizens for Juvenile Justice and Code for Boston
+---
+include:
+  - gbls-setup-temp.yml
+---
+mandatory: True
+id: docket_flow_code
+code: |
+  progressor = ProgressTracker(11)
+  progressor.start()
+
+  needs_dockets = False
+  should_show_extra_info = False
+  progress_start_number = progressor.get_step_number()
+  do_sealing_form
+---
+# DO NOT place above the 'flow' code block
+# Will run in the place it appears in the code flow
+include:
+  - juvenile-sealing-10.yml
+---
