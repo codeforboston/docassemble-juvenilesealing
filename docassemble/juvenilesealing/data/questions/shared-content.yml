@@ -1,0 +1,37 @@
+---
+comment: |
+  Shared content for juvenile sealing interviews.
+  Can't change references in files yet because
+  those files are being replaced with other files.
+---
+# unimplemented
+id: continue_button
+template: continue_button
+content: |
+  Keep going ${next_icon} 
+---
+id: next_icon
+template: next_icon
+content: |
+  <i class="fas fa-chevron-right"></i>
+---
+id: external_link_icon
+template: external_link_icon
+content: |
+  <i class="fas fa-external-link-alt"></i>
+---
+id: exit_icon
+template: exit_icon
+content: |
+  <i class="fas fa-sign-out-alt"></i>
+---
+id: exit_text
+template: exit_text
+content: |
+  Exit ${exit_icon}
+---
+id: restart_text
+template: restart_text
+content: |
+  Restart <i class="fas fa-redo"></i>
+---
