@@ -18,6 +18,7 @@ include:
   - gbls-setup-temp.yml
   # Using text strings that are shared between versions
   - juvenile-sealing-text-10.yml
+  - shared-content.yml
 ---
 mandatory: True
 id: docket_flow_code
@@ -194,7 +195,7 @@ subquestion: |
   what happened in a case every time you went
   to court for that case.
 
-  ### What's a certified copy of docket sheets?
+  ### What's special about a certified copy of a docket sheet?
 
   A certified copy of docket sheets
   will have a special mark on it that looks like the
@@ -202,12 +203,12 @@ subquestion: |
   an area where the paper is raised up in the shape of the
   seal.
 
-  Do you want to find out how to get certified copies
-  of your docket sheets?
+  Do you want to get certified copies of your docket sheets before
+  filling out the form to seal your records?
 
 buttons:
-  - Yes, tell me more: True
-  - No, take me back to the form: False
+  - Yes, show me how to get my certified docket sheets ${exit_icon}: True
+  - No, I want to keep going ${next_icon}: False
 ---
 id: end_without_finishing
 event: not_finishing_end
