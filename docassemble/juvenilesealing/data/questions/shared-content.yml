@@ -4,6 +4,22 @@ comment: |
   Can't change references in files yet because
   those files are being replaced with other files.
 ---
+id: docket_sheets_popover_text
+template: docket_sheets_popover
+content: |
+  ${ docket_sheets_blurb } ${ read_more_docket_sheets }
+---
+id: docket_sheets_blurb_text
+template: docket_sheets_blurb
+content: |
+  A docket sheet is different than a criminal record
+  report (called a CORI) or a juvenile record report.
+---
+id: read_more_docket_sheets_text
+template: read_more_docket_sheets
+content: |
+  [Read more about docket sheets...](${ url_action('wants_dockets_first') })
+---
 # unimplemented
 id: continue_button
 template: continue_button
