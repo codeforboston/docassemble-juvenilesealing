@@ -23,8 +23,54 @@ template: read_more_docket_sheets
 content: |
   [Read more about docket sheets...](${ url_action('wants_dockets_first') })
 ---
-comment: |
-  TODO: Add informational page of docket sheets
+id: docket_warning
+field: wants_dockets_first
+question: Why Get Docket Sheets?
+subquestion: |
+  There are times when it is important to have certified copies of
+  your docket sheets for all your cases.
+
+  If you seal your records you won't be able to get
+  certified copies of your docket sheets until you
+  unseal them again. Unsealing your records can
+  take a long time.
+
+  If you're not a US citizen, it can be very important to have
+  the copies for a hearing, like an immigration hearing. It is
+  a good idea  to a lawyer before you seal
+  your records.
+
+  Certified copies of your docket sheets can also help for:
+
+  * Getting jobs that need a federal background check
+  * Applying for some government programs
+  * Taking legal action related to your arrest or the case (like suing someone)
+  * Whenever you need to prove what happened in the case
+
+  Once you seal your records, you'll have to unseal them to get
+  certified copies. That can sometimes take a while.
+
+  ### What are docket sheets?
+
+  ${docket_sheets_blurb} Docket
+  sheets are papers from the courthouse that say
+  what happened in a case every time you went
+  to court for that case.
+
+  ### What's special about a certified copy of a docket sheet?
+
+  A certified copy of docket sheets
+  will have a special mark on it that looks like the
+  courthouse's seal. It'll either be a colored stamp or
+  an area where the paper is raised up in the shape of the
+  seal.
+
+  Do you want to find out how to get certified copies
+  of your docket sheets?
+
+buttons:
+  - Yes, tell me more: True
+  - No, take me back to the form: False
 ---
 id: certified_copies_page_text_question
 field: request_docket_sheets
