@@ -13,6 +13,7 @@ include:
   - personal-details.yml
   # Using text strings that are shared between versions
   - juvenile-sealing-text-10.yml
+  - shared-content.yml
   - attachment.yml
 ---
 comment: |

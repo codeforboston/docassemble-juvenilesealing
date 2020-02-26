@@ -2,6 +2,9 @@
 comment: |
   Pro se informational copy that shared between versions.
 ---
+include:
+  - shared-content.yml
+---
 id: records_can_help_text
 template: records_can_help
 content: |
@@ -72,137 +75,6 @@ subquestion: |
   ${ out_of_state_records }
 
 continue button label: Keep going ${next_icon}
----
-id: read_more_docket_sheets_text
-template: read_more_docket_sheets
-content: |
-  [Read more about docket sheets...](${ url_action('wants_dockets_first') })
----
-id: docket_sheets_blurb_text
-template: docket_sheets_blurb
-content: |
-  A docket sheet is different than a criminal record
-  report (called a CORI) or a juvenile record report.
----
-id: docket_sheets_popover_text
-template: docket_sheets_popover
-content: |
-  ${ docket_sheets_blurb } ${ read_more_docket_sheets }
----
-id: certified_copies_page_text_question
-field: request_docket_sheets
-# TODO: Are there courthouse instructions online for requesting
-#    docket sheets? A: No
-# [text](${ url_action('request_docket_sheets') })
-terms:
-  a copy of your Massachusetts criminal records: ${ records_popover }
-  your Massachusetts CORI report and on your juvenile records: ${ records_popover }
-question: How to Get Certified Docket Sheets
-subquestion: |
-  Having
-  {a copy of your Massachusetts criminal records}
-  can make it easier to make sure you get all your docket
-  sheets because they will have the docket numbers for
-  your cases. Every case has its own docket
-  sheets and those sheets are kept at the courthouse
-  that handled that case.
-
-  Docket sheets for a case are kept at the courthouse
-  that handled that case. To get docket sheets for a
-  case, you might need to know the docket number of
-  that case. You can find those docket numbers on
-  {your Massachusetts CORI report and on your juvenile records}.
-
-  ### Getting certified copies in person
-
-  Getting copies in person is the easiest and fastest
-  way to do this. For each case, go to the clerk’s
-  office in the courthouse that handled the case and say,
-  "I'd like certified copies of my docket sheets
-  for all of my cases." You have to do it
-  at each courthouse where you had a case. You might need
-  to know the docket numbers of your cases.
-
-  It can cost up to $2.50 for each page
-  that they have to print, but if you
-  can't afford to pay that much, you can say, "I'd like
-  to fill out an affidavit of indigency to waive the fee."
-  The staff should then give you a form to fill out.
-  You will write down how much you get paid on that form
-  to show why you can’t afford to pay the fee.
-
-  ### Getting certified copies by mail
-
-  Even though it's easier and faster to go in person,
-  you can also send a letter to ask for the docket
-  sheets. It can take two weeks or so. You will need
-  to know the docket number of your cases. If you want
-  to order the sheets by mail, take
-  these steps:
-
-  1. Call the courthouse that handled the case
-  and ask how much you need to pay the court to
-  print and mail the sheets.
-  1. Go to a post office to get a money order for that amount.
-  1. Write a letter that asks for the docket
-  sheets. An example of what it can look like is at
-  the bottom of this page.
-  1. Print that letter and sign it.
-  1. Put the letter and the money order in an envelope.
-  1. On the front of the envelope, write the courthouse’s name and address.
-  1. Above that address, write *Attention: Criminal clerk's office*. See an example of that below.
-  1. Write your own mailing address in the top left of the envelope.
-  1. Put a stamp on the envelope and mail it.
-
-  If you don't get anything back after two or three weeks,
-  call the clerk's office. Tell them, "I mailed a request
-  for my docket sheets. Can you help me find out when I'll
-  get those?"
-
-  ### An example of the address on an envelope
-
-  Attention: Criminal clerk’s office[BR]
-  South Boston Division[BR]
-  Boston Municipal Court[BR]
-  535 East Broadway[BR]
-  South Boston, MA 02127
-
-  ### An example of a letter to the courthouse
-
-  ${ today() }
-
-  Clerk’s Office[BR]
-  South Boston Division[BR]
-  Boston Municipal Court[BR]
-  535 East Broadway[BR]
-  South Boston, MA 02127
-
-  RE: Commonwealth v. Jane Doe[BR]
-  Docket no. 0902CR12345[BR]
-  Docket no. 1702CR98765432
-
-  Dear Staff:
-
-  Please send me certified copies of the docket sheets for my
-  criminal cases that are listed above.
-
-  If you are not able to send me the certified copies
-  or you have any questions, please call me at
-  555-555-5555.
-
-  Thank you for your help.
-
-  Sincerely,
-
-  (You sign the letter here)
-
-  Jane Doe[BR]
-  0 Jump St., Apt. # 2[BR]
-  Boston, MA 02114
-
-buttons:
-  - I will come back to the quiz after ordering my docket sheets ${exit_icon}: True
-  - I want to keep going with the quiz ${next_icon}: False
 ---
 id: learn_more_sealing_text
 template: sealing_booklet_text
@@ -401,29 +273,4 @@ comment: |
       * [https://www.cominghomedirectory.org/coming-home-category/physical-and-mental-health/](https://www.cominghomedirectory.org/coming-home-category/physical-and-mental-health/)
       * [https://www.cominghomedirectory.org/coming-home-category/substance-use/](https://www.cominghomedirectory.org/coming-home-category/substance-use/)
   * [Marijuana case sealing and expungement](https://www.gbls.org/sites/default/files/2019-05/booklet-7-seal-decriminalized-cannabis-cases-5119-f.pdf)
----
-id: next_icon
-template: next_icon
-content: |
-  <i class="fas fa-chevron-right"></i>
----
-id: external_link_icon
-template: external_link_icon
-content: |
-  <i class="fas fa-external-link-alt"></i>
----
-id: restart_text
-template: restart_text
-content: |
-  Restart <i class="fas fa-redo"></i>
----
-id: exit_icon
-template: exit_icon
-content: |
-  <i class="fas fa-sign-out-alt"></i>
----
-id: exit_text
-template: exit_text
-content: |
-  Exit ${exit_icon}
 ---
