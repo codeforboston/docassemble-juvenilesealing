@@ -19,7 +19,7 @@ content: |
 id: read_more_docket_sheets_text
 template: read_more_docket_sheets
 content: |
-  [Read more about docket sheets...](${ url_action( 'reset_docket_sheets_info_pages' )})
+  [Read more about docket sheets...](${ url_action( 'repeat_docket_sheets' )})
 ---
 id: what_are_docket_sheets
 field: wants_docket_instructions
@@ -68,9 +68,10 @@ subquestion: |
 
 buttons:
   - Yes, tell me more: True
-  - No, take me back to the form: continue
+  - No, take me back to the form: False
 ---
 id: certified_copies_page_text_question
+if: wants_docket_instructions
 field: stop_for_docket_sheets
 # TODO: Are there courthouse instructions online for requesting
 #    docket sheets? A: No
