@@ -25,6 +25,7 @@ id: docket_flow_code
 code: |
   progressor = ProgressTracker(16)
   progressor.start()
+  undefine( 'reset_docket_sheets_info_pages' )
 
   intro
 
@@ -39,13 +40,14 @@ code: |
 
   progressor.increment()  # 2
 
+  show_docket_sheets_info = True
   needs_dockets = False
   # If user doesn't answer yes for docket sheets, show user the docket sheet description
   if ( not have_docket_copies_already ):
     progressor.increment()  # 3
     needs_dockets = True
     # If user wants to see docket sheet instructions
-    if ( wants_dockets_first and request_docket_sheets ):
+    if ( wants_docket_instructions and how_to_get_docket_sheets ):
       progressor.increment()  # 4
       not_finishing_end  # end
 
@@ -62,11 +64,33 @@ code: |
 include:
   - juvenile-sealing-10.yml
 ---
+comment: |
+  if click on docket sheets link
+    take to docket sheets flow
+  if click others
+    if haven't seen docket sheets link
+      take to docket sheets flow
+    else
+      go to next question...?
+
+  Clicking link triggers
+    new code block that
+      undefined values
+      triggers `url_action()`
+---
+id: docket_sheets_flow
+code: |
+  undefine( 'wants_docket_instructions' )
+  undefine( 'how_to_get_docket_sheets' )
+  if ( wants_docket_instructions is True ):
+    how_to_get_docket_sheets
+    
+  reset_docket_sheets_info_pages = True
+---
 id: intro
 field: intro
 question: Can You Seal Your Massachusetts Juvenile Records?
 subquestion: |
-
   Sealing your juvenile record means that most
   employers won't be able to see that it
   exists. Only employers who do federal background checks and
@@ -147,7 +171,7 @@ buttons:
 ---
 id: do_you_have_sheets
 question: ''
-undefine: wants_dockets_first
+undefine: wants_docket_instructions
 subquestion: |
   Do you already have certified copies of the
   {docket sheets}
