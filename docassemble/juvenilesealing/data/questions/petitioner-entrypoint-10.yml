@@ -25,7 +25,7 @@ id: docket_flow_code
 code: |
   progressor = ProgressTracker(16)
   progressor.start()
-  undefine( 'reset_docket_sheets_info_pages' )
+  # undefine( 'need_to_run_docket_sheets' )
 
   intro
 
@@ -50,7 +50,8 @@ code: |
     # This flow shouldn't require both these pages. To fix
     # this, we need two nested `if` statements. See #48 for a
     # discussion on this.
-    if ( wants_docket_instructions and stop_for_docket_sheets ):
+    # if ( wants_docket_instructions and stop_for_docket_sheets ):
+    if ( need_to_run_docket_sheets and stop_for_docket_sheets is False ):
       progressor.increment()  # 4
       not_finishing_end  # end
 
@@ -78,17 +79,16 @@ comment: |
 
   Clicking link triggers
     new code block that
-      undefined values
+      undefines values
       triggers `url_action()`
 ---
 id: docket_sheets_flow
 code: |
-  undefine( 'wants_docket_instructions' )
-  undefine( 'stop_for_docket_sheets' )
-  if ( wants_docket_instructions is True ):
-    stop_for_docket_sheets
-    
-  reset_docket_sheets_info_pages = True
+  need_to_run_docket_sheets = False
+  ran_docket_sheets = False
+  if ( not ran_docket_sheets ):
+    ran_docket_sheets = True
+    force_ask( 'wants_docket_instructions', { 'follow up': ['stop_for_docket_sheets' ]} )
 ---
 id: intro
 field: intro
