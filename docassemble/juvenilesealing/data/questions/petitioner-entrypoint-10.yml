@@ -47,6 +47,9 @@ code: |
     progressor.increment()  # 3
     needs_dockets = True
     # If user wants to see docket sheet instructions
+    # This flow shouldn't require both these pages. To fix
+    # this, we need two nested `if` statements. See #48 for a
+    # discussion on this.
     if ( wants_docket_instructions and stop_for_docket_sheets ):
       progressor.increment()  # 4
       not_finishing_end  # end
