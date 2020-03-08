@@ -19,10 +19,10 @@ content: |
 id: read_more_docket_sheets_text
 template: read_more_docket_sheets
 content: |
-  [Read more about docket sheets...](${ url_action('wants_dockets_first') })
+  [Read more about docket sheets...](${ url_action( 'reset_docket_sheets_info_pages' )})
 ---
-id: docket_warning
-field: wants_dockets_first
+id: what_are_docket_sheets
+field: wants_docket_instructions
 question: Why Get Docket Sheets?
 subquestion: |
   There are times when it is important to have certified copies of
@@ -68,13 +68,13 @@ subquestion: |
 
 buttons:
   - Yes, tell me more: True
-  - No, take me back to the form: False
+  - No, take me back to the form: continue
 ---
 id: certified_copies_page_text_question
-field: request_docket_sheets
+field: how_to_get_docket_sheets
 # TODO: Are there courthouse instructions online for requesting
 #    docket sheets? A: No
-# [text](${ url_action('request_docket_sheets') })
+# [text](${ url_action('how_to_get_docket_sheets') })
 terms:
   a copy of your Massachusetts criminal records: ${ records_popover }
   your Massachusetts CORI report and on your juvenile records: ${ records_popover }
