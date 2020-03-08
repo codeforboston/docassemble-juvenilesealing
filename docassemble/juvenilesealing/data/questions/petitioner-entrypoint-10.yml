@@ -47,7 +47,7 @@ code: |
     progressor.increment()  # 3
     needs_dockets = True
     # If user wants to see docket sheet instructions
-    if ( wants_docket_instructions and how_to_get_docket_sheets ):
+    if ( wants_docket_instructions and stop_for_docket_sheets ):
       progressor.increment()  # 4
       not_finishing_end  # end
 
@@ -81,9 +81,9 @@ comment: |
 id: docket_sheets_flow
 code: |
   undefine( 'wants_docket_instructions' )
-  undefine( 'how_to_get_docket_sheets' )
+  undefine( 'stop_for_docket_sheets' )
   if ( wants_docket_instructions is True ):
-    how_to_get_docket_sheets
+    stop_for_docket_sheets
     
   reset_docket_sheets_info_pages = True
 ---
