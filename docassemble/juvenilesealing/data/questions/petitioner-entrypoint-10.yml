@@ -26,6 +26,11 @@ code: |
   progressor = ProgressTracker(16)
   progressor.start()
 
+  if ( which_tangent == 'docket_sheets' ):
+    show_docket_sheet_tangent
+    which_tangent = None
+
+  # If not a tangent, get started
   intro
 
   if ( has_ma_juv_record is False ):
@@ -41,15 +46,21 @@ code: |
 
   show_docket_sheets_info = True
   needs_dockets = False
-  # If user doesn't answer yes for docket sheets, show user the docket sheet description
+  # If user doesn't answer yes for docket sheets,
+  # show user why docket sheets are important
   if ( not have_docket_copies_already ):
     progressor.increment()  # 3
     needs_dockets = True
     # If user wants to see docket sheet instructions
+    # Note 1: Consider pausing progress here (and remember to
+    # reduce total progress steps.)
+    # Note 2: Not sure how this is getting triggered after
+    # the tangent flow since these should theoretically be
+    # defined already. It's probably the behavior we want,
+    # I'm just not yet sure how it's happening.
     if ( wants_docket_instructions ):
-      progressor.increment()
+      progressor.increment() # 4
       if ( stop_for_docket_sheets ):
-        progressor.increment()
         not_finishing_end  # end
 
   else:
@@ -82,12 +93,26 @@ comment: |
 id: tangent_start_state
 code: which_tangent = None
 ---
-id: tangent_for_docket_sheets
-event: tangent_for_docket_sheets
+id: tangent
+event: tangent
 code: |
   which_tangent = action_argument('which_tangent')
   if ( which_tangent == 'docket_sheets' ):
-    log( which_tangent, 'console' )
+    invalidate( 'wants_docket_instructions', 'stop_for_docket_sheets' )
+---
+id: docket_sheet_flow
+event: show_docket_sheet_tangent
+code: |
+  # How to hanlde progress in here? It's set to 1 when
+  # this is triggered. We can just put this logic
+  # before progress is started, but is that repeatable
+  # elsewhere? `progress: None` in questions? Justification:
+  # the user isn't making progress here. Discuss.
+  if ( wants_docket_instructions ):
+    if ( stop_for_docket_sheets ): not_finishing_end  # end
+    else: which_tangent = None
+  else:
+    which_tangent = None
 ---
 id: intro
 field: intro
