@@ -25,7 +25,6 @@ id: docket_flow_code
 code: |
   progressor = ProgressTracker(16)
   progressor.start()
-  # undefine( 'need_to_run_docket_sheets' )
 
   intro
 
@@ -47,11 +46,11 @@ code: |
     progressor.increment()  # 3
     needs_dockets = True
     # If user wants to see docket sheet instructions
-    if (  not need_to_run_docket_sheets
-          and defined( 'stop_for_docket_sheets' )
-          and stop_for_docket_sheets is True ):
-      progressor.increment()  # 4
-      not_finishing_end  # end
+    if ( wants_docket_instructions ):
+      progressor.increment()
+      if ( stop_for_docket_sheets ):
+        progressor.increment()
+        not_finishing_end  # end
 
   else:
     progressor.increment()  # 3
@@ -80,13 +79,14 @@ comment: |
       undefines values
       triggers `url_action()`
 ---
-id: docket_sheets_flow
+id: popover_start_state
+code: which_popover = None
+---
+id: popover_to_docket_mode
+event: popover_to_docket_mode
 code: |
-  need_to_run_docket_sheets = False
-  ran_docket_sheets = False
-  if ( not ran_docket_sheets ):
-    ran_docket_sheets = True
-    force_ask( 'wants_docket_instructions', { 'follow up': [ 'stop_for_docket_sheets' ]} )
+  log( 'popping', 'console' )
+  which_popover = 'docket_sheets'
 ---
 id: intro
 field: intro
