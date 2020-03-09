@@ -19,7 +19,7 @@ content: |
 id: read_more_docket_sheets_text
 template: read_more_docket_sheets
 content: |
-  [Read more about docket sheets...](${ url_action( 'popover_to_docket_mode' )})
+  [Read more about docket sheets...](${ url_action( 'tangent_for_docket_sheets', which_tangent='docket_sheets' )})
 ---
 id: what_are_docket_sheets
 field: wants_docket_instructions

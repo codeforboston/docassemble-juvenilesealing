@@ -79,14 +79,15 @@ comment: |
       undefines values
       triggers `url_action()`
 ---
-id: popover_start_state
-code: which_popover = None
+id: tangent_start_state
+code: which_tangent = None
 ---
-id: popover_to_docket_mode
-event: popover_to_docket_mode
+id: tangent_for_docket_sheets
+event: tangent_for_docket_sheets
 code: |
-  log( 'popping', 'console' )
-  which_popover = 'docket_sheets'
+  which_tangent = action_argument('which_tangent')
+  if ( which_tangent == 'docket_sheets' ):
+    log( which_tangent, 'console' )
 ---
 id: intro
 field: intro
