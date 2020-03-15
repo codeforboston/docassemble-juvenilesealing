@@ -16,6 +16,10 @@ Feature: Docket sheet question regular flow
 # 4b2a. Finish - Exit
 # 5. Finish - See 'open cases' question
 
-Scenario: Use link to see information about docket sheets
+# Same for 'I don't know'
+
+Scenario: Use interview flow path to see information about docket sheets
     Given I start the interview "docassemble.playground42:juvenile-sealing-intro-9.yml"
-    Then I should see the phrase "Sealing your juvenile record means that"
+    Then I click the button "Next "
+    Then I click the button "Yes"
+    Then I click the button "No"

@@ -30,4 +30,6 @@ Feature: Link to docket sheets pages flow without affecting regular flow
 
 Scenario: Use link to see information about docket sheets
     Given I start the interview "docassemble.playground42:juvenile-sealing-intro-9.yml"
-    Then I should see the phrase "Sealing your juvenile record means that"
+    Then I click the button "Next "
+    Then I click the button "Yes"
+    
