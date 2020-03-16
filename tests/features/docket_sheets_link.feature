@@ -21,9 +21,35 @@ Feature: Link to docket sheets pages flow
 # 4b2a. Finish - Exits
 
 Scenario: Use link to see information about docket sheets
-    Given I start the interview "docassemble.playground42:juvenile-sealing-intro-10.yml"
+    Given I start the interview "docassemble.playground42juvenilesealing%3Apetitioner-entrypoint-10.yml"
     Then I click the button "Next "
     Then I click the button "Yes"
     Then I click the link "docket sheets"
     Then I click the link "Read more about docket sheets…"
-    Then I should not see the phrase "hello world"
+    Then I should see the phrase "WHY GET DOCKET SHEETS"
+    Then I click the button "No, take me back to the form"
+    Then I should see the phrase "Do you already have certified copies"
+
+Scenario: Use link to see information about docket sheets and click "Yes, tell me more"
+    Given I start the interview "docassemble.playground42juvenilesealing%3Apetitioner-entrypoint-10.yml"
+    Then I click the button "Next "
+    Then I click the button "Yes"
+    Then I click the link "docket sheets"
+    Then I click the link "Read more about docket sheets…"
+    Then I should see the phrase "WHY GET DOCKET SHEETS"
+    Then I click the button "Yes, tell me more"
+    Then I should see the phrase "HOW TO GET CERTIFIED DOCKET SHEETS"
+    Then I click the button "I want to keep going with the form "
+    Then I should see the phrase "Do you already have certified copies"
+
+Scenario: Use link to see information about docket sheets and come back after ordering docket sheets
+    Given I start the interview "docassemble.playground42juvenilesealing%3Apetitioner-entrypoint-10.yml"
+    Then I click the button "Next "
+    Then I click the button "Yes"
+    Then I click the link "docket sheets"
+    Then I click the link "Read more about docket sheets…"
+    Then I should see the phrase "WHY GET DOCKET SHEETS"
+    Then I click the button "Yes, tell me more"
+    Then I should see the phrase "HOW TO GET CERTIFIED DOCKET SHEETS"
+    Then I click the button "I will come back to the form after ordering my docket sheets "
+    Then I should see the phrase "THANK YOU FOR COMING"
