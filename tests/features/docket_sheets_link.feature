@@ -21,6 +21,9 @@ Feature: Link to docket sheets pages flow
 # 4b2a. Finish - Exits
 
 Scenario: Use link to see information about docket sheets
-    Given I start the interview "docassemble.playground42:juvenile-sealing-intro-9.yml"
+    Given I start the interview "docassemble.playground42:juvenile-sealing-intro-10.yml"
     Then I click the button "Next "
     Then I click the button "Yes"
+    Then I click the link "docket sheets"
+    Then I click the link "Read more about docket sheets…"
+    Then I should not see the phrase "hello world"
