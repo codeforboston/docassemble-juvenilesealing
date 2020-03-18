@@ -28,6 +28,7 @@ code: |
 
   if ( which_tangent == 'docket_sheets' ):
     show_docket_sheet_tangent
+    invalidate( 'wants_docket_instructions', 'stop_for_docket_sheets' )
     which_tangent = None
 
   # If not a tangent, get started
@@ -43,7 +44,6 @@ code: |
     progressor.increment()  # 1
 
   progressor.increment()  # 2
-
   show_docket_sheets_info = True
   needs_dockets = False
   # If user doesn't answer yes for docket sheets,
@@ -91,7 +91,9 @@ comment: |
       triggers `url_action()`
 ---
 id: tangent_start_state
-code: which_tangent = None
+code: |
+  invalidate( 'wants_docket_instructions', 'stop_for_docket_sheets' )
+  which_tangent = None
 ---
 id: tangent
 event: tangent
@@ -110,8 +112,11 @@ code: |
   # the user isn't making progress here. Discuss.
   if ( wants_docket_instructions ):
     if ( stop_for_docket_sheets ): not_finishing_end  # end
-    else: which_tangent = None
+    else:
+      invalidate( 'wants_docket_instructions', 'stop_for_docket_sheets' )
+      which_tangent = None
   else:
+    invalidate( 'wants_docket_instructions', 'stop_for_docket_sheets' )
     which_tangent = None
 ---
 id: intro
