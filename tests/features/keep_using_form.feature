@@ -10,4 +10,4 @@ Then, I should be taken to a page with my finished petition.
 If I click continue there, I should be taken to the final screen.
 
 Scenario: Just open the first page
-    Given I start the interview "docassemble.playground42:juvenile-sealing-intro-9.yml#page11"
+    Given I start the interview "docassemble.playground42juvenilesealing%3Apetitioner-entrypoint-10.yml"

@@ -3,7 +3,7 @@ Feature: Test the ineligibility screens
 Try to get to the screens that show ineligibility.
 
 Scenario: Just open the first page
-    Given I start the interview "docassemble.playground42:juvenile-sealing-intro-9.yml"
+    Given I start the interview "docassemble.playground42juvenilesealing%3Apetitioner-entrypoint-10.yml"
     Then I click the button "Next "
     Then I should see the phrase "These questions are for sealing Massachusetts juvenile records."
     Then I click the button "No"
