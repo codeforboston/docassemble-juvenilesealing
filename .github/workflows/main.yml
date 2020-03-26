@@ -7,7 +7,7 @@ jobs:
     steps:
     - name: Hello world action step
       id: hello
-      uses: docassemble-juvenlinesealing/hello-world-docker-action@v1
+      uses: knod/docassemble-juvenilesealing@v1
       with:
         who-to-greet: 'clean slate'
     # Use the output from the `hello` step
