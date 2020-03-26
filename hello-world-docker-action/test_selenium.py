@@ -1,4 +1,5 @@
 from selenium import webdriver
+print("starting python script")
 chrome_options = webdriver.ChromeOptions()
 chrome_options.add_argument('--no-sandbox')
 chrome_options.add_argument('--window-size=1420,1080')
@@ -8,3 +9,4 @@ driver = webdriver.Chrome(chrome_options=chrome_options)
 driver.get('www.google.com')
 screenshot = driver.save_screenshot('test.png')
 driver.quit()
+print("finished running python script")
