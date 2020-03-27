@@ -2,8 +2,8 @@
 
 echo "Hello $1"
 time=$(date)
-echo "::set-output name=time::$time"
 python3 -V
+ls
 python3 test_selenium.py
 aloe features/*
 echo "python libraries installed:"
