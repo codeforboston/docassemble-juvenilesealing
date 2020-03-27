@@ -1,6 +1,8 @@
 # Container image that runs your code
 FROM selenium/standalone-chrome-debug:3.141.59
 
+USER root
+
 RUN apt-get update && apt-get install pip3
 
 # Copies your code file from your action repository to the filesystem path `/` of the container
