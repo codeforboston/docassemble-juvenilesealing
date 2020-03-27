@@ -9,7 +9,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Hello world action step
-        working-directory: ./tests
         uses: ./tests # Uses an action in the root directory
         id: hello
         with:
