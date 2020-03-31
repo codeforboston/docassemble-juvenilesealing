@@ -1,6 +1,6 @@
 #!/bin/sh -l
 
-pwd
-ls
-python3 test_selenium.py
+# aloe will only work when called from the tests directory
+cd tests
 aloe features/*
+
