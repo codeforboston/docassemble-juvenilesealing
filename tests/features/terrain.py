@@ -79,12 +79,11 @@ def setup_browser():
         options = ChromeOptions()
         options.add_argument("--window-size=1005,9999")
         options.add_argument("--headless");
-        print(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'chromedriver'))
-        world.browser = MyChrome(os.path.join(os.getcwd(), 'chromedriver'), chrome_options=options)
+        world.browser = MyChrome(chrome_options=options)
     else:
         options = ChromeOptions()
         options.add_argument("--start-maximized");
-        world.browser = MyChrome(os.path.join(os.getcwd(), 'chromedriver'), chrome_options=options)
+        world.browser = MyChrome(chrome_options=options)
     world.da_path = default_path
     world.wait_seconds = default_wait_seconds
 

@@ -1,0 +1,12 @@
+on: [push]
+
+jobs:
+  aloe_tests:
+    runs-on: ubuntu-latest
+    name: Run aloe tests
+    steps:
+      # To use this repository's private action, you must check out the repository
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Aloe tests
+        uses: ./tests # Uses an action in the root directory
