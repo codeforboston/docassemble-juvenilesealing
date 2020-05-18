@@ -301,7 +301,6 @@ attachment:
     variable name: partial_petition_pdf
     filename: ${atch_name}
     pdf template file: juvenile-sealing-petition.pdf
-    #pdf template file: juvenile-sealing-petition-no-arrows.pdf
     fields:
       - "applicant.no_delinquency": 'Yes'
       - "applicant.name.last": ''
