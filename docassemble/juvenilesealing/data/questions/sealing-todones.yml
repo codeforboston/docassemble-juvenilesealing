@@ -26,6 +26,7 @@ is sealed?'
 wrong.'
 - Don't use the term 'CARI' for juvenile records. It's a
 little different and would be confusing.
+- Making sure the Puppeteer test doesn't get overwritten. 
 
 ---------------------
 

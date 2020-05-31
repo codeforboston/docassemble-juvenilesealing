@@ -1,0 +1,26 @@
+{
+  "name": "docassemble-juvenilesealing",
+  "version": "1.0.0",
+  "description": "This process should be easier for both petitioners themselves and legal professionals who hope to support petitioners. This tool is focused on MA.",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/knod/docassemble-juvenilesealing.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/knod/docassemble-juvenilesealing/issues"
+  },
+  "homepage": "https://github.com/knod/docassemble-juvenilesealing#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "puppeteer": "^3.1.0"
+  }
+}
