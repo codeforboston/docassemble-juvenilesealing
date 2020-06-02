@@ -42,7 +42,16 @@ This tool is made with [Docassemble](https://github.com/jhpyle/docassemble).
 
 ## Testing
 
-To get tests to run, you need to download chromedriver from https://sites.google.com/a/chromium.org/chromedriver/ and put it in `tests/`
+### Chai/Puppeteer tests
+
+The first time you clone this repo, make sure you have NPM installed and run `npm install`.
+This will install the libraries required for testing.
+
+To run the tests, run `npm run test`.
+
+### Aloe/Lettuce tests
+
+To get these tests to run, you need to download chromedriver from https://sites.google.com/a/chromium.org/chromedriver/ and put it in `tests/`
 You also need to `pip3 install aloe selenium certifi`
 
 To run [a feature test](https://docassemble.org/docs/development.html#bdd):
