@@ -1,5 +1,4 @@
 const chai = require('chai');
-const puppeteer = require('puppeteer');
 const puppeteerutils = require('./puppeteer-utils');
 
 // Tell Chai that we want to use the expect syntax
