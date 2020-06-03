@@ -16,8 +16,7 @@ jobs:
       - name: Run tests
         uses: ./tests # Uses an action in the root directory
     name: Run Puppeteer tests
-      - name: Checkout
-        uses: actions/checkout@v2
+    steps:
       - name: Run tests
         env: 
           PLAYGROUND_EMAIL: ${{ secrets.PLAYGROUND_EMAIL }}
