@@ -7,7 +7,6 @@ const login = async () => {
   // Login
   await page.goto('https://interviews-dev.gbls.org/user/sign-in?');
   const emailElement = await page.$('#email');
-  console.log(process.env.PLAYGROUND_EMAIL)
   await emailElement.type(process.env.PLAYGROUND_EMAIL);
   const passwordElement = await page.$('#password');
   await passwordElement.type(process.env.PLAYGROUND_PASSWORD);
