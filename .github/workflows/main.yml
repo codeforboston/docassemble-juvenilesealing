@@ -23,11 +23,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Setup environment
-        env: 
-          PLAYGROUND_EMAIL: ${{ secrets.PLAYGROUND_EMAIL }}
-          PLAYGROUND_PASSWORD: ${{ secrets.PLAYGROUND_PASSWORD }}
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm install
       - run: npm run test
+          env: 
+            PLAYGROUND_EMAIL: ${{ secrets.PLAYGROUND_EMAIL }}
+            PLAYGROUND_PASSWORD: ${{ secrets.PLAYGROUND_PASSWORD }}
