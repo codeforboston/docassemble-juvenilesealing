@@ -1,23 +1,26 @@
 on: [push]
 
 jobs:
-  tests:
+  aloe-tests:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [12.x]
-
-    name: Run Aloe tests
+    name: Run tests
     steps:
       # To use this repository's private action, you must check out the repository
       - name: Checkout
         uses: actions/checkout@v2
       - name: Run tests
         uses: ./tests # Uses an action in the root directory
-    name: Run Puppeteer tests
+  puppeteer-tests:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x]
+
+    name: Run tests
     steps:
-      - name: Run tests
+      - name: Setup environment
         env: 
           PLAYGROUND_EMAIL: ${{ secrets.PLAYGROUND_EMAIL }}
           PLAYGROUND_PASSWORD: ${{ secrets.PLAYGROUND_PASSWORD }}
