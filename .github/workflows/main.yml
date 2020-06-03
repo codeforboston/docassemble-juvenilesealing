@@ -18,6 +18,10 @@ jobs:
       matrix:
         node-version: [12.x]
 
+    env: 
+      PLAYGROUND_EMAIL: ${{ secrets.PLAYGROUND_EMAIL }}
+      PLAYGROUND_PASSWORD: ${{ secrets.PLAYGROUND_PASSWORD }}
+
     name: Run Puppeteer tests
     steps:
       - name: Checkout
@@ -28,6 +32,3 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - run: npm install
       - run: npm run test
-          env: 
-            PLAYGROUND_EMAIL: ${{ secrets.PLAYGROUND_EMAIL }}
-            PLAYGROUND_PASSWORD: ${{ secrets.PLAYGROUND_PASSWORD }}
