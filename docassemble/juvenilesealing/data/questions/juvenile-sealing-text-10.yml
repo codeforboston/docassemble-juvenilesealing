@@ -226,6 +226,7 @@ content: |
 
   ${more_resources}
 ---
+#   * About applying for jobs TODO: what's the link?
 id: more_resources_text
 template: more_resources
 content: |
@@ -234,7 +235,6 @@ content: |
   ## Information about dealing with criminal records
 
   * A [GBLS booklet just about sealing juvenile records ${external_link_icon}](https://www.gbls.org/sites/default/files/2019-08/juvenile_booklet_august_2019F.pdf) that includes an example petition.
-  * About applying for jobs TODO: what's the link?
   * Information about [criminal records and housing ${external_link_icon}](https://www.masslegalhelp.org/cori/housing)  on the Mass Legal Help site.
   * [Marijuana case sealing or expungement ${external_link_icon}](https://www.gbls.org/sites/default/files/2019-05/booklet-7-seal-decriminalized-cannabis-cases-5119-f.pdf)
   * A detailed GBLS ["Know Your Rights Booklet" ${external_link_icon}](https://www.gbls.org/sites/default/files/2019-04/know-your-cori-rights-041819.pdf) on many topics related to both sealing and expungement.
