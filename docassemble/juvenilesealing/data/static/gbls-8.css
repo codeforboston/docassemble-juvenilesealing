@@ -168,6 +168,7 @@ input.labelauty + label > span.labelauty-checked-image {
 .btn-primary,
 .btn-primary:hover,
 .btn-primary:focus,
+.btn-primary:disabled,
 .btn-primary:not(:disabled):not(.disabled).active,
 .btn-primary:not(:disabled):not(.disabled):active,
 .show>.btn-primary.dropdown-toggle,
@@ -181,6 +182,7 @@ input.labelauty + label > span.labelauty-checked-image {
 button.btn-secondary,
 button.btn-secondary:hover,
 button.btn-secondary:focus,
+button.btn-secondary:disabled,
 .btn-secondary:not(:disabled):not(.disabled).active,
 .btn-secondary:not(:disabled):not(.disabled):active,
 .show>.btn-secondary.dropdown-toggle {
@@ -197,6 +199,7 @@ button.btn-secondary span {
 .btn-warning,
 .btn-warning:hover,
 .btn-warning:focus,
+.btn-warning:disabled,
 .btn-warning:not(:disabled):not(.disabled).active,
 .btn-warning:not(:disabled):not(.disabled):active,
 .show>.btn-warning.dropdown-toggle {
@@ -219,6 +222,7 @@ button.btn-secondary span {
 .btn-danger,
 .btn-danger:hover,
 .btn-danger:focus,
+.btn-danger:disabled,
 .btn-danger:not(:disabled):not(.disabled).active,
 .btn-danger:not(:disabled):not(.disabled):active,
 .show>.btn-danger.dropdown-toggle {
@@ -289,10 +293,10 @@ label.btn-primary:not(:disabled):not(.disabled):active,
 can't identify text contents */
 
 /* For pdf page */
-.atch-button {		
-  width: 100%;		
-  display: block;		
-  text-align: center;		
+.atch-button {
+  width: 100%;
+  display: block;
+  text-align: center;
 }
 
 /* Send next steps in email button should be closer to email sending inputs */
@@ -410,57 +414,57 @@ body.da-pad-for-navbar {
 /* Just for email sending one-line display. Fragile. */
 /* Second rows account for `labels above fields: True` */
 .question-get-attachment .da-field-container-datatype-email {
-  position: relative;	
-  display: inline;		
+  position: relative;
+  display: inline;
 }
 .question-get-attachment .da-field-container-datatype-email .da-form-label,
-.question-get-attachment .da-field-container-datatype-email .da-top-label {		
-  display: inline-block;		
+.question-get-attachment .da-field-container-datatype-email .da-top-label {
+  display: inline-block;
   padding-right: 1em;
-  text-align: left !important;		
-  /* Width of two columns instead of 4. This is fragile */		
-  flex: 0 0 16.666667%;		
-  max-width: 16.666667%;		
-  min-width: fit-content;			
+  text-align: left !important;
+  /* Width of two columns instead of 4. This is fragile */
+  flex: 0 0 16.666667%;
+  max-width: 16.666667%;
+  min-width: fit-content;
 }
 .question-get-attachment .da-field-container-datatype-email .dafieldpart,
 .question-get-attachment .da-field-container-datatype-email input[type="email"] {
-  display: inline-block;		
-  width: 18em;		
+  display: inline-block;
+  width: 18em;
 }
 .question-get-attachment .da-field-container-datatype-email .dafieldpart .text-danger,
-.question-get-attachment .da-field-container-datatype-email input[type="email"] +.text-danger {		
+.question-get-attachment .da-field-container-datatype-email input[type="email"] +.text-danger {
   position: absolute;
   top: 2em;
   left: 0;
 }
-.question-get-attachment .da-field-container-datatype-email + .da-field-container-note {		
-  display: inline-block;		
-  margin: 0;		
-  margin-bottom: 1em;		
+.question-get-attachment .da-field-container-datatype-email + .da-field-container-note {
+  display: inline-block;
+  margin: 0;
+  margin-bottom: 1em;
 }
-.question-get-attachment .da-field-container-datatype-email + .da-field-container-note p {		
-  margin: 0;		
-}
-
-#sendAttachmentEmail {		
-  padding-top: 0.4em;		
-  padding-bottom: .4em;		
-  margin: 0;		
-  color: green !important;		
-  border-color: green;		
+.question-get-attachment .da-field-container-datatype-email + .da-field-container-note p {
+  margin: 0;
 }
 
-/* Spacing with alert on attachement page */		
-.question-get-attachment .da-field-container-note .alert-success {		
-  margin: 0;		
+#sendAttachmentEmail {
+  padding-top: 0.4em;
+  padding-bottom: .4em;
+  margin: 0;
+  color: green !important;
+  border-color: green;
+}
+
+/* Spacing with alert on attachement page */
+.question-get-attachment .da-field-container-note .alert-success {
+  margin: 0;
 }
 /* Ends email sender one-line */
 
 
 
 @media (max-width: 768px) {
-  /* distance to header: 166px 
+  /* distance to header: 166px
     top border 5px
     top padding 36px
     which comes out to 125px
@@ -470,9 +474,9 @@ body.da-pad-for-navbar {
   */
   .navbar {
     position: static;
-    height: 134px; 
+    height: 134px;
   }
-  
+
   body.da-pad-for-navbar {
     padding: 0px;
   }
