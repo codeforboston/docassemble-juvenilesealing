@@ -5,3 +5,4 @@ tests/chromedriver
 *__pycache__*
 node_modules*
 .env
+npm-debug.log

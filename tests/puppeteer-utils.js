@@ -1,16 +1,15 @@
 const puppeteer = require('puppeteer');
-const dotenv = require('dotenv');
+require('dotenv').config();
 
 const login = async () => {
-  const result = dotenv.config().parsed;
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
   // Login
   await page.goto('https://interviews-dev.gbls.org/user/sign-in?');
   const emailElement = await page.$('#email');
-  await emailElement.type(result.PLAYGROUND_EMAIL);
+  await emailElement.type(process.env.PLAYGROUND_EMAIL);
   const passwordElement = await page.$('#password');
-  await passwordElement.type(result.PLAYGROUND_PASSWORD);
+  await passwordElement.type(process.env.PLAYGROUND_PASSWORD);
   await Promise.all([
     passwordElement.press('Enter'),
     page.waitForNavigation(),
