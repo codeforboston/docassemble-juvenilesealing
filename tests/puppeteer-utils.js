@@ -93,25 +93,30 @@ const deleteProject = async (projectName) => {
 }
 
 const installRepo = async (page, projectName, repoUrl, branchName) => {
-    await page.goto(`${BASE_URL}/pullplaygroundpackage?project=${projectName}&github=${repoUrl}&branch=${branchName}`);
-    const pullButton = await page.$('button[name=pull]');
-    await Promise.all([
-        pullButton.click(),
-        page.waitForNavigation(),
-    ]);
-    const installButton = await page.$('button[name=install]');
-    await Promise.all([
-        installButton.click(),
-        page.waitForNavigation(),
-    ]);
+  await page.goto(`${BASE_URL}/pullplaygroundpackage?project=${projectName}&github=${repoUrl}&branch=${branchName}`);
+  const pullButton = await page.$('button[name=pull]');
+  await Promise.all([
+    pullButton.click(),
+    page.waitForNavigation(),
+  ]);
+  const installButton = await page.$('button[name=install]');
+  await Promise.all([
+    installButton.click(),
+    page.waitForNavigation(),
+  ]);
 }
 
 const workflow = async () => {
-  projectName = 'testing';
+  projectName = 'test20200531';
   repoUrl = 'https://github.com/knod/docassemble-juvenilesealing';
   branchName = 'jest-assertions';
   let {page, browser} = await login();
-  await installRepo(page, projectName, repoUrl, branchName);
+  try {
+    await installRepo(page, projectName, repoUrl, branchName);
+  }
+  catch (e) {
+    console.log(e);
+  }
 }
 workflow();
 // createProject('testing');
