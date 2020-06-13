@@ -2,14 +2,12 @@ const puppeteer = require('puppeteer');
 require('dotenv').config();
 
 const BASE_URL = 'https://interviews-dev.gbls.org';
-const PLAYGROUND_URL = `${BASE_URL}/playground`;
-const DEBUG = true;
 
 const login = async () => {
-  const browser = await puppeteer.launch({headless: !DEBUG});
+  const browser = await puppeteer.launch({headless: !process.env.DEBUG});
   const page = await browser.newPage();
   // Login
-  await page.goto('https://interviews-dev.gbls.org/user/sign-in?');
+  await page.goto(`${BASE_URL}/user/sign-in?`);
   const emailElement = await page.$('#email');
   await emailElement.type(process.env.PLAYGROUND_EMAIL);
   const passwordElement = await page.$('#password');
@@ -23,7 +21,7 @@ const login = async () => {
 
 const navigateToManageProject = async (page) => {
   // Go to playground
-  await page.goto('https://interviews-dev.gbls.org/playground');
+  await page.goto(`${BASE_URL}/playground`);
   // Click dropdown in top left corner
   const dropdown = await page.$('#dropdownMenuButton');
   await dropdown.click();
@@ -36,9 +34,8 @@ const navigateToManageProject = async (page) => {
   ]);
 };
 
-const createProject = async (projectName) => {
+const createProject = async (page) => {
   try {
-    let {page, browser} = await login();
     await navigateToManageProject(page);
     // Click "Add a new project"
     const addNewProjectButton = await page.$('.fa-plus-circle');
@@ -48,14 +45,13 @@ const createProject = async (projectName) => {
     ]);
     // Enter new project name
     const projectNameElement = await page.$('#name');
-    await projectNameElement.type(projectName);
+    await projectNameElement.type(process.env.PROJECT_NAME);
     // Click Save
     const saveButton = await page.$('[type="submit"]');
     await Promise.all([
       saveButton.click(),
       page.waitForNavigation(),
     ]);
-    await browser.close();
   }
   catch (e) {
     console.log('An error happened in createProject. Details below:');
@@ -63,12 +59,11 @@ const createProject = async (projectName) => {
   }
 };
 
-const deleteProject = async (projectName) => {
+const deleteProject = async (page) => {
   try {
-    let {page, browser} = await login();
     await navigateToManageProject(page);
     // Click Delete button
-    const deleteLink = '[href="/playgroundproject?delete=1&project=' + projectName + '"]';
+    const deleteLink = `[href="/playgroundproject?delete=1&project=${process.env.PROJECT_NAME}"]`;
     const deleteButton = await page.$(deleteLink);
     if (!deleteLink) {
       console.log('No such project exists');
@@ -84,16 +79,27 @@ const deleteProject = async (projectName) => {
       deleteButton2.click(),
       page.waitForNavigation(),
     ]);
-    await browser.close();
   }
   catch (e) {
     console.log('An error happened in deleteProject. Details below:');
     console.log(e);
   }
-}
+};
 
-const installRepo = async (page, projectName, repoUrl, branchName) => {
-  await page.goto(`${BASE_URL}/pullplaygroundpackage?project=${projectName}&github=${repoUrl}&branch=${branchName}`);
+const installUrl = () => `${BASE_URL}/pullplaygroundpackage?${urlParams(
+  {
+    project: process.env.PROJECT_NAME,
+    github: process.env.REPO_URL,
+    branch: process.env.BRANCH_NAME,
+  }
+)}`;
+
+const urlParams = (params) => urlString = Object.keys(params).map(
+  (key) => `${key}=${params[key]}`
+).join('&')
+
+const installRepo = async (page) => {
+  await page.goto(`${BASE_URL}/pullplaygroundpackage?${installUrl()}`);
   const pullButton = await page.$('button[name=pull]');
   await Promise.all([
     pullButton.click(),
@@ -104,21 +110,10 @@ const installRepo = async (page, projectName, repoUrl, branchName) => {
     installButton.click(),
     page.waitForNavigation(),
   ]);
+  // installation can take a while, so set timeout to 300 seconds
+  await page.waitForSelector('.alert-success', {timeout: 300000});
 }
 
-const workflow = async () => {
-  projectName = 'test20200531';
-  repoUrl = 'https://github.com/knod/docassemble-juvenilesealing';
-  branchName = 'jest-assertions';
-  let {page, browser} = await login();
-  try {
-    await installRepo(page, projectName, repoUrl, branchName);
-  }
-  catch (e) {
-    console.log(e);
-  }
-}
-workflow();
 // createProject('testing');
 // deleteProject('testing');
 
@@ -126,5 +121,6 @@ module.exports = {
   login: login,
   createProject: createProject,
   deleteProject: deleteProject,
-}
+  installRepo: installRepo,
+};
 

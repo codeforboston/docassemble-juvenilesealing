@@ -7,7 +7,8 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "mocha tests --timeout 10000"
+    "test": "mocha tests --timeout 10000",
+    "setup": "node tests/install-branch.js"
   },
   "repository": {
     "type": "git",
