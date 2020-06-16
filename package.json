@@ -8,7 +8,7 @@
   },
   "scripts": {
     "test": "mocha tests --timeout 10000",
-    "setup": "node tests/install-branch.js"
+    "setup": "node -e 'require(\"./tests/install-branch.js\").setup()'"
   },
   "repository": {
     "type": "git",

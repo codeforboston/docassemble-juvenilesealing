@@ -14,10 +14,5 @@ const setup = async () => {
   }
 };
 
-try {
-  setup();
-}
-catch (e) {
-  console.log(e);
-}
 
+module.exports = {setup};
