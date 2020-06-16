@@ -1,7 +1,7 @@
 const puppeteer = require('puppeteer');
 require('dotenv').config();
 
-const BASE_URL = 'https://interviews-dev.gbls.org';
+const BASE_URL = process.env.BASE_URL;
 
 const login = async () => {
   const browser = await puppeteer.launch({headless: !process.env.DEBUG});
@@ -99,7 +99,7 @@ const urlParams = (params) => urlString = Object.keys(params).map(
 ).join('&')
 
 const installRepo = async (page) => {
-  await page.goto(`${BASE_URL}/pullplaygroundpackage?${installUrl()}`);
+  await page.goto(installUrl());
   const pullButton = await page.$('button[name=pull]');
   await Promise.all([
     pullButton.click(),
