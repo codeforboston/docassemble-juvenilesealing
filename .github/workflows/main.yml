@@ -18,9 +18,14 @@ jobs:
       matrix:
         node-version: [12.x]
 
-    env: 
+    env:
       PLAYGROUND_EMAIL: ${{ secrets.PLAYGROUND_EMAIL }}
       PLAYGROUND_PASSWORD: ${{ secrets.PLAYGROUND_PASSWORD }}
+      BASE_URL: https://interviews-dev.gbls.org
+      REPO_URL: https://github.com/knod/docassemble-juvenilesealing
+      PROJECT_NAME: githubtest
+      BRANCH_NAME: ${{ github.ref }}
+
 
     name: Run Puppeteer tests
     steps:
