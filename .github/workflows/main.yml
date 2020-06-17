@@ -24,7 +24,7 @@ jobs:
       BASE_URL: https://interviews-dev.gbls.org
       REPO_URL: https://github.com/knod/docassemble-juvenilesealing
       PROJECT_NAME: githubtest
-      BRANCH_NAME: ${{ github.ref }}
+      BRANCH_NAME: ${GITHUB_REF##*/}
 
 
     name: Run Puppeteer tests
