@@ -23,8 +23,9 @@ jobs:
       PLAYGROUND_PASSWORD: ${{ secrets.PLAYGROUND_PASSWORD }}
       BASE_URL: https://interviews-dev.gbls.org
       REPO_URL: https://github.com/knod/docassemble-juvenilesealing
-      PROJECT_NAME: githubtest
-      BRANCH_NAME: ${{ github.ref }}
+      PROJECT_NAME: githubtest2
+      BRANCH_PATH: ${{ github.ref }}
+      #BRANCH_NAME: ${BRANCH_PATH##*/}
 
 
     name: Run Puppeteer tests
@@ -36,4 +37,5 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm install
+      - run: npm run setup
       - run: npm run test

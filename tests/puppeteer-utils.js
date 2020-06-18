@@ -90,7 +90,7 @@ const installUrl = () => `${BASE_URL}/pullplaygroundpackage?${urlParams(
   {
     project: process.env.PROJECT_NAME,
     github: process.env.REPO_URL,
-    branch: process.env.BRANCH_NAME,
+    branch: process.env.BRANCH_PATH.split('/')[2],
   }
 )}`;
 
