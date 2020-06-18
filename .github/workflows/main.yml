@@ -37,6 +37,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: export BRANCH_NAME=${BRANCH_PATH##*/}
+      - run: echo $BRANCH_NAME
       - run: npm install
       - run: npm run setup
       - run: npm run test
