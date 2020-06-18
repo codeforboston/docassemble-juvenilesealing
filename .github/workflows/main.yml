@@ -24,7 +24,7 @@ jobs:
       BASE_URL: https://interviews-dev.gbls.org
       REPO_URL: https://github.com/knod/docassemble-juvenilesealing
       PROJECT_NAME: githubtest
-      BRANCH_NAME: ${ ${ github.ref }##*/ }
+      BRANCH_NAME: ${{ github.ref }}
 
 
     name: Run Puppeteer tests
@@ -35,6 +35,12 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
+      - run: echo ${{ github.ref }}
+      - run: echo ${ github.ref }
+      - run: echo ${{ GITHUB_REF }}
+      - run: echo ${ GITHUB_REF }
+      #- run: echo ${{ GITHUB_REF##*/ }}
+      - run: echo ${{ ${{ GITHUB_REF }}##*/ }}
       - run: npm install
       - run: npm run setup
       - run: npm run test
