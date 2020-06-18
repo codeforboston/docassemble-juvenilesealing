@@ -25,7 +25,7 @@ jobs:
       REPO_URL: https://github.com/knod/docassemble-juvenilesealing
       PROJECT_NAME: githubtest
       BRANCH_PATH: ${{ github.ref }}
-      BRANCH_NAME: ${${{ github.ref }}##*/}
+      #BRANCH_NAME: 
 
 
     name: Run Puppeteer tests
@@ -36,7 +36,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - run: echo $BRANCH_NAME
+      - run: export BRANCH_NAME=${BRANCH_PATH##*/}
       - run: npm install
       - run: npm run setup
       - run: npm run test
