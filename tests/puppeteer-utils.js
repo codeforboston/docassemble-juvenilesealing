@@ -99,6 +99,7 @@ const urlParams = (params) => urlString = Object.keys(params).map(
 ).join('&')
 
 const installRepo = async (page) => {
+  console.log( process.env.BRANCH_NAME );
   await page.goto(installUrl());
   const pullButton = await page.$('button[name=pull]');
   await Promise.all([

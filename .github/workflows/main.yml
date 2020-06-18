@@ -25,7 +25,7 @@ jobs:
       REPO_URL: https://github.com/knod/docassemble-juvenilesealing
       PROJECT_NAME: githubtest
       BRANCH_PATH: ${{ github.ref }}
-      BRANCH_NAME: ${{ github.ref }}
+      BRANCH_NAME: ${BRANCH_PATH##*/}
 
 
     name: Run Puppeteer tests
@@ -36,16 +36,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - run: echo ${{ github.ref }}
-      - run: echo ${BRANCH_PATH##*/}
-      #- run: echo ${ github.ref }  # Caused error? On next line: 'Unexpected symbol: '${{''
-      #- run: echo ${{ GITHUB_REF }}  # Unrecognized named-value: 'GITHUB_REF'
-      #- run: echo ${ GITHUB_REF }
-      #- run: echo ${{ GITHUB_REF##*/ }}
-      #- run: echo ${{ ${{ GITHUB_REF }}##*/ }}  # (Line: 43, Col: 14): Unexpected symbol: '${{' (line 41?)
-      #- run: echo ${{ ${{ github.ref }}##*/ }}
-      #- run: echo ${{ ${ github.ref }##*/ }}
-      #- run: echo ${{ github.ref##*/ }}
+      - run: echo $BRANCH_NAME
       - run: npm install
       - run: npm run setup
       - run: npm run test
