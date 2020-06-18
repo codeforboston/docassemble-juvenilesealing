@@ -25,7 +25,7 @@ jobs:
       REPO_URL: https://github.com/knod/docassemble-juvenilesealing
       PROJECT_NAME: githubtest
       BRANCH_PATH: ${{ github.ref }}
-      BRANCH_NAME: ${BRANCH_PATH##*/}
+      BRANCH_NAME: ${${{ github.ref }}##*/}
 
 
     name: Run Puppeteer tests
