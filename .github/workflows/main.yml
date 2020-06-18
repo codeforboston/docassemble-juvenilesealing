@@ -36,8 +36,8 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: echo ${{ github.ref }}
-      - run: echo ${ github.ref }  # Caused error? On next line: 'Unexpected symbol: '${{''
-      #- run: echo ${{ GITHUB_REF }}
+      #- run: echo ${ github.ref }  # Caused error? On next line: 'Unexpected symbol: '${{''
+      - run: echo ${{ GITHUB_REF }}
       - run: echo ${ GITHUB_REF }
       #- run: echo ${{ GITHUB_REF##*/ }}
       - run: echo ${{ ${{ GITHUB_REF }}##*/ }}
