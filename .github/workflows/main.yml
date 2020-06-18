@@ -37,7 +37,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: echo ${{ github.ref }}
-      - run: echo $BRANCH_PATH##*/
+      - run: echo ${BRANCH_PATH##*/}
       #- run: echo ${ github.ref }  # Caused error? On next line: 'Unexpected symbol: '${{''
       #- run: echo ${{ GITHUB_REF }}  # Unrecognized named-value: 'GITHUB_REF'
       #- run: echo ${ GITHUB_REF }
