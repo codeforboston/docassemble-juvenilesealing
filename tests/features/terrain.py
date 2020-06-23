@@ -86,6 +86,7 @@ def setup_browser():
         world.browser = MyChrome(chrome_options=options)
     world.da_path = default_path
     world.wait_seconds = default_wait_seconds
+    print(os.environ)
 
 @after.all
 def tear_down():
