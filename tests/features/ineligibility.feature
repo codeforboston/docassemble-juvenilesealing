@@ -3,14 +3,14 @@ Feature: Test the ineligibility screens
 Try to get to the screens that show ineligibility.
 
 Scenario: User is ineligible because they don't have a MA juvenile record
-    Given I start the interview "docassemble.playground42juvenilesealing%3Apetitioner-entrypoint-10.yml"
+    Given I start the interview "docassemble.playground42juvenilesealing%3Aentrypoint-petitioner.yml"
     Then I click the button "Next "
     Then I should see the phrase "These questions are for sealing Massachusetts juvenile records."
     Then I click the button "No"
     Then I should see the phrase "This tool can only help with sealing juvenile records in Massachusetts."
 
 Scenario: User is ineligible because they don't have docket sheets and said they will come back later
-    Given I start the interview "docassemble.playground42juvenilesealing%3Apetitioner-entrypoint-10.yml"
+    Given I start the interview "docassemble.playground42juvenilesealing%3Aentrypoint-petitioner.yml"
     Then I click the button "Next "
     Then I click the button "Yes"
     Then I should see the phrase "Do you already have certified copies of the docket sheets for all of your juvenile cases?"
@@ -22,7 +22,7 @@ Scenario: User is ineligible because they don't have docket sheets and said they
     Then I should see the phrase "We hope we could help a little."
 
 Scenario: User is ineligible because they have open cases
-    Given I start the interview "docassemble.playground42juvenilesealing%3Apetitioner-entrypoint-10.yml"
+    Given I start the interview "docassemble.playground42juvenilesealing%3Aentrypoint-petitioner.yml"
     Then I click the button "Next "
     Then I click the button "Yes"
     Then I click the button "Yes"
@@ -31,7 +31,7 @@ Scenario: User is ineligible because they have open cases
     Then I should see the phrase "Sorry, but because you have an open case you’re not eligible to get your juvenile record sealed."
 
 Scenario: User is ineligible because they are on probation
-    Given I start the interview "docassemble.playground42juvenilesealing%3Apetitioner-entrypoint-10.yml"
+    Given I start the interview "docassemble.playground42juvenilesealing%3Aentrypoint-petitioner.yml"
     Then I click the button "Next "
     Then I click the button "Yes"
     Then I click the button "Yes"
@@ -41,7 +41,7 @@ Scenario: User is ineligible because they are on probation
     Then I should see the phrase "Sorry, but because you are on probation you’re not eligible to get your juvenile record sealed."
 
 Scenario: User is ineligible because they have had juvenile cases in the past three years
-    Given I start the interview "docassemble.playground42juvenilesealing%3Apetitioner-entrypoint-10.yml"
+    Given I start the interview "docassemble.playground42juvenilesealing%3Aentrypoint-petitioner.yml"
     Then I click the button "Next "
     Then I click the button "Yes"
     Then I click the button "Yes"
@@ -52,7 +52,7 @@ Scenario: User is ineligible because they have had juvenile cases in the past th
     Then I should see the phrase "Sorry, but because you had a juvenile case in the USA in the past three years you’re not eligible to get your juvenile record sealed."
 
 Scenario: User is ineligible because they have been in juvenile custody
-    Given I start the interview "docassemble.playground42juvenilesealing%3Apetitioner-entrypoint-10.yml"
+    Given I start the interview "docassemble.playground42juvenilesealing%3Aentrypoint-petitioner.yml"
     Then I click the button "Next "
     Then I click the button "Yes"
     Then I click the button "Yes"
@@ -64,7 +64,7 @@ Scenario: User is ineligible because they have been in juvenile custody
     Then I should see the phrase "Sorry, but because you have been in juvenile custody in the USA in the past three years you’re not eligible to get your juvenile record sealed."
 
 Scenario: User is ineligible because they have convictions in adult court
-    Given I start the interview "docassemble.playground42juvenilesealing%3Apetitioner-entrypoint-10.yml"
+    Given I start the interview "docassemble.playground42juvenilesealing%3Aentrypoint-petitioner.yml"
     Then I click the button "Next "
     Then I click the button "Yes"
     Then I click the button "Yes"
@@ -77,7 +77,7 @@ Scenario: User is ineligible because they have convictions in adult court
     Then I should see the phrase "Sorry, but because you were convicted in the USA (in a state or federally) in the past three years you’re not eligible to get your juvenile record sealed."
 
 Scenario: User is ineligible because they have convictions in federal court
-    Given I start the interview "docassemble.playground42juvenilesealing%3Apetitioner-entrypoint-10.yml"
+    Given I start the interview "docassemble.playground42juvenilesealing%3Aentrypoint-petitioner.yml"
     Then I click the button "Next "
     Then I click the button "Yes"
     Then I click the button "Yes"
@@ -91,7 +91,7 @@ Scenario: User is ineligible because they have convictions in federal court
     Then I should see the phrase "Sorry, but because you were convicted in the USA (in a state or federally) in the past three years you’re not eligible to get your juvenile record sealed."
 
 Scenario: User is ineligible because they were in incarceration
-    Given I start the interview "docassemble.playground42juvenilesealing%3Apetitioner-entrypoint-10.yml"
+    Given I start the interview "docassemble.playground42juvenilesealing%3Aentrypoint-petitioner.yml"
     Then I click the button "Next "
     Then I click the button "Yes"
     Then I click the button "Yes"
@@ -106,7 +106,7 @@ Scenario: User is ineligible because they were in incarceration
     Then I should see the phrase "Sorry, but because you were incarcerated in the USA in the past three years you’re not eligible to get your juvenile record sealed."
 
 Scenario: User is eligible
-    Given I start the interview "docassemble.playground42juvenilesealing%3Apetitioner-entrypoint-10.yml"
+    Given I start the interview "docassemble.playground42juvenilesealing%3Aentrypoint-petitioner.yml"
     Then I click the button "Next "
     Then I click the button "Yes"
     Then I click the button "Yes"
