@@ -1,0 +1,155 @@
+comment: |
+  Alternative formatting for an attachment page.
+  Unfortunately it also turns it into a question, so
+  there's that to deal with.
+  
+  Not sure how to accomodate mutliple attachments.
+  Something to do with `x`?
+  
+  TODO: Add default values
+---
+comment: |
+  Variables required:
+  - atch_itself
+  - atch_name
+
+  Variables that have defaults:
+  - atch_question
+  - atch_subquestion
+  - atch_after_download
+
+  - atch_default_email_address
+  - atch_email_contents
+  - atch_email_subject
+  
+  - atch_file_extension
+  - atch_do_new_window_download
+  - atch_download_label
+  - atch_do_new_window_email
+  - atch_send_email_label
+  - atch_open_label
+---
+id: trigger_attachment_page
+scan for variables: False
+only sets: trigger_attachment_page
+code: |
+
+  defaults = {
+    #'atch_itself': None,  # Must be included from interview page
+    #'atch_name': None,  # Must be included from interview page
+
+    'atch_file_extension': 'pdf',
+
+    'atch_question': 'Your Document is Ready!',
+    'atch_subquestion': 'You can download it or email it to whoever you want.',
+    'atch_after_download': '',
+
+    'atch_default_email_address': '',
+    'atch_email_subject': 'Your Pre-filled Document',
+    'atch_email_contents': 'Your pre-filled document should be attached to this email. Thank you and we hope we could help.',
+    'atch_next_steps_offer': 'In the email, tell me what to do next',
+
+    'atch_do_new_window_download': False,
+    'atch_download_label': 'Download the document',
+    'atch_do_new_window_email': False,
+    'atch_send_email_label': 'Send',
+    'atch_open_label': 'Open the document in another window'
+  }
+
+  atch_open_link = atch_itself.pdf.url_for(inline=True)
+  atch_download_link = atch_itself.pdf.url_for()
+  
+  for attr in defaults:
+    if (not defined(attr)):
+      define(attr, defaults[attr])
+
+  # This is what actually displays the attachment page
+  atch_email_address
+
+  trigger_attachment_page = 'done'
+---
+template: email_text
+subject: ${atch_email_subject}
+content: |
+  % if ( wants_instructions ):
+  ${atch_email_contents}
+  % endif
+---
+id: get_attachment
+question: ${atch_question}
+subquestion: |
+  ${ atch_subquestion }
+fields:
+  - html: |
+      <div class="alert alert-success" role="alert">
+        <strong>${atch_name}.${atch_file_extension}</strong>
+        has been created for you.
+      </div>
+  - html: |
+      <a id="openAttachment" class="download-link atch-button" href=${atch_open_link} type="application/pdf" target="_blank">
+        ${atch_open_label} <i class="fas fa-external-link-alt"></i>
+      </a>
+  - html: |
+      <a id="downloadAttachment" class="open-link atch-button" href=${atch_download_link} type="application/pdf">
+          <i class="fas fa-download"></i> ${atch_download_label}
+      </a>
+  - ${atch_next_steps_offer}: wants_instructions_in_email
+    datatype: yesnowide
+    default: True
+    show if:
+      code: |
+        atch_next_steps_offer != ''
+  - E-mail: atch_email_address
+    datatype: email
+    required: False
+    default: ${atch_default_email_address}
+  - note: ${ action_button_html("#", id_tag="sendAttachmentEmail", classname="atch-button", new_window=atch_do_new_window_email, icon="envelope", label=atch_send_email_label, color="primary", size="md") }
+#  - note: ${ action_button_html("#", id_tag="downloadAttachment", classname="atch-button", new_window=atch_do_new_window_download, icon="download", label=atch_download_label, color="primary", size="md") }
+  - note: ${atch_after_download}
+script: |
+  <script>
+
+    $("#sendAttachmentEmail").click(function(){
+
+      let message = "We are trying to send the email to " + val('atch_email_address') + ".";
+      flash(message, "secondary");
+      
+      console.log('address:', val('atch_email_address') );
+      url_action_call('send_atch_email',
+       {
+         address: val('atch_email_address'),
+         'wants_instructions': val('wants_instructions_in_email')
+        },
+       function (obj_or_html, result_as_text, response) {
+        if (response.status === 200) {
+          console.log(obj_or_html)
+          console.log(result_as_text)
+          console.log(response)
+          flash("The email got sent to " + obj_or_html.email_address + "!", "success", true);
+        } else {
+          flash("Sorry about this, but the email didn't get sent. Try giving it some time and then try again.", "danger", true)
+          console.log( 'response:', response );
+          url_action_call('log_to_docassemble', {
+            message: response.body  // log this object to see its props
+          })
+        }
+      });  // ends url_action_call and callback
+    });
+
+  </script>
+---
+id: send_atch_email
+event: send_atch_email
+code: |
+  #raise Exception("error triggered on purpose because we must")
+  wants_instructions = action_argument('wants_instructions')
+  address = action_argument('address')
+  was_successful = send_email(to=address, template=email_text, attachments=atch_itself)
+  json_response(dict(was_successful=was_successful, email_address=address))
+---
+id: log_to_docassemble
+event: log_to_docassemble
+code: |
+   message = action_argument('message')
+   log(message)
+---

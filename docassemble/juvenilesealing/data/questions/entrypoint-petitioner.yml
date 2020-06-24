@@ -1,0 +1,242 @@
+metadata:
+  title: |
+    Juvenile Sealing
+  short title: |
+    Juvenile Sealing Intro
+  subtitle: |
+    Version 10
+  authors:
+    - name: Team
+      organization: Citizens for Juvenile Justice and Code for Boston
+---
+#terms:
+#  docket sheets: |
+#    Can't use templates in terms, so that would make this
+#    harder to maintain. ${ docket_sheets_popover }
+---
+include:
+  - gbls-base.yml
+  # Using text strings that are shared between versions
+  #- juvenile-sealing-text-10.yml
+  - shared-content.yml
+---
+mandatory: True
+id: docket_flow_code
+code: |
+  progressor = ProgressTracker(16)
+  progressor.start()
+
+  if ( which_tangent == 'docket_sheets' ):
+    show_docket_sheet_tangent
+    invalidate( 'wants_docket_instructions', 'stop_for_docket_sheets' )
+    which_tangent = None
+
+  # If not a tangent, get started
+  intro
+
+  if ( has_ma_juv_record is False ):
+    no_ma_records_end
+  elif ( has_ma_juv_record is None ):
+    progressor.increment()  # 1
+    if ( unsure_records_but_wants_to_try_sealing is False ):
+      not_finishing_end
+  else:
+    progressor.increment()  # 1
+
+  progressor.increment()  # 2
+  show_docket_sheets_info = True
+  needs_dockets = False
+  # If user doesn't answer yes for docket sheets,
+  # show user why docket sheets are important
+  if ( not have_docket_copies_already ):
+    progressor.increment()  # 3
+    needs_dockets = True
+    # If user wants to see docket sheet instructions
+    # Note 1: Consider pausing progress here (and remember to
+    # reduce total progress steps.)
+    # Note 2: Not sure how this is getting triggered after
+    # the tangent flow since these should theoretically be
+    # defined already. It's probably the behavior we want,
+    # I'm just not yet sure how it's happening.
+    if ( wants_docket_instructions ):
+      progressor.increment() # 4
+      if ( stop_for_docket_sheets ):
+        not_finishing_end  # end
+
+  else:
+    progressor.increment()  # 3
+    progressor.increment()  # 4
+
+  should_show_extra_info = True
+  progress_start_number = progressor.get_step_number()
+  do_sealing_form
+---
+# DO NOT place above the 'flow' code block
+# Will run in the place it appears in the code flow
+include:
+  - sealing-body.yml
+---
+comment: |
+  if click on docket sheets link
+    take to docket sheets flow
+  if click others
+    if haven't seen docket sheets link
+      take to docket sheets flow
+    else
+      go to next question...?
+
+  Clicking link triggers
+    new code block that
+      undefines values
+      triggers `url_action()`
+---
+id: tangent_start_state
+code: |
+  invalidate( 'wants_docket_instructions', 'stop_for_docket_sheets' )
+  which_tangent = None
+---
+id: tangent
+event: tangent
+code: |
+  which_tangent = action_argument('which_tangent')
+  if ( which_tangent == 'docket_sheets' ):
+    invalidate( 'wants_docket_instructions', 'stop_for_docket_sheets' )
+---
+id: docket_sheet_flow
+event: show_docket_sheet_tangent
+code: |
+  # How to hanlde progress in here? It's set to 1 when
+  # this is triggered. We can just put this logic
+  # before progress is started, but is that repeatable
+  # elsewhere? `progress: None` in questions? Justification:
+  # the user isn't making progress here. Discuss.
+  if ( wants_docket_instructions ):
+    if ( stop_for_docket_sheets ): not_finishing_end  # end
+    else:
+      invalidate( 'wants_docket_instructions', 'stop_for_docket_sheets' )
+      which_tangent = None
+  else:
+    invalidate( 'wants_docket_instructions', 'stop_for_docket_sheets' )
+    which_tangent = None
+---
+id: intro
+field: intro
+question: Can You Seal Your Massachusetts Juvenile Records?
+subquestion: |
+  Sealing your juvenile record means that most
+  employers won't be able to see that it
+  exists. Only employers who do federal background checks and
+  people like police will be able to see your criminal record.
+
+  To see if you can try to seal your records, we will:
+
+  1. Find out if there's a reason you **shouldn't** seal your records.
+  1. Ask questions about your old and open cases.
+  1. Tell you if we think you can seal your records.
+
+  Then you can get your form right away or let us help
+  you fill in the other parts too.
+
+  ### Time
+
+  It can take up to **40 minutes** to answer all the questions,
+  though it's usually less.
+
+  ### What you need
+
+  You need to know about your closed cases and open cases.
+  That includes cases in other states and federal cases.
+  Having {a copy of your criminal records}
+  can help you know the answers to the questions.
+
+  ### Privacy
+
+  If we need to store anything about your identity
+  we will ask you first.
+
+  <br/>
+
+  **Note:** Whenever we say USA
+  that includes United States
+  possessions (like Guam).
+
+continue button label: Next ${next_icon}
+
+under: |
+  Read more about sealing juvenile records in the
+  [GBLS 2019 booklet ${ external_link_icon }](https://www.gbls.org/sites/default/files/2019-08/juvenile_booklet_august_2019F.pdf).
+  
+  <span class="feedback">Let us know <a href="https://www.surveymonkey.com/r/6QMLCFM">how we're doing ${ external_link_icon }</a>.</span>
+
+terms:
+  a copy of your criminal records: ${ records_popover }
+---
+id: in_ma
+question: ''
+subquestion: |
+  These questions are for sealing **Massachusetts** juvenile
+  records. Do you have a juvenile record in Massachusetts?
+yesnomaybe: has_ma_juv_record
+---
+id: unsure_of_ma_records
+question: ''
+subquestion: |
+  You can find out if you have a juvenile record in Massachusetts
+  by ordering a copy of it.
+
+  ${getting_juvenile_records}
+
+  Do you still want to see if you can try to seal your records?
+yesno: unsure_records_but_wants_to_try_sealing
+---
+id: no_ma_records_end
+event: no_ma_records_end
+progress: 100
+question: |
+  Thank you and sorry we couldn't help
+subquestion: |
+  This tool can only help with sealing **juvenile records
+  in Massachusetts**.
+
+  ${more_resources}
+buttons:
+  - Exit ${exit_icon}: exit
+  - ${restart_text}: restart
+---
+id: do_you_have_sheets
+question: ''
+undefine: wants_docket_instructions
+subquestion: |
+  Do you already have certified copies of the
+  {docket sheets}
+  for all of your juvenile cases?
+
+  **Note:** A docket sheet is different than a criminal
+  record report (called a CORI) or juvenile record report.
+terms:
+  # Templates in terms work in questions
+  docket sheets: |
+    ${ docket_sheets_popover }
+yesnomaybe: have_docket_copies_already
+---
+id: end_without_finishing
+event: not_finishing_end
+progress: 100
+question: Thank you for coming
+subquestion: |
+  We hope we could help a little.
+
+  ${more_resources}
+buttons:
+  - Exit ${exit_icon}: exit
+  - ${restart_text}: restart
+---
+id: placeholder_for_form
+event: placeholder_for_form
+progress: 100
+question: ''
+subquestion: |
+  This would go straight to the form now
+buttons:
+  - ${restart_text}: restart
+---
