@@ -53,7 +53,7 @@ const createProject = async (page) => {
     ]);
     // Enter new project name
     const projectNameElement = await page.$('#name');
-    await projectNameElement.type(projectName);
+    await projectNameElement.type(PROJECT_NAME);
     // Click Save
     const saveButton = await page.$('[type="submit"]');
     await Promise.all([
