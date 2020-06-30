@@ -3,7 +3,8 @@ require('dotenv').config();
 
 const BASE_URL = process.env.BASE_URL;
 const BRANCH_NAME = process.env.BRANCH_PATH.split('/')[2];
-const PROJECT_NAME = 'testing-' + BRANCH_NAME;
+let PROJECT_NAME = 'testing' + BRANCH_NAME;
+PROJECT_NAME = PROJECT_NAME.replace(/[^A-Za-z0-9]/gi, '');
 
 const login = async () => {
   const browser = await puppeteer.launch({headless: !process.env.DEBUG});
@@ -40,7 +41,7 @@ const createProject = async (page) => {
   try {
     await navigateToManageProject(page);
     // Check if a project with this name already exists
-    const projectLink = `[href="/playground?dproject=${PROJECT_NAME}"]`;
+    const projectLink = `[href="/playground?project=${PROJECT_NAME}"]`;
     const projectButton = await page.$(projectLink);
     if (projectButton) {
       return;
@@ -111,7 +112,9 @@ const installRepo = async (page) => {
   const pullButton = await page.$('button[name=pull]');
   await Promise.all([
     pullButton.click(),
-    page.waitForNavigation(),
+    page.waitForNavigation({
+      waitUntil: 'networkidle0',
+    }),
   ]);
   const installButton = await page.$('button[name=install]');
   await Promise.all([
