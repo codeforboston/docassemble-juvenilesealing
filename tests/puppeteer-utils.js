@@ -2,6 +2,8 @@ const puppeteer = require('puppeteer');
 require('dotenv').config();
 
 const BASE_URL = process.env.BASE_URL;
+const BRANCH_NAME = process.env.BRANCH_PATH.split('/')[2];
+const PROJECT_NAME = 'testing-' + BRANCH_NAME;
 
 const login = async () => {
   const browser = await puppeteer.launch({headless: !process.env.DEBUG});
@@ -37,6 +39,12 @@ const navigateToManageProject = async (page) => {
 const createProject = async (page) => {
   try {
     await navigateToManageProject(page);
+    // Check if a project with this name already exists
+    const projectLink = `[href="/playground?dproject=${PROJECT_NAME}"]`;
+    const projectButton = await page.$(projectLink);
+    if (projectButton) {
+      return;
+    }
     // Click "Add a new project"
     const addNewProjectButton = await page.$('.fa-plus-circle');
     await Promise.all([
@@ -45,7 +53,7 @@ const createProject = async (page) => {
     ]);
     // Enter new project name
     const projectNameElement = await page.$('#name');
-    await projectNameElement.type(process.env.PROJECT_NAME);
+    await projectNameElement.type(projectName);
     // Click Save
     const saveButton = await page.$('[type="submit"]');
     await Promise.all([
@@ -63,7 +71,7 @@ const deleteProject = async (page) => {
   try {
     await navigateToManageProject(page);
     // Click Delete button
-    const deleteLink = `[href="/playgroundproject?delete=1&project=${process.env.PROJECT_NAME}"]`;
+    const deleteLink = `[href="/playgroundproject?delete=1&project=${PROJECT_NAME}"]`;
     const deleteButton = await page.$(deleteLink);
     if (!deleteLink) {
       console.log('No such project exists');
@@ -88,9 +96,9 @@ const deleteProject = async (page) => {
 
 const installUrl = () => `${BASE_URL}/pullplaygroundpackage?${urlParams(
   {
-    project: process.env.PROJECT_NAME,
+    project: PROJECT_NAME,
     github: process.env.REPO_URL,
-    branch: process.env.BRANCH_PATH.split('/')[2],
+    branch: BRANCH_NAME,
   }
 )}`;
 
@@ -113,9 +121,6 @@ const installRepo = async (page) => {
   // installation can take a while, so set timeout to 300 seconds
   await page.waitForSelector('.alert-success', {timeout: 300000});
 }
-
-// createProject('testing');
-// deleteProject('testing');
 
 module.exports = {
   login: login,
