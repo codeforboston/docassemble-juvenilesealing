@@ -2,10 +2,19 @@ const puppeteer = require('puppeteer');
 require('dotenv').config();
 
 const BASE_URL = process.env.BASE_URL;
+const BASE_INTERVIEW_URL = `${BASE_URL}/interview?i=docassemble.playground${process.env.PLAYGROUND_ID}${process.env.PROJECT_NAME}`;
+const BRANCH = process.env.BRANCH
+    || (process.env.BRANCH_PATH && process.env.BRANCH_PATH.split('/')[2])
+    || 'master';
 
-const login = async () => {
+const initPuppeteer = async () => {
   const browser = await puppeteer.launch({headless: !process.env.DEBUG});
   const page = await browser.newPage();
+  return {'page': page, 'browser': browser};
+}
+
+const login = async () => {
+  const {page, browser} = await initPuppeteer();
   // Login
   await page.goto(`${BASE_URL}/user/sign-in?`);
   const emailElement = await page.$('#email');
@@ -90,7 +99,7 @@ const installUrl = () => `${BASE_URL}/pullplaygroundpackage?${urlParams(
   {
     project: process.env.PROJECT_NAME,
     github: process.env.REPO_URL,
-    branch: process.env.BRANCH_PATH.split('/')[2],
+    branch: BRANCH,
   }
 )}`;
 
@@ -118,9 +127,12 @@ const installRepo = async (page) => {
 // deleteProject('testing');
 
 module.exports = {
+  BASE_INTERVIEW_URL: BASE_INTERVIEW_URL,
+  BRANCH: BRANCH,
   login: login,
   createProject: createProject,
   deleteProject: deleteProject,
   installRepo: installRepo,
+  initPuppeteer: initPuppeteer,
 };
 
