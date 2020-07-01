@@ -1,16 +1,7 @@
 on: [push]
 
 jobs:
-  aloe-tests:
-    runs-on: ubuntu-latest
-
-    name: Run Aloe tests
-    steps:
-      # To use this repository's private action, you must check out the repository
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Run tests
-        uses: ./tests # Uses an action in the root directory
+  
   puppeteer-tests:
     runs-on: ubuntu-latest
 
