@@ -3,8 +3,7 @@ require('dotenv').config();
 
 const BASE_URL = process.env.BASE_URL;
 const BRANCH_NAME = process.env.BRANCH_PATH.split('/')[2];
-let PROJECT_NAME = 'testing' + BRANCH_NAME;
-PROJECT_NAME = PROJECT_NAME.replace(/[^A-Za-z0-9]/gi, '');
+const PROJECT_NAME = ('testing' + BRANCH_NAME).replace(/[^A-Za-z0-9]/gi, '');
 
 const login = async () => {
   const browser = await puppeteer.launch({headless: !process.env.DEBUG});
@@ -113,6 +112,7 @@ const installRepo = async (page) => {
   await Promise.all([
     pullButton.click(),
     page.waitForNavigation({
+      // Without this, it tries to find the installButton before navigation is over
       waitUntil: 'networkidle0',
     }),
   ]);
