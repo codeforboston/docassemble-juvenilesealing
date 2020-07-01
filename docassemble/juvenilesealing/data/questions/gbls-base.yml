@@ -6,7 +6,7 @@ features:
   question back button: True
   labels above fields: True
   bootstrap theme: gbls-bootstrap-theme.css
-  css: gbls-8.css
+  css: gbls.css
 ---
 default screen parts:
   right: |

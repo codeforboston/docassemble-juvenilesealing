@@ -15,9 +15,9 @@ metadata:
 #    harder to maintain. ${ docket_sheets_popover }
 ---
 include:
-  - gbls-setup-temp.yml
+  - gbls-base.yml
   # Using text strings that are shared between versions
-  - juvenile-sealing-text-10.yml
+  #- juvenile-sealing-text-10.yml
   - shared-content.yml
 ---
 mandatory: True
@@ -74,7 +74,7 @@ code: |
 # DO NOT place above the 'flow' code block
 # Will run in the place it appears in the code flow
 include:
-  - juvenile-sealing-10.yml
+  - sealing-body.yml
 ---
 comment: |
   if click on docket sheets link
