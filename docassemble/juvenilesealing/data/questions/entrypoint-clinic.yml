@@ -10,7 +10,7 @@ metadata:
       organization: Citizens for Juvenile Justice and Code for Boston
 ---
 include:
-  - gbls-setup-temp.yml
+  - gbls-base.yml
 ---
 mandatory: True
 id: docket_flow_code
@@ -26,5 +26,5 @@ code: |
 # DO NOT place above the 'flow' code block
 # Will run in the place it appears in the code flow
 include:
-  - juvenile-sealing-10.yml
+  - sealing-body.yml
 ---

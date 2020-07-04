@@ -21,7 +21,7 @@ Feature: Link to docket sheets pages flow
 # 4b2a. Finish - Exits
 
 Scenario: Use link to see information about docket sheets
-    Given I start the interview "docassemble.playground42juvenilesealing%3Apetitioner-entrypoint-10.yml"
+    Given I start the interview "docassemble.playground42juvenilesealing%3Aentrypoint-petitioner.yml"
     Then I click the button "Next "
     Then I click the button "Yes"
     Then I click the link "docket sheets"
@@ -31,7 +31,7 @@ Scenario: Use link to see information about docket sheets
     Then I should see the phrase "Do you already have certified copies"
 
 Scenario: Use link to see information about docket sheets and click "Yes, tell me more"
-    Given I start the interview "docassemble.playground42juvenilesealing%3Apetitioner-entrypoint-10.yml"
+    Given I start the interview "docassemble.playground42juvenilesealing%3Aentrypoint-petitioner.yml"
     Then I click the button "Next "
     Then I click the button "Yes"
     Then I click the link "docket sheets"
@@ -43,7 +43,7 @@ Scenario: Use link to see information about docket sheets and click "Yes, tell m
     Then I should see the phrase "Do you already have certified copies"
 
 Scenario: Use link to see information about docket sheets and come back after ordering docket sheets
-    Given I start the interview "docassemble.playground42juvenilesealing%3Apetitioner-entrypoint-10.yml"
+    Given I start the interview "docassemble.playground42juvenilesealing%3Aentrypoint-petitioner.yml"
     Then I click the button "Next "
     Then I click the button "Yes"
     Then I click the link "docket sheets"

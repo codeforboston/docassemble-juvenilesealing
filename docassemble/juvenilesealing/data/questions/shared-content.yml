@@ -3,7 +3,89 @@ comment: |
   Shared content for juvenile sealing interviews.
 ---
 comment: |
-  Section: Certified docket sheets stuff
+  Section: Informational pages
+---
+id: getting_your_records
+# [text](${ url_action('about_getting_records') })
+field: about_getting_records
+question: About Getting Your Criminal Records
+subquestion: |
+  ${ about_records_intro }
+
+  ${ getting_juvenile_records }
+
+  ${ getting_cori }
+
+  ${ out_of_state_records }
+
+continue button label: Keep going ${next_icon}
+---
+id: records_popover_text
+template: records_popover
+content: |
+  ${ about_records_intro } ${ read_more_records }
+---
+id: read_more_records_text
+template: read_more_records
+content: |
+  [Read more about getting your records...](${ url_action('about_getting_records') })
+---
+id: records_can_help_text
+template: records_can_help
+content: |
+  It will help to know about your criminal records in Massachusetts
+  and in other states. You won't get in trouble for getting
+  answers wrong, but it might be easier for you to give the
+  right answers if you have a copy of both your juvenile record,
+  and also your CORI report if you had cases in an adult court.
+  These reports will give a summary of all your criminal charges
+  in Massachusetts and tell you how each case ended.
+---
+id: about_records_intro_text
+template: about_records_intro
+content: |
+  These reports will give a summary of all your criminal charges
+  in Massachusetts and tell you how each case ended.
+---
+id: records_can_help_text
+template: records_can_help
+content: |
+  It will help to know about your criminal records in Massachusetts
+  and in other states. You won't get in trouble for getting
+  answers wrong, but it might be easier for you to give the
+  right answers if you have a copy of both your juvenile record,
+  and also your CORI report if you had cases in an adult court.
+  These reports will give a summary of all your criminal charges
+  in Massachusetts and tell you how each case ended.
+---
+id: getting_juvenile_records_text
+template: getting_juvenile_records
+content: |
+  To ask for a free copy of your Massachusetts
+  juvenile record, see the
+  [GBLS juvenile record request document ${external_link_icon}](https://www.gbls.org/sites/default/files/juvenile_booklet_onelj.pdf).
+  It has a form to print and it tells you what to do.
+---
+id: getting_cori_text
+template: getting_cori
+content: |
+  To ask for your online
+  adult CORI report, make an account at
+  [Massachusetts iCORI site ${external_link_icon}](https://icori.chs.state.ma.us/icori/ext/global/landing.action?page=1&bod=1566991096995&m=presentLanding).
+  It costs $25, but if you are low income you might be be able
+  to ask for a waiver of the fee so you don't have to pay it.
+# TODO: How do you waive the fee online? I saw it once, but don't remember
+# TODO: How to get federal records?
+---
+id: out_of_state_records_text
+template: out_of_state_records
+content: |
+  If you want to get records from other states you'll
+  need to go to the websites for those states and
+  see if they have information about how you can request those
+  records. The
+  [clean slate clearing house ${external_link_icon}](https://cleanslateclearinghouse.org/states/)
+  might also be able to help you find out how to get those records.
 ---
 id: docket_sheets_popover_text
 template: docket_sheets_popover

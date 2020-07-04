@@ -7,37 +7,13 @@ comment: |
 
   TODOs: see sealing-todo.yml
 ---
-metadata:
-  title: |
-    Juvenile Sealing
-  short title: |
-    Juvenile Sealing
-  subtitle: |
-    Version 8
-  authors:
-    - name: Team
-      organization: Citizens for Juvenile Justice and Code for Boston
----
-features:
-  #progress bar: True
-  #question back button: True
-  labels above fields: True
-  css: gbls-8.css
----
-default screen parts:
-  right: |
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,900&display=swap" rel="stylesheet">
----
-default validation messages:
-  multiple choice required: You have to pick one.
----
 include:
   # Using questions from other interviews
   # Has to be before flow code block to avoid circularity issues
   - personal-details.yml
   # Using text strings that are shared between versions
-  - juvenile-sealing-text-9.yml
-  - attachment.yml
+  - shared-content.yml
+  - document-download-screen.yml
 ---
 comment: |
   - Do objects always need to be in their own file? [No]
@@ -53,8 +29,11 @@ code: |
   # Testing
   #do_partial_petition
 
+  # KEEP THESE NOTES
   # No 100% sure way of making sure a pro se user sees the warnings.
   # Has to use the right link. Better with combo forms.
+  
+  # THIS SHOULD BE REMOVABLE NOW
   if ( not defined( 'should_show_extra_info' )):
     should_show_extra_info = False
     needs_dockets = False
@@ -64,6 +43,8 @@ code: |
         needs_dockets = True
   
   # --------------------
+  isEligible = False
+
   unsure = None
   reason = ''
   
@@ -104,21 +85,27 @@ code: |
   elif (incarcerated_in_past_3_years is unsure): check_unsure
   progressor.increment()  # 7
   
+  if (
+         has_NON_probation_open_cases           is False
+         and is_on_probation                    is False
+         and juvenile_cases_in_past_3_years     is False
+         and juvenile_custody_in_past_3_years   is False
+         and convicted_in_past_3_years_states   is False
+         and convicted_in_past_3_years_federal  is False
+         and incarcerated_in_past_3_years       is False
+     ):
+      isEligible = True
 
   # --------------------
-  # If they got here they're eligible!
+  # Eligibility questions over. They may or may not be eligible.
   # --------------------
   
   # Testing
   #should_show_extra_info = True
   #needs_dockets = True
   
-  log( defined('should_show_extra_info'), 'console' )
-  log( 'is defined', 'console' )
-  log( should_show_extra_info, 'console' )
-  
   # Make sure they get a chance to order their docket sheets.
-  if ( defined('should_show_extra_info') and should_show_extra_info is True ):
+  if ( should_show_extra_info is True ):
     if (will_write_personal_info):
       progressor.increment()  # 8
       progressor.increment()  # 9
@@ -233,17 +220,24 @@ yesnomaybe: convicted_in_past_3_years_federal
 id: adult_incarceration
 question: Adult Cases - Incarceration
 subquestion: |
-  Were you in incarceration in the USA on or after
+  Were you incarcerated in the USA on or after
   ${ today().minus(years=3) }?
 yesnomaybe: incarcerated_in_past_3_years
 ---
 id: eligible
 field: will_write_personal_info
-question: You Might Be Able to Seal Your Records!
+question: You Might Be Able to Seal Your Records
 subquestion: |
+  % if ( isEligible is True ):
   We think you can probably seal your juvenile records.
+  % endif
 
-  % if (needs_dockets):
+  % if ( isEligible is False ):
+  We think you probably will not be able seal your
+  juvenile records, but you can still try.
+  % endif
+
+  % if ( needs_dockets ):
   **You can also still see how to get a certified copy of the
   {docket sheets} for all of your cases**.
   It can take a while, but
@@ -277,7 +271,7 @@ code: |
   # attachment stuff
 
   # Not private enough?
-  #filename = first_name + '-' + last_name + '-juvenile-sealing-petition'
+  #filename = first_name + '-' + last_name + '-juvenile-sealing-form'
 
   # If I don't define this stuff in here (as opposed to
   # in the text templates file) then they don't show up.
@@ -285,7 +279,7 @@ code: |
   atch_question = 'Your Form is Ready!'
   atch_subquestion = pdf_subquestion
   
-  atch_name = 'juvenile-sealing-petition'
+  atch_name = 'juvenile-sealing-form'
   atch_file_extension = 'pdf'
 
   atch_do_new_window_download = True
@@ -305,7 +299,7 @@ attachment:
   - name: ${atch_name}
     variable name: partial_petition_pdf
     filename: ${atch_name}
-    pdf template file: juvenile-sealing-petition.pdf
+    pdf template file: sealing-form.pdf
     fields:
       - "applicant.no_delinquency": 'Yes'
       - "applicant.name.last": ''
@@ -332,7 +326,7 @@ attachment:
   - name: ${atch_name}
     variable name: full_petition_pdf
     filename: ${atch_name}
-    pdf template file: juvenile-sealing-petition.pdf
+    pdf template file: sealing-form.pdf
     fields:
       - "applicant.no_delinquency": 'Yes'
       - "applicant.name.last": ${applicant.name.last}
@@ -427,7 +421,6 @@ code: |
 ---
 id: meta_utils
 code: |
-
   def log_me(message):
     log(message, 'console')
 ---
@@ -450,6 +443,180 @@ subquestion: |
 buttons:
   - ${restart_text}: restart
   - ${exit_text}: exit
+---
+id: records_can_help_text
+template: records_can_help
+content: |
+  It will help to know about your criminal records in Massachusetts
+  and in other states. You won't get in trouble for getting
+  answers wrong, but it might be easier for you to give the
+  right answers if you have a copy of both your juvenile record,
+  and also your CORI report if you had cases in an adult court.
+  These reports will give a summary of all your criminal charges
+  in Massachusetts and tell you how each case ended.
+---
+id: getting_juvenile_records_text
+template: getting_juvenile_records
+content: |
+  To ask for a free copy of your Massachusetts
+  juvenile record, see the
+  [GBLS juvenile record request document ${external_link_icon}](https://www.gbls.org/sites/default/files/juvenile_booklet_onelj.pdf).
+  It has a form to print and it tells you what to do.
+---
+id: getting_cori_text
+template: getting_cori
+content: |
+  To ask for your online
+  adult CORI report, make an account at
+  [Massachusetts iCORI site ${external_link_icon}](https://icori.chs.state.ma.us/icori/ext/global/landing.action?page=1&bod=1566991096995&m=presentLanding).
+  It costs $25, but if you are low income you might be be able
+  to ask for a waiver of the fee so you don't have to pay it.
+# TODO: How do you waive the fee online? I saw it once, but don't remember
+# TODO: How to get federal records?
+---
+id: pdf_after_download_full_text
+template: pdf_after_download_full
+content: |
+  ${hr}
+
+  ${pdf_next_steps_start}
+  ${pdf_next_steps_end}
+
+  ${petition_instructions_after}
+---
+id: email_full_text
+template: email_full
+content: |
+  ${pdf_intro}
+
+  ${pdf_next_steps_start}
+  ${pdf_next_steps_end}
+
+  ${petition_instructions_after}
+
+  ## More Links
+
+  ${more_resources}
+---
+id: pdf_after_download_partial_text
+template: pdf_after_download_partial
+content: |
+  ${hr}
+
+  ${pdf_next_steps_start}
+  ${pdf_next_steps_by_hand}
+  ${pdf_next_steps_end}
+
+  ${petition_instructions_after}
+---
+id: email_partial_text
+template: email_partial
+content: |
+  ${pdf_intro}
+
+  ${pdf_next_steps_start}
+  ${pdf_next_steps_by_hand}
+  ${pdf_next_steps_end}
+
+  ${petition_instructions_after}
+
+  ## More Links
+
+  ${more_resources}
+---
+id: email_subject_text
+template: email_subject
+content: |
+  Form to Seal Records
+---
+id: subject_line_text
+template: subject_line
+content: |
+  The email's name will be
+  <strong>${email_subject}</strong>.
+---
+id: pdf_intro_text
+template: pdf_intro
+content: |
+  We think might be able to seal your
+  juvenile records and your petition is ready to print!
+---
+id: download_or_email_text
+template: download_or_email
+content: |
+  This kind of form is called a petition.
+  You can download it or you can email it to
+  yourself or someone else.
+---
+id: pdf_next_steps_start_text
+template: pdf_next_steps_start
+content: |
+  ## What should I do now?
+
+  Next you need to:
+
+  1. Download it
+  1. Print it
+---
+id: pdf_next_steps_by_hand_text
+template: pdf_next_steps_by_hand
+content: |
+  1. Fill in your own information
+---
+id: pdf_next_steps_end_text
+template: pdf_next_steps_end
+content: |
+  1. Sign it in two places (where the arrows are)
+  1. Mail it. Remember to put your own address in
+  the top left of the envelope so they can send
+  information back to you. Mail it to:
+
+  **Commissioner of Probation**[BR]
+  **One Ashburton Place, Room 405**[BR]
+  **Boston, MA 02108**
+---
+id: petition_instructions_after_text
+template: petition_instructions_after
+content: |
+  Once you mail it,
+  the Commissioner of Probation
+  will look at the petition you sent and at your criminal
+  records. They'll see if they agree that you can seal
+  your juvenile records.
+
+  ## How will I know if my juvenile records are sealed?
+
+  The Commissioner of Probation will send you a letter to
+  tell you what they decide. The letter will say which records
+  have been sealed. If some records aren't sealed, the letter
+  will tell you why they made that decision. It can take up to
+  3 months to get a letter because so many people send them
+  petitions to seal records.
+
+  If the letter says your records are sealed, it can still
+  take about two weeks till your records are ready. Usually
+  it's faster. After that, most employers won't see
+  you have any record at all. Only employers who do federal
+  background checks and people like police will be able to see
+  your criminal record.
+
+  If you get the letter back and don't agree with what they
+  said, you can call the Commissioner’s Office and ask
+  them to explain to you why they would not seal all your
+  records. The number is (617) 727 - 5300. You can also
+  [try to find legal help near you ${external_link_icon}](https://www.masslegalservices.org/findlegalaid).
+  Remember that not every area has someone that
+  can help with criminal records.
+---
+id: pdf_subquestion_text
+template: pdf_subquestion
+content: |
+  ${download_or_email} ${subject_line}
+---
+id: gbls_horizontal_line
+template: hr
+content: |
+  &#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;
 ---
 id: not_helped
 event: sorry_end
