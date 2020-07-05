@@ -7,8 +7,8 @@ const expect = chai.expect;
 // useful cheat sheet for assertions: https://devhints.io/chai
 // run tests with "npm run test"
 
-const PETITIONER_URL = `${putils.BASE_INTERVIEW_URL}%3Apetitioner-entrypoint-10.yml#page1`;
-const CLINIC_URL = `${putils.BASE_INTERVIEW_URL}%3Aclinic-entrypoint-10.yml#page1`;
+const PETITIONER_URL = `${putils.BASE_INTERVIEW_URL}%3Aentrypoint-petitioner.yml#page1`;
+const CLINIC_URL = `${putils.BASE_INTERVIEW_URL}%3Aentrypoint-clinic.yml#page1`;
 
 
 describe('Making sure we can log into Docassemble playground', () => {
