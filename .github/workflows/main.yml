@@ -15,7 +15,6 @@ jobs:
       PLAYGROUND_ID: 42
       BASE_URL: https://interviews-dev.gbls.org
       REPO_URL: https://github.com/knod/docassemble-juvenilesealing
-      PROJECT_NAME: githubtest2
       BRANCH_PATH: ${{ github.ref }}
       #BRANCH_NAME: ${BRANCH_PATH##*/}
 

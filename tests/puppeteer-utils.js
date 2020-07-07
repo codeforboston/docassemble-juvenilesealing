@@ -2,10 +2,11 @@ const puppeteer = require('puppeteer');
 require('dotenv').config();
 
 const BASE_URL = process.env.BASE_URL;
-const BASE_INTERVIEW_URL = `${BASE_URL}/interview?i=docassemble.playground${process.env.PLAYGROUND_ID}${process.env.PROJECT_NAME}`;
-const BRANCH = process.env.BRANCH
+const BRANCH_NAME = process.env.BRANCH_NAME
     || (process.env.BRANCH_PATH && process.env.BRANCH_PATH.split('/')[2])
     || 'master';
+const PROJECT_NAME = ('testing' + BRANCH_NAME).replace(/[^A-Za-z0-9]/gi, '');
+const BASE_INTERVIEW_URL = `${BASE_URL}/interview?i=docassemble.playground${process.env.PLAYGROUND_ID}${PROJECT_NAME}`;
 
 const initPuppeteer = async () => {
   const browser = await puppeteer.launch({headless: !process.env.DEBUG});
@@ -46,6 +47,12 @@ const navigateToManageProject = async (page) => {
 const createProject = async (page) => {
   try {
     await navigateToManageProject(page);
+    // Check if a project with this name already exists
+    const projectLink = `[href="/playground?project=${PROJECT_NAME}"]`;
+    const projectButton = await page.$(projectLink);
+    if (projectButton) {
+      return;
+    }
     // Click "Add a new project"
     const addNewProjectButton = await page.$('.fa-plus-circle');
     await Promise.all([
@@ -54,7 +61,7 @@ const createProject = async (page) => {
     ]);
     // Enter new project name
     const projectNameElement = await page.$('#name');
-    await projectNameElement.type(process.env.PROJECT_NAME);
+    await projectNameElement.type(PROJECT_NAME);
     // Click Save
     const saveButton = await page.$('[type="submit"]');
     await Promise.all([
@@ -72,7 +79,7 @@ const deleteProject = async (page) => {
   try {
     await navigateToManageProject(page);
     // Click Delete button
-    const deleteLink = `[href="/playgroundproject?delete=1&project=${process.env.PROJECT_NAME}"]`;
+    const deleteLink = `[href="/playgroundproject?delete=1&project=${PROJECT_NAME}"]`;
     const deleteButton = await page.$(deleteLink);
     if (!deleteLink) {
       console.log('No such project exists');
@@ -97,9 +104,9 @@ const deleteProject = async (page) => {
 
 const installUrl = () => `${BASE_URL}/pullplaygroundpackage?${urlParams(
   {
-    project: process.env.PROJECT_NAME,
+    project: PROJECT_NAME,
     github: process.env.REPO_URL,
-    branch: BRANCH,
+    branch: BRANCH_NAME,
   }
 )}`;
 
@@ -112,7 +119,10 @@ const installRepo = async (page) => {
   const pullButton = await page.$('button[name=pull]');
   await Promise.all([
     pullButton.click(),
-    page.waitForNavigation(),
+    page.waitForNavigation({
+      // Without this, it tries to find the installButton before navigation is over
+      waitUntil: 'networkidle0',
+    }),
   ]);
   const installButton = await page.$('button[name=install]');
   await Promise.all([
@@ -123,12 +133,9 @@ const installRepo = async (page) => {
   await page.waitForSelector('.alert-success', {timeout: 300000});
 }
 
-// createProject('testing');
-// deleteProject('testing');
-
 module.exports = {
   BASE_INTERVIEW_URL: BASE_INTERVIEW_URL,
-  BRANCH: BRANCH,
+  BRANCH_NAME: BRANCH_NAME,
   login: login,
   createProject: createProject,
   deleteProject: deleteProject,
