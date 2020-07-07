@@ -14,5 +14,18 @@ const setup = async () => {
   }
 };
 
+const takedown = async () => {
+  let {page, browser} = await puppeteerutils.login();
+  try {
+    await puppeteerutils.deleteProject(page);
+  }
+  catch (e) {
+    console.log(e);
+  }
+  finally {
+    browser.close();
+  }
+};
 
-module.exports = {setup};
+
+module.exports = {setup, takedown};
