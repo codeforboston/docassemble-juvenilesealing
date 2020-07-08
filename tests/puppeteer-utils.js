@@ -31,13 +31,17 @@ const login = async () => {
 
 const navigateToManageProject = async (page) => {
   // Go to playground
-  await page.goto(`${BASE_URL}/playground`);
+  await page.goto(`${BASE_URL}/playground`, {waitUntil: 'domcontentloaded'});
   // Click dropdown in top left corner
   const dropdown = await page.$('#dropdownMenuButton');
   await dropdown.click();
   const dropdownOptions = await page.$$('[aria-labelledby="dropdownMenuButton"] .dropdown-item');
   // Click Manage Projects button
   const manageProjectsButton = dropdownOptions[dropdownOptions.length - 1];
+  console.log(dropdownOptions);
+  console.log(manageProjectsButton);
+  // await manageProjectsButton.click();
+  // await page.waitForNavigation();
   await Promise.all([
     manageProjectsButton.click(),
     page.waitForNavigation(),
