@@ -114,13 +114,13 @@ const installRepo = async (page) => {
       waitUntil: 'networkidle0',
     }),
   ]);
-  const installButton = await page.$('button[name=install]');
-  await Promise.all([
-    installButton.click(),
-    page.waitForNavigation(),
-  ]);
-  // installation can take a while, so set timeout to 300 seconds
-  await page.waitForSelector('.alert-success', {timeout: 300000});
+  // const installButton = await page.$('button[name=install]');
+  // await Promise.all([
+  //   installButton.click(),
+  //   page.waitForNavigation(),
+  // ]);
+  // // installation can take a while, so set timeout to 300 seconds
+  // await page.waitForSelector('.alert-success', {timeout: 300000});
 }
 
 module.exports = {
