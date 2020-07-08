@@ -45,6 +45,7 @@ const navigateToManageProject = async (page) => {
   //   manageProjectsButton.click(),
   //   page.waitForNavigation(),
   // ]);
+  
 };
 
 const createProject = async (page) => {
