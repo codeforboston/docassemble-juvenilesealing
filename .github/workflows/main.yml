@@ -1,16 +1,7 @@
 on: [push]
 
 jobs:
-  aloe-tests:
-    runs-on: ubuntu-latest
-
-    name: Run Aloe tests
-    steps:
-      # To use this repository's private action, you must check out the repository
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Run tests
-        uses: ./tests # Uses an action in the root directory
+  
   puppeteer-tests:
     runs-on: ubuntu-latest
 
@@ -21,6 +12,7 @@ jobs:
     env:
       PLAYGROUND_EMAIL: ${{ secrets.PLAYGROUND_EMAIL }}
       PLAYGROUND_PASSWORD: ${{ secrets.PLAYGROUND_PASSWORD }}
+      PLAYGROUND_ID: 42
       BASE_URL: https://interviews-dev.gbls.org
       REPO_URL: https://github.com/knod/docassemble-juvenilesealing
       BRANCH_PATH: ${{ github.ref }}

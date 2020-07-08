@@ -2,12 +2,20 @@ const puppeteer = require('puppeteer');
 require('dotenv').config();
 
 const BASE_URL = process.env.BASE_URL;
-const BRANCH_NAME = process.env.BRANCH_PATH.split('/')[2];
+const BRANCH_NAME = process.env.BRANCH_NAME
+    || (process.env.BRANCH_PATH && process.env.BRANCH_PATH.split('/')[2])
+    || 'master';
 const PROJECT_NAME = ('testing' + BRANCH_NAME).replace(/[^A-Za-z0-9]/gi, '');
+const BASE_INTERVIEW_URL = `${BASE_URL}/interview?i=docassemble.playground${process.env.PLAYGROUND_ID}${PROJECT_NAME}`;
 
-const login = async () => {
+const initPuppeteer = async () => {
   const browser = await puppeteer.launch({headless: !process.env.DEBUG});
   const page = await browser.newPage();
+  return {'page': page, 'browser': browser};
+}
+
+const login = async () => {
+  const {page, browser} = await initPuppeteer();
   // Login
   await page.goto(`${BASE_URL}/user/sign-in?`);
   const emailElement = await page.$('#email');
@@ -126,9 +134,12 @@ const installRepo = async (page) => {
 }
 
 module.exports = {
+  BASE_INTERVIEW_URL: BASE_INTERVIEW_URL,
+  BRANCH_NAME: BRANCH_NAME,
   login: login,
   createProject: createProject,
   deleteProject: deleteProject,
   installRepo: installRepo,
+  initPuppeteer: initPuppeteer,
 };
 
