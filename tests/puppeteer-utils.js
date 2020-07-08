@@ -38,14 +38,13 @@ const navigateToManageProject = async (page) => {
   const dropdownOptions = await page.$$('[aria-labelledby="dropdownMenuButton"] .dropdown-item');
   // Click Manage Projects button
   const manageProjectsButton = dropdownOptions[dropdownOptions.length - 1];
-  console.log(dropdownOptions);
   console.log(manageProjectsButton);
-  // await manageProjectsButton.click();
-  // await page.waitForNavigation();
-  await Promise.all([
-    manageProjectsButton.click(),
-    page.waitForNavigation(),
-  ]);
+  await manageProjectsButton.click();
+  await page.waitForNavigation();
+  // await Promise.all([
+  //   manageProjectsButton.click(),
+  //   page.waitForNavigation(),
+  // ]);
 };
 
 const createProject = async (page) => {
