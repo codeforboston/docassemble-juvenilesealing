@@ -44,9 +44,8 @@ const createProject = async (page) => {
       return;
     }
     // Click "Add a new project"
-    const addNewProjectButton = await page.$('.fa-plus-circle');
     await Promise.all([
-      addNewProjectButton.click(),
+      page.$eval('.fa-plus-circle', elem => elem.click()),
       page.waitForNavigation(),
     ]);
     // Enter new project name
