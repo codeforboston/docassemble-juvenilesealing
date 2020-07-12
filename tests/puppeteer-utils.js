@@ -43,11 +43,13 @@ const createProject = async (page) => {
     if (projectButton) {
       return;
     }
-    // Click "Add a new project"
-    await Promise.all([
-      page.$eval('.fa-plus-circle', elem => elem.click()),
-      page.waitForNavigation(),
-    ]);
+    // Go to "Add a new project" page
+    await page.goto(`${BASE_URL}/playgroundproject?new=1&project=default`, {waitUntil: 'domcontentloaded'});
+    // await page.waitForSelector('.fa-plus-circle');
+    // await Promise.all([
+    //   page.$eval('.fa-plus-circle', elem => elem.click()),
+    //   page.waitForNavigation(),
+    // ]);
     // Enter new project name
     const projectNameElement = await page.$('#name');
     await projectNameElement.type(PROJECT_NAME);
