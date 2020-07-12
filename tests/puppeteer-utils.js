@@ -113,7 +113,7 @@ const installRepo = async (page) => {
       waitUntil: 'networkidle0',
     }),
   ]);
-  await page.waitFor(60*1000); // wait for 1 minute
+  await page.waitFor(2*60*1000); // wait for 2 minute
   // await Promise.all([
   //   installButton.click(),
   //   page.waitForNavigation(),
