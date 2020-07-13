@@ -8,7 +8,8 @@
   },
   "scripts": {
     "test": "mocha tests --timeout 10000",
-    "setup": "node -e 'require(\"./tests/install-branch.js\").setup()'"
+    "setup": "node -e 'require(\"./tests/install-branch.js\").setup()'",
+    "takedown": "node -e 'require(\"./tests/install-branch.js\").takedown()'"
   },
   "repository": {
     "type": "git",

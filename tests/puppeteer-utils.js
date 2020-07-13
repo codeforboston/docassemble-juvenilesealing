@@ -30,76 +30,51 @@ const login = async () => {
 };
 
 const navigateToManageProject = async (page) => {
-  // Go to playground
-  await page.goto(`${BASE_URL}/playground`);
-  // Click dropdown in top left corner
-  const dropdown = await page.$('#dropdownMenuButton');
-  await dropdown.click();
-  const dropdownOptions = await page.$$('[aria-labelledby="dropdownMenuButton"] .dropdown-item');
-  // Click Manage Projects button
-  const manageProjectsButton = dropdownOptions[dropdownOptions.length - 1];
+  // Go to manage projects page URL
+  await page.goto(`${BASE_URL}/playgroundproject`, {waitUntil: 'domcontentloaded'});
+};
+
+const createProject = async (page) => {
+  await navigateToManageProject(page);
+  // Check if a project with this name already exists
+  const projectLink = `[href="/playground?project=${PROJECT_NAME}"]`;
+  const projectButton = await page.$(projectLink);
+  // If project already exists, don't create a new one
+  if (projectButton) {
+    return;
+  }
+  // Go to "Add a new project" page
+  await page.goto(`${BASE_URL}/playgroundproject?new=1&project=default`, {waitUntil: 'domcontentloaded'});
+  // Enter new project name
+  const projectNameElement = await page.$('#name');
+  await projectNameElement.type(PROJECT_NAME);
+  // Click Save
+  const saveButton = await page.$('[type="submit"]');
   await Promise.all([
-    manageProjectsButton.click(),
+    saveButton.click(),
     page.waitForNavigation(),
   ]);
 };
 
-const createProject = async (page) => {
-  try {
-    await navigateToManageProject(page);
-    // Check if a project with this name already exists
-    const projectLink = `[href="/playground?project=${PROJECT_NAME}"]`;
-    const projectButton = await page.$(projectLink);
-    if (projectButton) {
-      return;
-    }
-    // Click "Add a new project"
-    const addNewProjectButton = await page.$('.fa-plus-circle');
-    await Promise.all([
-      addNewProjectButton.click(),
-      page.waitForNavigation(),
-    ]);
-    // Enter new project name
-    const projectNameElement = await page.$('#name');
-    await projectNameElement.type(PROJECT_NAME);
-    // Click Save
-    const saveButton = await page.$('[type="submit"]');
-    await Promise.all([
-      saveButton.click(),
-      page.waitForNavigation(),
-    ]);
-  }
-  catch (e) {
-    console.log('An error happened in createProject. Details below:');
-    console.log(e);
-  }
-};
-
 const deleteProject = async (page) => {
-  try {
-    await navigateToManageProject(page);
-    // Click Delete button
-    const deleteLink = `[href="/playgroundproject?delete=1&project=${PROJECT_NAME}"]`;
-    const deleteButton = await page.$(deleteLink);
-    if (!deleteLink) {
-      console.log('No such project exists');
-      return;
-    }
-    await Promise.all([
-      deleteButton.click(),
-      page.waitForNavigation(),
-    ]);
-    // Click Delete button again
-    const deleteButton2 = await page.$('[type="submit"]');
-    await Promise.all([
-      deleteButton2.click(),
-      page.waitForNavigation(),
-    ]);
+  await navigateToManageProject(page);
+  // Click Delete button
+  const deleteLink = `[href="/playgroundproject?delete=1&project=${PROJECT_NAME}"]`;
+  const deleteButton = await page.$(deleteLink);
+  if (!deleteLink) {
+    console.log('No such project exists');
+    return;
   }
-  catch (e) {
-    console.log('An error happened in deleteProject. Details below:');
-    console.log(e);
-  }
+  await Promise.all([
+    deleteButton.click(),
+    page.waitForNavigation(),
+  ]);
+  // Click Delete button again
+  const deleteButton2 = await page.$('[type="submit"]');
+  await Promise.all([
+    deleteButton2.click(),
+    page.waitForNavigation(),
+  ]);
 };
 
 const installUrl = () => `${BASE_URL}/pullplaygroundpackage?${urlParams(
@@ -124,13 +99,7 @@ const installRepo = async (page) => {
       waitUntil: 'networkidle0',
     }),
   ]);
-  const installButton = await page.$('button[name=install]');
-  await Promise.all([
-    installButton.click(),
-    page.waitForNavigation(),
-  ]);
-  // installation can take a while, so set timeout to 300 seconds
-  await page.waitForSelector('.alert-success', {timeout: 300000});
+  await page.waitFor(2*60*1000); // wait for 2 minute
 }
 
 module.exports = {
