@@ -45,8 +45,4 @@ describe('Petitioner interview', () => {
       "First page title question"
     );
   });
-
-  it('fails', () => {
-    expect(false).to.be.true;
-  });
 });
