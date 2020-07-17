@@ -69,7 +69,7 @@ Then(/I should see the phrase "([^"]+)"/, async (phrase) => {
   expect(bodyText).to.contain(phrase);
 });
 
-// AfterAll(async () => {
-//   // If there is a browser window open, then close it
-//   if (scope.browser) await scope.browser.close();
-// });
+AfterAll(async () => {
+  // If there is a browser window open, then close it
+  if (scope.browser) await scope.browser.close();
+});
