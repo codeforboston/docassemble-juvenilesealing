@@ -48,10 +48,10 @@ Then('Count the results', async function () {
 });
 
 
-// -- Puppeteer specific steps from hello_world.feature 
+// -- Puppeteer specific steps from hello_world.feature
 
 Given(/I start the petitioner interview/, async () => {
-  // If there is no browser open, start a new one 
+  // If there is no browser open, start a new one
   if (!scope.browser) {
     scope.browser = await scope.driver.launch({ headless: !process.env.DEBUG });
     scope.page = await scope.browser.newPage();
@@ -67,6 +67,16 @@ When(/I wait (\d+) seconds?/, async (seconds) => {
 Then(/I should see the phrase "([^"]+)"/, async (phrase) => {
   const bodyText = await scope.page.$eval('body', elem => elem.innerText);
   expect(bodyText).to.contain(phrase);
+});
+
+Then(/I click the button "([^"]+)"/, async (phrase) => {
+  // TODO click a button that contains the given phrase
+  // phrase should not need to match the button's entire contents
+});
+
+Then(/I click the link "([^"]+)"/, async (phrase) => {
+  // TODO click a link that contains the given phrase
+  // phrase should not need to match the link's entire contents
 });
 
 AfterAll(async () => {
