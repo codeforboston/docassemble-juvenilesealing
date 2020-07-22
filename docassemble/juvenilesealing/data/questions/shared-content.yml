@@ -159,12 +159,12 @@ field: stop_for_docket_sheets
 #    docket sheets? A: No
 # [text](${ url_action('????' )})
 terms:
-  a copy of your Massachusetts criminal records: ${ records_popover }
-  your Massachusetts CORI report and on your juvenile records: ${ records_popover }
+  a copy of your Massachusetts criminal records <i class="fa fa-question-circle" aria-hidden="true"></i>: ${ records_popover }
+  your Massachusetts CORI report and on your juvenile records <i class="fa fa-question-circle" aria-hidden="true"></i>: ${ records_popover }
 question: How to Get Certified Docket Sheets
 subquestion: |
   Having
-  {a copy of your Massachusetts criminal records}
+  {a copy of your Massachusetts criminal records <i class="fa fa-question-circle" aria-hidden="true"></i>}
   can make it easier to make sure you get all your docket
   sheets because they will have the docket numbers for
   your cases. Every case has its own docket
@@ -175,7 +175,7 @@ subquestion: |
   that handled that case. To get docket sheets for a
   case, you might need to know the docket number of
   that case. You can find those docket numbers on
-  {your Massachusetts CORI report and on your juvenile records}.
+  {your Massachusetts CORI report and on your juvenile records <i class="fa fa-question-circle" aria-hidden="true"></i>}.
 
   ### Getting certified copies in person
 
