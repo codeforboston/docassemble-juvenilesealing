@@ -208,14 +208,14 @@ question: ''
 undefine: wants_docket_instructions
 subquestion: |
   Do you already have certified copies of the
-  {docket sheets}
+  {docket sheets <i class="fa fa-question-circle" aria-hidden="true"></i>}
   for all of your juvenile cases?
 
   **Note:** A docket sheet is different than a criminal
   record report (called a CORI) or juvenile record report.
 terms:
   # Templates in terms work in questions
-  docket sheets: |
+  docket sheets <i class="fa fa-question-circle" aria-hidden="true"></i>: |
     ${ docket_sheets_popover }
 yesnomaybe: have_docket_copies_already
 ---
