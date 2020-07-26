@@ -6,7 +6,7 @@ const BRANCH_NAME = process.env.BRANCH_NAME
     || (process.env.BRANCH_PATH && process.env.BRANCH_PATH.split('/')[2])
     || 'master';
 const PROJECT_NAME = ('testing' + BRANCH_NAME).replace(/[^A-Za-z0-9]/gi, '');
-const BASE_INTERVIEW_URL = `${BASE_URL}/interview?i=docassemble.playground${process.env.PLAYGROUND_ID}${PROJECT_NAME}`;
+const BASE_INTERVIEW_URL = `${BASE_URL}/interview?reset=1&i=docassemble.playground${process.env.PLAYGROUND_ID}${PROJECT_NAME}`;
 
 const initPuppeteer = async () => {
   const browser = await puppeteer.launch({headless: !process.env.DEBUG});

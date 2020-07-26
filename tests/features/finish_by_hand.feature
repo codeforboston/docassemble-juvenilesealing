@@ -9,7 +9,7 @@ Feature: Finish by hand
 
 Scenario: Qualify for sealing and elect to finish by hand
 
-    Given I start the interview "docassemble.playground42juvenilesealing%3Aentrypoint-petitioner.yml"
+    Given I start the petitioner interview
     Then I click the button "Next "
     Then I click the button "Yes"
     Then I click the button "Yes"

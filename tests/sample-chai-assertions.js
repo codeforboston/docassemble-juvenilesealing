@@ -38,7 +38,6 @@ describe('Petitioner interview', () => {
 
   it('opens the petitioner interview', async () => {
     let resp = await page.goto(PETITIONER_URL, {waitUntil: 'domcontentloaded'});
-    console.log('This is the PETITIONER_URL' + PETITIONER_URL);
     const mainQuestion = await page.$eval('#daMainQuestion', elem => elem.innerText);
     expect(mainQuestion.toLowerCase()).to.contain(
       "can you seal your massachusetts juvenile records?", 
