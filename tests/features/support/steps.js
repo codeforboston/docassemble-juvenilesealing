@@ -69,14 +69,42 @@ Then(/I should see the phrase "([^"]+)"/, async (phrase) => {
   expect(bodyText).to.contain(phrase);
 });
 
+async function findElemByText(elem, text) {
+  await scope.page.waitForNavigation({
+    waitUntil: 'networkidle0',
+  });
+  const elems = await scope.page.$$(elem);
+  for (var i=0; i < elems.length; i++) {
+    let elemText = await (await elems[i].getProperty('innerText')).jsonValue();
+    if (elemText.includes(text)) {
+      return elems[i];
+    }
+  }
+  return null;
+}
+
 Then(/I click the button "([^"]+)"/, async (phrase) => {
-  // TODO click a button that contains the given phrase
-  // phrase should not need to match the button's entire contents
+  const button = await findElemByText('button', phrase);
+  if (button) {
+    button.click();
+  } else {
+    if (process.env.DEBUG) {
+      await scope.page.screenshot({ path: './error.jpg', type: 'jpeg' });
+    }
+    throw `No button with text ${phrase} exists.`;
+  }
 });
 
 Then(/I click the link "([^"]+)"/, async (phrase) => {
-  // TODO click a link that contains the given phrase
-  // phrase should not need to match the link's entire contents
+  const link = await findElemByText('a', phrase);
+  if (link) {
+    link.click();
+  } else {
+    if (process.env.DEBUG) {
+      await scope.page.screenshot({ path: './error.jpg', type: 'jpeg' });
+    }
+    throw `No link with text ${phrase} exists.`;
+  }
 });
 
 AfterAll(async () => {

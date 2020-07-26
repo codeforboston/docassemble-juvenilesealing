@@ -29,7 +29,7 @@ Feature: Link to docket sheets pages flow without affecting regular flow
 # Same for user selecting 'I don't know'
 
 Scenario: Go to only first page of docket sheets information through the popover, and then use form to see docket sheets information by clicking "No"
-    Given I start the interview "docassemble.playground42juvenilesealing%3Aentrypoint-petitioner.yml"
+    Given I start the petitioner interview
     Then I click the button "Next "
     Then I click the button "Yes"
     Then I click the link "docket sheets"
@@ -45,7 +45,7 @@ Scenario: Go to only first page of docket sheets information through the popover
     Then I should see the phrase "Do you have any open criminal or juvenile cases"
 
 Scenario: Go to both pages of docket sheets information through the popover, and then use form to see docket sheets information by clicking "No"
-    Given I start the interview "docassemble.playground42juvenilesealing%3Aentrypoint-petitioner.yml"
+    Given I start the petitioner interview
     Then I click the button "Next "
     Then I click the button "Yes"
     Then I click the link "docket sheets"
@@ -63,7 +63,7 @@ Scenario: Go to both pages of docket sheets information through the popover, and
     Then I should see the phrase "Do you have any open criminal or juvenile cases"
 
 Scenario: Go to only first page of docket sheets information through the popover, and then use form to see docket sheets information by clicking "I don't know"
-    Given I start the interview "docassemble.playground42juvenilesealing%3Aentrypoint-petitioner.yml"
+    Given I start the petitioner interview
     Then I click the button "Next "
     Then I click the button "Yes"
     Then I click the link "docket sheets"
@@ -79,7 +79,7 @@ Scenario: Go to only first page of docket sheets information through the popover
     Then I should see the phrase "Do you have any open criminal or juvenile cases"
 
 Scenario: Go to both pages of docket sheets information through the popover, and then use form to see docket sheets information by clicking "I don't know"
-    Given I start the interview "docassemble.playground42juvenilesealing%3Aentrypoint-petitioner.yml"
+    Given I start the petitioner interview
     Then I click the button "Next "
     Then I click the button "Yes"
     Then I click the link "docket sheets"
