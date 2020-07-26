@@ -53,7 +53,7 @@ Then('Count the results', async function () {
 Given(/I start the (petitioner|clinic) interview/, async (interview) => {
   // If there is no browser open, start a new one
   if (!scope.browser) {
-    scope.browser = await scope.driver.launch({ headless: !process.env.DEBUG, slowMo: 100 });
+    scope.browser = await scope.driver.launch({ headless: !process.env.DEBUG });
     scope.page = await scope.browser.newPage();
   }
 
@@ -66,10 +66,6 @@ When(/I wait (\d+) seconds?/, async (seconds) => {
   await scope.page.waitFor(seconds * 1000);
 });
 
-Then(/I should see the phrase "([^"]+)"/, async (phrase) => {
-  const bodyText = await scope.page.$eval('body', elem => elem.innerText);
-  expect(bodyText).to.contain(phrase);
-});
 
 async function findElemByText(elem, text) {
   await scope.page.waitForNavigation({
@@ -85,28 +81,42 @@ async function findElemByText(elem, text) {
   return null;
 }
 
-Then(/I click the button "([^"]+)"/, async (phrase) => {
-  const button = await findElemByText('button', phrase);
-  if (button) {
-    button.click();
+When(/I click the (button|link) "([^"]+)"/, async (elemType, phrase) => {
+  let elem;
+  if (elemType === 'button') {
+    [elem] = await scope.page.$x(`//button/span[contains(text(), "${phrase}")]`);
+  } else {
+    [elem] = await scope.page.$x(`//a[contains(text(), "${phrase}")]`);
+  }
+
+  if (elem) {
+    await Promise.all([
+      elem.click(),
+      scope.page.waitForNavigation()
+  ]);
   } else {
     if (process.env.DEBUG) {
       await scope.page.screenshot({ path: './error.jpg', type: 'jpeg' });
     }
-    throw `No button with text ${phrase} exists.`;
+    throw `No ${elemType} with text ${phrase} exists.`;
   }
 });
 
-Then(/I click the link "([^"]+)"/, async (phrase) => {
-  const link = await findElemByText('a', phrase);
+When('I click the defined text link {string}', async (phrase) => {
+  const [link] = await scope.page.$x(`//a[contains(text(), "${phrase}")]`);
   if (link) {
-    link.click();
+    await link.click();
   } else {
     if (process.env.DEBUG) {
       await scope.page.screenshot({ path: './error.jpg', type: 'jpeg' });
     }
     throw `No link with text ${phrase} exists.`;
   }
+});
+
+Then('I should see the phrase {string}', async (phrase) => {
+  const bodyText = await scope.page.$eval('body', elem => elem.innerText);
+  expect(bodyText).to.contain(phrase);
 });
 
 AfterAll(async () => {
