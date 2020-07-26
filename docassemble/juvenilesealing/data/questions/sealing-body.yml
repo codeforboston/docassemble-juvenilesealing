@@ -239,7 +239,7 @@ subquestion: |
 
   % if ( needs_dockets ):
   **You can also still see how to get a certified copy of the
-  {docket sheets} for all of your cases**.
+  {docket sheets <i class="fa fa-question-circle" aria-hidden="true"></i>} for all of your cases**.
   It can take a while, but
   it is a good idea to get them before mailing your form.
   % endif
@@ -263,7 +263,7 @@ buttons:
   - Keep using this form ${next_icon}: False
 terms:
   # Templates in terms work in questions
-  docket sheets: |
+  docket sheets <i class="fa fa-question-circle" aria-hidden="true"></i>: |
     ${ docket_sheets_popover }
 ---
 id: pdf_page_variables

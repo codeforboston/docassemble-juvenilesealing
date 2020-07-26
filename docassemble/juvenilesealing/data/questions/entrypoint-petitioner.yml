@@ -146,7 +146,7 @@ subquestion: |
 
   You need to know about your closed cases and open cases.
   That includes cases in other states and federal cases.
-  Having {a copy of your criminal records}
+  Having {a copy of your criminal records <i class="fa fa-question-circle" aria-hidden="true"></i>}
   can help you know the answers to the questions.
 
   ### Privacy
@@ -169,7 +169,7 @@ under: |
   <span class="feedback">Let us know <a href="https://www.surveymonkey.com/r/6QMLCFM">how we're doing ${ external_link_icon }</a>.</span>
 
 terms:
-  a copy of your criminal records: ${ records_popover }
+  a copy of your criminal records <i class="fa fa-question-circle" aria-hidden="true"></i>: ${ records_popover }
 ---
 id: in_ma
 question: ''
@@ -208,14 +208,14 @@ question: ''
 undefine: wants_docket_instructions
 subquestion: |
   Do you already have certified copies of the
-  {docket sheets}
+  {docket sheets <i class="fa fa-question-circle" aria-hidden="true"></i>}
   for all of your juvenile cases?
 
   **Note:** A docket sheet is different than a criminal
   record report (called a CORI) or juvenile record report.
 terms:
   # Templates in terms work in questions
-  docket sheets: |
+  docket sheets <i class="fa fa-question-circle" aria-hidden="true"></i>: |
     ${ docket_sheets_popover }
 yesnomaybe: have_docket_copies_already
 ---
