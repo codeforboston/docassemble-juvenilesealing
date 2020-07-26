@@ -50,14 +50,16 @@ Then('Count the results', async function () {
 
 // -- Puppeteer specific steps from hello_world.feature
 
-Given(/I start the petitioner interview/, async () => {
+Given(/I start the (petitioner|clinic) interview/, async (interview) => {
   // If there is no browser open, start a new one
   if (!scope.browser) {
-    scope.browser = await scope.driver.launch({ headless: !process.env.DEBUG });
+    scope.browser = await scope.driver.launch({ headless: !process.env.DEBUG, slowMo: 100 });
     scope.page = await scope.browser.newPage();
   }
+
+  const url = interview === 'petitioner' ? PETITIONER_URL : CLINIC_URL
   // Then go to the given page
-  await scope.page.goto(PETITIONER_URL, {waitUntil: 'domcontentloaded'});
+  await scope.page.goto(url, {waitUntil: 'domcontentloaded'});
 });
 
 When(/I wait (\d+) seconds?/, async (seconds) => {
