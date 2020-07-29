@@ -39,7 +39,7 @@ const waitForPage = async (page) => {
       break;
     } else {
       console.log("question not found");
-      page.waitFor(10 * 1000); // 10 seconds
+      await page.waitFor(10 * 1000); // 10 seconds
     }
   }
 };
