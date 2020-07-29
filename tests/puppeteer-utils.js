@@ -94,12 +94,8 @@ const installRepo = async (page) => {
   const pullButton = await page.$('button[name=pull]');
   await Promise.all([
     pullButton.click(),
-    page.waitForNavigation({
-      // Without this, it tries to find the installButton before navigation is over
-      waitUntil: 'networkidle0',
-    }),
+    page.waitForNavigation(),
   ]);
-  await page.waitFor(2*60*1000); // wait for 2 minute
 }
 
 module.exports = {
