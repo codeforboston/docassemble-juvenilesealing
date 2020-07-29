@@ -31,8 +31,10 @@ const takedown = async () => {
 
 const waitForPage = async (page) => {
   const tries = 20;
-  for (i=0; i<tries; i++) {
-    await page.goto(interviewConstants.PETITIONER_URL);
+
+  await page.goto(interviewConstants.PETITIONER_URL);
+
+  for (i=0; i<tries; i++) {    
     const element = await page.$('#daMainQuestion');
     if (element) {
       console.log("found question on page");
@@ -40,6 +42,7 @@ const waitForPage = async (page) => {
     } else {
       console.log("question not found");
       await page.waitFor(10 * 1000); // 10 seconds
+      await page.reload();
     }
   }
 };
