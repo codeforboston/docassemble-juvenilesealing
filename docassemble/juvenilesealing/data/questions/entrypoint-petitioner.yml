@@ -20,6 +20,10 @@ include:
   #- juvenile-sealing-text-10.yml
   - shared-content.yml
 ---
+default screen parts:
+  under: |
+    ${ juvinile_sealing_under_text }
+---
 mandatory: True
 id: docket_flow_code
 code: |
@@ -161,12 +165,6 @@ subquestion: |
   possessions (like Guam).
 
 continue button label: Next ${next_icon}
-
-under: |
-  Read more about sealing juvenile records in the
-  [GBLS 2019 booklet ${ external_link_icon }](https://www.gbls.org/sites/default/files/2019-08/juvenile_booklet_august_2019F.pdf).
-  
-  <span class="feedback">Let us know <a href="https://www.surveymonkey.com/r/6QMLCFM">how we're doing ${ external_link_icon }</a>.</span>
 
 terms:
   a copy of your criminal records <i class="fa fa-question-circle" aria-hidden="true"></i>: ${ records_popover }

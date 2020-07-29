@@ -11,6 +11,11 @@ metadata:
 ---
 include:
   - gbls-base.yml
+  - shared-content.yml
+---
+default screen parts:
+  under: |
+    ${ juvinile_sealing_under_text }
 ---
 mandatory: True
 id: docket_flow_code
