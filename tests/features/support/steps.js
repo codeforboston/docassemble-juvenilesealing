@@ -1,4 +1,4 @@
-const { When, Then, Given, After } = require('cucumber');
+const { When, Then, Given, After, setDefaultTimeout } = require('cucumber');
 const { expect } = require('chai');
 const puppeteer = require('puppeteer');
 const interviewConstants = require('../../interview-constants');
@@ -6,6 +6,7 @@ const scope = require('./scope');
 
 const PETITIONER_URL = interviewConstants.PETITIONER_URL;
 const CLINIC_URL = interviewConstants.CLINIC_URL;
+setDefaultTimeout(30 * 1000);
 
 // -- From tutorial
 
