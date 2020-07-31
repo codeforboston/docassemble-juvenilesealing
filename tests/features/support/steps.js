@@ -68,9 +68,7 @@ When(/I wait (\d+) seconds?/, async (seconds) => {
 
 
 async function findElemByText(elem, text) {
-  await scope.page.waitForNavigation({
-    waitUntil: 'networkidle0',
-  });
+  await scope.page.waitForNavigation({waitUntil: 'domcontentloaded'});
   const elems = await scope.page.$$(elem);
   for (var i=0; i < elems.length; i++) {
     let elemText = await (await elems[i].getProperty('innerText')).jsonValue();
@@ -92,7 +90,7 @@ When(/I click the (button|link) "([^"]+)"/, async (elemType, phrase) => {
   if (elem) {
     await Promise.all([
       elem.click(),
-      scope.page.waitForNavigation()
+      scope.page.waitForNavigation({waitUntil: 'domcontentloaded'})
   ]);
   } else {
     if (process.env.DEBUG) {
