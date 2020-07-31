@@ -1,4 +1,4 @@
-const { When, Then, And, Given, AfterAll } = require('cucumber');
+const { When, Then, And, Given, AfterAll, After } = require('cucumber');
 const { expect } = require('chai');
 const puppeteer = require('puppeteer');
 const interviewConstants = require('../../interview-constants');
@@ -117,6 +117,13 @@ When('I click the defined text link {string}', async (phrase) => {
 Then('I should see the phrase {string}', async (phrase) => {
   const bodyText = await scope.page.$eval('body', elem => elem.innerText);
   expect(bodyText).to.contain(phrase);
+});
+
+After(async (scenario) => {
+  if(scenario.result.status === "failed") {
+    const name = scenario.pickle.name.replace(/[^A-Za-z0-9]/gi, '');
+    await scope.page.screenshot({ path: `error-${name}.jpg`, type: 'jpeg' });
+  }
 });
 
 AfterAll(async () => {

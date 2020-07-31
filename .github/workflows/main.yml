@@ -36,7 +36,7 @@ jobs:
         if: ${{ always() }}
         with:
           name: screenshots
-          path: ./error.jpg
+          path: /**/error-*.jpg
       - name: Cleanup
         if: ${{ always() }}
         run: npm run takedown
