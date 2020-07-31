@@ -119,5 +119,8 @@ Then('I should see the phrase {string}', async (phrase) => {
 
 After(async () => {
   // If there is a browser window open, then close it
-  if (scope.browser) await scope.browser.close();
+  if (scope.browser) {
+    await scope.browser.close();
+    scope.browser = null;
+  }
 });
