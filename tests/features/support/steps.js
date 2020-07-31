@@ -1,4 +1,4 @@
-const { When, Then, Given, After, setDefaultTimeout } = require('cucumber');
+const { When, Then, Given, After, AfterAll, setDefaultTimeout } = require('cucumber');
 const { expect } = require('chai');
 const puppeteer = require('puppeteer');
 const interviewConstants = require('../../interview-constants');
@@ -125,5 +125,12 @@ After(async () => {
   if (scope.page) {
     await scope.page.close();
     scope.page = null;
+  }
+});
+
+AfterAll(async () => {
+  // If there is a browser window open, then close it
+  if (scope.browser) {
+    await scope.browser.close();
   }
 });
