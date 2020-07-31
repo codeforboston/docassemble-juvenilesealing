@@ -33,6 +33,7 @@ jobs:
       - run: npm run cucumber
       - name: upload artifacts
         uses: actions/upload-artifact@v2
+        if: ${{ always() }}
         with:
           name: screenshots
           path: ./error.jpg
