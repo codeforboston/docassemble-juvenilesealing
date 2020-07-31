@@ -6,7 +6,7 @@ const scope = require('./scope');
 
 const PETITIONER_URL = interviewConstants.PETITIONER_URL;
 const CLINIC_URL = interviewConstants.CLINIC_URL;
-setDefaultTimeout(30 * 1000);
+setDefaultTimeout(120 * 1000);
 
 // -- From tutorial
 
@@ -58,6 +58,7 @@ Given(/I start the (petitioner|clinic) interview/, async (interview) => {
   }
   if (!scope.page) {
     scope.page = await scope.browser.newPage();
+    scope.page.setDefaultTimeout(120 * 1000)
   }
 
   const url = interview === 'petitioner' ? PETITIONER_URL : CLINIC_URL
@@ -129,7 +130,7 @@ After(async () => {
 });
 
 AfterAll(async () => {
-  // If there is a browser window open, then close it
+  // If there is a browser open, then close it
   if (scope.browser) {
     await scope.browser.close();
   }
