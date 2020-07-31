@@ -54,6 +54,8 @@ Given(/I start the (petitioner|clinic) interview/, async (interview) => {
   // If there is no browser open, start a new one
   if (!scope.browser) {
     scope.browser = await scope.driver.launch({ headless: !process.env.DEBUG });
+  }
+  if (!scope.page) {
     scope.page = await scope.browser.newPage();
   }
 
@@ -119,8 +121,8 @@ Then('I should see the phrase {string}', async (phrase) => {
 
 After(async () => {
   // If there is a browser window open, then close it
-  if (scope.browser) {
-    await scope.browser.close();
-    scope.browser = null;
+  if (scope.page) {
+    await scope.page.close();
+    scope.page = null;
   }
 });
