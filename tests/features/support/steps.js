@@ -1,4 +1,4 @@
-const { When, Then, And, Given, AfterAll } = require('cucumber');
+const { When, Then, Given, After } = require('cucumber');
 const { expect } = require('chai');
 const puppeteer = require('puppeteer');
 const interviewConstants = require('../../interview-constants');
@@ -117,7 +117,7 @@ Then('I should see the phrase {string}', async (phrase) => {
   expect(bodyText).to.contain(phrase);
 });
 
-AfterAll(async () => {
+After(async () => {
   // If there is a browser window open, then close it
   if (scope.browser) await scope.browser.close();
 });
