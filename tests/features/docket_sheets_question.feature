@@ -25,7 +25,7 @@ Scenario: Use interview "No" answer flow path to see first page of docket sheets
     Then I click the button "No"
     Then I should see the phrase "WHY GET DOCKET SHEETS?"
     Then I click the button "No, take me back to the form"
-    Then I should see the phrase "XYOUR OPEN CASES"
+    Then I should see the phrase "YOUR OPEN CASES"
 
 Scenario: Use interview "No" answer flow path to see second page of docket sheets info
     Given I start the petitioner interview
