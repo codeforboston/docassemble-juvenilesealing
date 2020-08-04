@@ -24,7 +24,7 @@ const login = async () => {
   await passwordElement.type(process.env.PLAYGROUND_PASSWORD);
   await Promise.all([
     passwordElement.press('Enter'),
-    page.waitForNavigation(),
+    page.waitForNavigation({waitUntil: 'domcontentloaded'}),
   ]);
   return {'page': page, 'browser': browser};
 };
@@ -52,7 +52,7 @@ const createProject = async (page) => {
   const saveButton = await page.$('[type="submit"]');
   await Promise.all([
     saveButton.click(),
-    page.waitForNavigation(),
+    page.waitForNavigation({waitUntil: 'domcontentloaded'}),
   ]);
 };
 
@@ -67,13 +67,13 @@ const deleteProject = async (page) => {
   }
   await Promise.all([
     deleteButton.click(),
-    page.waitForNavigation(),
+    page.waitForNavigation({waitUntil: 'domcontentloaded'}),
   ]);
   // Click Delete button again
   const deleteButton2 = await page.$('[type="submit"]');
   await Promise.all([
     deleteButton2.click(),
-    page.waitForNavigation(),
+    page.waitForNavigation({waitUntil: 'domcontentloaded'}),
   ]);
 };
 
@@ -94,7 +94,7 @@ const installRepo = async (page) => {
   const pullButton = await page.$('button[name=pull]');
   await Promise.all([
     pullButton.click(),
-    page.waitForNavigation(),
+    page.waitForNavigation({waitUntil: 'domcontentloaded'}),
   ]);
 }
 
