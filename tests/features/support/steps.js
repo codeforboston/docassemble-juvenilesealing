@@ -1,4 +1,4 @@
-const { When, Then, And, Given, AfterAll, After } = require('cucumber');
+const { When, Then, And, Given, After, AfterAll, setDefaultTimeout } = require('cucumber');
 const { expect } = require('chai');
 const puppeteer = require('puppeteer');
 const interviewConstants = require('../../interview-constants');
@@ -6,6 +6,7 @@ const scope = require('./scope');
 
 const PETITIONER_URL = interviewConstants.PETITIONER_URL;
 const CLINIC_URL = interviewConstants.CLINIC_URL;
+setDefaultTimeout(120 * 1000);
 
 // -- From tutorial
 
@@ -54,7 +55,10 @@ Given(/I start the (petitioner|clinic) interview/, async (interview) => {
   // If there is no browser open, start a new one
   if (!scope.browser) {
     scope.browser = await scope.driver.launch({ headless: !process.env.DEBUG });
+  }
+  if (!scope.page) {
     scope.page = await scope.browser.newPage();
+    scope.page.setDefaultTimeout(120 * 1000)
   }
 
   const url = interview === 'petitioner' ? PETITIONER_URL : CLINIC_URL
@@ -68,9 +72,7 @@ When(/I wait (\d+) seconds?/, async (seconds) => {
 
 
 async function findElemByText(elem, text) {
-  await scope.page.waitForNavigation({
-    waitUntil: 'networkidle0',
-  });
+  await scope.page.waitForNavigation({waitUntil: 'domcontentloaded'});
   const elems = await scope.page.$$(elem);
   for (var i=0; i < elems.length; i++) {
     let elemText = await (await elems[i].getProperty('innerText')).jsonValue();
@@ -92,7 +94,7 @@ When(/I click the (button|link) "([^"]+)"/, async (elemType, phrase) => {
   if (elem) {
     await Promise.all([
       elem.click(),
-      scope.page.waitForNavigation()
+      scope.page.waitForNavigation({waitUntil: 'domcontentloaded'})
   ]);
   } else {
     if (process.env.DEBUG) {
@@ -120,13 +122,20 @@ Then('I should see the phrase {string}', async (phrase) => {
 });
 
 After(async (scenario) => {
-  if(scenario.result.status === "failed") {
+  if (scenario.result.status === "failed") {
     const name = scenario.pickle.name.replace(/[^A-Za-z0-9]/gi, '');
     await scope.page.screenshot({ path: `error-${name}.jpg`, type: 'jpeg' });
+  }
+  // If there is a browser window open, then close it
+  if (scope.page) {
+    await scope.page.close();
+    scope.page = null;
   }
 });
 
 AfterAll(async () => {
-  // If there is a browser window open, then close it
-  if (scope.browser) await scope.browser.close();
+  // If there is a browser open, then close it
+  if (scope.browser) {
+    await scope.browser.close();
+  }
 });
