@@ -31,6 +31,12 @@ jobs:
       - run: npm run setup
       - run: npm run test
       - run: npm run cucumber
+      - name: upload artifacts
+        uses: actions/upload-artifact@v2
+        if: ${{ failure() }}
+        with:
+          name: screenshots
+          path: ./**/error-*.jpg
       - name: Cleanup
         if: ${{ always() }}
         run: npm run takedown
