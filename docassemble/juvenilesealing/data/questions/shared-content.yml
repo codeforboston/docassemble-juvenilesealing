@@ -365,3 +365,10 @@ content: |
   
   <span class="feedback">Let us know <a href="https://www.surveymonkey.com/r/6QMLCFM">how we're doing ${ external_link_icon }</a>.</span>
 ---
+id: ineligibility_warning
+template: ineligibility_warning
+content: |
+  <div class="alert alert-danger">
+    You are <strong>not</strong> eligible to seal your Massachusetts juvenile records.
+  </div>
+---
