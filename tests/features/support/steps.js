@@ -1,4 +1,4 @@
-const { When, Then, Given, After, AfterAll, setDefaultTimeout } = require('cucumber');
+const { When, Then, And, Given, After, AfterAll, setDefaultTimeout } = require('cucumber');
 const { expect } = require('chai');
 const puppeteer = require('puppeteer');
 const interviewConstants = require('../../interview-constants');
@@ -121,7 +121,11 @@ Then('I should see the phrase {string}', async (phrase) => {
   expect(bodyText).to.contain(phrase);
 });
 
-After(async () => {
+After(async (scenario) => {
+  if (scenario.result.status === "failed") {
+    const name = scenario.pickle.name.replace(/[^A-Za-z0-9]/gi, '');
+    await scope.page.screenshot({ path: `error-${name}.jpg`, type: 'jpeg' });
+  }
   // If there is a browser window open, then close it
   if (scope.page) {
     await scope.page.close();
