@@ -622,8 +622,9 @@ id: not_helped
 event: sorry_end
 progress: 100
 question: |
-  Thank you and sorry we couldn't help
+  Sorry we couldn't help
 subquestion: |
+  ${ ineligibility_warning }
   % if (len(reason) > 0):
   ${ construct_reasons(reason) }
 
