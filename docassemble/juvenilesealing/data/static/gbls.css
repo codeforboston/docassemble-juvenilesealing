@@ -11,7 +11,7 @@
 */
 
 span, div, p {
-  color: rgba( 99, 99, 99, 1 );
+  color: rgba( 70, 70, 70, 1 );
   font-family: "Roboto",sans-serif;
   font-size: 16px;
   line-height: normal;
@@ -71,7 +71,7 @@ a.navbar-brand,
 .navbar-brand span,
 .dabackicon:hover,
 button.daquestionbackbutton.btn-link:hover {
-  color: rgba( 99, 99, 99, 1 );
+  color: rgba( 70, 70, 70, 1 );
   text-decoration: none;
 }
 
@@ -156,8 +156,7 @@ button.daquestionbackbutton.btn-link:hover {
 }
 .btn span {
   font-weight: 700;
-  color: rgba(64, 64, 64, 1);
-  color: rgba(99, 99, 99, 1);
+  color: rgba(70, 70, 70, 1);
 }
 /* Checkbox image alignment */
 input.labelauty + label > span.labelauty-unchecked-image,
@@ -173,8 +172,7 @@ input.labelauty + label > span.labelauty-checked-image {
 .btn-primary:not(:disabled):not(.disabled):active,
 .show>.btn-primary.dropdown-toggle,
 .atch-button {
-  border-color: rgba(64, 64, 64, 1);
-  border-color: rgba(99, 99, 99, 1);
+  border-color: rgba(70, 70, 70, 1);
   background-color: white;
 }
 
@@ -186,10 +184,8 @@ button.btn-secondary:disabled,
 .btn-secondary:not(:disabled):not(.disabled).active,
 .btn-secondary:not(:disabled):not(.disabled):active,
 .show>.btn-secondary.dropdown-toggle {
-  background-color: rgba( 99, 99, 99, 1 );
-  border-color: rgba( 99, 99, 99, 1 );
+  border-color: rgba( 70, 70, 70, 1 );
   background-color: white;
-  border-color: rgba(64, 64, 64, 1);
 }
 button.btn-secondary span {
   /* color: white; */
@@ -240,17 +236,17 @@ button.btn-secondary span {
 
 /* Unselected inputs. Resting state. */
 .btn-light {
-  border-color: rgba( 99, 99, 99, 1 );
+  border-color: rgba( 70, 70, 70, 1 );
   background-color: white;
 }
 .btn-light svg
 .btn-light span {
-  color: rgba( 99, 99, 99, 1 );
+  color: rgba( 70, 70, 70, 1 );
 }
 
 /* Unselected inputs. Other states. */
 .btn-light:hover {
-  border-color: rgba( 99, 99, 99, 1 );
+  border-color: rgba( 70, 70, 70, 1 );
   background-color: rgba( 220, 220, 220, 1 );
 }
 
@@ -272,8 +268,8 @@ button.btn-secondary span {
 label[aria-checked="true"],
 label[aria-checked="true"]:hover,
 label[aria-checked="true"]:focus {
-  border-color: rgba( 99, 99, 99, 1 );
-  background-color: rgba( 99, 99, 99, 1 );
+  border-color: rgba( 70, 70, 70, 1 );
+  background-color: rgba( 70, 70, 70, 1 );
   color: white !important;
 }
 label[aria-checked="true"] span {
@@ -317,7 +313,7 @@ can't identify text contents */
 .h1, .h2, .h3, .h4, .h5, .h6,
 h1, h2, h3, h4, h5, h6  {
   position: relative;
-  color: rgba( 99, 99, 99, 1 );
+  color: rgba( 70, 70, 70, 1 );
   font-weight: 700;
 }
 
@@ -355,9 +351,10 @@ h2:before {
 }
 */
 
-.h3, h3 {
-  font-size: 1em;
-  margin-bottom: .8em;
+h3, .h3 {
+  font-size: 1.2em;
+  margin-bottom: .4em;
+  margin-top: 2em;
 }
 
 
