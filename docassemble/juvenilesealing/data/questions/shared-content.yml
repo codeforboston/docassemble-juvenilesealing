@@ -47,17 +47,6 @@ content: |
   These reports will give a summary of all your criminal charges
   in Massachusetts and tell you how each case ended.
 ---
-id: records_can_help_text
-template: records_can_help
-content: |
-  It will help to know about your criminal records in Massachusetts
-  and in other states. You won't get in trouble for getting
-  answers wrong, but it might be easier for you to give the
-  right answers if you have a copy of both your juvenile record,
-  and also your CORI report if you had cases in an adult court.
-  These reports will give a summary of all your criminal charges
-  in Massachusetts and tell you how each case ended.
----
 id: getting_juvenile_records_text
 template: getting_juvenile_records
 content: |
