@@ -112,6 +112,7 @@ fields:
   - note: ${atch_after_download}
 script: |
   <script>
+    console.log(val('email_sent_prefix'))
 
     $("#sendAttachmentEmail").click(function(){
 
@@ -120,7 +121,7 @@ script: |
       
       console.log('address:', val('atch_email_address') );
       url_action_call('send_atch_email',
-       {
+        {
          address: val('atch_email_address'),
          'wants_instructions': val('wants_instructions_in_email')
         },
@@ -189,7 +190,7 @@ content: |
 id: atch_next_steps_offer
 template: atch_next_steps_offer
 content: |
-  In the email, tell me what to do next',
+  In the email, tell me what to do next
 ---
 id: atch_do_new_window_download
 code: |
