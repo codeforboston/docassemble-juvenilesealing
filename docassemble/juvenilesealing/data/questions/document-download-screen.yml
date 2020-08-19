@@ -87,7 +87,7 @@ subquestion: |
 fields:
   - html: |
       <div class="alert alert-success" role="alert">
-        ${attachment_created_message}
+        ${email_attachment_created_message}
       </div>
   - html: |
       <a id="openAttachment" class="download-link atch-button" href=${atch_open_link} type="application/pdf" target="_blank">
