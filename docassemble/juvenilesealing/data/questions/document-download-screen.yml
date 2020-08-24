@@ -29,6 +29,9 @@ comment: |
   - atch_send_email_label
   - atch_open_label
 ---
+imports:
+  - json
+---
 id: trigger_attachment_page
 scan for variables: False
 only sets: trigger_attachment_page
@@ -78,8 +81,6 @@ fields:
     default: ${atch_default_email_address}
   - note: ${ action_button_html("#", id_tag="sendAttachmentEmail", classname="atch-button", new_window=atch_do_new_window_email, icon="envelope", label=atch_send_email_label, color="primary", size="md") }
 #  - note: ${ action_button_html("#", id_tag="downloadAttachment", classname="atch-button", new_window=atch_do_new_window_download, icon="download", label=atch_download_label, color="primary", size="md") }
-  - html: |
-      <span id="variables" aria-hidden="True" hidden style="background: red;" email_sent_prefix='${email_sent_prefix}' email_error_msg='${email_error_msg}'> Variables belonging to the interview </span>
   - note: ${atch_after_download}
 
 script: |
@@ -88,14 +89,15 @@ script: |
     $("#sendAttachmentEmail").click(function(){
       daShowSpinner();
       
-      var vars = document.getElementById('variables')
-      var email_sent_prefix = vars.getAttribute('email_sent_prefix')
-      var email_error_msg = vars.getAttribute('email_error_msg')
+      var email_sent_prefix = ${ json.dumps(str(email_sent_prefix))}
+      var email_error_msg = ${ json.dumps(str(email_error_msg))}
+      var email_attempt_prefix = ${ json.dumps(str(email_attempt_prefix))}
 
       url_action_call('send_atch_email',
         {
+          email_attempt_prefix: email_attempt_prefix,
           email_sent_prefix: email_sent_prefix,
-          email_error_msg: val('email_error_msg'),
+          email_error_msg: email_error_msg,
           address: val('atch_email_address'),
           wants_instructions: val('wants_instructions_in_email'),
         },
@@ -124,6 +126,7 @@ code: |
   address = action_argument('address')
   was_successful = send_email(to=address, template=email_text, attachments=atch_itself)
   json_response(dict(
+    email_attempt_prefix = action_argument('email_attempt_prefix'),
     email_sent_prefix = action_argument('email_sent_prefix'),
     email_error_msg = action_argument('email_error_msg'),
     was_successful = was_successful,
