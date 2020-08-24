@@ -89,9 +89,12 @@ script: |
     $("#sendAttachmentEmail").click(function(){
       daShowSpinner();
       
+      var email_attempt_prefix = ${ json.dumps(str(email_attempt_prefix))}
+      var message = email_attempt_prefix + val('atch_email_address') + ".";
+      flash(message, "secondary");
+      
       var email_sent_prefix = ${ json.dumps(str(email_sent_prefix))}
       var email_error_msg = ${ json.dumps(str(email_error_msg))}
-      var email_attempt_prefix = ${ json.dumps(str(email_attempt_prefix))}
 
       url_action_call('send_atch_email',
         {
