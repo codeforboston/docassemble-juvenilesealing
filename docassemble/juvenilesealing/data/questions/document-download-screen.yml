@@ -29,44 +29,16 @@ comment: |
   - atch_send_email_label
   - atch_open_label
 ---
+imports:
+  - json
+---
 id: trigger_attachment_page
 scan for variables: False
 only sets: trigger_attachment_page
 code: |
 
-  # defaults = {
-  #   #'atch_itself': None,  # Must be included from interview page
-  #   #'atch_name': None,  # Must be included from interview page
-
-  #   # Berit
-  #   'atch_file_extension': 'pdf',
-
-  #   'atch_question': 'Your Document is Ready!',
-  #   'atch_subquestion': 'You can download it or email it to whoever you want.',
-  #   # Neha
-  #   'atch_after_download': '',
-
-  #   'atch_default_email_address': '',
-  #   'atch_email_subject': 'Your Pre-filled Document',
-  #   # Sweta
-  #   'atch_email_contents': 'Your pre-filled document should be attached to this email. Thank you and we hope we could help.',
-  #   'atch_next_steps_offer': 'In the email, tell me what to do next',
-
-  #   'atch_do_new_window_download': False,
-
-  #   # Me
-  #   'atch_download_label': 'Download the document',
-  #   'atch_do_new_window_email': False,
-  #   'atch_send_email_label': 'Send',
-  #   'atch_open_label': 'Open the document in another window'
-  # }
-
   atch_open_link = atch_itself.pdf.url_for(inline=True)
   atch_download_link = atch_itself.pdf.url_for()
-  
-  #for attr in defaults:
-  #  if (not defined(attr)):
-  #    define(attr, defaults[attr])
 
   # This is what actually displays the attachment page
   atch_email_address
@@ -110,37 +82,43 @@ fields:
   - note: ${ action_button_html("#", id_tag="sendAttachmentEmail", classname="atch-button", new_window=atch_do_new_window_email, icon="envelope", label=atch_send_email_label, color="primary", size="md") }
 #  - note: ${ action_button_html("#", id_tag="downloadAttachment", classname="atch-button", new_window=atch_do_new_window_download, icon="download", label=atch_download_label, color="primary", size="md") }
   - note: ${atch_after_download}
+
 script: |
   <script>
-    console.log(val('email_sent_prefix'))
-
+  
     $("#sendAttachmentEmail").click(function(){
-
-      let message = val('email_attempt_prefix') + val('atch_email_address') + ".";
+      daShowSpinner();
+      
+      var email_attempt_prefix = ${ json.dumps(str(email_attempt_prefix))}
+      var message = email_attempt_prefix + val('atch_email_address') + ".";
       flash(message, "secondary");
       
-      console.log('address:', val('atch_email_address') );
+      var email_sent_prefix = ${ json.dumps(str(email_sent_prefix))}
+      var email_error_msg = ${ json.dumps(str(email_error_msg))}
+
       url_action_call('send_atch_email',
         {
-         address: val('atch_email_address'),
-         'wants_instructions': val('wants_instructions_in_email')
+          email_attempt_prefix: email_attempt_prefix,
+          email_sent_prefix: email_sent_prefix,
+          email_error_msg: email_error_msg,
+          address: val('atch_email_address'),
+          wants_instructions: val('wants_instructions_in_email'),
         },
        function (obj_or_html, result_as_text, response) {
-        if (response.status === 200) {
-          console.log(obj_or_html)
-          console.log(result_as_text)
-          console.log(response)
-          flash(val('email_sent_prefix') + obj_or_html.email_address + "!", "success", true);
-        } else {
-          flash(val('email_error_msg'), "danger", true)
-          console.log( 'response:', response );
-          url_action_call('log_to_docassemble', {
-            message: response.body  // log this object to see its props
-          })
-        }
-      });  // ends url_action_call and callback
-    });
-
+         daHideSpinner();
+         if (response.status === 200) {
+           //console.log(obj_or_html)
+           //console.log(result_as_text)
+           //console.log(response)
+           flash(obj_or_html.email_sent_prefix + ' ' + obj_or_html.email_address + "!", "success", true);
+         } else {
+           flash(obj_or_html.email_error_msg, "danger", true)
+           url_action_call('log_to_docassemble', {
+             message: response.body  // log this object to see its props
+           })
+         }
+       });  // ends url_action_call and callback
+     });
   </script>
 ---
 id: send_atch_email
@@ -150,7 +128,13 @@ code: |
   wants_instructions = action_argument('wants_instructions')
   address = action_argument('address')
   was_successful = send_email(to=address, template=email_text, attachments=atch_itself)
-  json_response(dict(was_successful=was_successful, email_address=address))
+  json_response(dict(
+    email_attempt_prefix = action_argument('email_attempt_prefix'),
+    email_sent_prefix = action_argument('email_sent_prefix'),
+    email_error_msg = action_argument('email_error_msg'),
+    was_successful = was_successful,
+    email_address = address
+  ))
 ---
 id: atch_file_extension
 template: atch_file_extension
@@ -230,7 +214,7 @@ content: |
 id: email_sent_prefix
 template: email_sent_prefix
 content: |
-  The email got sent to 
+  <i class="fas fa-check"></i> The email got sent to 
 ---
 id: email_attempt_prefix 
 template: email_attempt_prefix
