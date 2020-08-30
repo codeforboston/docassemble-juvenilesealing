@@ -15,7 +15,7 @@ default screen parts:
     <br/>
     <hr/>
 
-    <span class="feedback">Let us know <a href="https://www.surveymonkey.com/r/6QMLCFM">how we're doing ${ external_link_icon }</a>.</span>
+    <span class="feedback">Let us know <a href="https://www.surveymonkey.com/r/6QMLCFM">how we are doing ${ external_link_icon }</a>.</span>
 ---
 default validation messages:
   multiple choice required: You have to pick one.

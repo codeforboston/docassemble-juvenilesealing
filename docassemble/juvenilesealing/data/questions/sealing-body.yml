@@ -1,8 +1,8 @@
 ---
 comment: |
   - Immigration asked in previous separate form.
-  - Don't ask personal info until we know they want to print the form.
-  - If they get here from the docket form, it's pro se user. Show more options.
+  - Do not ask personal info until we know they want to print the form.
+  - If they get here from the docket form, it is pro se user. Show more options.
   - Personal info code can look like https://github.com/GBLS/docassemble-gbls/blob/master/docassemble/gbls/data/questions/basic-questions-gbls.yml
 ---
 include:
@@ -160,7 +160,7 @@ id: motor_vehicle_text
 template: motor_vehicle_cases
 content: |
   **Note:** Motor vehicle offenses where the fine was
-  $50 or less don't count.
+  $50 or less do not count.
 ---
 id: open_cases
 question: |
@@ -244,7 +244,7 @@ subquestion: |
   
   ## What Next?
 
-  We've created a form that has checkmarks in the
+  We have created a form that has checkmarks in the
   right places.
   Now the form needs some of your
   personal information. You can do it two ways:
@@ -271,8 +271,8 @@ code: |
   # Not private enough?
   #filename = first_name + '-' + last_name + '-juvenile-sealing-form'
 
-  # If I don't define this stuff in here (as opposed to
-  # in the text templates file) then they don't show up.
+  # If I do not define this stuff in here (as opposed to
+  # in the text templates file) then they do not show up.
 
   atch_question = 'Your Form is Ready!'
   atch_subquestion = pdf_subquestion
@@ -356,8 +356,8 @@ subquestion: |
 
   Do you want to get your records first?
 buttons:
-  - Yes, I'll come back later: True
-  - No, I'll keep going: False
+  - Yes, I will come back later: True
+  - No, I will keep going: False
 ---
 id: reasons_start
 template: reasons_start
@@ -407,7 +407,7 @@ content: |
 id: reasons_end
 template: reasons_end
 content: |
-  you're not eligible to get your juvenile record sealed.
+  you are not eligible to get your juvenile record sealed.
 ---
 id: construct_reasons
 code: |
@@ -549,26 +549,26 @@ content: |
   Once you mail it,
   the Commissioner of Probation
   will look at the petition you sent and at your criminal
-  records. They'll see if they agree that you can seal
+  records. They will see if they agree that you can seal
   your juvenile records.
 
   ## How will I know if my juvenile records are sealed?
 
   The Commissioner of Probation will send you a letter to
   tell you what they decide. The letter will say which records
-  have been sealed. If some records aren't sealed, the letter
+  have been sealed. If some records are not sealed, the letter
   will tell you why they made that decision. It can take up to
   3 months to get a letter because so many people send them
   petitions to seal records.
 
   If the letter says your records are sealed, it can still
   take about two weeks till your records are ready. Usually
-  it's faster. After that, most employers won't see
+  it is faster. After that, most employers will not see
   you have any record at all. Only employers who do federal
   background checks and people like police will be able to see
   your criminal record.
 
-  If you get the letter back and don't agree with what they
+  If you get the letter back and do not agree with what they
   said, you can call the Commissioner’s Office and ask
   them to explain to you why they would not seal all your
   records. The number is (617) 727 - 5300. You can also
@@ -590,7 +590,7 @@ id: not_helped
 event: sorry_end
 progress: 100
 question: |
-  Sorry we couldn't help
+  Sorry we could not help
 subquestion: |
   ${ ineligibility_warning }
   % if (len(reason) > 0):

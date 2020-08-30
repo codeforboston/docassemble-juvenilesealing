@@ -34,7 +34,7 @@ id: records_can_help_text
 template: records_can_help
 content: |
   It will help to know about your criminal records in Massachusetts
-  and in other states. You won't get in trouble for getting
+  and in other states. You will not get in trouble for getting
   answers wrong, but it might be easier for you to give the
   right answers if you have a copy of both your juvenile record,
   and also your CORI report if you had cases in an adult court.
@@ -62,14 +62,14 @@ content: |
   adult CORI report, make an account at
   [Massachusetts iCORI site ${external_link_icon}](https://icori.chs.state.ma.us/icori/ext/global/landing.action?page=1&bod=1566991096995&m=presentLanding).
   It costs $25, but if you are low income you might be be able
-  to ask for a waiver of the fee so you don't have to pay it.
-# TODO: How do you waive the fee online? I saw it once, but don't remember
+  to ask for a waiver of the fee so you do not have to pay it.
+# TODO: How do you waive the fee online? I saw it once, but do not remember
 # TODO: How to get federal records?
 ---
 id: out_of_state_records_text
 template: out_of_state_records
 content: |
-  If you want to get records from other states you'll
+  If you want to get records from other states you will
   need to go to the websites for those states and
   see if they have information about how you can request those
   records. The
@@ -99,12 +99,12 @@ subquestion: |
   There are times when it is important to have certified copies of
   your docket sheets for all your cases.
 
-  If you seal your records you won't be able to get
+  If you seal your records you will not be able to get
   certified copies of your docket sheets until you
   unseal them again. Unsealing your records can
   take a long time.
 
-  If you're not a US citizen, it can be very important to have
+  If you are not a US citizen, it can be very important to have
   the copies for a hearing, like an immigration hearing. It is
   a good idea  to a lawyer before you seal
   your records.
@@ -116,7 +116,7 @@ subquestion: |
   * Taking legal action related to your arrest or the case (like suing someone)
   * Whenever you need to prove what happened in the case
 
-  Once you seal your records, you'll have to unseal them to get
+  Once you seal your records, you will have to unseal them to get
   certified copies. That can sometimes take a while.
 
   ### What are docket sheets?
@@ -126,11 +126,11 @@ subquestion: |
   what happened in a case every time you went
   to court for that case.
 
-  ### What's special about a certified copy of a docket sheet?
+  ### What is special about a certified copy of a docket sheet?
 
   A certified copy of docket sheets
   will have a special mark on it that looks like the
-  courthouse's seal. It'll either be a colored stamp or
+  courthouse's seal. It will either be a colored stamp or
   an area where the paper is raised up in the shape of the
   seal.
 
@@ -171,14 +171,14 @@ subquestion: |
   Getting copies in person is the easiest and fastest
   way to do this. For each case, go to the clerk’s
   office in the courthouse that handled the case and say,
-  "I'd like certified copies of my docket sheets
+  "I would like certified copies of my docket sheets
   for all of my cases." You have to do it
   at each courthouse where you had a case. You might need
   to know the docket numbers of your cases.
 
   It can cost up to $2.50 for each page
   that they have to print, but if you
-  can't afford to pay that much, you can say, "I'd like
+  cannot afford to pay that much, you can say, "I would like
   to fill out an affidavit of indigency to waive the fee."
   The staff should then give you a form to fill out.
   You will write down how much you get paid on that form
@@ -186,7 +186,7 @@ subquestion: |
 
   ### Getting certified copies by mail
 
-  Even though it's easier and faster to go in person,
+  Even though it is easier and faster to go in person,
   you can also send a letter to ask for the docket
   sheets. It can take two weeks or so. You will need
   to know the docket number of your cases. If you want
@@ -207,9 +207,9 @@ subquestion: |
   1. Write your own mailing address in the top left of the envelope.
   1. Put a stamp on the envelope and mail it.
 
-  If you don't get anything back after two or three weeks,
+  If you do not get anything back after two or three weeks,
   call the clerk's office. Tell them, "I mailed a request
-  for my docket sheets. Can you help me find out when I'll
+  for my docket sheets. Can you help me find out when I will
   get those?"
 
   ### An example of the address on an envelope
@@ -300,7 +300,7 @@ comment: |
   * [Try to find legal help in your area](https://www.masslegalservices.org/findlegalaid). Remember that not every area has people who can help with criminal records.
   * More links to GBLS information about [criminal record problems](https://www.gbls.org/self-help/cori)
   * A detailed GBLS ["Know Your Rights Booklet"](https://www.gbls.org/sites/default/files/2019-04/know-your-cori-rights-041819.pdf) on many topics related to sealing and expungement
-  * About applying for jobs TODO: what's the link?
+  * About applying for jobs TODO: what is the link?
   * [Criminal records and housing](https://www.masslegalhelp.org/cori/housing)
   * [Finding housing](https://www.masslegalhelp.org/housing/finding-housing)
   * Medical, mental health, and recovery support sites:
