@@ -155,8 +155,8 @@ button.daquestionbackbutton.btn-link:hover {
   padding: 1em;
 }
 .btn span {
-  font-weight: 700;
-  color: rgba(70, 70, 70, 1);
+  font-weight: 400;
+  color: white;
 }
 /* Checkbox image alignment */
 input.labelauty + label > span.labelauty-unchecked-image,
@@ -165,15 +165,20 @@ input.labelauty + label > span.labelauty-checked-image {
 }
 
 .btn-primary,
-.btn-primary:hover,
-.btn-primary:focus,
 .btn-primary:disabled,
-.btn-primary:not(:disabled):not(.disabled).active,
-.btn-primary:not(:disabled):not(.disabled):active,
 .show>.btn-primary.dropdown-toggle,
 .atch-button {
-  border-color: rgba(70, 70, 70, 1);
-  background-color: white;
+  border-color: #7d2832;
+  background-color: #be404d;
+}
+.btn-primary:hover, .btn-primary:focus{
+  border-color: #7d2832;
+  background-color: #7d2832;
+}
+.btn-primary:not(:disabled):not(.disabled).active,
+.btn-primary:not(:disabled):not(.disabled):active{
+  border-color: #7d2832;
+  background-color: #be404d;
 }
 
 /* A completely black button is kind of alarming... */
