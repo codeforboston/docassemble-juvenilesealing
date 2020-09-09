@@ -44,11 +44,17 @@ a {
 
 .dabackicon span,
 button.daquestionbackbutton.btn-link span {
-  color: #037bfe !important;
+  color: white !important;
 }
 
 button.btn.btn-link.btn-da.daquestionbackbutton.danonsubmit{
-  border-color: #037bfe;
+  border-color: #114c8c;
+  background-color: #037bfe;
+}
+
+button.btn.btn-link.btn-da.daquestionbackbutton.danonsubmit:hover {
+  border-color: #114c8c;
+  background-color: #114c8c;
 }
 
 .dabackicon span,
@@ -244,16 +250,28 @@ button.btn-secondary span {
 }
 
 .btn-danger,
-.btn-danger:hover,
-.btn-danger:focus,
 .btn-danger:disabled,
-.btn-danger:not(:disabled):not(.disabled).active,
-.btn-danger:not(:disabled):not(.disabled):active,
 .show>.btn-danger.dropdown-toggle {
-  border-color: rgba( 190, 64, 77, 1 );
+  border-color: black;
   background-color: white;
+  color: black;
 }
-
+.btn-danger span {
+  color: black;
+}
+.btn-danger:hover span, .btn-danger:focus span{
+  color: white;
+}
+.btn-danger:hover, .btn-danger:focus {
+  border-color: black;
+  background-color: black;
+}
+.btn-danger:not(:disabled):not(.disabled).active,
+.btn-danger:not(:disabled):not(.disabled):active,{
+  border-color: black;
+  background-color: white;
+  color: black;
+}
 
 /* Fields with empty labels (so they should take the whole width) */
 /*.da-field-container-emptylabel div {
