@@ -4,8 +4,6 @@ comment: |
   - Do not ask personal info until we know they want to print the form.
   - If they get here from the docket form, it is pro se user. Show more options.
   - Personal info code can look like https://github.com/GBLS/docassemble-gbls/blob/master/docassemble/gbls/data/questions/basic-questions-gbls.yml
-
-  TODOs: see sealing-todo.yml
 ---
 include:
   # Using questions from other interviews
@@ -444,36 +442,6 @@ buttons:
   - ${restart_text}: restart
   - ${exit_text}: exit
 ---
-id: records_can_help_text
-template: records_can_help
-content: |
-  It will help to know about your criminal records in Massachusetts
-  and in other states. You will not get in trouble for getting
-  answers wrong, but it might be easier for you to give the
-  right answers if you have a copy of both your juvenile record,
-  and also your CORI report if you had cases in an adult court.
-  These reports will give a summary of all your criminal charges
-  in Massachusetts and tell you how each case ended.
----
-id: getting_juvenile_records_text
-template: getting_juvenile_records
-content: |
-  To ask for a free copy of your Massachusetts
-  juvenile record, see the
-  [GBLS juvenile record request document ${external_link_icon}](https://www.gbls.org/sites/default/files/juvenile_booklet_onelj.pdf).
-  It has a form to print and it tells you what to do.
----
-id: getting_cori_text
-template: getting_cori
-content: |
-  To ask for your online
-  adult CORI report, make an account at
-  [Massachusetts iCORI site ${external_link_icon}](https://icori.chs.state.ma.us/icori/ext/global/landing.action?page=1&bod=1566991096995&m=presentLanding).
-  It costs $25, but if you are low income you might be be able
-  to ask for a waiver of the fee so you do not have to pay it.
-# TODO: How do you waive the fee online? I saw it once, but do not remember
-# TODO: How to get federal records?
----
 id: pdf_after_download_full_text
 template: pdf_after_download_full
 content: |
@@ -622,8 +590,9 @@ id: not_helped
 event: sorry_end
 progress: 100
 question: |
-  Thank you and sorry we could not help
+  Sorry we could not help
 subquestion: |
+  ${ ineligibility_warning }
   % if (len(reason) > 0):
   ${ construct_reasons(reason) }
 

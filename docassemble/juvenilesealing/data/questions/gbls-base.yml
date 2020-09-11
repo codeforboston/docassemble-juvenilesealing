@@ -12,6 +12,9 @@ default screen parts:
   right: |
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,900&display=swap" rel="stylesheet">
   under: |
+    <br/>
+    <hr/>
+
     <span class="feedback">Let us know <a href="https://www.surveymonkey.com/r/6QMLCFM">how we are doing ${ external_link_icon }</a>.</span>
 ---
 default validation messages:
