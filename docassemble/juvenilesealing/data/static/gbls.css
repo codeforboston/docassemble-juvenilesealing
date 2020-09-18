@@ -48,13 +48,13 @@ button.daquestionbackbutton.btn-link span {
 }
 
 button.btn.btn-link.btn-da.daquestionbackbutton.danonsubmit{
-  border-color: #114c8c;
-  background-color: #037bfe;
+  border-color: #7d2832;
+  background-color: #be404d;
 }
 
 button.btn.btn-link.btn-da.daquestionbackbutton.danonsubmit:hover {
-  border-color: #114c8c;
-  background-color: #114c8c;
+  border-color: #7d2832;
+  background-color: #7d2832;
 }
 
 .dabackicon span,
@@ -175,7 +175,7 @@ button.daquestionbackbutton.btn-link:hover {
 }
 .btn span {
   font-weight: 400;
-  color: white;
+  color: black;
 }
 /* Checkbox image alignment */
 input.labelauty + label > span.labelauty-unchecked-image,
@@ -187,17 +187,17 @@ input.labelauty + label > span.labelauty-checked-image {
 .btn-primary:disabled,
 .show>.btn-primary.dropdown-toggle,
 .atch-button {
-  border-color: #7d2832;
-  background-color: #be404d;
+  border-color: black;
+  background-color: white;
 }
 .btn-primary:hover, .btn-primary:focus{
-  border-color: #7d2832;
-  background-color: #7d2832;
+  border-color: black;
+  background-color: #adadad;
 }
 .btn-primary:not(:disabled):not(.disabled).active,
 .btn-primary:not(:disabled):not(.disabled):active{
-  border-color: #7d2832;
-  background-color: #be404d;
+  border-color: black;
+  background-color: #adadad;
 }
 
 /* A completely black button is kind of alarming... */
