@@ -199,8 +199,8 @@ subquestion: |
 
   ${more_resources}
 buttons:
-  - Exit ${exit_icon}: exit
   - ${restart_text}: restart
+  - Exit ${exit_icon}: exit
 ---
 id: do_you_have_sheets
 question: ''
@@ -227,8 +227,8 @@ subquestion: |
 
   ${more_resources}
 buttons:
-  - Exit ${exit_icon}: exit
   - ${restart_text}: restart
+  - Exit ${exit_icon}: exit
 ---
 id: placeholder_for_form
 event: placeholder_for_form
