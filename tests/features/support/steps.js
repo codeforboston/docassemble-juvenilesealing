@@ -98,7 +98,7 @@ When(/I click the (button|link) "([^"]+)"/, async (elemType, phrase) => {
   ]);
   } else {
     if (process.env.DEBUG) {
-      await scope.page.screenshot({ path: './error.jpg', type: 'jpeg' });
+      await scope.page.screenshot({ path: './error.jpg', type: 'jpeg', fullPage: true });
     }
     throw `No ${elemType} with text ${phrase} exists.`;
   }
@@ -110,7 +110,7 @@ When('I click the defined text link {string}', async (phrase) => {
     await link.click();
   } else {
     if (process.env.DEBUG) {
-      await scope.page.screenshot({ path: './error.jpg', type: 'jpeg' });
+      await scope.page.screenshot({ path: './error.jpg', type: 'jpeg', fullPage: true });
     }
     throw `No link with text ${phrase} exists.`;
   }
@@ -124,7 +124,7 @@ Then('I should see the phrase {string}', async (phrase) => {
 After(async (scenario) => {
   if (scenario.result.status === "failed") {
     const name = scenario.pickle.name.replace(/[^A-Za-z0-9]/gi, '');
-    await scope.page.screenshot({ path: `error-${name}.jpg`, type: 'jpeg' });
+    await scope.page.screenshot({ path: `error-${name}.jpg`, type: 'jpeg', fullPage: true });
   }
   // If there is a browser window open, then close it
   if (scope.page) {
