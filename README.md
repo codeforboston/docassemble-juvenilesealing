@@ -2,7 +2,7 @@
 
 This process should be easier for both petitioners themselves and
 legal professionals who hope to support petitioners. This tool
-is focused on MA.
+is focused on MA
 
 ## Design
 
