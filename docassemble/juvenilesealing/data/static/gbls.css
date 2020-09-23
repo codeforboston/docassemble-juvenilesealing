@@ -204,37 +204,37 @@ input.labelauty + label > span.labelauty-checked-image {
 button.btn-secondary,
 button.btn-secondary:disabled,
 .show>.btn-secondary.dropdown-toggle {
-  border-color: #7d2832;
-  background-color: #be404d;
+  border-color: black;
+  background-color: white;
 }
 button.btn-secondary span {
   /* color: white; */
 }
 .btn-secondary:hover, .btn-secondary:focus{
-  border-color: #7d2832;
-  background-color: #7d2832;
+  border-color: black;
+  background-color: #adadad;
 }
 .btn-secondary:not(:disabled):not(.disabled).active,
 .btn-secondary:not(:disabled):not(.disabled):active{
-  border-color: #7d2832;
-  background-color: #be404d;
+  border-color: black;
+  background-color: #adadad;
 }
 
 /* UX experts agree - same color for all answer buttons! */
 .btn-warning,
 .btn-warning:disabled,
 .show>.btn-warning.dropdown-toggle {
-  border-color: #7d2832;
-  background-color: #be404d;
+  border-color: black;
+  background-color: white;
 }
 .btn-warning:hover, .btn-warning:focus{
-  border-color: #7d2832;
-  background-color: #7d2832;
+  border-color: black;
+  background-color: #adadad;
 }
 .btn-warning:not(:disabled):not(.disabled).active,
 .btn-warning:not(:disabled):not(.disabled):active{
-  border-color: #7d2832;
-  background-color: #be404d;
+  border-color: black;
+  background-color: #adadad;
 }
 
 /* Buttons to other sites that can't be labeled that way should still be yellow...? */
@@ -260,16 +260,16 @@ button.btn-secondary span {
   color: black;
 }
 .btn-danger:hover span, .btn-danger:focus span{
-  color: white;
+  color: black;
 }
 .btn-danger:hover, .btn-danger:focus {
   border-color: black;
-  background-color: black;
+  background-color: #adadad;
 }
 .btn-danger:not(:disabled):not(.disabled).active,
 .btn-danger:not(:disabled):not(.disabled):active,{
   border-color: black;
-  background-color: white;
+  background-color: #adadad;
   color: black;
 }
 
