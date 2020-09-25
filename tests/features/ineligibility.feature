@@ -15,7 +15,7 @@ Scenario: User is ineligible because they don't have docket sheets and said they
     And I click the button "Yes"
     Then I should see the phrase "Do you already have certified copies"
     When I click the button "No"
-    Then I should see the phrase "If you’re not a US citizen, it can be very important to have the copies for a hearing,"
+    Then I should see the phrase "If you are not a US citizen, it can be very important to have the copies for a hearing,"
     When I click the button "Yes, tell me more"
     Then I should see the phrase "HOW TO GET CERTIFIED DOCKET SHEETS"
     When I click the button "I will come back to the form after ordering my docket sheets "
@@ -28,7 +28,7 @@ Scenario: User is ineligible because they have open cases
     And I click the button "Yes"
     Then I should see the phrase "Do you have any open criminal or juvenile cases right now anywhere in the USA?"
     When I click the button "Yes"
-    Then I should see the phrase "Sorry, but because you have an open case you’re not eligible to get your juvenile record sealed."
+    Then I should see the phrase "Sorry, but because you have an open case you are not eligible to get your juvenile record sealed."
 
 Scenario: User is ineligible because they are on probation
     Given I start the petitioner interview
@@ -38,7 +38,7 @@ Scenario: User is ineligible because they are on probation
     And I click the button "No"
     Then I should see the phrase "Are you now on probation for any criminal or juvenile case in the USA"
     When I click the button "Yes"
-    Then I should see the phrase "Sorry, but because you are on probation you’re not eligible to get your juvenile record sealed."
+    Then I should see the phrase "Sorry, but because you are on probation you are not eligible to get your juvenile record sealed."
 
 Scenario: User is ineligible because they have had juvenile cases in the past three years
     Given I start the petitioner interview
@@ -49,7 +49,7 @@ Scenario: User is ineligible because they have had juvenile cases in the past th
     And I click the button "No"
     Then I should see the phrase "Have you had any juvenile cases in any state in the USA"
     When I click the button "Yes"
-    Then I should see the phrase "Sorry, but because you had a juvenile case in the USA in the past three years you’re not eligible to get your juvenile record sealed."
+    Then I should see the phrase "Sorry, but because you had a juvenile case in the USA in the past three years you are not eligible to get your juvenile record sealed."
 
 Scenario: User is ineligible because they have been in juvenile custody
     Given I start the petitioner interview
@@ -61,7 +61,7 @@ Scenario: User is ineligible because they have been in juvenile custody
     And I click the button "No"
     Then I should see the phrase "Have you been in juvenile custody anywhere in the USA"
     When I click the button "Yes"
-    Then I should see the phrase "Sorry, but because you have been in juvenile custody in the USA in the past three years you’re not eligible to get your juvenile record sealed."
+    Then I should see the phrase "Sorry, but because you have been in juvenile custody in the USA in the past three years you are not eligible to get your juvenile record sealed."
 
 Scenario: User is ineligible because they have convictions in adult court
     Given I start the petitioner interview
@@ -74,7 +74,7 @@ Scenario: User is ineligible because they have convictions in adult court
     And I click the button "No"
     Then I should see the phrase "Have you had any convictions in any adult court in the USA"
     When I click the button "Yes"
-    Then I should see the phrase "Sorry, but because you were convicted in the USA (in a state or federally) in the past three years you’re not eligible to get your juvenile record sealed."
+    Then I should see the phrase "Sorry, but because you were convicted in the USA (in a state or federally) in the past three years you are not eligible to get your juvenile record sealed."
 
 Scenario: User is ineligible because they have convictions in federal court
     Given I start the petitioner interview
@@ -88,7 +88,7 @@ Scenario: User is ineligible because they have convictions in federal court
     And I click the button "No"
     Then I should see the phrase "Have you had any convictions in any federal court"
     When I click the button "Yes"
-    Then I should see the phrase "Sorry, but because you were convicted in the USA (in a state or federally) in the past three years you’re not eligible to get your juvenile record sealed."
+    Then I should see the phrase "Sorry, but because you were convicted in the USA (in a state or federally) in the past three years you are not eligible to get your juvenile record sealed."
 
 Scenario: User is ineligible because they were in incarceration
     Given I start the petitioner interview
@@ -103,7 +103,7 @@ Scenario: User is ineligible because they were in incarceration
     And I click the button "No"
     Then I should see the phrase "Were you incarcerated in the USA"
     When I click the button "Yes"
-    Then I should see the phrase "Sorry, but because you were incarcerated in the USA in the past three years you’re not eligible to get your juvenile record sealed."
+    Then I should see the phrase "Sorry, but because you were incarcerated in the USA in the past three years you are not eligible to get your juvenile record sealed."
 
 Scenario: User is eligible
     Given I start the petitioner interview
