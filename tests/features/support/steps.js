@@ -58,7 +58,12 @@ Given(/I start the (petitioner|clinic) interview/, async (interview) => {
   }
   if (!scope.page) {
     scope.page = await scope.browser.newPage();
-    scope.page.setDefaultTimeout(120 * 1000)
+    scope.page.setDefaultTimeout(120 * 1000);
+    // PDFs should get downloaded
+    await scope.page._client.send('Page.setDownloadBehavior', {
+      behavior: 'allow',
+      downloadPath: '.',
+    });
   }
 
   const url = interview === 'petitioner' ? PETITIONER_URL : CLINIC_URL
@@ -88,14 +93,14 @@ When(/I click the (button|link) "([^"]+)"/, async (elemType, phrase) => {
   if (elemType === 'button') {
     [elem] = await scope.page.$x(`//button/span[contains(text(), "${phrase}")]`);
   } else {
-    [elem] = await scope.page.$x(`//a[contains(text(), "${phrase}")]`);
+    [elem] = await scope.page.$x(`//a//*[contains(text(), "${phrase}")]`);
   }
 
   if (elem) {
     await Promise.all([
       elem.click(),
       scope.page.waitForNavigation({waitUntil: 'domcontentloaded'})
-  ]);
+    ]);
   } else {
     if (process.env.DEBUG) {
       await scope.page.screenshot({ path: './error.jpg', type: 'jpeg', fullPage: true });
