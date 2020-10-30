@@ -63,11 +63,11 @@ fields:
       </div>
   - html: |
       <a id="openAttachment" class="download-link atch-button" href=${atch_open_link} type="application/pdf" target="_blank">
-        ${atch_open_label} <i class="fas fa-external-link-alt"></i>
+        <span>${atch_open_label} </span><i class="fas fa-external-link-alt"></i>
       </a>
   - html: |
       <a id="downloadAttachment" class="open-link atch-button" href=${atch_download_link} type="application/pdf">
-          <i class="fas fa-download"></i> ${atch_download_label}
+          <i class="fas fa-download"></i><span> ${atch_download_label}</span>
       </a>
   - ${atch_next_steps_offer}: wants_instructions_in_email
     datatype: yesnowide

@@ -38,7 +38,7 @@ button {
   margin-top: 1em;
 }
 
-a {
+a, a * {
   color: rgba( 190, 64, 77, 1 ) !important;
 }
 
@@ -497,6 +497,10 @@ body.da-pad-for-navbar {
   margin: 0;
   color: green !important;
   border-color: green;
+}
+
+#sendAttachmentEmail * {
+  color: inherit !important;
 }
 
 /* Spacing with alert on attachement page */
