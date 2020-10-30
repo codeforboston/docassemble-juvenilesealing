@@ -38,25 +38,44 @@ button {
   margin-top: 1em;
 }
 
-a, a *,
+a, a * {
+  color: rgba( 190, 64, 77, 1 ) !important;
+}
+
 .dabackicon span,
 button.daquestionbackbutton.btn-link span {
-  color: rgba( 190, 64, 77, 1 ) !important;
+  color: white !important;
+}
+
+button.btn.btn-link.btn-da.daquestionbackbutton.danonsubmit{
+  border-color: #7d2832;
+  background-color: #be404d;
+}
+
+button.btn.btn-link.btn-da.daquestionbackbutton.danonsubmit:hover {
+  border-color: #7d2832;
+  background-color: #7d2832;
 }
 
 .dabackicon span,
 button.daquestionbackbutton.btn-link span {
   font-weight: bold;
 }
+button.daquestionbackbutton.btn-link:hover span {
+  color: white !important;
+}
 
 a,
 a:hover,
-button.daquestionbackbutton.btn-link:hover,
 button.daquestionbackbutton.btn-link:focus,
 .daterm,
 .daterm:hover {
   text-decoration: underline;
   text-decoration-color: rgba( 190, 64, 77, 1 );
+}
+button.daquestionbackbutton.btn-link:hover {
+  background-color:#e9f8ff;
+  border-color: #037bfe;
 }
 
 .daterm,
@@ -155,8 +174,8 @@ button.daquestionbackbutton.btn-link:hover {
   padding: 1em;
 }
 .btn span {
-  font-weight: 700;
-  color: rgba(70, 70, 70, 1);
+  font-weight: 400;
+  color: black;
 }
 /* Checkbox image alignment */
 input.labelauty + label > span.labelauty-unchecked-image,
@@ -165,42 +184,57 @@ input.labelauty + label > span.labelauty-checked-image {
 }
 
 .btn-primary,
-.btn-primary:hover,
-.btn-primary:focus,
 .btn-primary:disabled,
-.btn-primary:not(:disabled):not(.disabled).active,
-.btn-primary:not(:disabled):not(.disabled):active,
 .show>.btn-primary.dropdown-toggle,
 .atch-button {
-  border-color: rgba(70, 70, 70, 1);
+  border-color: black;
   background-color: white;
+}
+.btn-primary:hover, .btn-primary:focus{
+  border-color: black;
+  background-color: #adadad;
+}
+.btn-primary:not(:disabled):not(.disabled).active,
+.btn-primary:not(:disabled):not(.disabled):active{
+  border-color: black;
+  background-color: #adadad;
 }
 
 /* A completely black button is kind of alarming... */
 button.btn-secondary,
-button.btn-secondary:hover,
-button.btn-secondary:focus,
 button.btn-secondary:disabled,
-.btn-secondary:not(:disabled):not(.disabled).active,
-.btn-secondary:not(:disabled):not(.disabled):active,
 .show>.btn-secondary.dropdown-toggle {
-  border-color: rgba( 70, 70, 70, 1 );
+  border-color: black;
   background-color: white;
 }
 button.btn-secondary span {
   /* color: white; */
 }
+.btn-secondary:hover, .btn-secondary:focus{
+  border-color: black;
+  background-color: #adadad;
+}
+.btn-secondary:not(:disabled):not(.disabled).active,
+.btn-secondary:not(:disabled):not(.disabled):active{
+  border-color: black;
+  background-color: #adadad;
+}
 
 /* UX experts agree - same color for all answer buttons! */
 .btn-warning,
-.btn-warning:hover,
-.btn-warning:focus,
 .btn-warning:disabled,
-.btn-warning:not(:disabled):not(.disabled).active,
-.btn-warning:not(:disabled):not(.disabled):active,
 .show>.btn-warning.dropdown-toggle {
-  border-color: rgba(64, 64, 64, 1);
+  border-color: black;
   background-color: white;
+}
+.btn-warning:hover, .btn-warning:focus{
+  border-color: black;
+  background-color: #adadad;
+}
+.btn-warning:not(:disabled):not(.disabled).active,
+.btn-warning:not(:disabled):not(.disabled):active{
+  border-color: black;
+  background-color: #adadad;
 }
 
 /* Buttons to other sites that can't be labeled that way should still be yellow...? */
@@ -216,14 +250,27 @@ button.btn-secondary span {
 }
 
 .btn-danger,
-.btn-danger:hover,
-.btn-danger:focus,
 .btn-danger:disabled,
-.btn-danger:not(:disabled):not(.disabled).active,
-.btn-danger:not(:disabled):not(.disabled):active,
 .show>.btn-danger.dropdown-toggle {
-  border-color: rgba( 190, 64, 77, 1 );
+  border-color: black;
   background-color: white;
+  color: black;
+}
+.btn-danger span {
+  color: black;
+}
+.btn-danger:hover span, .btn-danger:focus span{
+  color: black;
+}
+.btn-danger:hover, .btn-danger:focus {
+  border-color: black;
+  background-color: #adadad;
+}
+.btn-danger:not(:disabled):not(.disabled).active,
+.btn-danger:not(:disabled):not(.disabled):active,{
+  border-color: black;
+  background-color: #adadad;
+  color: black;
 }
 
 /* Fields with empty labels (so they should take the whole width) */
