@@ -5,6 +5,7 @@ const BASE_URL = process.env.BASE_URL;
 const BRANCH_NAME = process.env.BRANCH_NAME
     || (process.env.BRANCH_PATH && process.env.BRANCH_PATH.split('/')[2])
     || 'master';
+console.log( 'BRANCH_NAME:', BRANCH_NAME );
 const PROJECT_NAME = ('testing' + BRANCH_NAME).replace(/[^A-Za-z0-9]/gi, '');
 const BASE_INTERVIEW_URL = `${BASE_URL}/interview?reset=1&i=docassemble.playground${process.env.PLAYGROUND_ID}${PROJECT_NAME}`;
 
