@@ -93,6 +93,7 @@ const urlParams = (params) => urlString = Object.keys(params).map(
 const installRepo = async (page) => {
   await page.goto(installUrl());
   const pullButton = await page.$('button[name=pull]');
+  await page.screenshot({ path: './error-pulling.jpg', type: 'jpeg', fullPage: true });
   await Promise.all([
     pullButton.click(),
     page.waitForNavigation({waitUntil: 'domcontentloaded'}),
