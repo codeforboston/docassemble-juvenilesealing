@@ -23,7 +23,7 @@ continue button label: Keep going ${next_icon}
 id: records_popover_text
 template: records_popover
 content: |
-  ${ about_records_intro } ${ read_more_records }
+  ${ about_records_intro }
 ---
 id: read_more_records_text
 template: read_more_records
@@ -79,7 +79,7 @@ content: |
 id: docket_sheets_popover_text
 template: docket_sheets_popover
 content: |
-  ${ docket_sheets_blurb } ${ read_more_docket_sheets }
+  ${ docket_sheets_blurb }
 ---
 id: docket_sheets_blurb_text
 template: docket_sheets_blurb
@@ -316,7 +316,7 @@ comment: |
 id: continue_button
 template: continue_button
 content: |
-  Keep going ${next_icon} 
+  Keep going ${next_icon}
 ---
 id: next_icon
 template: next_icon
@@ -351,7 +351,7 @@ content: |
 
   Read more about sealing juvenile records in the
   [GBLS 2019 booklet ${ external_link_icon }](https://www.gbls.org/sites/default/files/2019-08/juvenile_booklet_august_2019F.pdf).
-  
+
   <span class="feedback">Let us know <a href="https://www.surveymonkey.com/r/6QMLCFM">how we're doing ${ external_link_icon }</a>.</span>
 ---
 id: ineligibility_warning
