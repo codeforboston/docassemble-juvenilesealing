@@ -29,7 +29,7 @@ Feature: Link to docket sheets pages flow without affecting regular flow
 # Same for user selecting 'I don't know'
 
 Scenario: Go to only first page of docket sheets information through the popover, and then use form to see docket sheets information by clicking "No"
-    I start the interview at "entrypoint-petitioner"
+    Given I start the interview at "entrypoint-petitioner"
     When I tap the button "Next "
     When I tap the button "Yes"
     And I tap the defined text link "docket sheets"
@@ -45,7 +45,7 @@ Scenario: Go to only first page of docket sheets information through the popover
     Then I should see the phrase "Do you have any open criminal or juvenile cases"
 
 Scenario: Go to both pages of docket sheets information through the popover, and then use form to see docket sheets information by taping "No"
-    I start the interview at "entrypoint-petitioner"
+    Given I start the interview at "entrypoint-petitioner"
     When I tap the button "Next "
     When I tap the button "Yes"
     And I tap the defined text link "docket sheets"
@@ -63,7 +63,7 @@ Scenario: Go to both pages of docket sheets information through the popover, and
     Then I should see the phrase "Do you have any open criminal or juvenile cases"
 
 Scenario: Go to only first page of docket sheets information through the popover, and then use form to see docket sheets information by taping "I don't know"
-    I start the interview at "entrypoint-petitioner"
+    Given I start the interview at "entrypoint-petitioner"
     When I tap the button "Next "
     When I tap the button "Yes"
     And I tap the defined text link "docket sheets"
@@ -79,7 +79,7 @@ Scenario: Go to only first page of docket sheets information through the popover
     Then I should see the phrase "Do you have any open criminal or juvenile cases"
 
 Scenario: Go to both pages of docket sheets information through the popover, and then use form to see docket sheets information by taping "I don't know"
-    I start the interview at "entrypoint-petitioner"
+    Given I start the interview at "entrypoint-petitioner"
     When I tap the button "Next "
     When I tap the button "Yes"
     And I tap the defined text link "docket sheets"
