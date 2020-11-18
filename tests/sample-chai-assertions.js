@@ -37,11 +37,15 @@ describe('Petitioner interview', () => {
   });
 
   it('opens the petitioner interview', async () => {
+    console.log(PETITIONER_URL);
     let resp = await page.goto(PETITIONER_URL, {waitUntil: 'domcontentloaded'});
+    console.log('Checkpoint 1.1');
     const mainQuestion = await page.$eval('#daMainQuestion', elem => elem.innerText);
+    console.log(mainQuestion.toLowerCase());
     expect(mainQuestion.toLowerCase()).to.contain(
-      "can you seal your massachusetts juvenile records?", 
+      "can you seal your massachusetts juvenile records?",
       "First page title question"
     );
+    console.log('Checkpoint 1.2');
   });
 });

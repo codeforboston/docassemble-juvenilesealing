@@ -6,3 +6,4 @@ tests/chromedriver
 node_modules*
 .env
 npm-debug.log
+*.jpg

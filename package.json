@@ -7,7 +7,7 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "mocha tests --timeout 10000",
+    "test": "mocha tests --timeout 15000",
     "cucumber": "./node_modules/.bin/cucumber-js tests/features/*.feature",
     "setup": "node -e 'require(\"./tests/install-branch.js\").setup()'",
     "takedown": "node -e 'require(\"./tests/install-branch.js\").takedown()'"
