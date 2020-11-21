@@ -9,6 +9,40 @@ metadata:
     - name: Team
       organization: Citizens for Juvenile Justice and Code for Boston
 ---
+translations:
+  - entrypoint-petitioner_es.xlsx
+---
+modules:
+  - .languages
+---
+initial: True
+code: |
+  if True:
+    process_action()
+---
+initial: True
+code: |
+  set_language(user_language)
+---
+code: |
+  if url_args.get('lang'):
+    user_language = url_args.get('lang')
+  else:
+    user_language= 'en'
+---
+event: change_language
+code: |
+  if 'lang' in action_arguments():
+    user_language = action_argument('lang')
+    set_language(user_language)
+---
+id: language
+question: |
+  Language
+subquestion: |
+  ${get_language_list(get_tuples(['en','es']),current=user_language)}
+field: language
+---
 #terms:
 #  docket sheets: |
 #    Cannot use templates in terms, so that would make this
@@ -127,6 +161,8 @@ id: intro
 field: intro
 question: Can You Seal Your Massachusetts Juvenile Records?
 subquestion: |
+  ${get_language_list(get_tuples(['en','es']),current=user_language)}
+  
   Sealing your juvenile record means that most
   employers will not be able to see that it
   exists. Only employers who do federal background checks and
