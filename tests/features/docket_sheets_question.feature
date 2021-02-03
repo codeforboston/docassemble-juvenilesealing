@@ -19,8 +19,9 @@ Feature: Docket sheet question regular flow
 # Same for 'I don't know'
 
 Scenario: Use interview "No" answer flow path to see first page of docket sheets info
-    Given I start the petitioner interview
-    Then I click the button "Next "
+    Given I start the interview at "entrypoint-petitioner"
+    Then the question id should be "intro"
+    When I tap to continue
     Then I click the button "Yes"
     Then I click the button "No"
     Then I should see the phrase "WHY GET DOCKET SHEETS?"
@@ -28,8 +29,9 @@ Scenario: Use interview "No" answer flow path to see first page of docket sheets
     Then I should see the phrase "YOUR OPEN CASES"
 
 Scenario: Use interview "No" answer flow path to see second page of docket sheets info
-    Given I start the petitioner interview
-    Then I click the button "Next "
+    Given I start the interview at "entrypoint-petitioner"
+    Then the question id should be "intro"
+    When I tap to continue
     Then I click the button "Yes"
     Then I click the button "No"
     Then I should see the phrase "WHY GET DOCKET SHEETS?"
@@ -39,8 +41,9 @@ Scenario: Use interview "No" answer flow path to see second page of docket sheet
     Then I should see the phrase "YOUR OPEN CASES"
 
 Scenario: Use interview "No" answer flow path to exit from the second page of docket sheets info
-    Given I start the petitioner interview
-    Then I click the button "Next "
+    Given I start the interview at "entrypoint-petitioner"
+    Then the question id should be "intro"
+    When I tap to continue
     Then I click the button "Yes"
     Then I click the button "No"
     Then I should see the phrase "WHY GET DOCKET SHEETS?"
@@ -54,8 +57,9 @@ Scenario: Use interview "No" answer flow path to exit from the second page of do
 
 
 Scenario: Use interview "I don't know" answer flow path to see first page of docket sheets info
-    Given I start the petitioner interview
-    Then I click the button "Next "
+    Given I start the interview at "entrypoint-petitioner"
+    Then the question id should be "intro"
+    When I tap to continue
     Then I click the button "Yes"
     Then I click the button "No"
     Then I should see the phrase "WHY GET DOCKET SHEETS?"
@@ -63,8 +67,9 @@ Scenario: Use interview "I don't know" answer flow path to see first page of doc
     Then I should see the phrase "YOUR OPEN CASES"
 
 Scenario: Use interview "I don't know" answer flow path to see second page of docket sheets info
-    Given I start the petitioner interview
-    Then I click the button "Next "
+    Given I start the interview at "entrypoint-petitioner"
+    Then the question id should be "intro"
+    When I tap to continue
     Then I click the button "Yes"
     Then I click the button "No"
     Then I should see the phrase "WHY GET DOCKET SHEETS?"
@@ -74,8 +79,9 @@ Scenario: Use interview "I don't know" answer flow path to see second page of do
     Then I should see the phrase "YOUR OPEN CASES"
 
 Scenario: Use interview "I don't know" answer flow path to exit from the second page of docket sheets info
-    Given I start the petitioner interview
-    Then I click the button "Next "
+    Given I start the interview at "entrypoint-petitioner"
+    Then the question id should be "intro"
+    When I tap to continue
     Then I click the button "Yes"
     Then I click the button "No"
     Then I should see the phrase "WHY GET DOCKET SHEETS?"
