@@ -9,8 +9,10 @@ Feature: Finish by hand
 
 Scenario: Qualify for sealing and elect to finish by hand
 
-    Given I start the petitioner interview
-    Then I click the button "Next "
+    Given I start the interview at "entrypoint-petitioner"
+    Then the question id should be "intro"
+    When I tap to continue
+    Then I click the button "Next"
     Then I click the button "Yes"
     Then I click the button "Yes"
     Then I click the button "No"
@@ -20,7 +22,7 @@ Scenario: Qualify for sealing and elect to finish by hand
     Then I click the button "No"
     Then I click the button "No"
     Then I click the button "No"
-    Then I click the button "Finish by hand   "
+    Then I click the button "Finish by hand  "
     Then I should see the phrase "sealing-form.pdf has been created for you"
     Then I click the button "Continue"
     Then I should see the phrase "We hope we were able to help a little."
