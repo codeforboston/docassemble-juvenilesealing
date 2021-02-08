@@ -1,8 +1,8 @@
 {
   "name": "docassemble-juvenilesealing",
-  "version": "0.1.0",
-  "description": "",
-  "main": "",
+  "version": "1.0.0",
+  "description": "This process should be easier for both petitioners themselves and legal professionals who hope to support petitioners. This tool is focused on MA.",
+  "main": "index.js",
   "directories": {
     "test": "tests"
   },
