@@ -1,3 +1,4 @@
+@docket_sheets_question
 Feature: Docket sheet question regular flow
 
 # Description:
@@ -17,70 +18,92 @@ Feature: Docket sheet question regular flow
 # 5. √ Finish - See 'open cases' question
 
 # Same for 'I don't know'
-
 Scenario: Use interview "No" answer flow path to see first page of docket sheets info
-    Given I start the petitioner interview
-    Then I click the button "Next "
-    Then I click the button "Yes"
-    Then I click the button "No"
-    Then I should see the phrase "WHY GET DOCKET SHEETS?"
-    Then I click the button "No, take me back to the form"
-    Then I should see the phrase "YOUR OPEN CASES"
+    Given I start the interview at "entrypoint-petitioner"
+    Then the question id should be "intro"
+    When I tap to continue
+    Then the question id should be "in_ma"
+    When I set the var "has_ma_juv_record" to "True"
+    Then the question id should be "do_you_have_sheets"
+    When I set the var "have_docket_copies_already" to "False"
+    Then the question id should be "what_are_docket_sheets"
+    When I set the var "wants_docket_instructions" to "False"
+    Then the question id should be "open_cases"
 
 Scenario: Use interview "No" answer flow path to see second page of docket sheets info
-    Given I start the petitioner interview
-    Then I click the button "Next "
-    Then I click the button "Yes"
-    Then I click the button "No"
-    Then I should see the phrase "WHY GET DOCKET SHEETS?"
-    Then I click the button "Yes, tell me more"
-    Then I should see the phrase "HOW TO GET CERTIFIED DOCKET SHEETS"
-    Then I click the button "I want to keep going with the form "
-    Then I should see the phrase "YOUR OPEN CASES"
+    Given I start the interview at "entrypoint-petitioner"
+    Then the question id should be "intro"
+    When I tap to continue
+    Then the question id should be "in_ma"
+    When I set the var "has_ma_juv_record" to "True"
+    Then the question id should be "do_you_have_sheets"
+    When I set the var "have_docket_copies_already" to "False"
+    Then the question id should be "what_are_docket_sheets"
+    When I set the var "wants_docket_instructions" to "True"
+    Then the question id should be "certified_copies_page_text_question"
+    When I set the var "stop_for_docket_sheets" to "False"
+    Then the question id should be "open_cases"
 
 Scenario: Use interview "No" answer flow path to exit from the second page of docket sheets info
-    Given I start the petitioner interview
-    Then I click the button "Next "
-    Then I click the button "Yes"
-    Then I click the button "No"
-    Then I should see the phrase "WHY GET DOCKET SHEETS?"
-    Then I click the button "Yes, tell me more"
-    Then I should see the phrase "HOW TO GET CERTIFIED DOCKET SHEETS"
-    Then I click the button "I will come back to the form after ordering my docket sheets "
-    Then I should see the phrase "THANK YOU FOR COMING"
-
+    Given I start the interview at "entrypoint-petitioner"
+    Then the question id should be "intro"
+    When I tap to continue
+    Then the question id should be "in_ma"
+    When I set the var "has_ma_juv_record" to "True"
+    Then the question id should be "do_you_have_sheets"
+    When I set the var "have_docket_copies_already" to "False"
+    Then the question id should be "what_are_docket_sheets"
+    When I set the var "wants_docket_instructions" to "True"
+    Then the question id should be "certified_copies_page_text_question"
+    When I set the var "stop_for_docket_sheets" to "True"
+    Then the question id should be "end_without_finishing"
 
 ################
 
-
 Scenario: Use interview "I don't know" answer flow path to see first page of docket sheets info
-    Given I start the petitioner interview
-    Then I click the button "Next "
-    Then I click the button "Yes"
-    Then I click the button "No"
-    Then I should see the phrase "WHY GET DOCKET SHEETS?"
-    Then I click the button "No, take me back to the form"
-    Then I should see the phrase "YOUR OPEN CASES"
+    Given I start the interview at "entrypoint-petitioner"
+    Then the question id should be "intro"
+    When I tap to continue
+    Then the question id should be "in_ma"
+    When I set the var "has_ma_juv_record" to "True"
+    Then the question id should be "do_you_have_sheets"
+    # The original test had a logic error. The line below should be
+    # for the "None" option, not the "False" option.
+    When I set the var "have_docket_copies_already" to "False"
+    Then the question id should be "what_are_docket_sheets"
+    When I set the var "wants_docket_instructions" to "False"
+    Then the question id should be "open_cases"
 
 Scenario: Use interview "I don't know" answer flow path to see second page of docket sheets info
-    Given I start the petitioner interview
-    Then I click the button "Next "
-    Then I click the button "Yes"
-    Then I click the button "No"
-    Then I should see the phrase "WHY GET DOCKET SHEETS?"
-    Then I click the button "Yes, tell me more"
-    Then I should see the phrase "HOW TO GET CERTIFIED DOCKET SHEETS"
-    Then I click the button "I want to keep going with the form "
-    Then I should see the phrase "YOUR OPEN CASES"
+    Given I start the interview at "entrypoint-petitioner"
+    Then the question id should be "intro"
+    When I tap to continue
+    Then the question id should be "in_ma"
+    When I set the var "has_ma_juv_record" to "True"
+    Then the question id should be "do_you_have_sheets"
+    # The original test had a logic error. The line below should be
+    # for the "None" option, not the "False" option.
+    When I set the var "have_docket_copies_already" to "False"
+    Then the question id should be "what_are_docket_sheets"
+    When I set the var "wants_docket_instructions" to "True"
+    Then the question id should be "certified_copies_page_text_question"
+    When I set the var "stop_for_docket_sheets" to "False"
+    Then the question id should be "open_cases"
 
 Scenario: Use interview "I don't know" answer flow path to exit from the second page of docket sheets info
-    Given I start the petitioner interview
-    Then I click the button "Next "
-    Then I click the button "Yes"
-    Then I click the button "No"
-    Then I should see the phrase "WHY GET DOCKET SHEETS?"
-    Then I click the button "Yes, tell me more"
-    Then I should see the phrase "HOW TO GET CERTIFIED DOCKET SHEETS"
-    Then I click the button "I will come back to the form after ordering my docket sheets "
-    Then I should see the phrase "THANK YOU FOR COMING"
+    Given I start the interview at "entrypoint-petitioner"
+    Then the question id should be "intro"
+    When I tap to continue
+    Then the question id should be "in_ma"
+    When I set the var "has_ma_juv_record" to "True"
+    Then the question id should be "do_you_have_sheets"
+    # The original test had a logic error. The line below should be
+    # for the "None" option, not the "False" option.
+    When I set the var "have_docket_copies_already" to "False"
+    Then the question id should be "what_are_docket_sheets"
+    When I set the var "wants_docket_instructions" to "True"
+    Then the question id should be "certified_copies_page_text_question"
+    When I set the var "stop_for_docket_sheets" to "True"
+    Then the question id should be "end_without_finishing"
+
 
