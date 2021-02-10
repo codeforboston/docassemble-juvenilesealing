@@ -6,7 +6,7 @@ Feature: Finish by hand
 # If I click continue on that page, I should be taken to the final page.
 
 # https://stackoverflow.com/questions/247135/using-xpath-to-search-text-containing-nbsp
-@justOneTest
+@finish_by_hand
 Scenario: Qualify for sealing and elect to finish by hand
 
     Given I start the interview at "entrypoint-petitioner"
