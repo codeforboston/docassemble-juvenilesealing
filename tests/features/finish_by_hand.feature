@@ -1,4 +1,4 @@
-
+@finish_by_hand
 Feature: Finish by hand
 
 # After I am found to be eligible, if I click the "Finish by hand" button,
@@ -6,7 +6,6 @@ Feature: Finish by hand
 # If I click continue on that page, I should be taken to the final page.
 
 # https://stackoverflow.com/questions/247135/using-xpath-to-search-text-containing-nbsp
-@finish_by_hand
 Scenario: Qualify for sealing and elect to finish by hand
 
     Given I start the interview at "entrypoint-petitioner"
