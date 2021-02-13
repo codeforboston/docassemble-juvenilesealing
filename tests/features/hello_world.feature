@@ -5,6 +5,6 @@ in this docassemble package, before I move on
 to writing more complicated tests.
 
 Scenario: Just open the first page
-    Given I start the petitioner interview
+    Given I start the interview at "entrypoint-petitioner"
     When I wait 1 second
     Then I should see the phrase "Sealing your juvenile record means that"
