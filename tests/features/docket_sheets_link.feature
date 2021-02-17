@@ -30,7 +30,7 @@ Scenario: Use link to see information about docket sheets
     When I tap the link "Read more about docket sheets…"
     Then the question id should be "what_are_docket_sheets"
     When I set the var "wants_docket_instructions" to "False"
-    Then I should see the phrase "Do you already have certified copies"
+    Then the question id should be "do_you_have_sheets"
 
 Scenario: Use link to see information about docket sheets and click "Yes, tell me more"
     Given I start the interview at "entrypoint-petitioner"
@@ -42,10 +42,9 @@ Scenario: Use link to see information about docket sheets and click "Yes, tell m
     When I tap the link "Read more about docket sheets…"
     Then the question id should be "what_are_docket_sheets"
     When I set the var "wants_docket_instructions" to "True"
-    Then I should see the phrase "HOW TO GET CERTIFIED DOCKET SHEETS"
+    Then the question id should be "certified_copies_page_text_question"
+    When I set the var "stop_for_docket_sheets" to "False"
     Then the question id should be "do_you_have_sheets"
-    When I set the var "have_docket_copies_already" to "False"
-    Then I should see the phrase "Do you already have certified copies"
 
 Scenario: Use link to see information about docket sheets and come back after ordering docket sheets
     Given I start the interview at "entrypoint-petitioner"
@@ -57,7 +56,6 @@ Scenario: Use link to see information about docket sheets and come back after or
     When I tap the link "Read more about docket sheets…"
     Then the question id should be "what_are_docket_sheets"
     When I set the var "wants_docket_instructions" to "True"
-    Then I should see the phrase "HOW TO GET CERTIFIED DOCKET SHEETS"
-    Then the question id should be "do_you_have_sheets"
-    When I set the var "have_docket_copies_already" to "True"
-    Then I should see the phrase "THANK YOU FOR COMING"
+    Then the question id should be "certified_copies_page_text_question"
+    When I set the var "stop_for_docket_sheets" to "True"
+    Then the question id should be "end_without_finishing"
