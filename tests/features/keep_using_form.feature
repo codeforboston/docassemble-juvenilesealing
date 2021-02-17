@@ -10,4 +10,3 @@ Then, I should be taken to a page with my finished petition.
 If I click continue there, I should be taken to the final screen.
 
 Scenario: Just open the first page
-    Given I start the petitioner interview
