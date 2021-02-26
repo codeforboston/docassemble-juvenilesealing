@@ -50,7 +50,7 @@ The first time you run these tests, type `npm install` into your terminal. This 
 
 To run the tests, type `npm run local` into your terminal.
 
-To run a single test:
+To run a single test file:
 ```
 npm run setup
 ./node_modules/.bin/cucumber-js --require ./node_modules/docassemble-cucumber/lib/index.js tests/features/TEST_NAME.feature
