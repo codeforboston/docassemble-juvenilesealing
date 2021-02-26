@@ -42,20 +42,17 @@ This tool is made with [Docassemble](https://github.com/jhpyle/docassemble).
 
 ## Testing
 
-### Chai/Puppeteer tests
+### Cucumber tests
 
-The first time you clone this repo, make sure you have NPM installed and run `npm install`.
-This will install the libraries required for testing.
+To get these tests to run on your local development machine (e.g., your laptop), make sure you have NPM installed.
 
-To run the tests, run `npm run test`.
+The first time you run these tests, type `npm install` into your terminal. This will install the packages required for testing.
 
-### Aloe/Lettuce tests
+To run the tests, type `npm run local` into your terminal.
 
-To get these tests to run, you need to download chromedriver from https://sites.google.com/a/chromium.org/chromedriver/ and put it in `tests/`
-You also need to `pip3 install aloe selenium certifi`
-
-To run [a feature test](https://docassemble.org/docs/development.html#bdd):
+To run a single test file:
 ```
-cd tests
-aloe features/hello_world.feature
+npm run setup
+./node_modules/.bin/cucumber-js --require ./node_modules/docassemble-cucumber/lib/index.js tests/features/TEST_NAME.feature
+npm run takedown
 ```
