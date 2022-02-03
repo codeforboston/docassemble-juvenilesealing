@@ -1,6 +1,0 @@
-# action.yml
-name: 'Aloe tests'
-description: 'Run aloe tests'
-runs:
-  using: 'docker'
-  image: 'Dockerfile'
