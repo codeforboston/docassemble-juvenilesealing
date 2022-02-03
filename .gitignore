@@ -8,6 +8,6 @@ screenshot_*.jpg
 downloads_*
 *_lang_*.feature
 *_report_*
-./package.json
-./package-lock.json
-./_al_test_project_name.json
+/package.json
+/package-lock.json
+/_al_test_project_name.json
