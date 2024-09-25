@@ -19,8 +19,8 @@ metadata:
     - **Sealing** your record is not the same as sealing your CORI. This form is only for sealing your juvenile record.
 
   maturity: production
-  estimated_completion_minutes: 10
-  estimated_completion_delta: 10
+  estimated_completion_minutes: 40
+  estimated_completion_delta: 40
   languages: 
     - en
   help_page_url: https://www.gbls.org/self-help/cori
