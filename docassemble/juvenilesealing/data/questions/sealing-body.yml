@@ -1,4 +1,44 @@
 ---
+metadata:
+  description: |
+    This interview helps you figure out if you can seal your juvenile record.
+    If you can, it will help you fill out the form to do that.
+  can_I_use_this_form: |
+    You can use this form if you are 18 or older and you have a juvenile record.
+    You can use this form if you have a juvenile record in Massachusetts or in another state.
+  before_you_start: |
+    Before you start, you should know that:
+    
+    - **Sealing** your record is not the same as **expunging** it. When you seal your record, it is hidden from most people, but not everyone.
+    - **Sealing** your record means that most employers will not see it. Only employers who do federal background checks and people like police will be able to see your criminal record.
+    - **Sealing** your record does not mean that it is destroyed. It is still there, but it is hidden from most people.
+    - **Sealing** your record can help you get a job, housing, and other things.
+    - **Sealing** your record can take a few months. It can take up to 3 months to get a letter from the Commissioner of Probation.
+    - **Sealing** your record can take a few weeks after you get the letter. Usually it is faster.
+    - **Sealing** your record is free.
+    - **Sealing** your record is not the same as sealing your CORI. This form is only for sealing your juvenile record.
+
+  maturity: production
+  estimated_completion_minutes: 10
+  estimated_completion_delta: 10
+  languages: 
+    - en
+  help_page_url: https://www.gbls.org/self-help/cori
+  help_page_title: CORI and Juvenile Record Sealing
+  LIST_topics:
+    - CR-06-00-00-00
+  tags:
+    - CR-06-00-00-00
+  jurisdiction: NAM-US-US+MA
+  original_form: https://www.mass.gov/doc/petition-to-seal-conviction-records-form/download
+  original_form_title: PETITION TO SEAL
+  form_numbers:
+    - OCP 4/12
+  form_titles:
+    - PETITION TO SEAL
+  review_date: 2022-01-01
+  update_notes: |
+---
 comment: |
   - Immigration asked in previous separate form.
   - Do not ask personal info until we know they want to print the form.
