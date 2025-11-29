@@ -1,29 +1,82 @@
-name: Use the ALKiln testing framework
+name: GitHub server installation
 
 on:
   push:
+  pull_request:
   workflow_dispatch:
     inputs:
-      extra_languages:
-        description: 'Optional. A list of comma separated language names visible on buttons or links in the interview that change the language of the interview. Overrides the EXTRA_LANGUAGES GitHub secret.'
-        default: ''
       tags:
-        description: 'Optional. Use a "tag expression" specify which tagged tests to run. See https://cucumber.io/docs/cucumber/api/#tag-expressions for syntax.'
-        default: ''
+        required: False
+        description: 'Optional. Use a "tag expression" specify which tagged tests to run (https://cucumber.io/docs/cucumber/api/#tag-expressions)'
+      show_docker_output:
+        required: false
+        default: false
+        type: boolean
+        description: 'Show the docker logs while building the GitHub server container. It will also save the docker log artifact. This might show sensitive config information.'
 
 jobs:
 
-  test-interviews:
+  github-server-tests:
+    # 1: Trigger job on push or dispatch from this repository
+    # 2: Trigger job on pull request from a fork
+    if: (
+          github.event_name != 'pull_request'
+          && ! github.event.pull_request.head.repo.fork
+        ) || (
+          github.event_name == 'pull_request'
+          && github.event.pull_request.head.repo.fork
+        )
     runs-on: ubuntu-latest
-    name: test interviews
+    strategy:
+      matrix:
+        node-version: [24.x]
+      
     steps:
-      - uses: actions/checkout@v2
-      - name: Use ALKiln to run tests
-        uses: suffolkLITLab/ALKiln@releases/v3
+      # Place the root directory in this branch to access
+      # relative paths to action files
+      - uses: actions/checkout@v4
+
+      - name: "ALKiln - Start the isolated temporary docassemble server on GitHub"
+        id: github_server
+        uses: suffolkLITLab/ALKiln/action_for_github_server@v5
         with:
-          SERVER_URL: "${{ secrets.SERVER_URL }}"
-          PLAYGROUND_EMAIL: "${{ secrets.PLAYGROUND_EMAIL }}"
-          PLAYGROUND_PASSWORD: "${{ secrets.PLAYGROUND_PASSWORD }}"
-          PLAYGROUND_ID: "${{ secrets.PLAYGROUND_ID }}"
-          EXTRA_LANGUAGES: "${{ secrets.EXTRA_LANGUAGES }}"
-      - run: echo "Finished running ALKiln tests"
+          SHOW_DOCKER_OUTPUT: "${{ github.event.inputs.show_docker_output }}"
+      - run: echo "ALKiln finished starting the isolated GitHub docassemble server"
+        shell: bash
+
+      - name: "Run ALKiln tests"
+        if: ${{ success() }}
+        id: alkiln
+        uses: suffolkLITLab/ALKiln@v5
+        with:
+          # https://assemblyline.suffolklitlab.org/docs/alkiln/writing/#sandbox-inputs
+          SERVER_URL: "${{ steps.github_server.outputs.SERVER_URL }}"
+          DOCASSEMBLE_DEVELOPER_API_KEY: "${{ steps.github_server.outputs.DOCASSEMBLE_DEVELOPER_API_KEY }}"
+          INSTALL_METHOD: "server"
+          # https://assemblyline.suffolklitlab.org/docs/alkiln/writing/#optional-inputs
+          ALKILN_TAG_EXPRESSION: "${{ env.ALKILN_TAG_EXPRESSION }}"
+          # ALKILN_VERSION: 
+
+      # Make an issue when test fail
+      # See https://cli.github.com/manual/gh_issue_create for more details
+      - shell: bash
+        if: ${{ failure() }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PATH_TO_REPORT_LOG_FILE: "${{ steps.alkiln.outputs.PATH_TO_REPORT_LOG_FILE }}"
+          PATH_TO_UNEXPECTED_RESULTS_FILE: "${{ steps.alkiln.outputs.PATH_TO_UNEXPECTED_RESULTS_FILE }}"
+          PATH_TO_DEBUG_LOG_FILE: "${{ steps.alkiln.outputs.PATH_TO_DEBUG_LOG_FILE }}"
+        run: |
+          # Make an issue with file contents or 'no file' message as part of the body
+
+          if [ -f "${{ env.PATH_TO_UNEXPECTED_RESULTS_FILE }}" ]; then
+            UNEXPECTED_2=$(cat "${{ env.PATH_TO_UNEXPECTED_RESULTS_FILE }}")
+          else
+            UNEXPECTED_2="unexpected_results.txt does not exist. Something other than the interview tests may have failed."
+          fi
+
+          gh issue create --body "An ALKiln test run failed. See the action at ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}.
+
+          ### Results:
+
+          $UNEXPECTED_2" --repo "$GITHUB_REPOSITORY" --label "testing" --title "ALKiln tests failed"
