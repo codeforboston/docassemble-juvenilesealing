@@ -1,0 +1,30 @@
+license = "MIT"
+license-files = [
+    "LICENSE",
+]
+
+[build-system]
+requires = [
+    "setuptools==80.9.0",
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "docassemble.juvenilesealing"
+version = "0.0.117"
+description = "A docassemble extension for sealing juvenile records."
+readme = "README.md"
+authors = [
+    { name = "knod", email = "lsquery@example.com" },
+]
+dependencies = [
+    "docassemble.gbls>=0.0.58",
+]
+
+[project.urls]
+Homepage = "https://docassemble.org"
+
+[tool.setuptools.packages.find]
+where = [
+    ".",
+]
