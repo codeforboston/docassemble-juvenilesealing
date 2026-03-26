@@ -1,8 +1,3 @@
-license = "MIT"
-license-files = [
-    "LICENSE",
-]
-
 [build-system]
 requires = [
     "setuptools==80.9.0",
@@ -11,7 +6,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "docassemble.juvenilesealing"
-version = "0.0.117"
+version = "1.0.1"
 description = "A docassemble extension for sealing juvenile records."
 readme = "README.md"
 authors = [
