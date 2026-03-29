@@ -335,24 +335,24 @@ attachment:
     filename: ${atch_name}
     pdf template file: sealing-form.pdf
     fields:
-      - "applicant.no_delinquency": 'Yes'
-      - "applicant.name.last": ''
-      - "applicant.name.first": ''
-      - "applicant.name.middle": ''
-      - "applicant.dob": ''
-      - "applicant.alias": ''
-      - "applicant.address": ''
-      - "applicant.city": ''
-      - "applicant.state": ''
-      - "applicant.zip": ''
-      - "applicant.occupation": ''
-      - "applicant.ssn": ''
-      - "applicant.place_of_birth": ''
-      - "applicant.fathers_name": ''
-      - "applicant.mothers_maiden_name": ''
-      - "applicant.spouses_name": ''
+      - "applicant_no_delinquency": 'Yes'
+      - "applicant_name_last": 'a name'
+      - "applicant_name_first": ''
+      - "applicant_name_middle": ''
+      - "applicant_dob": ''
+      - "applicant_alias": ''
+      - "applicant_address": ''
+      - "applicant_city": ''
+      - "applicant_state": ''
+      - "applicant_zip": ''
+      - "applicant_occupation": ''
+      - "applicant_ssn": ''
+      - "applicant_place_of_birth": ''
+      - "applicant_fathers_name": ''
+      - "applicant_mothers_maiden_name": ''
+      - "applicant_spouses_name": ''
       - "signature_always": ''
-      - "checkboxes.juvenile": 'Yes'
+      - "checkboxes_juvenile": 'Yes'
       - "signature_juvenile": ''
 ---
 id: full_petition
@@ -362,24 +362,24 @@ attachment:
     filename: ${atch_name}
     pdf template file: sealing-form.pdf
     fields:
-      - "applicant.no_delinquency": 'Yes'
-      - "applicant.name.last": ${applicant.name.last}
-      - "applicant.name.first": ${applicant.name.first}
-      - "applicant.name.middle": ${applicant.name.middle}
-      - "applicant.dob": ${applicant.birthdate}
-      - "applicant.alias": ${applicant.alias}
-      - "applicant.address": ${applicant.address.address}
-      - "applicant.city": ${applicant.address.city}
-      - "applicant.state": ${applicant.address.state}
-      - "applicant.zip": ${applicant.address.zip}
-      - "applicant.occupation": ${applicant.occupation}
-      - "applicant.ssn": ${applicant.ssn}
-      - "applicant.place_of_birth": ${applicant.place_of_birth}
-      - "applicant.fathers_name": ${applicant.fathers_maiden_name}
-      - "applicant.mothers_maiden_name": ${applicant.mothers_maiden_name}
-      - "applicant.spouses_name": ${applicant.spouses_name}
+      - "applicant_no_delinquency": 'Yes'
+      - "applicant_name_last": ${applicant.name.last}
+      - "applicant_name_first": ${applicant.name.first}
+      - "applicant_name_middle": ${applicant.name.middle}
+      - "applicant_dob": ${applicant.birthdate}
+      - "applicant_alias": ${applicant.alias}
+      - "applicant_address": ${applicant.address.address}
+      - "applicant_city": ${applicant.address.city}
+      - "applicant_state": ${applicant.address.state}
+      - "applicant_zip": ${applicant.address.zip}
+      - "applicant_occupation": ${applicant.occupation}
+      - "applicant_ssn": ${applicant.ssn}
+      - "applicant_place_of_birth": ${applicant.place_of_birth}
+      - "applicant_fathers_name": ${applicant.fathers_maiden_name}
+      - "applicant_mothers_maiden_name": ${applicant.mothers_maiden_name}
+      - "applicant_spouses_name": ${applicant.spouses_name}
       - "signature_always": ''
-      - "checkboxes.juvenile": 'Yes'
+      - "checkboxes_juvenile": 'Yes'
       - "signature_juvenile": ''
 ---
 id: suggest_get_records
