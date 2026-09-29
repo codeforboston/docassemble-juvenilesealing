@@ -174,7 +174,9 @@ question: ''
 subquestion: |
   These questions are for sealing **Massachusetts** juvenile
   records. Do you have a juvenile record in Massachusetts?
-yesnomaybe: has_ma_juv_record
+fields:
+  - no label: has_ma_juv_record
+    datatype: yesnomaybe
 ---
 id: unsure_of_ma_records
 question: ''
@@ -185,7 +187,9 @@ subquestion: |
   ${getting_juvenile_records}
 
   Do you still want to see if you can try to seal your records?
-yesno: unsure_records_but_wants_to_try_sealing
+fields:
+  - no label: unsure_records_but_wants_to_try_sealing
+    datatype: yesnoradio
 ---
 id: no_ma_records_end
 event: no_ma_records_end
@@ -216,7 +220,9 @@ terms:
   # Templates in terms work in questions
   docket sheets <i class="fa fa-question-circle" aria-hidden="true"></i>: |
     ${ docket_sheets_popover }
-yesnomaybe: have_docket_copies_already
+fields:
+  - no label: have_docket_copies_already
+    datatype: yesnomaybe
 ---
 id: end_without_finishing
 event: not_finishing_end

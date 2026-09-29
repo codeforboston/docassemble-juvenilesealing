@@ -204,7 +204,9 @@ question: |
 subquestion: |
   Do you have any open criminal or juvenile cases right
   now anywhere in the USA?
-yesnomaybe: has_NON_probation_open_cases
+fields:
+  - no label: has_NON_probation_open_cases
+    datatype: yesnomaybe
 ---
 id: probation
 question: |
@@ -214,7 +216,9 @@ subquestion: |
   case in the USA, including any federal court case?
   
   **Note:** Probation counts as an open case.
-yesnomaybe: is_on_probation
+fields:
+  - no label: is_on_probation
+    datatype: yesnomaybe
 ---
 id: juvenile_cases
 question: Juvenile Cases
@@ -223,7 +227,9 @@ subquestion: |
   on or after ${ today().minus(years=3) }?
 
   ${motor_vehicle_cases}
-yesnomaybe: juvenile_cases_in_past_3_years
+fields:
+  - no label: juvenile_cases_in_past_3_years
+    datatype: yesnomaybe
 ---
 id: juvenile_custody
 # TODO: What age are juvenile cases?
@@ -231,7 +237,9 @@ question: Juvenile Custody
 subquestion: |
   Have you been in juvenile custody anywhere in the USA
   on or after ${ today().minus(years=3) }?
-yesnomaybe: juvenile_custody_in_past_3_years
+fields:
+  - no label: juvenile_custody_in_past_3_years
+    datatype: yesnomaybe
 ---
 id: adult_cases_states
 question: Adult Cases - US State Convictions
@@ -240,7 +248,9 @@ subquestion: |
   on or after ${ today().minus(years=3) }?
 
   ${motor_vehicle_cases}
-yesnomaybe: convicted_in_past_3_years_states
+fields:
+  - no label: convicted_in_past_3_years_states
+    datatype: yesnomaybe
 ---
 id: adult_cases_federal
 question: Adult Cases - Federal Convictions
@@ -249,14 +259,18 @@ subquestion: |
   on or after ${ today().minus(years=3) }?
 
   ${motor_vehicle_cases}
-yesnomaybe: convicted_in_past_3_years_federal
+fields:
+  - no label: convicted_in_past_3_years_federal
+    datatype: yesnomaybe
 ---
 id: adult_incarceration
 question: Adult Cases - Incarceration
 subquestion: |
   Were you incarcerated in the USA on or after
   ${ today().minus(years=3) }?
-yesnomaybe: incarcerated_in_past_3_years
+fields:
+  - no label: incarcerated_in_past_3_years
+    datatype: yesnomaybe
 ---
 id: eligible
 field: will_write_personal_info
